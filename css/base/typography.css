@@ -1,0 +1,206 @@
+/*=========================================================
+                    TAQDEER FASHION
+                  TYPOGRAPHY SYSTEM
+=========================================================*/
+
+/* Body */
+
+body{
+
+    font-family:var(--font-primary);
+
+    font-size:var(--font-size-md);
+
+    font-weight:var(--fw-regular);
+
+    color:var(--color-text);
+
+    line-height:1.7;
+
+}
+
+
+/*=========================
+        Headings
+=========================*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+
+    font-family:var(--font-heading);
+
+    color:var(--color-primary);
+
+    font-weight:var(--fw-bold);
+
+    line-height:1.2;
+
+}
+
+h1{
+
+    font-size:var(--font-size-5xl);
+
+}
+
+h2{
+
+    font-size:var(--font-size-4xl);
+
+}
+
+h3{
+
+    font-size:var(--font-size-3xl);
+
+}
+
+h4{
+
+    font-size:var(--font-size-2xl);
+
+}
+
+h5{
+
+    font-size:var(--font-size-xl);
+
+}
+
+h6{
+
+    font-size:var(--font-size-lg);
+
+}
+
+
+/*=========================
+        Paragraph
+=========================*/
+
+p{
+
+    color:var(--color-text-light);
+
+    margin-bottom:1rem;
+
+}
+
+
+/*=========================
+        Links
+=========================*/
+
+a{
+
+    transition:var(--transition-normal);
+
+}
+
+a:hover{
+
+    color:var(--color-accent);
+
+}
+
+
+/*=========================
+        Buttons
+=========================*/
+
+button{
+
+    font-family:var(--font-primary);
+
+}
+
+
+/*=========================
+        Small Text
+=========================*/
+
+small{
+
+    font-size:var(--font-size-sm);
+
+}
+
+
+/*=========================
+        Strong
+=========================*/
+
+strong{
+
+    font-weight:var(--fw-bold);
+
+}
+
+
+/*=========================
+        Responsive
+=========================*/
+
+@media(max-width:992px){
+
+    h1{
+
+        font-size:48px;
+
+    }
+
+    h2{
+
+        font-size:40px;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    h1{
+
+        font-size:40px;
+
+    }
+
+    h2{
+
+        font-size:32px;
+
+    }
+
+    h3{
+
+        font-size:28px;
+
+    }
+
+}
+
+@media(max-width:576px){
+
+    h1{
+
+        font-size:34px;
+
+    }
+
+    h2{
+
+        font-size:28px;
+
+    }
+
+    h3{
+
+        font-size:24px;
+
+    }
+
+}

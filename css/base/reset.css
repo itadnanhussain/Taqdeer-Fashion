@@ -1,0 +1,119 @@
+/*=========================================================
+                    TAQDEER FASHION
+                  CSS RESET (v1.0)
+=========================================================*/
+
+/* Box sizing */
+
+*,
+*::before,
+*::after{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* Smooth scrolling */
+
+html{
+    scroll-behavior:smooth;
+}
+
+/* Body */
+
+body{
+    min-height:100vh;
+    text-rendering:optimizeLegibility;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+}
+
+/* Images */
+
+img,
+picture,
+svg,
+video,
+canvas{
+    display:block;
+    max-width:100%;
+}
+
+/* Forms */
+
+input,
+button,
+textarea,
+select{
+    font:inherit;
+    outline:none;
+    border:none;
+    background:none;
+}
+
+/* Buttons */
+
+button{
+    cursor:pointer;
+    border:none;
+    background:none;
+}
+
+/* Links */
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* Lists */
+
+ul,
+ol{
+    list-style:none;
+}
+
+/* Tables */
+
+table{
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+/* Text */
+
+h1,h2,h3,h4,h5,h6,p{
+    overflow-wrap:break-word;
+}
+
+/* Textarea */
+
+textarea{
+    resize:none;
+}
+
+/* Selection */
+
+::selection{
+    background:#111;
+    color:#fff;
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:#f4f4f4;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#888;
+    border-radius:20px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:#555;
+}

@@ -1,0 +1,174 @@
+/*=========================================================
+                    TAQDEER FASHION
+                  DESIGN TOKENS v1.0
+=========================================================*/
+
+:root{
+
+/*=========================================================
+                        COLORS
+=========================================================*/
+
+/* Primary */
+
+--color-primary:#0F172A;
+--color-primary-light:#1E293B;
+--color-primary-dark:#020617;
+
+/* Secondary */
+
+--color-secondary:#F8FAFC;
+--color-secondary-dark:#E2E8F0;
+
+/* Accent */
+
+--color-accent:#C8A96A;
+--color-accent-hover:#B8924F;
+
+/* Success */
+
+--color-success:#22C55E;
+
+/* Warning */
+
+--color-warning:#F59E0B;
+
+/* Danger */
+
+--color-danger:#EF4444;
+
+/* Info */
+
+--color-info:#3B82F6;
+
+/* Text */
+
+--color-text:#0F172A;
+--color-text-light:#64748B;
+--color-text-white:#FFFFFF;
+
+/* Background */
+
+--bg-body:#FAFAFA;
+--bg-card:#FFFFFF;
+--bg-dark:#0F172A;
+--bg-section:#F8FAFC;
+
+/* Border */
+
+--border-color:#E5E7EB;
+
+
+/*=========================================================
+                        TYPOGRAPHY
+=========================================================*/
+
+--font-primary:"Inter",sans-serif;
+
+--font-heading:"Playfair Display",serif;
+
+--font-size-xs:12px;
+--font-size-sm:14px;
+--font-size-md:16px;
+--font-size-lg:18px;
+--font-size-xl:22px;
+--font-size-2xl:28px;
+--font-size-3xl:36px;
+--font-size-4xl:48px;
+--font-size-5xl:64px;
+
+
+/*=========================================================
+                        FONT WEIGHT
+=========================================================*/
+
+--fw-light:300;
+--fw-regular:400;
+--fw-medium:500;
+--fw-semibold:600;
+--fw-bold:700;
+--fw-extra-bold:800;
+
+
+/*=========================================================
+                        SPACING
+=========================================================*/
+
+--space-1:4px;
+--space-2:8px;
+--space-3:12px;
+--space-4:16px;
+--space-5:20px;
+--space-6:24px;
+--space-7:32px;
+--space-8:40px;
+--space-9:48px;
+--space-10:64px;
+--space-11:80px;
+--space-12:100px;
+
+
+/*=========================================================
+                    BORDER RADIUS
+=========================================================*/
+
+--radius-sm:6px;
+--radius-md:10px;
+--radius-lg:16px;
+--radius-xl:24px;
+--radius-round:999px;
+
+
+/*=========================================================
+                        SHADOWS
+=========================================================*/
+
+--shadow-sm:0 2px 8px rgba(0,0,0,.06);
+
+--shadow-md:0 8px 20px rgba(0,0,0,.08);
+
+--shadow-lg:0 20px 45px rgba(0,0,0,.12);
+
+--shadow-xl:0 30px 60px rgba(0,0,0,.15);
+
+
+/*=========================================================
+                    TRANSITIONS
+=========================================================*/
+
+--transition-fast:.2s ease;
+
+--transition-normal:.3s ease;
+
+--transition-slow:.5s ease;
+
+
+/*=========================================================
+                    CONTAINER
+=========================================================*/
+
+--container-width:1400px;
+
+
+/*=========================================================
+                    HEADER
+=========================================================*/
+
+--header-height:80px;
+
+
+/*=========================================================
+                    Z INDEX
+=========================================================*/
+
+--z-dropdown:100;
+
+--z-sticky:500;
+
+--z-fixed:1000;
+
+--z-modal:5000;
+
+--z-tooltip:9999;
+
+}
