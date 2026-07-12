@@ -1,28 +1,37 @@
-/*=========================================================
-                    TAQDEER FASHION
-                  TYPOGRAPHY SYSTEM
-=========================================================*/
+/*==========================================================
+                TAQDEER FASHION
+             PREMIUM TYPOGRAPHY SYSTEM v2.0
+==========================================================*/
 
-/* Body */
+
+
+/*==========================================================
+                    GLOBAL TEXT
+==========================================================*/
+
 
 body{
 
-    font-family:var(--font-primary);
+    font-family:var(--font-body);
 
-    font-size:var(--font-size-md);
+    font-size:var(--text-base);
 
-    font-weight:var(--fw-regular);
+    font-weight:var(--fw-normal);
 
-    color:var(--color-text);
-
-    line-height:1.7;
+    color:var(--text-primary);
 
 }
 
 
-/*=========================
-        Headings
-=========================*/
+
+
+
+
+
+/*==========================================================
+                    HEADINGS
+==========================================================*/
+
 
 h1,
 h2,
@@ -39,67 +48,122 @@ h6{
 
     line-height:1.2;
 
+    letter-spacing:-0.02em;
+
 }
+
+
+
+
 
 h1{
 
-    font-size:var(--font-size-5xl);
+    font-size:clamp(
+        42px,
+        6vw,
+        72px
+    );
 
 }
+
+
+
+
 
 h2{
 
-    font-size:var(--font-size-4xl);
+    font-size:clamp(
+        32px,
+        4vw,
+        48px
+    );
 
 }
+
+
+
+
 
 h3{
 
-    font-size:var(--font-size-3xl);
+    font-size:28px;
 
 }
+
+
+
+
 
 h4{
 
-    font-size:var(--font-size-2xl);
+    font-size:22px;
 
 }
+
+
+
+
 
 h5{
 
-    font-size:var(--font-size-xl);
+    font-size:18px;
 
 }
+
+
+
+
 
 h6{
 
-    font-size:var(--font-size-lg);
+    font-size:16px;
 
 }
 
 
-/*=========================
-        Paragraph
-=========================*/
+
+
+
+
+
+/*==========================================================
+                    PARAGRAPH
+==========================================================*/
+
 
 p{
 
-    color:var(--color-text-light);
+    color:var(--text-secondary);
 
-    margin-bottom:1rem;
+    font-size:var(--text-base);
+
+    line-height:1.8;
 
 }
 
 
-/*=========================
-        Links
-=========================*/
+
+
+
+
+
+/*==========================================================
+                    LINKS
+==========================================================*/
+
 
 a{
 
-    transition:var(--transition-normal);
+    color:inherit;
+
+    transition:
+    var(--transition-fast);
 
 }
+
+
+
+
 
 a:hover{
 
@@ -108,99 +172,235 @@ a:hover{
 }
 
 
-/*=========================
-        Buttons
-=========================*/
+
+
+
+
+
+/*==========================================================
+                    BUTTON TEXT
+==========================================================*/
+
 
 button{
 
-    font-family:var(--font-primary);
+    font-weight:var(--fw-semibold);
 
 }
 
 
-/*=========================
-        Small Text
-=========================*/
-
-small{
-
-    font-size:var(--font-size-sm);
-
-}
 
 
-/*=========================
-        Strong
-=========================*/
 
-strong{
+
+
+/*==========================================================
+                    LABELS
+==========================================================*/
+
+
+.label,
+.badge-text,
+.section-label{
+
+
+    color:var(--color-accent);
+
+
+    font-size:12px;
+
 
     font-weight:var(--fw-bold);
 
+
+    letter-spacing:3px;
+
+
+    text-transform:uppercase;
+
+
 }
 
 
-/*=========================
-        Responsive
-=========================*/
 
-@media(max-width:992px){
 
-    h1{
 
-        font-size:48px;
 
-    }
 
-    h2{
+/*==========================================================
+                    SECTION TITLE
+==========================================================*/
 
-        font-size:40px;
 
-    }
+.section-title{
+
+
+    max-width:720px;
+
+
+    margin-inline:auto;
+
+
+    text-align:center;
+
+
+    margin-bottom:70px;
+
 
 }
+
+
+
+
+
+.section-title span{
+
+
+    display:inline-block;
+
+
+    margin-bottom:14px;
+
+
+}
+
+
+
+
+
+.section-title h2{
+
+
+    margin-bottom:18px;
+
+
+}
+
+
+
+
+
+.section-title p{
+
+
+    max-width:620px;
+
+
+    margin-inline:auto;
+
+
+}
+
+
+
+
+
+
+
+/*==========================================================
+                    PRODUCT TYPOGRAPHY
+==========================================================*/
+
+
+.product-title{
+
+
+    font-size:18px;
+
+
+    font-weight:var(--fw-semibold);
+
+
+    color:var(--color-primary);
+
+
+}
+
+
+
+
+
+.product-price{
+
+
+    font-size:22px;
+
+
+    font-weight:var(--fw-bold);
+
+
+    color:var(--color-accent-dark);
+
+
+}
+
+
+
+
+
+
+
+/*==========================================================
+                    RESPONSIVE
+==========================================================*/
+
 
 @media(max-width:768px){
 
-    h1{
 
-        font-size:40px;
+h1{
 
-    }
-
-    h2{
-
-        font-size:32px;
-
-    }
-
-    h3{
-
-        font-size:28px;
-
-    }
+    font-size:40px;
 
 }
 
-@media(max-width:576px){
 
-    h1{
 
-        font-size:34px;
+h2{
 
-    }
+    font-size:32px;
 
-    h2{
+}
 
-        font-size:28px;
 
-    }
 
-    h3{
+.section-title{
 
-        font-size:24px;
+    margin-bottom:45px;
 
-    }
+}
+
+
+
+}
+
+
+
+@media(max-width:480px){
+
+
+h1{
+
+    font-size:34px;
+
+}
+
+
+
+h2{
+
+    font-size:28px;
+
+}
+
+
+
+p{
+
+    font-size:15px;
+
+}
+
+
 
 }

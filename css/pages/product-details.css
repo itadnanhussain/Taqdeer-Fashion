@@ -1,0 +1,1190 @@
+/*==========================================================
+                TAQDEER FASHION
+          PRODUCT DETAILS CSS FINAL v1.0
+==========================================================*/
+
+
+
+
+
+/*==========================================================
+                MAIN SECTION
+==========================================================*/
+
+
+.product-details-section{
+
+    padding:100px 0;
+
+    background:#fff;
+
+}
+
+
+
+
+
+.product-details-layout{
+
+
+    display:grid;
+
+
+    grid-template-columns:1fr 1fr;
+
+
+    gap:70px;
+
+
+    align-items:start;
+
+
+}
+
+
+
+
+
+
+
+
+/*==========================================================
+                PRODUCT GALLERY
+==========================================================*/
+
+
+.product-gallery{
+
+
+    position:sticky;
+
+
+    top:120px;
+
+
+}
+
+
+
+
+
+.main-product-image{
+
+
+    height:600px;
+
+
+    border-radius:30px;
+
+
+    overflow:hidden;
+
+
+    background:#f7f7f7;
+
+
+}
+
+
+
+
+
+
+.main-product-image img{
+
+
+    width:100%;
+
+
+    height:100%;
+
+
+    object-fit:cover;
+
+
+    transition:.5s ease;
+
+
+}
+
+
+
+
+
+.main-product-image img:hover{
+
+
+    transform:scale(1.05);
+
+
+}
+
+
+
+
+
+
+
+
+
+.product-thumbnails{
+
+
+    display:flex;
+
+
+    gap:15px;
+
+
+    margin-top:20px;
+
+
+}
+
+
+
+
+
+.product-thumbnail{
+
+
+    width:85px;
+
+
+    height:85px;
+
+
+    border-radius:15px;
+
+
+    overflow:hidden;
+
+
+    cursor:pointer;
+
+
+    border:2px solid transparent;
+
+
+}
+
+
+
+
+
+.product-thumbnail.active{
+
+
+    border-color:#C8A96A;
+
+
+}
+
+
+
+
+
+.product-thumbnail img{
+
+
+    width:100%;
+
+
+    height:100%;
+
+
+    object-fit:cover;
+
+
+}
+
+
+
+
+
+
+
+
+
+/*==========================================================
+                PRODUCT INFO
+==========================================================*/
+
+
+.product-details-info{
+
+
+    padding-top:20px;
+
+
+}
+
+
+
+
+
+.product-category{
+
+
+    color:#C8A96A;
+
+
+    font-size:13px;
+
+
+    font-weight:700;
+
+
+    letter-spacing:2px;
+
+
+    text-transform:uppercase;
+
+
+}
+
+
+
+
+
+.product-details-info h1{
+
+
+    font-size:42px;
+
+
+    color:#111;
+
+
+    margin:15px 0;
+
+
+    line-height:1.2;
+
+
+}
+
+
+
+
+
+
+
+.product-rating{
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:10px;
+
+
+    color:#C8A96A;
+
+
+    margin-bottom:25px;
+
+
+}
+
+
+
+
+
+
+
+
+/*==========================================================
+                PRICE
+==========================================================*/
+
+
+.product-price{
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:15px;
+
+
+    margin-bottom:25px;
+
+
+}
+
+
+
+
+
+.product-price h2{
+
+
+    font-size:35px;
+
+
+    color:#111;
+
+
+}
+
+
+
+
+
+.product-price span{
+
+
+    color:#999;
+
+
+    text-decoration:line-through;
+
+
+}
+
+
+
+
+
+
+
+
+/*==========================================================
+                DESCRIPTION
+==========================================================*/
+
+
+.product-description{
+
+
+    color:#666;
+
+
+    line-height:1.8;
+
+
+    margin-bottom:35px;
+
+
+}
+
+
+
+
+
+
+
+
+
+/*==========================================================
+                OPTIONS
+==========================================================*/
+
+
+.product-option h4{
+
+
+    font-size:16px;
+
+
+    color:#111;
+
+
+    margin-bottom:15px;
+
+
+}
+
+
+
+
+
+.size-options{
+
+
+    display:flex;
+
+
+    gap:12px;
+
+
+    margin-bottom:30px;
+
+
+}
+
+
+
+
+
+.size-options button{
+
+
+    width:45px;
+
+
+    height:45px;
+
+
+    border-radius:50%;
+
+
+    background:white;
+
+
+    border:1px solid #ddd;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+
+
+.size-options button:hover,
+
+
+.size-options button.active{
+
+
+    background:#111;
+
+
+    color:white;
+
+
+}
+
+
+
+
+
+
+
+
+
+/*==========================================================
+                QUANTITY
+==========================================================*/
+
+
+.quantity-box{
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:0;
+
+
+    margin-bottom:30px;
+
+
+}
+
+
+
+
+
+.quantity-box button{
+
+
+    width:45px;
+
+
+    height:45px;
+
+
+    background:#111;
+
+
+    color:white;
+
+
+}
+
+
+
+
+
+.quantity-box input{
+
+
+    width:60px;
+
+
+    height:45px;
+
+
+    text-align:center;
+
+
+    border:1px solid #ddd;
+
+
+}
+
+
+
+
+
+
+
+
+
+/*==========================================================
+                ACTION BUTTONS
+==========================================================*/
+
+
+.product-actions{
+
+
+    display:flex;
+
+
+    gap:15px;
+
+
+    margin-bottom:35px;
+
+
+}
+
+
+
+
+
+.product-actions button{
+
+
+    height:55px;
+
+
+    padding:0 35px;
+
+
+    border-radius:999px;
+
+
+    font-weight:600;
+
+
+}
+
+
+
+
+
+
+
+.product-actions .add-cart-btn{
+
+
+    background:#111;
+
+
+    color:white;
+
+
+}
+
+
+
+
+
+.product-actions .buy-now-btn{
+
+
+    background:#C8A96A;
+
+
+    color:white;
+
+
+}
+
+
+
+
+
+
+
+.product-actions button:hover{
+
+
+    transform:translateY(-3px);
+
+
+}
+
+
+
+
+
+
+
+
+
+/*==========================================================
+                META
+==========================================================*/
+
+
+.product-meta{
+
+
+    border-top:1px solid #eee;
+
+
+    padding-top:25px;
+
+
+}
+
+
+
+
+
+.product-meta p{
+
+
+    margin-bottom:10px;
+
+
+    color:#666;
+
+
+}
+
+
+
+
+
+
+
+
+
+/*==========================================================
+                RELATED
+==========================================================*/
+
+
+.related-products{
+
+
+    padding:100px 0;
+
+
+    background:#faf8f3;
+
+
+}
+
+
+
+
+
+
+
+
+
+/*==========================================================
+                RESPONSIVE
+==========================================================*/
+
+
+@media(max-width:992px){
+
+
+.product-details-layout{
+
+
+grid-template-columns:1fr;
+
+
+gap:40px;
+
+
+}
+
+
+
+.product-gallery{
+
+
+position:relative;
+
+
+top:0;
+
+
+}
+
+
+
+.main-product-image{
+
+
+height:500px;
+
+
+}
+
+
+
+}
+
+
+
+
+
+@media(max-width:768px){
+
+
+.product-details-info h1{
+
+
+font-size:32px;
+
+
+}
+
+
+
+.main-product-image{
+
+
+height:380px;
+
+
+}
+
+
+
+.product-actions{
+
+
+flex-direction:column;
+
+
+}
+
+
+
+.product-actions button{
+
+
+width:100%;
+
+
+}
+
+
+
+.product-thumbnails{
+
+
+overflow-x:auto;
+
+
+}
+
+
+}
+/*==========================================================
+        PRODUCT DETAILS FINAL SIZE POLISH
+==========================================================*/
+
+.product-details-section{
+    padding:70px 0 80px;
+}
+
+.product-details-layout{
+    grid-template-columns:0.95fr 1.05fr;
+    gap:55px;
+    align-items:start;
+}
+
+.product-gallery{
+    position:sticky;
+    top:110px;
+}
+
+.main-product-image{
+    height:520px;
+    border-radius:24px;
+    background:#f7f7f7;
+}
+
+.main-product-image img{
+    object-fit:contain;
+    padding:18px;
+}
+
+.product-thumbnails{
+    margin-top:16px;
+}
+
+.product-thumbnail{
+    width:76px;
+    height:76px;
+    border-radius:12px;
+}
+
+.product-details-info{
+    padding-top:10px;
+    max-width:620px;
+}
+
+.product-details-info h1{
+    font-size:38px;
+    line-height:1.15;
+    margin:12px 0 14px;
+}
+
+.product-rating{
+    margin-bottom:18px;
+}
+
+.product-price{
+    margin-bottom:22px;
+}
+
+.product-price h2{
+    font-size:34px;
+}
+
+.product-description{
+    margin-bottom:26px;
+    max-width:560px;
+}
+
+.product-option h4{
+    margin-bottom:12px;
+}
+
+.size-options{
+    margin-bottom:24px;
+}
+
+.size-options button{
+    width:42px;
+    height:42px;
+}
+
+.quantity-box{
+    margin-bottom:26px;
+}
+
+.quantity-box button{
+    width:42px;
+    height:42px;
+}
+
+.quantity-box input{
+    width:58px;
+    height:42px;
+}
+
+.product-actions{
+    margin-bottom:28px;
+}
+
+.product-actions button{
+    height:52px;
+    padding:0 34px;
+}
+
+.product-meta{
+    padding-top:22px;
+}
+
+.product-meta p{
+    font-size:15px;
+    margin-bottom:12px;
+}
+
+
+/* MOBILE / TABLET */
+
+@media(max-width:992px){
+
+    .product-details-section{
+        padding:50px 0 70px;
+    }
+
+    .product-details-layout{
+        grid-template-columns:1fr;
+        gap:35px;
+    }
+
+    .main-product-image{
+        height:460px;
+    }
+
+    .product-gallery{
+        position:relative;
+        top:0;
+    }
+
+}
+
+@media(max-width:768px){
+
+    .main-product-image{
+        height:380px;
+    }
+
+    .product-details-info h1{
+        font-size:30px;
+    }
+
+    .product-price h2{
+        font-size:28px;
+    }
+
+    .product-actions{
+        flex-direction:column;
+    }
+
+    .product-actions button{
+        width:100%;
+    }
+
+}
+/*==========================================================
+        PRODUCT DETAILS FINAL PREMIUM POLISH
+==========================================================*/
+
+.product-details-section{
+    padding:48px 0 70px;
+    background:#fff;
+}
+
+.product-details-layout{
+    grid-template-columns:0.95fr 1.05fr;
+    gap:50px;
+    align-items:center;
+}
+
+.product-gallery{
+    position:relative;
+    top:0;
+}
+
+.main-product-image{
+    height:500px;
+    border-radius:24px;
+    background:#f7f7f7;
+    padding:18px;
+}
+
+.main-product-image img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    border-radius:18px;
+}
+
+.product-thumbnails{
+    margin-top:14px;
+}
+
+.product-thumbnail{
+    width:72px;
+    height:72px;
+    border-radius:12px;
+}
+
+.product-details-info{
+    padding-top:0;
+    max-width:620px;
+}
+
+.product-details-info h1{
+    font-size:36px;
+    line-height:1.15;
+    margin:10px 0 14px;
+}
+
+.product-category{
+    font-size:12px;
+    letter-spacing:3px;
+}
+
+.product-rating{
+    margin-bottom:16px;
+}
+
+.product-price{
+    margin-bottom:18px;
+}
+
+.product-price h2{
+    font-size:34px;
+}
+
+.product-description{
+    margin-bottom:22px;
+}
+
+.product-option h4{
+    margin-bottom:12px;
+}
+
+.size-options{
+    gap:10px;
+    margin-bottom:22px;
+}
+
+.size-options button{
+    width:42px;
+    height:42px;
+}
+
+.quantity-box{
+    margin-bottom:24px;
+}
+
+.quantity-box button{
+    width:42px;
+    height:42px;
+}
+
+.quantity-box input{
+    width:58px;
+    height:42px;
+}
+
+.product-actions{
+    gap:14px;
+    margin-bottom:28px;
+}
+
+.product-actions button{
+    height:52px;
+    padding:0 34px;
+    border-radius:999px;
+}
+
+.product-meta{
+    padding-top:22px;
+}
+
+.product-meta p{
+    font-size:15px;
+    margin-bottom:10px;
+}
+
+/* Related products spacing */
+.related-products{
+    padding:80px 0;
+}
+
+/* Responsive */
+@media(max-width:992px){
+
+    .product-details-section{
+        padding:40px 0 60px;
+    }
+
+    .product-details-layout{
+        grid-template-columns:1fr;
+        gap:35px;
+    }
+
+    .main-product-image{
+        height:460px;
+    }
+}
+
+@media(max-width:768px){
+
+    .main-product-image{
+        height:360px;
+    }
+
+    .product-details-info h1{
+        font-size:30px;
+    }
+
+    .product-price h2{
+        font-size:28px;
+    }
+
+    .product-actions{
+        flex-direction:column;
+    }
+
+    .product-actions button{
+        width:100%;
+    }
+}
+/*==========================================================
+        PRODUCT DETAILS FINAL COMPACT PATCH
+==========================================================*/
+
+.product-details-section{
+    padding:25px 0 65px;
+}
+
+.product-details-layout{
+    grid-template-columns:0.9fr 1fr;
+    gap:45px;
+    align-items:center;
+}
+
+.main-product-image{
+    height:470px;
+    padding:14px;
+    border-radius:22px;
+}
+
+.main-product-image img{
+    border-radius:16px;
+}
+
+.product-thumbnails{
+    margin-top:12px;
+}
+
+.product-thumbnail{
+    width:68px;
+    height:68px;
+}
+
+.product-details-info{
+    max-width:590px;
+}
+
+.product-details-info h1{
+    font-size:34px;
+    line-height:1.18;
+}
+
+.product-price h2{
+    font-size:32px;
+}
+
+.product-actions button{
+    height:50px;
+    padding:0 32px;
+}
+
+.product-meta{
+    margin-top:4px;
+}

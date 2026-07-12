@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>
+Products | Admin | Taqdeer Fashion
+</title>
+
+<link rel="icon" href="../../favicon.ico">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet" href="../../css/base/variables.css">
+<link rel="stylesheet" href="../../css/base/reset.css">
+<link rel="stylesheet" href="../../css/base/typography.css">
+<link rel="stylesheet" href="../../css/utilities/utilities.css">
+
+<link rel="stylesheet" href="../../css/pages/admin.css">
+
+</head>
+
+
+<body>
+
+<div class="admin-layout">
+
+
+<!-- SIDEBAR -->
+<aside class="admin-sidebar">
+
+<div class="admin-logo">
+
+<img src="../../assets/logos/logo.png" alt="Taqdeer">
+
+<h2>
+TAQDEER
+</h2>
+
+<span>
+ADMIN PANEL
+</span>
+
+</div>
+
+
+<nav>
+
+<a href="index.html">
+Dashboard
+</a>
+
+<a class="active" href="products.html">
+Products
+</a>
+
+<a href="orders.html">
+Orders
+</a>
+
+<a href="categories.html">
+Categories
+</a>
+
+<a href="coupons.html">
+Coupons
+</a>
+
+<a href="users.html">
+Users
+</a>
+
+<a href="settings.html">
+Settings
+</a>
+
+<a href="../../index.html">
+Back To Store
+</a>
+
+</nav>
+
+</aside>
+
+
+
+
+
+<!-- MAIN -->
+<main class="admin-main">
+
+
+<header class="admin-header">
+
+<div>
+
+<span class="admin-label">
+PRODUCT MANAGEMENT
+</span>
+
+<h1>
+Products
+</h1>
+
+<p>
+Add, edit, delete and manage store products.
+</p>
+
+</div>
+
+
+<button id="add-product-btn">
+Add Product
+</button>
+
+</header>
+
+
+
+
+
+<!-- TOOLS -->
+<section class="admin-product-tools">
+
+<input
+type="text"
+id="product-search"
+placeholder="Search product...">
+
+
+<select id="category-filter">
+
+<option value="all">
+All Categories
+</option>
+
+</select>
+
+
+<select id="stock-filter">
+
+<option value="all">
+All Stock
+</option>
+
+<option value="in">
+In Stock
+</option>
+
+<option value="low">
+Low Stock
+</option>
+
+<option value="out">
+Out Of Stock
+</option>
+
+</select>
+
+</section>
+
+
+
+
+
+<!-- PRODUCT FORM -->
+<section class="product-form-card" id="product-form-section">
+
+<div class="form-header">
+
+<div>
+
+<h2 id="form-title">
+Add Product
+</h2>
+
+<p>
+Fill product information carefully. Image is required only for new products.
+</p>
+
+</div>
+
+
+<button type="button" id="close-product-form">
+Close
+</button>
+
+</div>
+
+
+<form id="product-form">
+
+<input
+type="text"
+id="product-name"
+placeholder="Product Name"
+required>
+
+
+<input
+type="number"
+id="product-price"
+placeholder="Price"
+required>
+
+
+<input
+type="text"
+id="product-category"
+placeholder="Category e.g. shirt, pant, polo"
+required>
+
+
+<input
+type="number"
+id="product-stock"
+placeholder="Stock"
+min="0">
+
+
+<input
+type="text"
+id="product-rating"
+placeholder="Rating e.g. 4.8">
+
+
+<input
+type="text"
+id="product-badge"
+placeholder="Badge e.g. New, Best Seller">
+
+
+<input
+type="file"
+id="product-image"
+accept="image/*">
+
+
+<select id="product-featured">
+
+<option value="false">
+Normal Product
+</option>
+
+<option value="true">
+Featured Product
+</option>
+
+</select>
+
+
+<textarea
+id="product-description"
+placeholder="Product Description"></textarea>
+
+
+<button type="submit" id="save-product-btn">
+Save Product
+</button>
+
+</form>
+
+</section>
+
+
+
+
+
+<!-- PRODUCT LIST -->
+<section class="admin-products-panel">
+
+<div class="admin-section-title">
+
+<h2>
+All Products
+</h2>
+
+<p>
+Products listed here are synced with customer shop and home sections.
+</p>
+
+</div>
+
+
+<div id="admin-products-list">
+
+<div class="admin-loading">
+Loading products...
+</div>
+
+</div>
+
+</section>
+
+
+</main>
+
+</div>
+
+
+
+
+
+<!-- FIREBASE -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+
+<script src="../../firebase/firebase-config.js"></script>
+
+
+<!-- SERVICES -->
+<script src="../../js/services/image-service.js"></script>
+
+
+<!-- PAGE JS -->
+<script src="../../js/pages/admin-products.js"></script>
+
+</body>
+
+</html>

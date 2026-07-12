@@ -1,119 +1,288 @@
-/*=========================================================
-                    TAQDEER FASHION
-                  CSS RESET (v1.0)
-=========================================================*/
+/*==========================================================
+                TAQDEER FASHION
+              PREMIUM RESET SYSTEM v2.0
+==========================================================*/
 
-/* Box sizing */
 
 *,
 *::before,
 *::after{
+
     margin:0;
+
     padding:0;
+
     box-sizing:border-box;
+
 }
 
-/* Smooth scrolling */
+
+
+
 
 html{
+
     scroll-behavior:smooth;
+
+    font-size:16px;
+
+    -webkit-text-size-adjust:100%;
+
 }
 
-/* Body */
+
+
+
 
 body{
-    min-height:100vh;
-    text-rendering:optimizeLegibility;
+
+    font-family:var(--font-body);
+
+    background:var(--bg-body);
+
+    color:var(--text-primary);
+
+    line-height:1.6;
+
+    overflow-x:hidden;
+
     -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
+
 }
 
-/* Images */
+
+
+
 
 img,
 picture,
-svg,
 video,
-canvas{
+canvas,
+svg{
+
     display:block;
+
     max-width:100%;
+
 }
 
-/* Forms */
 
-input,
-button,
-textarea,
-select{
-    font:inherit;
-    outline:none;
-    border:none;
-    background:none;
+
+
+
+img{
+
+    object-fit:cover;
+
 }
 
-/* Buttons */
 
-button{
-    cursor:pointer;
-    border:none;
-    background:none;
-}
 
-/* Links */
+
 
 a{
+
     text-decoration:none;
+
     color:inherit;
+
 }
 
-/* Lists */
+
+
+
 
 ul,
 ol{
+
     list-style:none;
+
 }
 
-/* Tables */
 
-table{
-    border-collapse:collapse;
-    border-spacing:0;
+
+
+
+button,
+input,
+textarea,
+select{
+
+    font:inherit;
+
 }
 
-/* Text */
 
-h1,h2,h3,h4,h5,h6,p{
-    overflow-wrap:break-word;
+
+
+
+button{
+
+    cursor:pointer;
+
+    background:none;
+
+    border:none;
+
 }
 
-/* Textarea */
+
+
+
+
+input,
+textarea,
+select{
+
+    outline:none;
+
+}
+
+
+
+
 
 textarea{
-    resize:none;
+
+    resize:vertical;
+
 }
 
-/* Selection */
+
+
+
+
+table{
+
+    border-collapse:collapse;
+
+}
+
+
+
+
+
+section{
+
+    position:relative;
+
+}
+
+
+
+
+
+.container{
+
+    width:min(
+        92%,
+        var(--container-width)
+    );
+
+    margin-inline:auto;
+
+}
+
+
+
+
 
 ::selection{
-    background:#111;
-    color:#fff;
+
+    background:var(--color-accent);
+
+    color:var(--color-white);
+
 }
 
-/* Scrollbar */
+
+
+
 
 ::-webkit-scrollbar{
+
     width:10px;
+
 }
+
+
+
+
 
 ::-webkit-scrollbar-track{
-    background:#f4f4f4;
+
+    background:#F2EEE6;
+
 }
+
+
+
+
 
 ::-webkit-scrollbar-thumb{
-    background:#888;
-    border-radius:20px;
+
+    background:var(--color-accent);
+
+    border-radius:var(--radius-pill);
+
 }
 
+
+
+
+
 ::-webkit-scrollbar-thumb:hover{
-    background:#555;
+
+    background:var(--color-accent-dark);
+
+}
+
+
+
+
+
+
+
+:focus-visible{
+
+    outline:
+
+    2px solid var(--color-accent);
+
+    outline-offset:4px;
+
+}
+
+
+
+
+
+
+
+@media(max-width:768px){
+
+
+.container{
+
+    width:calc(100% - 40px);
+
+}
+
+
+}
+
+
+
+
+
+@media(max-width:480px){
+
+
+.container{
+
+    width:calc(100% - 30px);
+
+}
+
+
 }

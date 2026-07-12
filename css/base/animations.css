@@ -1,260 +1,604 @@
-/*=========================================================
+/*==========================================================
                 TAQDEER FASHION
-                ANIMATIONS v1.0
-=========================================================*/
+              PREMIUM ANIMATION SYSTEM v2.0
+==========================================================*/
 
-/*=========================
-        Keyframes
-=========================*/
+
+
+/*==========================================================
+                    KEYFRAMES
+==========================================================*/
+
 
 @keyframes fadeIn{
 
-    from{
+from{
 
-        opacity:0;
-
-    }
-
-    to{
-
-        opacity:1;
-
-    }
+opacity:0;
 
 }
+
+to{
+
+opacity:1;
+
+}
+
+}
+
+
+
+
 
 @keyframes fadeUp{
 
-    from{
+from{
 
-        opacity:0;
+opacity:0;
 
-        transform:translateY(50px);
-
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:translateY(0);
-
-    }
+transform:translateY(40px);
 
 }
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+
+
+
 
 @keyframes fadeDown{
 
-    from{
+from{
 
-        opacity:0;
+opacity:0;
 
-        transform:translateY(-50px);
-
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:translateY(0);
-
-    }
+transform:translateY(-30px);
 
 }
 
-@keyframes fadeLeft{
+to{
 
-    from{
+opacity:1;
 
-        opacity:0;
-
-        transform:translateX(-50px);
-
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:translateX(0);
-
-    }
+transform:translateY(0);
 
 }
 
-@keyframes fadeRight{
+}
 
-    from{
 
-        opacity:0;
 
-        transform:translateX(50px);
 
-    }
 
-    to{
+@keyframes slideLeft{
 
-        opacity:1;
+from{
 
-        transform:translateX(0);
+opacity:0;
 
-    }
+transform:translateX(-50px);
 
 }
 
-@keyframes zoomIn{
+to{
 
-    from{
+opacity:1;
 
-        opacity:0;
-
-        transform:scale(.9);
-
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:scale(1);
-
-    }
+transform:translateX(0);
 
 }
+
+}
+
+
+
+
+
+@keyframes slideRight{
+
+from{
+
+opacity:0;
+
+transform:translateX(50px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateX(0);
+
+}
+
+}
+
+
+
+
+
+@keyframes scaleIn{
+
+from{
+
+opacity:0;
+
+transform:scale(.9);
+
+}
+
+to{
+
+opacity:1;
+
+transform:scale(1);
+
+}
+
+}
+
+
+
+
 
 @keyframes float{
 
-    0%{
+0%{
 
-        transform:translateY(0);
-
-    }
-
-    50%{
-
-        transform:translateY(-8px);
-
-    }
-
-    100%{
-
-        transform:translateY(0);
-
-    }
+transform:translateY(0);
 
 }
+
+
+50%{
+
+transform:translateY(-10px);
+
+}
+
+
+100%{
+
+transform:translateY(0);
+
+}
+
+}
+
+
+
+
+
+@keyframes shine{
+
+
+0%{
+
+left:-100%;
+
+}
+
+
+100%{
+
+left:150%;
+
+}
+
+
+}
+
+
+
+
 
 @keyframes pulse{
 
-    0%{
 
-        transform:scale(1);
+0%{
 
-    }
-
-    50%{
-
-        transform:scale(1.05);
-
-    }
-
-    100%{
-
-        transform:scale(1);
-
-    }
+transform:scale(1);
 
 }
 
-/*=========================
-    Animation Classes
-=========================*/
 
-.fade-in{
+50%{
 
-    animation:fadeIn .8s ease forwards;
+transform:scale(1.05);
 
 }
 
-.fade-up{
 
-    animation:fadeUp .8s ease forwards;
+100%{
 
-}
-
-.fade-down{
-
-    animation:fadeDown .8s ease forwards;
+transform:scale(1);
 
 }
 
-.fade-left{
-
-    animation:fadeLeft .8s ease forwards;
 
 }
 
-.fade-right{
 
-    animation:fadeRight .8s ease forwards;
+
+
+
+
+
+/*==========================================================
+                    ANIMATION CLASSES
+==========================================================*/
+
+
+.animate-fade{
+
+animation:
+fadeIn .8s ease forwards;
 
 }
 
-.zoom-in{
 
-    animation:zoomIn .8s ease forwards;
+
+.animate-up{
+
+animation:
+fadeUp .8s ease forwards;
 
 }
+
+
+
+.animate-down{
+
+animation:
+fadeDown .8s ease forwards;
+
+}
+
+
+
+.animate-left{
+
+animation:
+slideLeft .8s ease forwards;
+
+}
+
+
+
+.animate-right{
+
+animation:
+slideRight .8s ease forwards;
+
+}
+
+
+
+.animate-scale{
+
+animation:
+scaleIn .7s ease forwards;
+
+}
+
+
 
 .float{
 
-    animation:float 3s ease-in-out infinite;
+animation:
+float 4s ease-in-out infinite;
 
 }
+
+
 
 .pulse{
 
-    animation:pulse 2s infinite;
+animation:
+pulse 2s infinite;
 
 }
 
-/*=========================
-    Hover Effects
-=========================*/
+
+
+
+
+
+
+/*==========================================================
+                    SCROLL REVEAL
+==========================================================*/
+
+
+.reveal{
+
+
+opacity:0;
+
+
+transform:translateY(40px);
+
+
+transition:
+all .8s ease;
+
+
+}
+
+
+
+.reveal.active{
+
+
+opacity:1;
+
+
+transform:translateY(0);
+
+
+}
+
+
+
+
+
+
+
+/*==========================================================
+                    HOVER EFFECTS
+==========================================================*/
+
 
 .hover-lift{
 
-    transition:var(--transition-normal);
+
+transition:
+transform .35s ease,
+box-shadow .35s ease;
+
 
 }
+
+
 
 .hover-lift:hover{
 
-    transform:translateY(-8px);
+
+transform:
+translateY(-8px);
+
+
+box-shadow:
+var(--shadow-lg);
+
 
 }
+
+
+
+
 
 .hover-scale{
 
-    transition:var(--transition-normal);
+
+transition:
+transform .35s ease;
+
 
 }
+
+
 
 .hover-scale:hover{
 
-    transform:scale(1.05);
+
+transform:
+scale(1.05);
+
 
 }
 
-.hover-shadow{
 
-    transition:var(--transition-normal);
+
+
+
+
+
+/*==========================================================
+                    IMAGE HOVER
+==========================================================*/
+
+
+.image-zoom{
+
+
+overflow:hidden;
+
 
 }
 
-.hover-shadow:hover{
 
-    box-shadow:var(--shadow-lg);
+
+.image-zoom img{
+
+
+transition:
+transform .6s ease;
+
+
+}
+
+
+
+.image-zoom:hover img{
+
+
+transform:
+scale(1.08);
+
+
+}
+
+
+
+
+
+
+
+/*==========================================================
+                    BUTTON SHINE
+==========================================================*/
+
+
+.btn-shine{
+
+
+position:relative;
+
+
+overflow:hidden;
+
+
+}
+
+
+
+.btn-shine::after{
+
+
+content:"";
+
+
+position:absolute;
+
+
+top:0;
+
+
+left:-100%;
+
+
+width:60%;
+
+
+height:100%;
+
+
+background:
+linear-gradient(
+120deg,
+transparent,
+rgba(255,255,255,.5),
+transparent
+);
+
+
+
+transition:.5s;
+
+
+}
+
+
+
+.btn-shine:hover::after{
+
+
+animation:
+shine .8s;
+
+
+}
+
+
+
+
+
+
+
+/*==========================================================
+                    PAGE LOADER
+==========================================================*/
+
+
+.page-loader{
+
+
+position:fixed;
+
+
+inset:0;
+
+
+display:flex;
+
+
+align-items:center;
+
+
+justify-content:center;
+
+
+background:var(--bg-body);
+
+
+z-index:var(--z-modal);
+
+
+transition:.5s;
+
+
+}
+
+
+
+.page-loader.hide{
+
+
+opacity:0;
+
+
+visibility:hidden;
+
+
+}
+
+
+
+
+
+
+
+/*==========================================================
+                    REDUCE MOTION
+==========================================================*/
+
+
+@media(prefers-reduced-motion:reduce){
+
+
+*,
+*::before,
+*::after{
+
+
+animation-duration:.01ms !important;
+
+
+transition-duration:.01ms !important;
+
+
+}
+
+
 
 }

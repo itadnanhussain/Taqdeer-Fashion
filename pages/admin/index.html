@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>
+Admin Dashboard | Taqdeer Fashion
+</title>
+
+
+
+<link rel="stylesheet" href="../../css/base/variables.css">
+
+<link rel="stylesheet" href="../../css/base/reset.css">
+
+<link rel="stylesheet" href="../../css/base/typography.css">
+
+<link rel="stylesheet" href="../../css/utilities/utilities.css">
+
+<link rel="stylesheet" href="../../css/pages/admin.css">
+
+
+</head>
+
+
+<body>
+
+
+
+<div class="admin-layout">
+
+
+
+<aside class="admin-sidebar">
+
+
+<div class="admin-logo">
+
+
+<img
+src="../../assets/logos/logo.png"
+alt="Taqdeer">
+
+
+</div>
+
+
+
+
+<nav>
+
+
+<a class="active" href="index.html">
+
+Dashboard
+
+</a>
+
+
+<a href="products.html">
+
+Products
+
+</a>
+
+
+
+<a href="orders.html">
+
+Orders
+
+</a>
+
+
+
+<a href="users.html">
+
+Users
+
+</a>
+
+
+
+<a href="settings.html">
+
+Settings
+
+</a>
+
+
+
+</nav>
+
+
+
+</aside>
+
+
+
+
+
+
+
+
+
+<main class="admin-main">
+
+
+
+<header class="admin-header">
+
+
+<div>
+
+<h1>
+Dashboard
+</h1>
+
+
+<p>
+Welcome back Admin
+</p>
+
+
+</div>
+
+
+
+
+
+<button id="admin-logout">
+
+Logout
+
+</button>
+
+
+
+</header>
+
+
+
+
+
+
+
+
+
+<section class="admin-stats">
+
+
+
+<div class="admin-card">
+
+
+<h3>
+Total Revenue
+</h3>
+
+
+<strong id="total-revenue">
+
+৳0
+
+</strong>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="admin-card">
+
+
+<h3>
+Total Profit
+</h3>
+
+
+<strong id="total-profit">
+
+৳0
+
+</strong>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="admin-card">
+
+
+<h3>
+Total Orders
+</h3>
+
+
+<strong id="total-orders">
+
+0
+
+</strong>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="admin-card">
+
+
+<h3>
+Total Customers
+</h3>
+
+
+<strong id="total-users">
+
+0
+
+</strong>
+
+
+</div>
+
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<section class="recent-orders">
+
+
+<h2>
+Recent Orders
+</h2>
+
+
+<div id="recent-orders-list">
+
+
+</div>
+
+
+
+</section>
+
+<section class="recent-orders">
+
+
+<h2>
+Recent Orders
+</h2>
+
+
+<div id="recent-orders-list">
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+<!-- ANALYTICS -->
+
+
+<section class="analytics-grid">
+
+
+<div class="analytics-card">
+
+<h2>
+Sales Overview
+</h2>
+
+
+<canvas id="sales-chart"></canvas>
+
+
+</div>
+
+
+
+
+
+<div class="analytics-card">
+
+<h2>
+Top Selling Products
+</h2>
+
+
+<div id="top-products-list">
+
+</div>
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+<section class="ai-insight-card">
+
+
+<h2>
+
+Taqdeer AI Insight
+
+</h2>
+
+
+<p>
+
+AI shopping and sales assistant will appear here.
+
+</p>
+
+
+</section>
+
+
+
+
+
+
+
+</main>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+
+<script src="../../firebase/firebase-config.js"></script>
+
+<script src="../../js/pages/admin.js"></script>
+
+<script src="../../js/pages/admin-analytics.js"></script>
+
+
+
+</body>
+
+</html>

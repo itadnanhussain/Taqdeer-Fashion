@@ -1,0 +1,448 @@
+/*=========================================================
+                TAQDEER FASHION
+                CART PAGE FINAL CSS
+=========================================================*/
+
+
+
+
+
+/*=========================================================
+                    SIMPLE HEADER
+=========================================================*/
+
+.simple-header{
+    height:72px;
+    background:#fff;
+    border-bottom:1px solid #eeeeee;
+}
+
+.simple-header .container{
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.cart-logo{
+    font-size:26px;
+    font-weight:800;
+    letter-spacing:6px;
+    color:#111;
+}
+
+.simple-header a:last-child{
+    font-size:14px;
+    font-weight:600;
+    color:#111;
+}
+
+.simple-header a:last-child:hover{
+    color:#C8A96A;
+}
+
+
+
+
+
+/*=========================================================
+                    CART PAGE
+=========================================================*/
+
+.cart-page{
+    min-height:calc(100vh - 72px);
+    padding:70px 0 90px;
+    background:#faf8f3;
+}
+
+.cart-layout{
+    display:grid;
+    grid-template-columns:1fr 360px;
+    gap:32px;
+    align-items:start;
+}
+
+
+
+
+
+/*=========================================================
+                    CART ITEMS BOX
+=========================================================*/
+
+.cart-items-box{
+    background:#fff;
+    border-radius:24px;
+    padding:32px;
+    box-shadow:0 10px 30px rgba(0,0,0,.03);
+}
+
+.cart-title{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:28px;
+}
+
+.cart-title h1{
+    font-size:30px;
+    font-weight:800;
+    color:#111;
+}
+
+.cart-title p{
+    font-size:14px;
+    color:#777;
+}
+
+
+
+
+
+/*=========================================================
+                    CART ITEM
+=========================================================*/
+
+.cart-item{
+    display:grid;
+    grid-template-columns:120px 1fr;
+    gap:24px;
+    align-items:center;
+    padding:22px 0;
+    border-bottom:1px solid #eee;
+}
+
+.cart-item:last-child{
+    border-bottom:none;
+}
+
+.cart-item-image{
+    width:120px;
+    height:130px;
+    border-radius:16px;
+    background:#f3eee7;
+    overflow:hidden;
+}
+
+.cart-item-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.cart-item-info h3{
+    font-size:17px;
+    font-weight:800;
+    color:#111;
+    margin-bottom:8px;
+}
+
+.cart-item-info p{
+    font-size:13px;
+    color:#777;
+    margin-bottom:8px;
+}
+
+.cart-item-price{
+    display:block;
+    font-size:18px;
+    font-weight:800;
+    color:#111;
+    margin-bottom:12px;
+}
+
+
+
+
+
+/*=========================================================
+                    QUANTITY
+=========================================================*/
+
+.quantity-control{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-top:10px;
+}
+
+.quantity-control button{
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    background:#f3eee7;
+    color:#111;
+    font-size:16px;
+    font-weight:800;
+    transition:.3s ease;
+}
+
+.quantity-control button:hover{
+    background:#111;
+    color:#fff;
+}
+
+.quantity-control span{
+    min-width:22px;
+    text-align:center;
+    font-size:15px;
+    font-weight:800;
+}
+
+
+
+
+
+/*=========================================================
+                    REMOVE
+=========================================================*/
+
+.remove-btn{
+    margin-top:12px;
+    font-size:13px;
+    color:#e23d3d;
+    font-weight:700;
+}
+
+.remove-btn:hover{
+    color:#111;
+}
+
+
+
+
+
+/*=========================================================
+                    SUMMARY BOX
+=========================================================*/
+
+.cart-summary-box{
+    background:#fff;
+    border-radius:24px;
+    padding:32px;
+    position:sticky;
+    top:95px;
+    box-shadow:0 10px 30px rgba(0,0,0,.03);
+}
+
+.cart-summary-box h2{
+    font-size:24px;
+    font-weight:800;
+    color:#111;
+    margin-bottom:28px;
+}
+
+.summary-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:18px;
+}
+
+.summary-row span{
+    font-size:15px;
+    color:#666;
+}
+
+.summary-row strong{
+    font-size:16px;
+    color:#111;
+    font-weight:800;
+}
+
+.cart-summary-box hr{
+    border:0;
+    border-top:1px solid #eee;
+    margin:24px 0;
+}
+
+.summary-row.total{
+    margin-top:10px;
+}
+
+.summary-row.total span{
+    font-size:20px;
+    font-weight:800;
+    color:#111;
+}
+
+.summary-row.total strong{
+    font-size:24px;
+    font-weight:800;
+    color:#111;
+}
+
+
+
+
+
+/*=========================================================
+                    CHECKOUT BUTTON
+=========================================================*/
+
+.checkout-btn{
+    width:100%;
+    height:54px;
+    border-radius:999px;
+    background:#111;
+    color:white;
+    font-size:15px;
+    font-weight:800;
+    margin-top:26px;
+    transition:.3s ease;
+}
+
+.checkout-btn:hover{
+    background:#C8A96A;
+    transform:translateY(-3px);
+}
+
+
+
+
+
+/*=========================================================
+                    EMPTY CART
+=========================================================*/
+
+.empty-cart{
+    display:none;
+    text-align:center;
+    padding:70px 20px;
+}
+
+.empty-cart.active{
+    display:block;
+}
+
+.empty-cart h2{
+    font-size:26px;
+    font-weight:800;
+    color:#111;
+}
+
+.empty-cart p{
+    margin:12px 0 25px;
+    color:#777;
+}
+
+.empty-cart a{
+    display:inline-flex;
+    height:46px;
+    padding:0 30px;
+    border-radius:999px;
+    background:#111;
+    color:white;
+    align-items:center;
+    justify-content:center;
+    font-weight:700;
+}
+
+.empty-cart a:hover{
+    background:#C8A96A;
+}
+
+
+
+
+
+/*=========================================================
+                    RESPONSIVE
+=========================================================*/
+
+@media(max-width:992px){
+
+    .cart-layout{
+        grid-template-columns:1fr;
+    }
+
+    .cart-summary-box{
+        position:relative;
+        top:0;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .cart-page{
+        padding:40px 0 60px;
+    }
+
+    .cart-items-box,
+    .cart-summary-box{
+        padding:22px;
+        border-radius:20px;
+    }
+
+    .cart-title{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:8px;
+    }
+
+    .cart-title h1{
+        font-size:26px;
+    }
+
+    .cart-item{
+        grid-template-columns:90px 1fr;
+        gap:16px;
+    }
+
+    .cart-item-image{
+        width:90px;
+        height:100px;
+    }
+
+    .cart-item-info h3{
+        font-size:15px;
+    }
+
+    .summary-row.total span,
+    .summary-row.total strong{
+        font-size:20px;
+    }
+
+}
+/*=========================================================
+        CART PAGE SEARCH MODAL FIX
+=========================================================*/
+
+.search-modal{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    background:rgba(255,255,255,.96);
+    display:none;
+    align-items:center;
+    justify-content:center;
+}
+
+.search-modal.active{
+    display:flex;
+}
+
+.search-close{
+    position:absolute;
+    top:30px;
+    right:40px;
+    font-size:34px;
+    background:transparent;
+    color:#111;
+    cursor:pointer;
+}
+
+.search-box{
+    width:min(600px,90%);
+}
+
+.search-box input{
+    width:100%;
+    height:58px;
+    border:1px solid #ddd;
+    border-radius:999px;
+    padding:0 25px;
+    font-size:18px;
+    outline:none;
+}

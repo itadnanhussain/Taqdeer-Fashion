@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>
+Product Details | Taqdeer Fashion
+</title>
+
+
+
+<link rel="icon" href="../../favicon.ico">
+
+
+
+<!-- GOOGLE FONT -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+
+
+
+
+<!-- BASE -->
+
+<link rel="stylesheet" href="../../css/base/variables.css">
+
+<link rel="stylesheet" href="../../css/base/reset.css">
+
+<link rel="stylesheet" href="../../css/base/typography.css">
+
+<link rel="stylesheet" href="../../css/utilities/utilities.css">
+
+
+
+
+
+<!-- LAYOUT -->
+
+<link rel="stylesheet" href="../../css/layout/header.css">
+
+<link rel="stylesheet" href="../../css/layout/footer.css">
+
+
+
+
+
+<!-- COMPONENT -->
+
+<link rel="stylesheet" href="../../css/components/buttons.css">
+
+<link rel="stylesheet" href="../../css/components/cards.css">
+
+
+
+
+
+<!-- PAGE -->
+
+<link rel="stylesheet" href="../../css/pages/product-details.css">
+
+
+</head>
+
+
+
+
+<body>
+
+
+
+
+
+<!-- HEADER -->
+
+<!-- HEADER -->
+
+<header class="header">
+
+<div class="container">
+
+<div class="header-wrapper">
+
+
+<a href="../../index.html" class="logo">
+
+<img src="../../assets/logos/logo.png" alt="Taqdeer Fashion">
+
+<div class="logo-text">
+
+<h2 class="logo-title">
+TAQDEER
+</h2>
+
+<span class="logo-subtitle">
+FASHION
+</span>
+
+</div>
+
+</a>
+
+
+
+<nav class="navbar">
+
+<ul class="nav-menu">
+
+<li>
+<a href="../../index.html">
+Home
+</a>
+</li>
+
+<li>
+<a href="../shop/index.html">
+Shop
+</a>
+</li>
+
+<li>
+<a href="../shop/index.html?category=shirt">
+Shirt
+</a>
+</li>
+
+<li>
+<a href="../shop/index.html?category=tshirt">
+T-Shirt
+</a>
+</li>
+
+<li>
+<a href="../shop/index.html?category=panjabi">
+Panjabi
+</a>
+</li>
+
+</ul>
+
+</nav>
+
+
+
+<div class="header-right">
+
+<button class="nav-icon search-btn">
+<i data-lucide="search"></i>
+</button>
+
+<a href="../wishlist/index.html" class="nav-icon">
+<i data-lucide="heart"></i>
+<span class="badge">0</span>
+</a>
+
+<a href="../cart/index.html" class="nav-icon">
+<i data-lucide="shopping-cart"></i>
+<span class="badge">0</span>
+</a>
+
+<a href="../account/index.html" class="login-btn">
+<i data-lucide="user"></i>
+<span>Account</span>
+</a>
+
+</div>
+
+
+</div>
+
+</div>
+
+</header>
+
+
+
+
+
+
+
+
+
+<main>
+
+
+
+
+
+<section class="product-details-section">
+
+
+<div class="container">
+
+
+
+
+
+<div class="product-details-layout">
+
+
+
+
+
+
+
+
+<!-- ==========================
+        PRODUCT GALLERY
+========================== -->
+
+
+<div class="product-gallery">
+
+
+
+
+
+<div class="main-product-image">
+
+
+<img 
+id="mainProductImage"
+src="../../assets/placeholders/product.jpg"
+alt="Product">
+
+
+</div>
+
+
+
+
+
+
+
+<div class="product-thumbnails"
+id="productThumbnails">
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ==========================
+        PRODUCT INFO
+========================== -->
+
+
+<div class="product-details-info">
+
+
+
+
+
+<span 
+class="product-category"
+id="productCategory">
+
+Category
+
+</span>
+
+
+
+
+
+
+
+<h1 id="productName">
+
+Product Name
+
+</h1>
+
+
+
+
+
+
+
+<div class="product-rating">
+
+
+<span>
+
+★ ★ ★ ★ ★
+
+</span>
+
+
+<span id="productRating">
+
+4.8
+
+</span>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="product-price">
+
+
+
+<h2 id="productPrice">
+
+৳0
+
+</h2>
+
+
+
+<span id="productOldPrice">
+
+</span>
+
+
+
+</div>
+
+
+
+
+
+
+
+<p 
+class="product-description"
+id="productDescription">
+
+
+Product description
+
+
+</p>
+
+
+
+
+
+
+
+
+<!-- SIZE -->
+
+<div class="product-option">
+
+
+<h4>
+
+Select Size
+
+</h4>
+
+
+
+<div class="size-options">
+
+
+<button>
+
+S
+
+</button>
+
+
+<button>
+
+M
+
+</button>
+
+
+<button>
+
+L
+
+</button>
+
+
+<button>
+
+XL
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- QUANTITY -->
+
+<div class="quantity-box">
+
+
+<button id="qtyMinus">
+
+-
+
+
+</button>
+
+
+
+<input 
+id="quantity"
+value="1"
+readonly>
+
+
+
+<button id="qtyPlus">
+
++
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- ACTION -->
+
+<div class="product-actions">
+
+
+<button 
+class="add-cart-btn"
+id="addToCartBtn">
+
+
+Add To Cart
+
+
+</button>
+
+
+
+
+
+<button 
+class="buy-now-btn"
+id="buyNowBtn">
+
+
+Buy Now
+
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="product-meta">
+
+
+<p>
+
+🚚 Fast Delivery Available
+
+</p>
+
+
+<p>
+
+🔒 Secure Payment
+
+</p>
+
+
+<p>
+
+↩ Easy Return Policy
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ==========================
+        RELATED PRODUCTS
+========================== -->
+
+
+<section class="related-products">
+
+
+<div class="container">
+
+
+
+<div class="section-title">
+
+
+<span>
+
+YOU MAY ALSO LIKE
+
+</span>
+
+
+
+<h2>
+
+Related Products
+
+</h2>
+
+
+
+</div>
+
+
+
+
+
+<div 
+class="product-grid"
+id="relatedProducts">
+
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+</main>
+
+
+
+
+
+
+
+
+
+
+<!-- FOOTER -->
+
+
+<footer class="footer">
+
+
+<!-- footer component -->
+
+</footer>
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+    if(window.lucide){
+        lucide.createIcons();
+    }
+});
+</script>
+<!-- FIREBASE -->
+
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+
+
+
+<script src="../../firebase/firebase-config.js"></script>
+
+
+
+
+
+
+<!-- SERVICES -->
+
+
+<script src="../../js/services/product-service.js"></script>
+
+<script src="../../js/services/cart-service.js"></script>
+
+
+
+
+
+
+
+<!-- PAGE JS -->
+
+
+<script src="../../js/pages/product-details.js"></script>
+
+
+
+
+
+</body>
+
+</html>

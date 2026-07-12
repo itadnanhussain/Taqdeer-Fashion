@@ -1,0 +1,494 @@
+/*==========================================================
+                TAQDEER FASHION
+              UTILITY SYSTEM v2.0
+==========================================================*/
+
+
+
+
+
+/*==========================================================
+                    DISPLAY
+==========================================================*/
+
+
+.d-none{
+
+    display:none !important;
+
+}
+
+
+.d-block{
+
+    display:block !important;
+
+}
+
+
+.d-flex{
+
+    display:flex !important;
+
+}
+
+
+.d-grid{
+
+    display:grid !important;
+
+}
+
+
+
+
+
+/*==========================================================
+                    FLEX
+==========================================================*/
+
+
+.flex-center{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+
+
+.flex-between{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+
+
+.flex-start{
+
+    display:flex;
+
+    justify-content:flex-start;
+
+    align-items:center;
+
+}
+
+
+
+.flex-end{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    align-items:center;
+
+}
+
+
+
+.flex-column{
+
+    flex-direction:column;
+
+}
+
+
+
+
+
+/*==========================================================
+                    GAP
+==========================================================*/
+
+
+.gap-1{
+
+    gap:var(--space-1);
+
+}
+
+
+.gap-2{
+
+    gap:var(--space-2);
+
+}
+
+
+.gap-3{
+
+    gap:var(--space-3);
+
+}
+
+
+.gap-4{
+
+    gap:var(--space-4);
+
+}
+
+
+.gap-5{
+
+    gap:var(--space-5);
+
+}
+
+
+.gap-6{
+
+    gap:var(--space-6);
+
+}
+
+
+
+
+
+
+
+/*==========================================================
+                    TEXT
+==========================================================*/
+
+
+.text-center{
+
+    text-align:center;
+
+}
+
+
+.text-left{
+
+    text-align:left;
+
+}
+
+
+.text-right{
+
+    text-align:right;
+
+}
+
+
+.text-uppercase{
+
+    text-transform:uppercase;
+
+}
+
+
+.text-capitalize{
+
+    text-transform:capitalize;
+
+}
+
+
+
+
+
+
+
+/*==========================================================
+                    FONT WEIGHT
+==========================================================*/
+
+
+.fw-light{
+
+    font-weight:var(--fw-light);
+
+}
+
+
+.fw-normal{
+
+    font-weight:var(--fw-normal);
+
+}
+
+
+.fw-medium{
+
+    font-weight:var(--fw-medium);
+
+}
+
+
+.fw-semibold{
+
+    font-weight:var(--fw-semibold);
+
+}
+
+
+.fw-bold{
+
+    font-weight:var(--fw-bold);
+
+}
+
+
+
+
+
+
+
+/*==========================================================
+                    SPACING
+==========================================================*/
+
+
+.mt-1{
+
+    margin-top:10px;
+
+}
+
+
+.mt-2{
+
+    margin-top:20px;
+
+}
+
+
+.mt-3{
+
+    margin-top:30px;
+
+}
+
+
+.mt-4{
+
+    margin-top:40px;
+
+}
+
+
+
+.mb-1{
+
+    margin-bottom:10px;
+
+}
+
+
+.mb-2{
+
+    margin-bottom:20px;
+
+}
+
+
+.mb-3{
+
+    margin-bottom:30px;
+
+}
+
+
+.mb-4{
+
+    margin-bottom:40px;
+
+}
+
+
+
+
+
+
+
+/*==========================================================
+                    WIDTH HEIGHT
+==========================================================*/
+
+
+.w-100{
+
+    width:100%;
+
+}
+
+
+.h-100{
+
+    height:100%;
+
+}
+
+
+
+
+
+
+
+/*==========================================================
+                    IMAGE
+==========================================================*/
+
+
+.img-cover{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+
+
+
+
+.img-contain{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:contain;
+
+}
+
+
+
+
+
+
+
+/*==========================================================
+                    DESIGN
+==========================================================*/
+
+
+.rounded{
+
+    border-radius:var(--radius-lg);
+
+}
+
+
+
+.shadow{
+
+    box-shadow:var(--shadow-md);
+
+}
+
+
+
+.overflow-hidden{
+
+    overflow:hidden;
+
+}
+
+
+
+.pointer{
+
+    cursor:pointer;
+
+}
+
+
+
+
+
+
+
+/*==========================================================
+                    POSITION
+==========================================================*/
+
+
+.relative{
+
+    position:relative;
+
+}
+
+
+.absolute{
+
+    position:absolute;
+
+}
+
+
+
+
+
+
+
+/*==========================================================
+                    VISIBILITY
+==========================================================*/
+
+
+.hidden{
+
+    display:none !important;
+
+}
+
+
+
+
+
+.visible{
+
+    visibility:visible;
+
+}
+
+
+
+
+
+.invisible{
+
+    visibility:hidden;
+
+}
+
+
+
+
+
+
+
+/*==========================================================
+                    RESPONSIVE
+==========================================================*/
+
+
+@media(max-width:768px){
+
+
+.hide-mobile{
+
+    display:none !important;
+
+}
+
+
+}

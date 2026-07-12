@@ -1,0 +1,279 @@
+/*=========================================================
+            TAQDEER FASHION
+            PROFILE EDIT STYLE
+=========================================================*/
+
+
+/*==============================
+        PROFILE PAGE
+==============================*/
+
+
+.profile-page{
+
+    padding:100px 0;
+
+    background:var(--color-bg);
+
+}
+
+
+
+.profile-edit-card{
+
+    max-width:650px;
+
+    margin:auto;
+
+    background:white;
+
+    padding:45px;
+
+    border-radius:30px;
+
+    box-shadow:var(--shadow-lg);
+
+}
+
+
+
+.profile-edit-card h1{
+
+    text-align:center;
+
+    margin-bottom:40px;
+
+    font-size:2.5rem;
+
+}
+
+
+
+
+
+
+
+/*==============================
+        AVATAR
+==============================*/
+
+
+.profile-avatar{
+
+    width:130px;
+
+    height:130px;
+
+    margin:0 auto 35px;
+
+    border-radius:50%;
+
+    overflow:hidden;
+
+    border:4px solid #faf3df;
+
+}
+
+
+
+.profile-avatar img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+
+
+
+
+
+
+/*==============================
+        FORM
+==============================*/
+
+
+.form-group{
+
+    margin-bottom:25px;
+
+}
+
+
+
+.form-group label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    font-weight:600;
+
+    color:var(--color-primary);
+
+}
+
+
+
+.form-group input,
+
+.form-group textarea{
+
+    width:100%;
+
+    padding:15px 18px;
+
+    border:1px solid var(--border-color);
+
+    border-radius:14px;
+
+    background:#fff;
+
+    transition:.3s ease;
+
+}
+
+
+
+.form-group textarea{
+
+    min-height:120px;
+
+    resize:none;
+
+}
+
+
+
+.form-group input:focus,
+
+.form-group textarea:focus{
+
+    border-color:var(--color-accent);
+
+    box-shadow:
+
+    0 0 0 3px rgba(200,169,106,.15);
+
+}
+
+
+
+
+
+
+
+/*==============================
+        SAVE BUTTON
+==============================*/
+
+
+.save-profile-btn{
+
+    width:100%;
+
+    padding:17px;
+
+    border-radius:999px;
+
+    background:var(--color-primary);
+
+    color:white;
+
+    font-weight:700;
+
+    transition:.35s ease;
+
+}
+
+
+
+.save-profile-btn:hover{
+
+    transform:translateY(-3px);
+
+    background:#000;
+
+}
+
+
+
+
+
+
+
+/*==============================
+        MESSAGE
+==============================*/
+
+
+#profile-message{
+
+    text-align:center;
+
+    margin-top:20px;
+
+    font-weight:600;
+
+}
+
+
+
+.profile-success{
+
+    color:#15803d;
+
+}
+
+
+
+.profile-error{
+
+    color:#dc2626;
+
+}
+
+
+
+
+
+
+
+/*==============================
+        RESPONSIVE
+==============================*/
+
+
+@media(max-width:600px){
+
+
+    .profile-page{
+
+        padding:70px 0;
+
+    }
+
+
+
+    .profile-edit-card{
+
+        padding:25px;
+
+        border-radius:20px;
+
+    }
+
+
+
+    .profile-edit-card h1{
+
+        font-size:2rem;
+
+    }
+
+
+}

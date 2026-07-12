@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Checkout | Taqdeer Fashion
+    </title>
+
+    <link rel="icon" href="../../favicon.ico">
+
+    <!-- FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- BASE CSS -->
+    <link rel="stylesheet" href="../../css/base/variables.css">
+    <link rel="stylesheet" href="../../css/base/reset.css">
+    <link rel="stylesheet" href="../../css/base/typography.css">
+    <link rel="stylesheet" href="../../css/utilities/utilities.css">
+
+    <!-- LAYOUT CSS -->
+    <link rel="stylesheet" href="../../css/layout/header.css">
+    <link rel="stylesheet" href="../../css/layout/footer.css">
+
+    <!-- COMPONENT CSS -->
+    <link rel="stylesheet" href="../../css/components/buttons.css">
+    <link rel="stylesheet" href="../../css/components/forms.css">
+    <link rel="stylesheet" href="../../css/components/modal.css">
+
+    <!-- PAGE CSS -->
+    <link rel="stylesheet" href="../../css/pages/checkout.css">
+
+</head>
+
+<body>
+
+    <!-- ANNOUNCEMENT BAR -->
+    <div class="announcement-bar">
+        <div class="container">
+            <div class="announcement-wrapper">
+                <p>🚚 Free Delivery Above ৳2000</p>
+                <p>💳 Cash On Delivery Available</p>
+                <p>⭐ Premium Quality Guaranteed</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container">
+            <div class="header-wrapper">
+
+                <!-- LOGO -->
+                <a href="../../index.html" class="logo">
+                    <img src="../../assets/logos/logo.png" alt="Taqdeer Fashion">
+
+                    <div class="logo-text">
+                        <h2 class="logo-title">TAQDEER</h2>
+                        <span class="logo-subtitle">FASHION</span>
+                    </div>
+                </a>
+
+                <!-- NAVIGATION -->
+                <nav class="navbar">
+                    <ul class="nav-menu">
+
+                        <li>
+                            <a href="../../index.html">Home</a>
+                        </li>
+
+                        <li>
+                            <a href="../shop/index.html">Shop</a>
+                        </li>
+
+                        <li class="has-dropdown">
+                            <a href="#">Categories</a>
+
+                            <div class="mega-menu">
+
+                                <div class="mega-column">
+                                    <h4>Men</h4>
+
+                                    <a href="../shop/index.html?category=shirt">Shirt</a>
+                                    <a href="../shop/index.html?category=t-shirt">T-Shirt</a>
+                                    <a href="../shop/index.html?category=polo">Polo</a>
+                                    <a href="../shop/index.html?category=panjabi">Panjabi</a>
+                                </div>
+
+                                <div class="mega-column">
+                                    <h4>Bottom Wear</h4>
+
+                                    <a href="../shop/index.html?category=pant">Pant</a>
+                                    <a href="../shop/index.html?category=trouser">Trouser</a>
+                                    <a href="../shop/index.html?category=drop-shoulder">Drop Shoulder</a>
+                                </div>
+
+                                <div class="mega-column">
+                                    <h4>Collection</h4>
+
+                                    <a href="../shop/index.html">New Arrival</a>
+                                    <a href="../shop/index.html">Best Seller</a>
+                                    <a href="../shop/index.html">Premium</a>
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li>
+                            <a href="../orders/index.html">Orders</a>
+                        </li>
+
+                        <li>
+                            <a href="../account/index.html">Account</a>
+                        </li>
+
+                    </ul>
+                </nav>
+
+                <!-- HEADER ACTIONS -->
+                <div class="header-right">
+
+                    <button class="nav-icon search-btn" type="button">
+                        <i data-lucide="search"></i>
+                    </button>
+
+                    <a href="../wishlist/index.html" class="nav-icon wishlist-header-btn">
+                        <i data-lucide="heart"></i>
+                        <span class="badge wishlist-count">0</span>
+                    </a>
+
+                    <button class="nav-icon cart-btn" type="button">
+                        <i data-lucide="shopping-cart"></i>
+                        <span class="badge cart-count">0</span>
+                    </button>
+
+                    <a href="../auth/login.html" class="login-btn account-btn">
+                        <i data-lucide="user"></i>
+                        <span>Sign In</span>
+                    </a>
+
+                    <button class="hamburger" type="button">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu">
+        <ul>
+            <li>
+                <a href="../../index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="../shop/index.html">Shop</a>
+            </li>
+
+            <li>
+                <a href="../orders/index.html">Orders</a>
+            </li>
+
+            <li>
+                <a href="../account/index.html">Account</a>
+            </li>
+
+            <li>
+                <a href="../wishlist/index.html">Wishlist</a>
+            </li>
+
+            <li>
+                <a href="../cart/index.html">Cart</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- SEARCH MODAL -->
+    <div class="search-modal">
+        <button class="search-close" type="button">
+            ×
+        </button>
+
+        <div class="search-box">
+            <input
+                type="text"
+                placeholder="Search products..."
+            >
+        </div>
+    </div>
+
+    <!-- MAIN -->
+    <main>
+
+        <section class="checkout-page">
+
+            <div class="container">
+
+                <div class="checkout-title">
+                    <h1>
+                        Checkout
+                    </h1>
+
+                    <p>
+                        Complete your order securely
+                    </p>
+                </div>
+
+                <div class="checkout-layout">
+
+                    <!-- CUSTOMER INFORMATION -->
+                    <div class="checkout-form-card">
+
+                        <h2>
+                            Billing Information
+                        </h2>
+
+                        <form id="checkout-form">
+
+                            <div class="form-group">
+                                <label>
+                                    Full Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    name="name"
+                                    id="customer-name"
+                                    placeholder="Your name"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label>
+                                    Phone Number
+                                </label>
+
+                                <input
+                                    type="text"
+                                    name="phone"
+                                    id="customer-phone"
+                                    placeholder="01XXXXXXXXX"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label>
+                                    Email
+                                </label>
+
+                                <input
+                                    type="email"
+                                    name="email"
+                                    id="customer-email"
+                                    placeholder="example@email.com"
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label>
+                                    Shipping Address
+                                </label>
+
+                                <textarea
+                                    name="address"
+                                    id="customer-address"
+                                    placeholder="Your address"
+                                    required
+                                ></textarea>
+                            </div>
+
+                            <h3>
+                                Payment Method
+                            </h3>
+
+                            <label class="payment-option">
+                                <input
+                                    type="radio"
+                                    name="payment"
+                                    value="COD"
+                                    checked
+                                >
+
+                                Cash On Delivery
+                            </label>
+
+                            <label class="payment-option disabled">
+                                <input
+                                    type="radio"
+                                    name="payment"
+                                    value="bKash"
+                                    disabled
+                                >
+
+                                bKash (Coming Soon)
+                            </label>
+
+                            <label class="payment-option disabled">
+                                <input
+                                    type="radio"
+                                    name="payment"
+                                    value="Nagad"
+                                    disabled
+                                >
+
+                                Nagad (Coming Soon)
+                            </label>
+
+                            <label class="payment-option disabled">
+                                <input
+                                    type="radio"
+                                    name="payment"
+                                    value="SSLCommerz"
+                                    disabled
+                                >
+
+                                SSLCommerz (Coming Soon)
+                            </label>
+
+                            <button
+                                type="submit"
+                                class="place-order-btn"
+                            >
+                                Place Order
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                    <!-- ORDER SUMMARY -->
+                    <div class="checkout-summary-card">
+
+                        <h2>
+                            Your Order
+                        </h2>
+
+                        <div class="checkout-items" id="checkout-items">
+                            <!-- Dynamic checkout items -->
+                        </div>
+
+                        <div class="checkout-summary-row">
+                            <span>
+                                Subtotal
+                            </span>
+
+                            <strong id="checkout-subtotal">
+                                ৳0
+                            </strong>
+                        </div>
+
+                        <div class="checkout-summary-row">
+                            <span>
+                                Delivery Charge
+                            </span>
+
+                            <strong id="checkout-delivery">
+                                ৳0
+                            </strong>
+                        </div>
+
+                        <div class="checkout-summary-row total">
+                            <span>
+                                Total
+                            </span>
+
+                            <strong id="checkout-total">
+                                ৳0
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <p>
+                © 2026 Taqdeer Fashion. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- LUCIDE -->
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+
+    <!-- FIREBASE -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+    <script src="../../firebase/firebase-config.js"></script>
+
+    <!-- SERVICES -->
+    <script src="../../js/services/cart-service.js"></script>
+    <script src="../../js/services/wishlist-service.js"></script>
+    <script src="../../js/services/order-service.js"></script>
+
+    <!-- COMPONENTS -->
+    <script src="../../js/components/header.js"></script>
+
+    <!-- PAGE -->
+    <script src="../../js/pages/checkout.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded",()=>{
+            if(window.lucide){
+                lucide.createIcons();
+            }
+        });
+    </script>
+
+</body>
+
+</html>

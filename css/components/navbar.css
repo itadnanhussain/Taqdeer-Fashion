@@ -1,0 +1,134 @@
+/*=========================================================
+                TAQDEER FASHION
+                NAVBAR COMPONENT
+=========================================================*/
+
+.header{
+    position:sticky;
+    top:0;
+    z-index:var(--z-sticky);
+    background:rgba(255,255,255,.88);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--border-color);
+    box-shadow:var(--shadow-sm);
+}
+
+.navbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:var(--space-6);
+    min-height:var(--header-height);
+    padding:var(--space-4) 0;
+}
+
+.logo a{
+    display:flex;
+    flex-direction:column;
+    line-height:1;
+}
+
+.logo h2{
+    font-family:var(--font-heading);
+    font-size:var(--font-size-3xl);
+    letter-spacing:1px;
+    color:var(--color-primary);
+}
+
+.logo span{
+    margin-top:2px;
+    font-size:12px;
+    letter-spacing:4px;
+    color:var(--color-text-light);
+}
+
+.nav-menu{
+    display:flex;
+    align-items:center;
+    gap:var(--space-6);
+    margin-left:auto;
+}
+
+.nav-menu a{
+    position:relative;
+    font-size:15px;
+    font-weight:var(--fw-medium);
+    color:var(--color-primary);
+    padding:8px 0;
+    transition:var(--transition-normal);
+}
+
+.nav-menu a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:0;
+    height:2px;
+    background:var(--color-accent);
+    transition:var(--transition-normal);
+}
+
+.nav-menu a:hover::after,
+.nav-menu a.active::after{
+    width:100%;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active{
+    color:var(--color-accent);
+}
+
+.nav-icons{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-left:var(--space-4);
+}
+
+.nav-icons button{
+    width:42px;
+    height:42px;
+    border-radius:var(--radius-round);
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    background:#fff;
+    border:1px solid var(--border-color);
+    box-shadow:var(--shadow-sm);
+    transition:var(--transition-normal);
+    font-size:18px;
+}
+
+.nav-icons button:hover{
+    transform:translateY(-2px);
+    border-color:var(--color-accent);
+    color:var(--color-accent);
+    box-shadow:var(--shadow-md);
+}
+
+@media (max-width: 992px){
+    .nav-menu{
+        display:none;
+    }
+}
+
+@media (max-width: 576px){
+    .navbar{
+        gap:var(--space-4);
+    }
+
+    .logo h2{
+        font-size:var(--font-size-2xl);
+    }
+
+    .nav-icons{
+        gap:8px;
+    }
+
+    .nav-icons button{
+        width:38px;
+        height:38px;
+        font-size:16px;
+    }
+}

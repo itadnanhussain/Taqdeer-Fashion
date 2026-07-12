@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>
+Admin Orders | Taqdeer Fashion
+</title>
+
+<link rel="icon" href="../../favicon.ico">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet" href="../../css/base/variables.css">
+<link rel="stylesheet" href="../../css/base/reset.css">
+<link rel="stylesheet" href="../../css/base/typography.css">
+<link rel="stylesheet" href="../../css/utilities/utilities.css">
+
+<link rel="stylesheet" href="../../css/pages/admin.css">
+
+</head>
+
+
+<body>
+
+<div class="admin-layout">
+
+
+<!-- SIDEBAR -->
+<aside class="admin-sidebar">
+
+<div class="admin-logo">
+
+<img src="../../assets/logos/logo.png" alt="Taqdeer Fashion">
+
+<h2>
+TAQDEER
+</h2>
+
+<span>
+ADMIN PANEL
+</span>
+
+</div>
+
+
+<nav>
+
+<a href="index.html">
+Dashboard
+</a>
+
+<a href="products.html">
+Products
+</a>
+
+<a href="orders.html" class="active">
+Orders
+</a>
+
+<a href="categories.html">
+Categories
+</a>
+
+<a href="coupons.html">
+Coupons
+</a>
+
+<a href="users.html">
+Users
+</a>
+
+<a href="settings.html">
+Settings
+</a>
+
+<a href="../../index.html">
+Back To Store
+</a>
+
+</nav>
+
+</aside>
+
+
+
+
+
+<!-- MAIN -->
+<main class="admin-main">
+
+
+<div class="admin-header">
+
+<div>
+
+<span class="admin-label">
+ORDER MANAGEMENT
+</span>
+
+<h1>
+Orders
+</h1>
+
+<p>
+Manage customer orders, payment method, and delivery status.
+</p>
+
+</div>
+
+
+<button id="refresh-orders">
+Refresh Orders
+</button>
+
+</div>
+
+
+
+
+
+<!-- STATS -->
+<div class="admin-stats order-stats">
+
+<div class="admin-card">
+
+<h3>
+Total Orders
+</h3>
+
+<strong id="total-orders">
+0
+</strong>
+
+</div>
+
+
+<div class="admin-card">
+
+<h3>
+Pending Orders
+</h3>
+
+<strong id="pending-orders">
+0
+</strong>
+
+</div>
+
+
+<div class="admin-card">
+
+<h3>
+Delivered Orders
+</h3>
+
+<strong id="delivered-orders">
+0
+</strong>
+
+</div>
+
+
+<div class="admin-card">
+
+<h3>
+Total Revenue
+</h3>
+
+<strong id="total-revenue">
+৳0
+</strong>
+
+</div>
+
+</div>
+
+
+
+
+
+<!-- ORDERS -->
+<section class="admin-orders-panel">
+
+<div class="admin-section-title">
+
+<h2>
+Recent Orders
+</h2>
+
+<p>
+Update order status from pending to delivered.
+</p>
+
+</div>
+
+
+<div id="admin-orders-list">
+
+<div class="admin-loading">
+Loading orders...
+</div>
+
+</div>
+
+</section>
+
+
+</main>
+
+</div>
+
+
+
+
+
+<!-- FIREBASE -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+<script src="../../firebase/firebase-config.js"></script>
+
+
+<!-- PAGE JS -->
+<script src="../../js/pages/admin-orders.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,2828 @@
+/*==========================================================
+                TAQDEER FASHION
+              HOME CSS FINAL v1.0
+
+              PART 1
+        GLOBAL + HERO + TRUST
+==========================================================*/
+
+
+
+/*==========================================================
+                HOME GLOBAL
+==========================================================*/
+
+
+.home-section{
+
+    position:relative;
+
+    padding:100px 0;
+
+}
+
+
+
+.section-title{
+
+    text-align:center;
+
+    max-width:700px;
+
+    margin:0 auto 60px;
+
+}
+
+
+
+.section-title span{
+
+    display:block;
+
+    color:#C8A96A;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.section-title h2{
+
+    font-size:42px;
+
+    line-height:1.2;
+
+    color:#111;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.section-title p{
+
+    color:#777;
+
+    font-size:15px;
+
+}
+
+
+
+
+
+
+
+
+
+/*==========================================================
+                    HERO SECTION
+==========================================================*/
+
+
+.hero{
+
+    position:relative;
+
+    height:520px;
+
+    overflow:hidden;
+
+    display:flex;
+
+    align-items:center;
+
+    background:#faf8f3;
+
+}
+
+
+
+
+
+.hero-bg{
+
+
+    position:absolute;
+
+
+    inset:0;
+
+
+    width:100%;
+
+
+    height:100%;
+
+
+    object-fit:cover;
+
+
+    object-position:center right;
+
+
+}
+
+
+
+
+
+
+
+.hero-overlay{
+
+
+    position:absolute;
+
+
+    inset:0;
+
+
+    background:
+
+    linear-gradient(
+
+    90deg,
+
+    rgba(250,248,243,.96),
+
+    rgba(250,248,243,.55),
+
+    transparent
+
+    );
+
+
+}
+
+
+
+
+
+
+
+
+.hero-container{
+
+
+    height:100%;
+
+
+    position:relative;
+
+
+    z-index:2;
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+}
+
+
+
+
+
+
+
+/*==============================
+            HERO TEXT
+==============================*/
+
+
+.hero-content{
+
+
+    max-width:600px;
+
+
+}
+
+
+
+
+
+.hero-label{
+
+
+    display:inline-block;
+
+
+    color:#C8A96A;
+
+
+    font-size:12px;
+
+
+    font-weight:700;
+
+
+    letter-spacing:4px;
+
+
+    margin-bottom:18px;
+
+
+}
+
+
+
+
+
+.hero-title{
+
+
+    font-size:60px;
+
+
+    line-height:1.05;
+
+
+    font-weight:800;
+
+
+    color:#111;
+
+
+    margin-bottom:20px;
+
+
+}
+
+
+
+
+
+.hero-title span{
+
+
+    color:#C8A96A;
+
+
+}
+
+
+
+
+
+
+
+.hero-description{
+
+
+    max-width:460px;
+
+
+    color:#666;
+
+
+    font-size:15px;
+
+
+    line-height:1.8;
+
+
+    margin-bottom:32px;
+
+
+}
+
+
+
+
+
+
+
+
+
+/*==============================
+            HERO BUTTONS
+==============================*/
+
+
+.hero-buttons{
+
+
+    display:flex;
+
+
+    gap:16px;
+
+
+}
+
+
+
+.hero-buttons .btn{
+
+
+    height:46px;
+
+
+    padding:0 32px;
+
+
+    border-radius:999px;
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    justify-content:center;
+
+
+    font-size:14px;
+
+
+    font-weight:600;
+
+
+}
+
+
+
+.hero-buttons .btn-primary{
+
+
+    background:#111;
+
+
+    color:white;
+
+
+}
+
+
+
+.hero-buttons .btn-primary:hover{
+
+
+    background:#C8A96A;
+
+
+}
+
+
+
+.hero-buttons .btn-outline{
+
+
+    background:white;
+
+
+    border:1px solid #ddd;
+
+
+}
+
+
+
+
+
+
+
+
+
+/*==============================
+            HERO STATS
+==============================*/
+
+
+.hero-stats{
+
+
+    display:flex;
+
+
+    gap:45px;
+
+
+    margin-top:35px;
+
+
+}
+
+
+
+.stat-number{
+
+
+    font-size:26px;
+
+
+    font-weight:800;
+
+
+    color:#111;
+
+
+}
+
+
+
+.stat-text{
+
+
+    font-size:13px;
+
+
+    color:#777;
+
+
+}
+
+
+
+
+
+
+
+
+
+/*==========================================================
+              SUMMER COLLECTION CARD
+==========================================================*/
+
+
+.hero-collection-card{
+
+
+    position:absolute;
+
+
+    right:160px;
+
+
+    top:110px;
+
+
+    width:280px;
+
+
+    padding:28px;
+
+
+    background:#fff;
+
+
+    border-radius:24px;
+
+
+    box-shadow:
+
+    0 25px 60px rgba(0,0,0,.12);
+
+
+    z-index:5;
+
+
+}
+
+
+
+.hero-collection-card span{
+
+
+    font-size:11px;
+
+
+    letter-spacing:2px;
+
+
+    color:#777;
+
+
+}
+
+
+
+.hero-collection-card h3{
+
+
+    font-size:26px;
+
+
+    color:#111;
+
+
+    margin:10px 0;
+
+
+}
+
+
+
+.hero-collection-card p{
+
+
+    font-size:14px;
+
+
+    color:#666;
+
+
+}
+
+
+
+
+
+
+.hero-mini-products{
+
+
+    display:flex;
+
+
+    gap:10px;
+
+
+    margin:18px 0;
+
+
+}
+
+
+
+.hero-mini-products img{
+
+
+    width:58px;
+
+
+    height:58px;
+
+
+    border-radius:12px;
+
+
+    object-fit:cover;
+
+
+}
+
+
+
+
+
+.collection-btn{
+
+
+    display:inline-flex;
+
+
+    padding:11px 25px;
+
+
+    border-radius:999px;
+
+
+    background:#111;
+
+
+    color:white;
+
+
+    font-size:13px;
+
+
+}
+
+
+
+
+
+
+
+
+
+/*==============================
+            SLIDER
+==============================*/
+
+
+.hero-controls{
+
+
+    position:absolute;
+
+
+    right:160px;
+
+
+    bottom:35px;
+
+
+    z-index:10;
+
+
+}
+
+
+
+.hero-controls span{
+
+
+    width:8px;
+
+
+    height:8px;
+
+
+    display:inline-block;
+
+
+    border-radius:50%;
+
+
+    background:#ddd;
+
+
+    margin:5px;
+
+
+}
+
+
+
+.hero-controls .active{
+
+
+    background:#C8A96A;
+
+
+}
+
+
+
+
+
+
+
+
+
+/*==========================================================
+                    TRUST STRIP
+==========================================================*/
+
+
+.trust-strip{
+
+
+    background:#fff;
+
+
+    border-bottom:1px solid #eee;
+
+
+}
+
+
+
+
+
+.trust-container{
+
+
+    display:grid;
+
+
+    grid-template-columns:repeat(4,1fr);
+
+
+}
+
+
+
+
+
+
+.trust-item{
+
+
+    padding:28px;
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:15px;
+
+
+    border-right:1px solid #eee;
+
+
+}
+
+
+
+
+
+.trust-item:last-child{
+
+
+    border:none;
+
+
+}
+
+
+
+
+
+.trust-icon{
+
+
+    width:48px;
+
+
+    height:48px;
+
+
+    border-radius:50%;
+
+
+    background:#faf5ea;
+
+
+    color:#C8A96A;
+
+
+    display:flex;
+
+
+    justify-content:center;
+
+
+    align-items:center;
+
+
+}
+
+
+
+
+
+.trust-item h4{
+
+
+    font-size:15px;
+
+
+    color:#111;
+
+
+    margin-bottom:4px;
+
+
+}
+
+
+
+
+
+.trust-item p{
+
+
+    font-size:13px;
+
+
+    color:#777;
+
+
+}
+/*==========================================================
+                TAQDEER FASHION
+              HOME CSS FINAL v1.0
+
+              PART 2
+      CATEGORY + PRODUCT SYSTEM
+==========================================================*/
+
+
+
+
+
+/*==========================================================
+                SHOP BY CATEGORY
+==========================================================*/
+
+
+.category-section{
+
+    padding:100px 0;
+
+    background:#fff;
+
+}
+
+
+
+
+
+.category-grid{
+
+
+    display:grid;
+
+
+    grid-template-columns:repeat(3,1fr);
+
+
+    gap:25px;
+
+
+}
+
+
+
+
+
+
+
+.category-card{
+
+
+    position:relative;
+
+
+    height:330px;
+
+
+    overflow:hidden;
+
+
+    border-radius:24px;
+
+
+    background:#f7f7f7;
+
+
+}
+
+
+
+
+
+.category-card img{
+
+
+    width:100%;
+
+
+    height:100%;
+
+
+    object-fit:cover;
+
+
+    transition:.5s ease;
+
+
+}
+
+
+
+
+
+.category-card:hover img{
+
+
+    transform:scale(1.08);
+
+
+}
+
+
+
+
+
+
+
+.category-overlay{
+
+
+    position:absolute;
+
+
+    inset:0;
+
+
+    background:
+
+
+    linear-gradient(
+
+    transparent,
+
+    rgba(0,0,0,.55)
+
+    );
+
+
+    display:flex;
+
+
+    align-items:flex-end;
+
+
+    padding:30px;
+
+
+}
+
+
+
+
+
+.category-overlay h3{
+
+
+    color:white;
+
+
+    font-size:26px;
+
+
+    font-weight:700;
+
+
+}
+
+
+
+
+
+
+
+
+
+/*==========================================================
+                NEW ARRIVAL
+==========================================================*/
+
+
+.new-arrival-section{
+
+
+    padding:100px 0;
+
+
+    background:#fafafa;
+
+
+}
+
+
+
+
+
+
+
+.product-grid{
+
+
+    display:grid;
+
+
+    grid-template-columns:repeat(4,1fr);
+
+
+    gap:25px;
+
+
+}
+
+
+
+
+
+
+
+/*==========================================================
+                PRODUCT CARD
+==========================================================*/
+
+
+.product-card{
+
+
+    background:white;
+
+
+    border-radius:22px;
+
+
+    overflow:hidden;
+
+
+    transition:.35s ease;
+
+
+    border:1px solid #eee;
+
+
+}
+
+
+
+
+
+.product-card:hover{
+
+
+    transform:translateY(-8px);
+
+
+    box-shadow:
+
+    0 20px 45px rgba(0,0,0,.10);
+
+
+}
+
+
+
+
+
+
+
+.product-image{
+
+
+    height:350px;
+
+
+    position:relative;
+
+
+    background:#f5f5f5;
+
+
+    overflow:hidden;
+
+
+}
+
+
+
+
+
+.product-image img{
+
+
+    width:100%;
+
+
+    height:100%;
+
+
+    object-fit:cover;
+
+
+    transition:.5s ease;
+
+
+}
+
+
+
+
+
+.product-card:hover .product-image img{
+
+
+    transform:scale(1.05);
+
+
+}
+
+
+
+
+
+
+
+/*==============================
+        WISHLIST
+==============================*/
+
+
+.wishlist-btn{
+
+
+    position:absolute;
+
+
+    top:18px;
+
+
+    right:18px;
+
+
+    width:42px;
+
+
+    height:42px;
+
+
+    border-radius:50%;
+
+
+    background:white;
+
+
+    display:flex;
+
+
+    justify-content:center;
+
+
+    align-items:center;
+
+
+    box-shadow:
+
+    0 5px 15px rgba(0,0,0,.08);
+
+
+    z-index:2;
+
+
+}
+
+
+
+
+
+.wishlist-btn:hover{
+
+
+    background:#111;
+
+
+    color:white;
+
+
+}
+
+
+
+
+
+
+
+/*==============================
+        PRODUCT BADGE
+==============================*/
+
+
+.product-badge{
+
+
+    position:absolute;
+
+
+    left:18px;
+
+
+    top:18px;
+
+
+    padding:6px 14px;
+
+
+    border-radius:20px;
+
+
+    background:#C8A96A;
+
+
+    color:white;
+
+
+    font-size:11px;
+
+
+    font-weight:600;
+
+
+}
+
+
+
+
+
+
+
+/*==============================
+        PRODUCT INFO
+==============================*/
+
+
+.product-info{
+
+
+    padding:22px;
+
+
+}
+
+
+
+
+
+.product-category{
+
+
+    font-size:12px;
+
+
+    color:#C8A96A;
+
+
+    font-weight:600;
+
+
+    text-transform:uppercase;
+
+
+    letter-spacing:1px;
+
+
+}
+
+
+
+
+
+.product-info h3{
+
+
+    font-size:18px;
+
+
+    color:#111;
+
+
+    margin:10px 0;
+
+
+}
+
+
+
+
+
+
+
+.product-rating{
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:5px;
+
+
+    font-size:14px;
+
+
+    color:#C8A96A;
+
+
+}
+
+
+
+
+
+
+
+.product-bottom{
+
+
+    display:flex;
+
+
+    justify-content:space-between;
+
+
+    align-items:center;
+
+
+    margin-top:18px;
+
+
+}
+
+
+
+
+
+.product-bottom h4{
+
+
+    font-size:20px;
+
+
+    color:#111;
+
+
+}
+
+
+
+
+
+
+
+.add-cart-btn{
+
+
+    padding:10px 18px;
+
+
+    border-radius:30px;
+
+
+    background:#111;
+
+
+    color:white;
+
+
+    font-size:13px;
+
+
+    font-weight:600;
+
+
+}
+
+
+
+
+
+.add-cart-btn:hover{
+
+
+    background:#C8A96A;
+
+
+}
+
+
+
+
+
+
+
+/*==============================
+            VIEW ALL
+==============================*/
+
+
+.view-all-btn{
+
+
+    margin:50px auto 0;
+
+
+    display:flex;
+
+
+    width:max-content;
+
+
+    padding:14px 35px;
+
+
+    border-radius:999px;
+
+
+    background:#111;
+
+
+    color:white;
+
+
+    font-weight:600;
+
+
+}
+
+
+
+
+
+
+
+/*==========================================================
+                    RESPONSIVE
+==========================================================*/
+
+
+
+@media(max-width:1100px){
+
+
+.product-grid{
+
+
+grid-template-columns:repeat(3,1fr);
+
+
+}
+
+
+
+.category-grid{
+
+
+grid-template-columns:repeat(2,1fr);
+
+
+}
+
+
+}
+
+
+
+
+
+
+@media(max-width:768px){
+
+
+.product-grid{
+
+
+grid-template-columns:repeat(2,1fr);
+
+
+}
+
+
+
+.category-grid{
+
+
+grid-template-columns:1fr;
+
+
+}
+
+
+
+.category-card{
+
+
+height:280px;
+
+
+}
+
+
+}
+
+
+
+
+
+@media(max-width:480px){
+
+
+.product-grid{
+
+
+grid-template-columns:1fr;
+
+
+}
+
+
+}
+/*==========================================================
+                TAQDEER FASHION
+              HOME CSS FINAL v1.0
+
+              PART 3
+      COLLECTION + BEST SELLER + FLASH SALE
+==========================================================*/
+
+
+
+
+
+
+/*==========================================================
+                COLLECTION BANNER
+==========================================================*/
+
+
+.collection-banner-section{
+
+
+    padding:100px 0;
+
+
+}
+
+
+
+
+
+.collection-banner{
+
+
+    min-height:420px;
+
+
+    background:#111;
+
+
+    border-radius:30px;
+
+
+    overflow:hidden;
+
+
+    display:grid;
+
+
+    grid-template-columns:1fr 1fr;
+
+
+    align-items:center;
+
+
+}
+
+
+
+
+
+.collection-content{
+
+
+    padding:60px;
+
+
+}
+
+
+
+
+
+.collection-content span{
+
+
+    color:#C8A96A;
+
+
+    font-size:12px;
+
+
+    letter-spacing:4px;
+
+
+    font-weight:700;
+
+
+}
+
+
+
+
+
+.collection-content h2{
+
+
+    color:white;
+
+
+    font-size:45px;
+
+
+    line-height:1.2;
+
+
+    margin:20px 0;
+
+
+}
+
+
+
+
+
+.collection-content p{
+
+
+    color:#ccc;
+
+
+    max-width:420px;
+
+
+    margin-bottom:30px;
+
+
+}
+
+
+
+
+
+.collection-image{
+
+
+    height:100%;
+
+
+}
+
+
+
+
+
+.collection-image img{
+
+
+    width:100%;
+
+
+    height:100%;
+
+
+    object-fit:cover;
+
+
+}
+
+
+
+
+
+
+
+
+
+/*==========================================================
+                BEST SELLER
+==========================================================*/
+
+
+.best-seller-section{
+
+
+    padding:100px 0;
+
+
+    background:white;
+
+
+}
+
+
+
+
+
+
+
+
+
+/*==========================================================
+                FLASH SALE
+==========================================================*/
+
+
+.flash-sale-section{
+
+
+    padding:100px 0;
+
+
+    background:#faf8f3;
+
+
+}
+
+
+
+
+
+.flash-sale-box{
+
+
+    min-height:420px;
+
+
+    border-radius:30px;
+
+
+    overflow:hidden;
+
+
+    display:grid;
+
+
+    grid-template-columns:1fr 1fr;
+
+
+    background:white;
+
+
+    box-shadow:
+
+
+    0 20px 50px rgba(0,0,0,.08);
+
+
+}
+
+
+
+
+
+.flash-content{
+
+
+    padding:60px;
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    justify-content:center;
+
+
+}
+
+
+
+
+
+.flash-content span{
+
+
+    color:#C8A96A;
+
+
+    font-size:12px;
+
+
+    letter-spacing:3px;
+
+
+    font-weight:700;
+
+
+}
+
+
+
+
+
+.flash-content h2{
+
+
+    font-size:48px;
+
+
+    color:#111;
+
+
+    margin:15px 0;
+
+
+}
+
+
+
+
+
+.flash-content p{
+
+
+    color:#666;
+
+
+    margin-bottom:30px;
+
+
+}
+
+
+
+
+
+
+
+/*==============================
+            COUNTDOWN
+==============================*/
+
+
+.countdown{
+
+
+    display:flex;
+
+
+    gap:15px;
+
+
+    margin-bottom:35px;
+
+
+}
+
+
+
+
+
+.countdown div{
+
+
+    width:75px;
+
+
+    height:75px;
+
+
+    background:#111;
+
+
+    color:white;
+
+
+    border-radius:15px;
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    align-items:center;
+
+
+    justify-content:center;
+
+
+}
+
+
+
+
+
+.countdown h3{
+
+
+    color:white;
+
+
+    font-size:25px;
+
+
+}
+
+
+
+.countdown span{
+
+
+    color:#ddd;
+
+
+    font-size:11px;
+
+
+    letter-spacing:0;
+
+
+}
+
+
+
+
+
+
+
+.flash-image{
+
+
+    height:100%;
+
+
+}
+
+
+
+
+
+.flash-image img{
+
+
+    width:100%;
+
+
+    height:100%;
+
+
+    object-fit:cover;
+
+
+}
+
+
+
+
+
+
+
+
+
+/*==========================================================
+                    RESPONSIVE
+==========================================================*/
+
+
+@media(max-width:992px){
+
+
+
+.collection-banner,
+
+
+.flash-sale-box{
+
+
+grid-template-columns:1fr;
+
+
+}
+
+
+
+.collection-content,
+
+
+.flash-content{
+
+
+padding:40px;
+
+
+}
+
+
+
+.collection-image,
+
+
+.flash-image{
+
+
+height:350px;
+
+
+}
+
+
+}
+
+
+
+
+
+@media(max-width:768px){
+
+
+.collection-content h2{
+
+
+font-size:34px;
+
+
+}
+
+
+
+.flash-content h2{
+
+
+font-size:36px;
+
+
+}
+
+
+
+.countdown div{
+
+
+width:65px;
+
+
+height:65px;
+
+
+}
+
+
+
+}
+/*==========================================================
+                TAQDEER FASHION
+              HOME CSS FINAL v1.0
+
+              PART 4
+ BRAND PROMISE + REVIEWS + INSTAGRAM + NEWSLETTER
+==========================================================*/
+
+
+
+
+
+/*==========================================================
+                BRAND PROMISE
+==========================================================*/
+
+
+.brand-promise-section{
+
+    padding:100px 0;
+
+    background:white;
+
+}
+
+
+
+.promise-grid{
+
+
+    display:grid;
+
+
+    grid-template-columns:repeat(4,1fr);
+
+
+    gap:25px;
+
+
+}
+
+
+
+.promise-card{
+
+
+    padding:35px 25px;
+
+
+    text-align:center;
+
+
+    background:#fafafa;
+
+
+    border-radius:22px;
+
+
+    transition:.35s ease;
+
+
+}
+
+
+
+.promise-card:hover{
+
+
+    transform:translateY(-8px);
+
+
+    box-shadow:
+
+    0 15px 35px rgba(0,0,0,.08);
+
+
+}
+
+
+
+.promise-icon{
+
+
+    width:60px;
+
+
+    height:60px;
+
+
+    margin:0 auto 20px;
+
+
+    border-radius:50%;
+
+
+    background:#faf5ea;
+
+
+    color:#C8A96A;
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    justify-content:center;
+
+
+}
+
+
+
+.promise-card h3{
+
+
+    font-size:18px;
+
+
+    color:#111;
+
+
+    margin-bottom:10px;
+
+
+}
+
+
+
+.promise-card p{
+
+
+    font-size:14px;
+
+
+    color:#777;
+
+
+}
+
+
+
+
+
+
+
+
+
+/*==========================================================
+                CUSTOMER REVIEWS
+==========================================================*/
+
+
+.review-section{
+
+
+    padding:100px 0;
+
+
+    background:#faf8f3;
+
+
+}
+
+
+
+
+
+.review-grid{
+
+
+    display:grid;
+
+
+    grid-template-columns:repeat(3,1fr);
+
+
+    gap:25px;
+
+
+}
+
+
+
+
+
+.review-card{
+
+
+    background:white;
+
+
+    padding:35px;
+
+
+    border-radius:24px;
+
+
+}
+
+
+
+
+
+.review-stars{
+
+
+    color:#C8A96A;
+
+
+    margin-bottom:20px;
+
+
+}
+
+
+
+
+
+.review-card p{
+
+
+    font-size:15px;
+
+
+    line-height:1.8;
+
+
+    color:#666;
+
+
+}
+
+
+
+
+
+.customer-info{
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:15px;
+
+
+    margin-top:25px;
+
+
+}
+
+
+
+
+
+.customer-info img{
+
+
+    width:50px;
+
+
+    height:50px;
+
+
+    border-radius:50%;
+
+
+    object-fit:cover;
+
+
+}
+
+
+
+
+
+.customer-info h4{
+
+
+    font-size:16px;
+
+
+    color:#111;
+
+
+}
+
+
+
+
+
+
+
+
+/*==========================================================
+                INSTAGRAM GALLERY
+==========================================================*/
+
+
+.instagram-section{
+
+
+    padding:100px 0;
+
+
+}
+
+
+
+
+
+.instagram-grid{
+
+
+    display:grid;
+
+
+    grid-template-columns:repeat(5,1fr);
+
+
+    gap:15px;
+
+
+}
+
+
+
+
+
+.instagram-card{
+
+
+    height:260px;
+
+
+    overflow:hidden;
+
+
+    border-radius:20px;
+
+
+}
+
+
+
+
+
+.instagram-card img{
+
+
+    width:100%;
+
+
+    height:100%;
+
+
+    object-fit:cover;
+
+
+    transition:.5s;
+
+
+}
+
+
+
+
+
+.instagram-card:hover img{
+
+
+    transform:scale(1.08);
+
+
+}
+
+
+
+
+
+
+
+
+
+/*==========================================================
+                NEWSLETTER
+==========================================================*/
+
+
+.newsletter-section{
+
+
+    padding:80px 0;
+
+
+    background:#111;
+
+
+}
+
+
+
+
+
+.newsletter-box{
+
+
+    text-align:center;
+
+
+    max-width:700px;
+
+
+    margin:auto;
+
+
+}
+
+
+
+
+
+.newsletter-box h2{
+
+
+    color:white;
+
+
+    font-size:40px;
+
+
+    margin-bottom:15px;
+
+
+}
+
+
+
+
+
+.newsletter-box p{
+
+
+    color:#ccc;
+
+
+    margin-bottom:30px;
+
+
+}
+
+
+
+
+
+.newsletter-form{
+
+
+    display:flex;
+
+
+    justify-content:center;
+
+
+    gap:10px;
+
+
+}
+
+
+
+
+
+.newsletter-form input{
+
+
+    width:350px;
+
+
+    height:50px;
+
+
+    padding:0 20px;
+
+
+    border-radius:30px;
+
+
+    background:white;
+
+
+}
+
+
+
+
+
+.newsletter-form button{
+
+
+    height:50px;
+
+
+    padding:0 30px;
+
+
+    border-radius:30px;
+
+
+    background:#C8A96A;
+
+
+    color:white;
+
+
+    font-weight:600;
+
+
+}
+
+
+
+
+
+
+
+
+
+/*==========================================================
+                FINAL RESPONSIVE
+==========================================================*/
+
+
+@media(max-width:1100px){
+
+
+.promise-grid{
+
+
+grid-template-columns:repeat(2,1fr);
+
+
+}
+
+
+
+.instagram-grid{
+
+
+grid-template-columns:repeat(3,1fr);
+
+
+}
+
+
+
+.review-grid{
+
+
+grid-template-columns:repeat(2,1fr);
+
+
+}
+
+
+
+}
+
+
+
+
+
+@media(max-width:768px){
+
+
+.promise-grid,
+
+
+.review-grid{
+
+
+grid-template-columns:1fr;
+
+
+}
+
+
+
+.instagram-grid{
+
+
+grid-template-columns:repeat(2,1fr);
+
+
+}
+
+
+
+.newsletter-form{
+
+
+flex-direction:column;
+
+
+align-items:center;
+
+
+}
+
+
+
+.newsletter-form input{
+
+
+width:100%;
+
+
+}
+
+
+
+.newsletter-box h2{
+
+
+font-size:32px;
+
+
+}
+
+
+
+}
+
+
+
+
+
+@media(max-width:480px){
+
+
+.instagram-grid{
+
+
+grid-template-columns:1fr;
+
+
+}
+
+
+}
+.product-name a{
+
+    color:inherit;
+
+}
+
+
+.product-image a{
+
+    display:block;
+
+    width:100%;
+
+    height:100%;
+
+}
+/*==========================================================
+        HOME DYNAMIC PRODUCT FINAL POLISH
+==========================================================*/
+
+.new-arrival-section,
+.best-seller-section{
+    padding:75px 0 !important;
+}
+
+.new-arrival-section .product-image,
+.best-seller-section .product-image{
+    height:280px !important;
+}
+
+.new-arrival-section .product-info,
+.best-seller-section .product-info{
+    padding:18px 20px 20px !important;
+}
+
+.new-arrival-section .product-info h3,
+.best-seller-section .product-info h3{
+    font-size:17px !important;
+    line-height:1.35 !important;
+    min-height:46px !important;
+}
+
+.new-arrival-section .product-bottom,
+.best-seller-section .product-bottom{
+    margin-top:16px !important;
+}
+
+.product-stock{
+    position:absolute;
+    left:18px;
+    bottom:18px;
+    padding:8px 15px;
+    border-radius:999px;
+    background:#087a3d;
+    color:#fff;
+    font-size:12px;
+    font-weight:700;
+    z-index:3;
+}
+
+.product-stock.low{
+    background:#b7791f;
+}
+
+.product-stock.out{
+    background:#991b1b;
+}
+
+.home-empty-products{
+    grid-column:1 / -1;
+    min-height:180px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+}
+
+.home-empty-products h3{
+    font-size:24px;
+    color:#111;
+}
+
+.home-empty-products p{
+    margin-top:8px;
+    color:#777;
+}
+/*==========================================================
+        CATEGORY IMAGE FINAL FIX
+==========================================================*/
+
+.category-card img{
+    width:100% !important;
+    height:100% !important;
+    object-fit:cover !important;
+    display:block !important;
+}
+
+.category-card{
+    background:#f3eee7 !important;
+    overflow:hidden !important;
+}
+
+.collection-image img,
+.flash-image img{
+    width:100% !important;
+    height:100% !important;
+    object-fit:contain !important;
+    display:block !important;
+}

@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>
+Coupons | Admin | Taqdeer Fashion
+</title>
+
+
+
+<link rel="stylesheet" href="../../css/base/variables.css">
+
+<link rel="stylesheet" href="../../css/base/reset.css">
+
+<link rel="stylesheet" href="../../css/base/typography.css">
+
+<link rel="stylesheet" href="../../css/utilities/utilities.css">
+
+<link rel="stylesheet" href="../../css/pages/admin.css">
+
+
+</head>
+
+
+
+
+<body>
+
+
+
+<div class="admin-layout">
+
+
+
+
+
+
+<!-- SIDEBAR -->
+
+
+<aside class="admin-sidebar">
+
+
+
+<div class="admin-logo">
+
+
+<img
+
+src="../../assets/logos/logo.png"
+
+alt="Taqdeer">
+
+
+</div>
+
+
+
+
+
+
+
+<nav>
+
+
+<a href="index.html">
+
+Dashboard
+
+</a>
+
+
+
+
+<a href="products.html">
+
+Products
+
+</a>
+
+
+
+
+<a href="categories.html">
+
+Categories
+
+</a>
+
+
+
+
+<a href="orders.html">
+
+Orders
+
+</a>
+
+
+
+
+<a href="users.html">
+
+Users
+
+</a>
+
+
+
+
+<a class="active" href="coupons.html">
+
+Coupons
+
+</a>
+
+
+
+
+<a href="settings.html">
+
+Settings
+
+</a>
+
+
+
+</nav>
+
+
+
+
+</aside>
+
+
+
+
+
+
+
+
+
+<!-- MAIN -->
+
+
+
+<main class="admin-main">
+
+
+
+
+
+
+<header class="admin-header">
+
+
+<div>
+
+
+<h1>
+
+Coupons Management
+
+</h1>
+
+
+<p>
+
+Create and manage discount coupons
+
+</p>
+
+
+</div>
+
+
+
+
+
+<button id="add-coupon-btn">
+
+
+Add Coupon
+
+
+</button>
+
+
+
+</header>
+
+
+
+
+
+
+
+
+
+<!-- COUPON FORM -->
+
+
+
+<section
+
+class="product-form-card"
+
+id="coupon-form-section"
+
+style="display:none;">
+
+
+
+
+
+<h2>
+
+Create Coupon
+
+</h2>
+
+
+
+
+
+
+
+<form id="coupon-form">
+
+
+
+
+
+
+<input
+
+type="text"
+
+id="coupon-code"
+
+placeholder="Coupon Code"
+
+required>
+
+
+
+
+
+
+
+<select id="discount-type">
+
+
+
+<option value="percentage">
+
+Percentage Discount
+
+</option>
+
+
+
+<option value="fixed">
+
+Fixed Amount
+
+</option>
+
+
+
+</select>
+
+
+
+
+
+
+
+<input
+
+type="number"
+
+id="discount-value"
+
+placeholder="Discount Value"
+
+required>
+
+
+
+
+
+
+
+
+<input
+
+type="number"
+
+id="minimum-purchase"
+
+placeholder="Minimum Purchase Amount">
+
+
+
+
+
+
+
+
+<input
+
+type="date"
+
+id="coupon-expiry"
+
+required>
+
+
+
+
+
+
+
+
+<button
+
+type="submit">
+
+
+Save Coupon
+
+
+</button>
+
+
+
+
+
+
+</form>
+
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- COUPON LIST -->
+
+
+
+<section class="admin-section">
+
+
+
+<h2>
+
+All Coupons
+
+</h2>
+
+
+
+
+
+
+<div
+
+id="coupon-list">
+
+
+</div>
+
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+</main>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- FIREBASE -->
+
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+
+
+
+
+<script src="../../firebase/firebase-config.js"></script>
+
+
+
+<script src="../../js/pages/admin-coupons.js"></script>
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,277 @@
+/*==========================================================
+                TAQDEER FASHION
+                GRID LAYOUT SYSTEM
+==========================================================*/
+
+
+/*==========================
+        CONTAINER
+==========================*/
+
+
+.container{
+
+    width:min(92%, var(--container-width));
+
+    margin-inline:auto;
+
+}
+
+
+
+/*==========================
+        SECTION
+==========================*/
+
+
+.section{
+
+    padding:100px 0;
+
+}
+
+
+
+/*==========================
+        AUTO GRID
+==========================*/
+
+
+.auto-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(
+        auto-fit,
+        minmax(280px,1fr)
+    );
+
+    gap:30px;
+
+}
+
+
+
+/*==========================
+        GRID SYSTEM
+==========================*/
+
+
+.grid{
+
+    display:grid;
+
+    gap:30px;
+
+}
+
+
+
+.grid-2{
+
+    grid-template-columns:repeat(2,1fr);
+
+}
+
+
+.grid-3{
+
+    grid-template-columns:repeat(3,1fr);
+
+}
+
+
+.grid-4{
+
+    grid-template-columns:repeat(4,1fr);
+
+}
+
+
+.grid-5{
+
+    grid-template-columns:repeat(5,1fr);
+
+}
+
+
+
+/*==========================
+        FLEX LAYOUT
+==========================*/
+
+
+.flex{
+
+    display:flex;
+
+}
+
+
+.flex-between{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+
+.flex-center{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+
+.flex-column{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+
+
+/*==========================
+        GAP SYSTEM
+==========================*/
+
+
+.gap-10{
+
+    gap:10px;
+
+}
+
+
+.gap-20{
+
+    gap:20px;
+
+}
+
+
+.gap-30{
+
+    gap:30px;
+
+}
+
+
+.gap-40{
+
+    gap:40px;
+
+}
+
+
+
+/*==========================
+        RESPONSIVE
+==========================*/
+
+
+@media(max-width:1200px){
+
+
+    .grid-5{
+
+        grid-template-columns:repeat(3,1fr);
+
+    }
+
+
+}
+
+
+
+@media(max-width:992px){
+
+
+    .grid-4{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+
+    .grid-3{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+
+}
+
+
+
+@media(max-width:768px){
+
+
+    .section{
+
+        padding:70px 0;
+
+    }
+
+
+    .grid-2{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .grid-3{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .grid-4{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+
+    .grid-5{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+
+}
+
+
+
+@media(max-width:480px){
+
+
+    .container{
+
+        width:94%;
+
+    }
+
+
+    .grid-4,
+    .grid-5{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+}

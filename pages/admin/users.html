@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>
+Users | Admin | Taqdeer Fashion
+</title>
+
+
+<link rel="stylesheet" href="../../css/base/variables.css">
+
+<link rel="stylesheet" href="../../css/base/reset.css">
+
+<link rel="stylesheet" href="../../css/base/typography.css">
+
+<link rel="stylesheet" href="../../css/utilities/utilities.css">
+
+<link rel="stylesheet" href="../../css/pages/admin.css">
+
+
+</head>
+
+
+
+<body>
+
+
+
+<div class="admin-layout">
+
+
+
+<aside class="admin-sidebar">
+
+
+<div class="admin-logo">
+
+
+<img
+src="../../assets/logos/logo.png"
+alt="Taqdeer">
+
+
+</div>
+
+
+
+
+
+<nav>
+
+
+<a href="index.html">
+Dashboard
+</a>
+
+
+<a href="products.html">
+Products
+</a>
+
+
+<a href="orders.html">
+Orders
+</a>
+
+
+<a class="active" href="users.html">
+Users
+</a>
+
+
+<a href="settings.html">
+Settings
+</a>
+
+
+
+</nav>
+
+
+</aside>
+
+
+
+
+
+
+
+
+
+<main class="admin-main">
+
+
+
+
+
+<header class="admin-header">
+
+
+<div>
+
+
+<h1>
+Users Management
+</h1>
+
+
+<p>
+Manage customers and admin accounts
+</p>
+
+
+</div>
+
+
+
+</header>
+
+
+
+
+
+
+
+
+
+<section class="admin-user-tools">
+
+
+
+<input
+
+type="text"
+
+id="user-search"
+
+placeholder="Search user..."
+
+>
+
+
+
+
+
+<select id="role-filter">
+
+
+<option value="all">
+
+All Roles
+
+</option>
+
+
+<option value="admin">
+
+Admin
+
+</option>
+
+
+<option value="customer">
+
+Customer
+
+</option>
+
+
+</select>
+
+
+
+
+
+
+<select id="status-filter">
+
+
+<option value="all">
+
+All Status
+
+</option>
+
+
+
+<option value="active">
+
+Active
+
+</option>
+
+
+
+<option value="blocked">
+
+Blocked
+
+</option>
+
+
+
+</select>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<section class="admin-users">
+
+
+<div id="admin-users-list">
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+</main>
+
+
+
+
+
+</div>
+
+
+
+
+<!-- USER DETAILS MODAL -->
+
+<div class="user-modal" id="user-modal">
+
+
+<div class="user-modal-content">
+
+
+<button 
+class="close-user-modal"
+id="close-user-modal">
+
+×
+</button>
+
+
+
+<div id="user-details-content">
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+
+
+<script src="../../firebase/firebase-config.js"></script>
+
+
+<script src="../../js/pages/admin-users.js"></script>
+
+
+
+</body>
+
+</html>

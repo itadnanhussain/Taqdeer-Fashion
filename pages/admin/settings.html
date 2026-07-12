@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>
+Settings | Admin | Taqdeer Fashion
+</title>
+
+
+
+<link rel="stylesheet" href="../../css/base/variables.css">
+
+<link rel="stylesheet" href="../../css/base/reset.css">
+
+<link rel="stylesheet" href="../../css/base/typography.css">
+
+<link rel="stylesheet" href="../../css/utilities/utilities.css">
+
+<link rel="stylesheet" href="../../css/pages/admin.css">
+
+
+</head>
+
+
+
+<body>
+
+
+
+<div class="admin-layout">
+
+
+
+
+
+<!-- SIDEBAR -->
+
+
+<aside class="admin-sidebar">
+
+
+<div class="admin-logo">
+
+
+<img
+
+src="../../assets/logos/logo.png"
+
+alt="Taqdeer">
+
+
+</div>
+
+
+
+
+
+<nav>
+
+
+<a href="index.html">
+Dashboard
+</a>
+
+
+<a href="products.html">
+Products
+</a>
+
+
+<a href="orders.html">
+Orders
+</a>
+
+
+<a href="users.html">
+Users
+</a>
+
+
+<a href="coupons.html">
+Coupons
+</a>
+
+
+<a class="active" href="settings.html">
+Settings
+</a>
+
+
+</nav>
+
+
+
+</aside>
+
+
+
+
+
+
+
+
+
+<!-- MAIN -->
+
+
+<main class="admin-main">
+
+
+
+
+
+<header class="admin-header">
+
+
+<div>
+
+
+<h1>
+Store Settings
+</h1>
+
+
+<p>
+Manage Taqdeer Fashion system
+</p>
+
+
+</div>
+
+
+
+</header>
+
+
+
+
+
+
+
+
+
+<form id="settings-form">
+
+
+
+
+
+
+
+<!-- STORE INFORMATION -->
+
+
+<section class="product-form-card">
+
+
+<h2>
+Store Information
+</h2>
+
+
+
+
+
+<div class="form-group">
+
+
+<label>
+Store Name
+</label>
+
+
+<input
+
+type="text"
+
+id="store-name"
+
+placeholder="Taqdeer Fashion">
+
+
+</div>
+
+
+
+
+
+
+
+<div class="form-group">
+
+
+<label>
+Store Email
+</label>
+
+
+<input
+
+type="email"
+
+id="store-email">
+
+</div>
+
+
+
+
+
+
+
+<div class="form-group">
+
+
+<label>
+Store Phone
+</label>
+
+
+<input
+
+type="text"
+
+id="store-phone">
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- DELIVERY -->
+
+
+<section class="product-form-card">
+
+
+<h2>
+Delivery Settings
+</h2>
+
+
+
+
+
+<div class="form-group">
+
+
+<label>
+Delivery Charge
+</label>
+
+
+<input
+
+type="number"
+
+id="delivery-charge"
+
+placeholder="80">
+
+
+</div>
+
+
+
+
+
+
+
+<div class="form-group">
+
+
+<label>
+Free Delivery Minimum Amount
+</label>
+
+
+<input
+
+type="number"
+
+id="free-delivery-limit"
+
+placeholder="1000">
+
+
+</div>
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ORDER SETTINGS -->
+
+
+<section class="product-form-card">
+
+
+<h2>
+Order Settings
+</h2>
+
+
+
+
+
+<div class="toggle-group">
+
+
+<label>
+
+Auto Confirm Orders
+
+</label>
+
+
+
+<input
+
+type="checkbox"
+
+id="auto-confirm-orders">
+
+
+</div>
+
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- AI SETTINGS -->
+
+
+<section class="product-form-card">
+
+
+<h2>
+Taqdeer AI Assistant
+</h2>
+
+
+
+
+
+<div class="toggle-group">
+
+
+<label>
+
+Enable AI Assistant
+
+</label>
+
+
+
+
+<input
+
+type="checkbox"
+
+id="ai-enabled">
+
+
+</div>
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- SYSTEM -->
+
+
+<section class="product-form-card">
+
+
+<h2>
+System Settings
+</h2>
+
+
+
+
+
+<div class="toggle-group">
+
+
+<label>
+
+Maintenance Mode
+
+</label>
+
+
+
+
+<input
+
+type="checkbox"
+
+id="maintenance-mode">
+
+
+</div>
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<button
+
+type="submit"
+
+class="admin-save-btn">
+
+
+Save Settings
+
+
+</button>
+
+
+
+
+
+
+<div id="settings-message"></div>
+
+
+
+
+
+
+
+</form>
+
+
+
+
+
+
+
+</main>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+
+
+
+
+<script src="../../firebase/firebase-config.js"></script>
+
+
+<script src="../../js/pages/admin-settings.js"></script>
+
+
+
+
+
+</body>
+
+</html>
