@@ -129,10 +129,23 @@
                         <span class="badge cart-count">0</span>
                     </button>
 
-                    <a href="../auth/login.html" class="login-btn account-btn">
-                        <i data-lucide="user"></i>
-                        <span>Sign In</span>
-                    </a>
+                  <a href="../auth/login.html" class="login-btn account-btn" id="header-account-btn">
+
+    <span class="header-user-photo-wrap">
+        <img
+            id="header-user-photo"
+            src=""
+            alt="User"
+            class="header-user-photo"
+        >
+        <i data-lucide="user" class="header-user-icon"></i>
+    </span>
+
+    <span id="header-account-text">
+        Sign In
+    </span>
+
+</a>
 
                     <button class="hamburger" type="button">
                         <span></span>
@@ -145,7 +158,39 @@
             </div>
         </div>
     </header>
+<!-- CART DRAWER OVERLAY -->
+<div class="cart-overlay"></div>
 
+<!-- CART DRAWER -->
+<div class="cart-drawer">
+
+    <div class="cart-drawer-header">
+        <h3>Shopping Cart</h3>
+        <button class="cart-close" type="button">×</button>
+    </div>
+
+    <div class="cart-drawer-body" id="cart-drawer-items">
+        <!-- Cart items load here -->
+    </div>
+
+    <div class="cart-drawer-footer">
+
+    <div class="drawer-total-row">
+        <span>Subtotal</span>
+        <strong id="cart-drawer-total">৳0</strong>
+    </div>
+
+    <a href="../checkout/index.html" class="drawer-checkout-btn">
+        Checkout
+    </a>
+
+    <a href="../cart/index.html" class="drawer-view-cart">
+        View Cart
+    </a>
+
+</div>
+
+</div>
     <!-- MOBILE MENU -->
     <div class="mobile-menu">
         <ul>

@@ -1,90 +1,299 @@
 /*=========================================================
         TAQDEER FASHION
-        WISHLIST SYSTEM
+        WISHLIST PAGE SYSTEM FINAL POLISH
 =========================================================*/
-
 
 "use strict";
 
-
-document.addEventListener(
-"DOMContentLoaded",
-()=>{
-
-
-
+document.addEventListener("DOMContentLoaded",()=>{
 
 
 const wishlistContainer =
-document.querySelector(
-"#wishlist-products"
-);
+document.querySelector("#wishlist-products");
 
-
-
-let wishlist =
-JSON.parse(
-localStorage.getItem(
-"taqdeerWishlist"
-)
-)
-||
-[];
+const wishlistCountText =
+document.querySelector("#wishlist-count-text");
 
 
 
 
 
+/*=========================================================
+        HELPERS
+=========================================================*/
+
+function getFallbackImage(){
+
+    return "../../assets/placeholders/product.jpg";
+
+}
+
+
+function getWishlistItems(){
+
+    const wishlistService =
+    window.WishlistService ||
+    window.wishlistService;
+
+    if(wishlistService && wishlistService.getWishlist){
+
+        return wishlistService.getWishlist();
+
+    }
+
+    return JSON.parse(
+        localStorage.getItem("taqdeerWishlist")
+    ) || [];
+
+}
+
+
+function saveWishlistItems(items){
+
+    localStorage.setItem(
+        "taqdeerWishlist",
+        JSON.stringify(items)
+    );
+
+    window.dispatchEvent(
+        new Event("wishlistUpdated")
+    );
+
+}
+
+
+function updateCount(items){
+
+    if(!wishlistCountText){
+        return;
+    }
+
+    wishlistCountText.innerText =
+    `${items.length} item${items.length > 1 ? "s" : ""} saved`;
+
+}
+
+
+function getProductLink(id){
+
+    return `../product-details/index.html?id=${id}`;
+
+}
+
+
+function shortName(name,max=55){
+
+    if(!name){
+        return "Product Name";
+    }
+
+    return name.length > max
+    ?
+    name.slice(0,max) + "..."
+    :
+    name;
+
+}
+
+
+function updateHeaderCounts(){
+
+    window.dispatchEvent(
+        new Event("cartUpdated")
+    );
+
+    window.dispatchEvent(
+        new Event("wishlistUpdated")
+    );
+
+}
 
 
 
-/*=========================================
-        LOAD WISHLIST
-=========================================*/
 
+
+/*=========================================================
+        RENDER
+=========================================================*/
 
 function loadWishlist(){
 
-
-
-    if(!wishlistContainer)
+    if(!wishlistContainer){
         return;
+    }
 
+    const wishlist =
+    getWishlistItems();
 
+    updateCount(wishlist);
 
-
-    wishlistContainer.innerHTML="";
-
-
-
-
+    wishlistContainer.innerHTML = "";
 
     if(!wishlist.length){
 
-
-
         wishlistContainer.innerHTML = `
+            <div class="empty-wishlist">
 
-        <div class="empty-wishlist">
+                <div class="empty-wishlist-icon">
+                    <i data-lucide="heart"></i>
+                </div>
 
-        <h2>
-        Your wishlist is empty
-        </h2>
+                <h2>
+                    Your wishlist is empty
+                </h2>
 
+                <p>
+                    Save your favourite products and find them here later.
+                </p>
 
-        <p>
-        Add your favourite products here
-        </p>
+                <a href="../shop/index.html">
+                    Start Shopping
+                </a>
 
-
-        </div>
-
+            </div>
         `;
 
+        if(window.lucide){
+            lucide.createIcons();
+        }
 
+        updateHeaderCounts();
 
         return;
 
+    }
+
+
+    wishlist.forEach(product=>{
+
+        const card =
+        document.createElement("div");
+
+        card.className =
+        "wishlist-card";
+
+        card.innerHTML = `
+            <div class="wishlist-image">
+
+                <a href="${getProductLink(product.id)}">
+
+                    <img
+                    src="${product.image || getFallbackImage()}"
+                    alt="${product.name || "Product"}"
+                    class="wishlist-product-img"
+                    >
+
+                </a>
+
+                <button
+                type="button"
+                class="wishlist-remove-icon"
+                data-id="${product.id}"
+                aria-label="Remove from wishlist"
+                >
+                    <i data-lucide="x"></i>
+                </button>
+
+            </div>
+
+
+            <div class="wishlist-content">
+
+                <p class="wishlist-category">
+                    ${product.category || "Fashion"}
+                </p>
+
+                <a href="${getProductLink(product.id)}" class="wishlist-title-link">
+
+                    <h3>
+                        ${shortName(product.name)}
+                    </h3>
+
+                </a>
+
+                <div class="wishlist-rating">
+                    ★★★★★ <span>${product.rating || "4.8"}</span>
+                </div>
+
+                <div class="wishlist-bottom">
+
+                    <strong>
+                        ৳${product.price || 0}
+                    </strong>
+
+                    <button
+                    type="button"
+                    class="wishlist-cart-btn"
+                    data-id="${product.id}"
+                    >
+                        Add To Cart
+                    </button>
+
+                </div>
+
+            </div>
+        `;
+
+        const img =
+        card.querySelector(".wishlist-product-img");
+
+        img.onerror = function(){
+
+            this.onerror = null;
+
+            this.src =
+            getFallbackImage();
+
+        };
+
+        wishlistContainer.appendChild(card);
+
+    });
+
+
+    if(window.lucide){
+        lucide.createIcons();
+    }
+
+    updateHeaderCounts();
+
+}
+
+
+
+
+
+/*=========================================================
+        ACTIONS
+=========================================================*/
+
+document.addEventListener("click",(e)=>{
+
+
+/* REMOVE */
+
+    const removeBtn =
+    e.target.closest(".wishlist-remove-icon");
+
+    if(removeBtn){
+
+        const id =
+        removeBtn.dataset.id;
+
+        let wishlist =
+        getWishlistItems();
+
+        wishlist =
+        wishlist.filter(
+            item =>
+            item.id !== id
+        );
+
+        saveWishlistItems(wishlist);
+
+        loadWishlist();
+
+        return;
 
     }
 
@@ -92,238 +301,65 @@ function loadWishlist(){
 
 
 
+/* ADD TO CART */
 
+    const cartBtn =
+    e.target.closest(".wishlist-cart-btn");
 
+    if(cartBtn){
 
+        const id =
+        cartBtn.dataset.id;
 
-    wishlist.forEach(product=>{
+        const wishlist =
+        getWishlistItems();
 
-
-        const card =
-        document.createElement(
-            "div"
+        const product =
+        wishlist.find(
+            item =>
+            item.id === id
         );
 
+        if(!product){
+            return;
+        }
 
+        const cartService =
+        window.CartService ||
+        window.cartService;
 
-        card.className =
-        "wishlist-card";
+        if(cartService && cartService.addToCart){
 
+            cartService.addToCart({
+                ...product,
+                quantity:1
+            });
 
+            window.dispatchEvent(
+                new Event("cartUpdated")
+            );
 
+            cartBtn.innerText =
+            "Added";
 
+            setTimeout(()=>{
 
+                cartBtn.innerText =
+                "Add To Cart";
 
-        card.innerHTML = `
+            },900);
 
+        }
 
+        else{
 
-        <img
+            console.error(
+                "Cart service missing"
+            );
 
-        src="${product.image || ''}"
+        }
 
-        alt="${product.name}">
-
-
-
-
-
-        <div class="wishlist-content">
-
-
-        <h3>
-
-        ${product.name}
-
-        </h3>
-
-
-
-
-        <div class="wishlist-price">
-
-        ৳${product.price}
-
-        </div>
-
-
-
-
-
-        <div class="wishlist-actions">
-
-
-
-        <button
-
-        class="wishlist-btn add-cart"
-
-        data-id="${product.id}">
-
-        Cart
-
-        </button>
-
-
-
-
-
-        <button
-
-        class="wishlist-btn remove-wishlist-btn"
-
-        data-id="${product.id}">
-
-        Remove
-
-        </button>
-
-
-
-
-        </div>
-
-
-
-
-        </div>
-
-
-
-        `;
-
-
-
-
-        wishlistContainer
-        .appendChild(card);
-
-
-
-    });
-
-
-
-}
-
-
-
-
-
-
-
-
-
-/*=========================================
-        ACTIONS
-=========================================*/
-
-
-document.addEventListener(
-"click",
-(e)=>{
-
-
-
-
-
-/* ADD CART */
-
-
-if(
-e.target.classList
-.contains(
-"add-cart"
-)
-){
-
-
-
-const id =
-e.target.dataset.id;
-
-
-
-
-const product =
-wishlist.find(
-item=>
-item.id === id
-);
-
-
-
-
-
-window.CartService
-.addToCart(
-product
-);
-
-
-
-}
-
-
-
-
-
-
-
-
-/* REMOVE */
-
-
-if(
-e.target.classList
-.contains(
-"remove-wishlist-btn"
-)
-){
-
-
-
-const id =
-e.target.dataset.id;
-
-
-
-
-
-wishlist =
-wishlist.filter(
-item=>
-
-item.id !== id
-
-);
-
-
-
-
-
-
-localStorage.setItem(
-
-"taqdeerWishlist",
-
-JSON.stringify(
-wishlist
-)
-
-);
-
-
-
-
-
-loadWishlist();
-
-
-
-}
-
-
+    }
 
 
 });
@@ -332,14 +368,11 @@ loadWishlist();
 
 
 
-
-
+/*=========================================================
+        INIT
+=========================================================*/
 
 loadWishlist();
-
-
-
-
 
 
 });

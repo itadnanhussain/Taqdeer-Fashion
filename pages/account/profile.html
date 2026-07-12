@@ -4,182 +4,325 @@
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Edit Profile | Taqdeer Fashion</title>
 
-<title>
-Edit Profile | Taqdeer Fashion
-</title>
+<link rel="icon" href="../../favicon.ico">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="../../css/base/variables.css">
-
 <link rel="stylesheet" href="../../css/base/reset.css">
-
 <link rel="stylesheet" href="../../css/base/typography.css">
-
 <link rel="stylesheet" href="../../css/utilities/utilities.css">
 
-<link rel="stylesheet" href="../../css/pages/profile.css">
-
+<link rel="stylesheet" href="../../css/pages/account.css">
 
 </head>
-
-
 
 <body>
 
 
+<div class="account-dashboard">
 
-<main>
+
+<!-- SIDEBAR -->
+
+<aside class="account-sidebar">
+
+    <div class="account-brand">
+
+        <img src="../../assets/logos/logo.png" alt="Taqdeer Fashion">
+
+        <h2>TAQDEER</h2>
+
+        <span>FASHION</span>
+
+    </div>
+
+
+    <div class="sidebar-user">
+
+        <div class="sidebar-avatar">
+
+            <img id="user-photo" src="../../assets/logos/logo-1.png" alt="User">
+
+            <a href="profile.html" class="avatar-edit">
+                <i data-lucide="camera"></i>
+            </a>
+
+        </div>
+
+        <h3 id="user-name">Loading...</h3>
+
+        <p id="user-email">Loading...</p>
+
+        <div class="member-badge">
+            Gold Member
+        </div>
+
+        <small>Member Since 2026</small>
+
+    </div>
+
+
+    <nav class="account-sidebar-menu">
+
+        <a href="index.html">
+            <i data-lucide="layout-dashboard"></i>
+            Dashboard
+        </a>
+
+        <a href="../orders/index.html">
+            <i data-lucide="package"></i>
+            My Orders
+        </a>
+
+        <a href="../wishlist/index.html">
+            <i data-lucide="heart"></i>
+            Wishlist
+            <span id="sidebar-wishlist-count">0</span>
+        </a>
+
+        <a href="profile.html" class="active">
+            <i data-lucide="user"></i>
+            Profile
+        </a>
+
+        <a href="settings.html">
+            <i data-lucide="settings"></i>
+            Settings
+        </a>
+
+        <button type="button" id="logout-btn">
+            <i data-lucide="log-out"></i>
+            Logout
+        </button>
+
+    </nav>
+
+</aside>
+
+
+
+
+
+<!-- MAIN -->
+
+<main class="account-main">
+
+
+<header class="account-topbar">
+
+    <form class="account-search">
+
+        <input type="text" placeholder="Search for products...">
+
+        <i data-lucide="search"></i>
+
+    </form>
+
+
+    <div class="account-top-actions">
+
+        <a href="../wishlist/index.html" class="top-icon">
+            <i data-lucide="heart"></i>
+            <span id="top-wishlist-count">0</span>
+        </a>
+
+        <a href="../cart/index.html" class="top-icon">
+            <i data-lucide="shopping-cart"></i>
+            <span id="top-cart-count">0</span>
+        </a>
+
+        <a href="index.html" class="top-profile">
+
+            <img id="top-user-photo" src="../../assets/logos/logo-1.png" alt="User">
+
+            <span id="top-user-name">Account</span>
+
+            <i data-lucide="chevron-down"></i>
+
+        </a>
+
+    </div>
+
+</header>
+
+
+
 
 
 <section class="profile-page">
 
+    <div class="profile-page-header">
 
-<div class="container">
+        <span>PROFILE SETTINGS</span>
 
+        <h1>Edit Profile</h1>
 
+        <p>Update your personal information, contact details and profile photo.</p>
 
-<div class="profile-edit-card">
-
-
-<h1>
-Edit Profile
-</h1>
+    </div>
 
 
-
-<form id="profile-form">
-
+    <div class="profile-layout">
 
 
-<div class="profile-avatar">
+        <div class="profile-preview-card">
+
+            <div class="profile-preview-image">
+
+                <img id="profile-preview-photo" src="../../assets/logos/logo-1.png" alt="Profile">
+
+            </div>
+
+            <h2 id="profile-preview-name">Loading...</h2>
+
+            <p id="profile-preview-email">Loading...</p>
+
+            <div class="profile-preview-badge">
+                Gold Member
+            </div>
+
+            <small>Profile information will sync with your account dashboard.</small>
+
+        </div>
 
 
-<img
-id="profile-preview"
-src="../../assets/images/avatars/default.png"
-alt="Profile">
 
+
+
+        <div class="profile-form-card">
+
+            <h2>Personal Information</h2>
+
+            <form id="profile-form">
+
+
+                <div class="form-grid">
+
+                    <div class="profile-form-group">
+
+                        <label for="profile-name">Full Name</label>
+
+                        <input type="text" id="profile-name" placeholder="Your full name" required>
+
+                    </div>
+
+
+                    <div class="profile-form-group">
+
+                        <label for="profile-email">Email Address</label>
+
+                        <input type="email" id="profile-email" placeholder="Your email" disabled>
+
+                    </div>
+
+
+                    <div class="profile-form-group">
+
+                        <label for="profile-phone">Phone Number</label>
+
+                        <input type="text" id="profile-phone" placeholder="01XXXXXXXXX">
+
+                    </div>
+
+
+                    <div class="profile-form-group">
+
+                        <label for="profile-location">Location</label>
+
+                        <input type="text" id="profile-location" placeholder="City or address">
+
+                    </div>
+
+
+                    <div class="profile-form-group full">
+
+    <label for="profile-photo-file">Profile Photo</label>
+
+    <input type="file" id="profile-photo-file" accept="image/*">
+
+    <small class="profile-help-text">
+        Upload a JPG, PNG or WebP image. It will update your profile preview.
+    </small>
 
 </div>
 
+                    <div class="profile-form-group full">
+
+                        <label for="profile-bio">Bio</label>
+
+                        <textarea id="profile-bio" placeholder="Write something about yourself..."></textarea>
+
+                    </div>
+
+                </div>
 
 
+                <div class="profile-actions">
+
+                    <button type="submit" class="profile-save-btn">
+                        Save Changes
+                    </button>
+
+                    <a href="index.html" class="profile-cancel-btn">
+                        Back To Account
+                    </a>
+
+                </div>
 
 
-<div class="form-group">
+                <p id="profile-message" class="profile-message"></p>
 
 
-<label>
-Full Name
-</label>
+            </form>
+
+        </div>
 
 
-<input
-type="text"
-id="profile-name"
-name="name"
-placeholder="Your name">
-
-
-</div>
-
-
-
-
-
-
-
-<div class="form-group">
-
-
-<label>
-Phone Number
-</label>
-
-
-<input
-type="text"
-id="profile-phone"
-name="phone"
-placeholder="Phone number">
-
-
-</div>
-
-
-
-
-
-
-
-<div class="form-group">
-
-
-<label>
-Address
-</label>
-
-
-<textarea
-id="profile-address"
-name="address"
-placeholder="Your address"></textarea>
-
-
-</div>
-
-
-
-
-
-
-
-<button
-type="submit"
-class="save-profile-btn">
-
-Save Changes
-
-</button>
-
-
-
-
-
-</form>
-
-
-
-
-
-<div id="profile-message"></div>
-
-
-
-</div>
-
-
-
-</div>
-
+    </div>
 
 </section>
 
 
 </main>
 
+</div>
 
 
 
+
+
+<script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
 <script src="../../firebase/firebase-config.js"></script>
 
+<script src="../../js/services/cart-service.js"></script>
+<script src="../../js/services/wishlist-service.js"></script>
+
 <script src="../../js/pages/profile.js"></script>
 
+<script>
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+    if(window.lucide){
+        lucide.createIcons();
+    }
+
+});
+
+</script>
 
 
 </body>

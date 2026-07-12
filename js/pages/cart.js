@@ -1,19 +1,16 @@
 /*=========================================================
                 TAQDEER FASHION
-                CART PAGE FINAL
+                CART PAGE FINAL JS
 =========================================================*/
 
 "use strict";
 
-document.addEventListener(
-"DOMContentLoaded",
-()=>{
+document.addEventListener("DOMContentLoaded",()=>{
 
 
-
-/*=========================================
-            DOM
-=========================================*/
+/*=========================================================
+        DOM
+=========================================================*/
 
 const cartItems =
 document.getElementById("cart-items");
@@ -38,50 +35,112 @@ document.getElementById("checkout-btn");
 
 
 
-/*=========================================
-            MONEY FORMAT
-=========================================*/
+
+
+/*=========================================================
+        HELPERS
+=========================================================*/
 
 function money(value){
 
     return "৳" +
-    Number(value || 0)
-    .toLocaleString();
+    Number(value || 0).toLocaleString();
 
 }
 
 
 
-/*=========================================
-            IMAGE PATH FIX
-=========================================*/
+function getCart(){
 
-function getCartImagePath(path){
+    const cartService =
+    window.CartService ||
+    window.cartService;
+
+    if(cartService && cartService.getCart){
+
+        return cartService.getCart() || [];
+
+    }
+
+    return JSON.parse(
+        localStorage.getItem("taqdeerCart")
+    ) || [];
+
+}
+
+
+
+function saveCart(cart){
+
+    const cartService =
+    window.CartService ||
+    window.cartService;
+
+    if(cartService && cartService.saveCart){
+
+        cartService.saveCart(cart);
+
+    }
+
+    else{
+
+        localStorage.setItem(
+            "taqdeerCart",
+            JSON.stringify(cart)
+        );
+
+    }
+
+    window.dispatchEvent(
+        new Event("cartUpdated")
+    );
+
+}
+
+
+
+function getSubtotal(cart){
+
+    return cart.reduce(
+        (total,item)=>
+        total +
+        Number(item.price || 0) *
+        Number(item.quantity || 1),
+        0
+    );
+
+}
+
+
+
+function getDelivery(cart){
+
+    return cart.length > 0 ? 80 : 0;
+
+}
+
+
+
+function getImagePath(path){
 
     const fallback =
     "../../assets/placeholders/product.jpg";
 
     if(!path){
-
         return fallback;
-
     }
 
     if(
         path.startsWith("http") ||
         path.startsWith("data:") ||
-        path.startsWith("../../") ||
-        path.startsWith("../")
+        path.startsWith("../") ||
+        path.startsWith("../../")
     ){
-
         return path;
-
     }
 
     if(path.startsWith("assets/")){
-
         return "../../" + path;
-
     }
 
     return fallback;
@@ -90,210 +149,278 @@ function getCartImagePath(path){
 
 
 
-/*=========================================
-            RENDER CART
-=========================================*/
+
+
+/*=========================================================
+        RENDER CART
+=========================================================*/
 
 function renderCart(){
 
-    if(!window.CartService || !cartItems){
-
+    if(!cartItems){
         return;
-
     }
 
     const cart =
-    window.CartService.getCart();
+    getCart();
 
     cartItems.innerHTML = "";
 
     if(cart.length === 0){
 
         if(emptyCart){
-
             emptyCart.classList.add("active");
-
         }
 
-        cartCount.innerText =
-        "0 Items";
+        if(cartCount){
+            cartCount.innerText = "0 Items";
+        }
 
-        subtotalElement.innerText =
-        money(0);
+        if(subtotalElement){
+            subtotalElement.innerText = money(0);
+        }
 
-        deliveryElement.innerText =
-        money(0);
+        if(deliveryElement){
+            deliveryElement.innerText = money(0);
+        }
 
-        totalElement.innerText =
-        money(0);
+        if(totalElement){
+            totalElement.innerText = money(0);
+        }
+
+        window.dispatchEvent(
+            new Event("cartUpdated")
+        );
 
         return;
 
     }
 
     if(emptyCart){
-
         emptyCart.classList.remove("active");
-
     }
 
-    cart.forEach(
-        item=>{
+    cart.forEach(item=>{
 
-            const card =
-            document.createElement("div");
+        const card =
+        document.createElement("div");
 
-            card.className =
-            "cart-item";
+        card.className =
+        "cart-item";
 
-            const imagePath =
-            getCartImagePath(item.image);
+        card.innerHTML = `
+            <div class="cart-item-image">
 
-            card.innerHTML = `
+                <img
+                src="${getImagePath(item.image)}"
+                alt="${item.name || "Product"}"
+                onerror="this.onerror=null;this.src='../../assets/placeholders/product.jpg';"
+                >
 
-                <div class="cart-item-image">
-
-                    <img
-                    src="${imagePath}"
-                    alt="${item.name || "Product"}"
-                    onerror="this.onerror=null;this.src='../../assets/placeholders/product.jpg';">
-
-                </div>
+            </div>
 
 
-                <div class="cart-item-info">
+            <div class="cart-item-info">
 
-                    <h3>
-                        ${item.name || "Product"}
-                    </h3>
+                <h3>
+                    ${item.name || "Product"}
+                </h3>
 
-                    <p>
-                        ${item.category || "Fashion"} 
-                        ${item.size ? `• Size: ${item.size}` : ""}
-                    </p>
+                <p>
+                    ${item.category || "Fashion"}
+                    ${item.size ? " • Size: " + item.size : ""}
+                </p>
 
-                    <strong class="cart-item-price">
-                        ${money(item.price)}
-                    </strong>
+                <strong class="cart-item-price">
+                    ${money(item.price)}
+                </strong>
 
-
-                    <div class="quantity-control">
-
-                        <button
-                        type="button"
-                        class="qty-minus"
-                        data-id="${item.id}">
-                            -
-                        </button>
-
-                        <span>
-                            ${item.quantity || 1}
-                        </span>
-
-                        <button
-                        type="button"
-                        class="qty-plus"
-                        data-id="${item.id}">
-                            +
-                        </button>
-
-                    </div>
-
+                <div class="quantity-control">
 
                     <button
                     type="button"
-                    class="remove-btn"
-                    data-id="${item.id}">
-                        Remove
+                    class="qty-minus"
+                    data-id="${item.id}"
+                    >
+                        -
+                    </button>
+
+                    <span>
+                        ${item.quantity || 1}
+                    </span>
+
+                    <button
+                    type="button"
+                    class="qty-plus"
+                    data-id="${item.id}"
+                    >
+                        +
                     </button>
 
                 </div>
 
-            `;
+                <button
+                type="button"
+                class="remove-btn"
+                data-id="${item.id}"
+                >
+                    Remove
+                </button>
 
-            cartItems.appendChild(card);
+            </div>
+        `;
 
-        }
-    );
+        cartItems.appendChild(card);
+
+    });
+
 
     const subtotal =
-    window.CartService.getCartTotal();
+    getSubtotal(cart);
 
     const delivery =
-    window.CartService.getDeliveryCharge();
+    getDelivery(cart);
 
     const total =
-    window.CartService.getGrandTotal();
+    subtotal + delivery;
 
-    cartCount.innerText =
-    `${cart.length} Items`;
 
-    subtotalElement.innerText =
-    money(subtotal);
+    if(cartCount){
 
-    deliveryElement.innerText =
-    money(delivery);
+        const quantityCount =
+        cart.reduce(
+            (total,item)=>
+            total + Number(item.quantity || 1),
+            0
+        );
 
-    totalElement.innerText =
-    money(total);
+        cartCount.innerText =
+        `${quantityCount} Item${quantityCount > 1 ? "s" : ""}`;
 
-    window.CartService.updateCartCount();
+    }
+
+    if(subtotalElement){
+        subtotalElement.innerText = money(subtotal);
+    }
+
+    if(deliveryElement){
+        deliveryElement.innerText = money(delivery);
+    }
+
+    if(totalElement){
+        totalElement.innerText = money(total);
+    }
+
+    window.dispatchEvent(
+        new Event("cartUpdated")
+    );
 
 }
 
 
 
-/*=========================================
-            CART EVENTS
-=========================================*/
 
-document.addEventListener(
-"click",
-(e)=>{
+
+/*=========================================================
+        EVENTS
+=========================================================*/
+
+document.addEventListener("click",(e)=>{
+
+
+/* PLUS */
 
     const plus =
     e.target.closest(".qty-plus");
 
     if(plus){
 
-        window.CartService
-        .increaseQuantity(
-            plus.dataset.id
-        );
+        const id =
+        plus.dataset.id;
 
-        renderCart();
+        const cart =
+        getCart();
+
+        const item =
+        cart.find(product=>product.id === id);
+
+        if(item){
+
+            item.quantity =
+            Number(item.quantity || 1) + 1;
+
+            saveCart(cart);
+
+            renderCart();
+
+        }
 
         return;
 
     }
 
+
+
+
+
+/* MINUS */
 
     const minus =
     e.target.closest(".qty-minus");
 
     if(minus){
 
-        window.CartService
-        .decreaseQuantity(
-            minus.dataset.id
-        );
+        const id =
+        minus.dataset.id;
 
-        renderCart();
+        let cart =
+        getCart();
+
+        const item =
+        cart.find(product=>product.id === id);
+
+        if(item){
+
+            item.quantity =
+            Number(item.quantity || 1) - 1;
+
+            if(item.quantity <= 0){
+
+                cart =
+                cart.filter(product=>product.id !== id);
+
+            }
+
+            saveCart(cart);
+
+            renderCart();
+
+        }
 
         return;
 
     }
 
 
+
+
+
+/* REMOVE */
+
     const remove =
     e.target.closest(".remove-btn");
 
     if(remove){
 
-        window.CartService
-        .removeFromCart(
-            remove.dataset.id
+        const id =
+        remove.dataset.id;
+
+        const cart =
+        getCart().filter(
+            item=>item.id !== id
         );
+
+        saveCart(cart);
 
         renderCart();
 
@@ -305,47 +432,47 @@ document.addEventListener(
 
 
 
-/*=========================================
-            CHECKOUT
-=========================================*/
+
+
+/*=========================================================
+        CHECKOUT
+=========================================================*/
 
 if(checkoutBtn){
 
-    checkoutBtn.addEventListener(
-        "click",
-        ()=>{
+    checkoutBtn.addEventListener("click",()=>{
 
-            const cart =
-            window.CartService.getCart();
+        const cart =
+        getCart();
 
-            if(cart.length === 0){
+        if(cart.length === 0){
 
-                alert("Your cart is empty");
+            alert("Your cart is empty");
 
-                return;
-
-            }
-
-            window.location.href =
-            "../checkout/index.html";
+            return;
 
         }
-    );
+
+        window.location.href =
+        "../checkout/index.html";
+
+    });
 
 }
 
 
 
-/*=========================================
-            INIT
-=========================================*/
+
+
+/*=========================================================
+        INIT
+=========================================================*/
 
 renderCart();
 
 window.CartUI = {
     renderCart
 };
-
 
 
 });

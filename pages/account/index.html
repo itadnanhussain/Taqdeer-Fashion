@@ -3,364 +3,519 @@
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Account | Taqdeer Fashion</title>
 
-    <title>
-        My Account | Taqdeer Fashion
-    </title>
+<link rel="icon" href="../../favicon.ico">
 
-    <link rel="icon" href="../../favicon.ico">
+<!-- FONT -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!-- FONT -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- BASE CSS -->
+<link rel="stylesheet" href="../../css/base/variables.css">
+<link rel="stylesheet" href="../../css/base/reset.css">
+<link rel="stylesheet" href="../../css/base/typography.css">
+<link rel="stylesheet" href="../../css/utilities/utilities.css">
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet"
-    >
-
-    <!-- BASE CSS -->
-    <link rel="stylesheet" href="../../css/base/variables.css">
-    <link rel="stylesheet" href="../../css/base/reset.css">
-    <link rel="stylesheet" href="../../css/base/typography.css">
-    <link rel="stylesheet" href="../../css/utilities/utilities.css">
-
-    <!-- LAYOUT CSS -->
-    <link rel="stylesheet" href="../../css/layout/header.css">
-    <link rel="stylesheet" href="../../css/layout/footer.css">
-
-    <!-- COMPONENT CSS -->
-    <link rel="stylesheet" href="../../css/components/modal.css">
-
-    <!-- PAGE CSS -->
-    <link rel="stylesheet" href="../../css/pages/account.css">
+<!-- PAGE CSS -->
+<link rel="stylesheet" href="../../css/pages/account.css">
 
 </head>
 
 <body>
 
-    <!-- ANNOUNCEMENT BAR -->
-    <div class="announcement-bar">
-        <div class="container">
-            <div class="announcement-wrapper">
-                <p>🚚 Free Delivery Above ৳2000</p>
-                <p>💳 Cash On Delivery Available</p>
-                <p>⭐ Premium Quality Guaranteed</p>
-            </div>
-        </div>
+
+<div class="account-dashboard">
+
+
+<!-- ================= SIDEBAR ================= -->
+
+<aside class="account-sidebar">
+
+    <div class="account-brand">
+
+        <img src="../../assets/logos/logo.png" alt="Taqdeer Fashion">
+
+        <h2>TAQDEER</h2>
+
+        <span>FASHION</span>
+
     </div>
 
-    <!-- HEADER -->
-    <header class="header">
-        <div class="container">
-            <div class="header-wrapper">
 
-                <!-- LOGO -->
-                <a href="../../index.html" class="logo">
-                    <img src="../../assets/logos/logo.png" alt="Taqdeer Fashion">
+    <div class="sidebar-user">
 
-                    <div class="logo-text">
-                        <h2 class="logo-title">
-                            TAQDEER
-                        </h2>
+        <div class="sidebar-avatar">
 
-                        <span class="logo-subtitle">
-                            FASHION
-                        </span>
-                    </div>
-                </a>
+            <img id="user-photo" src="../../assets/logos/logo-1.png" alt="User">
 
-                <!-- NAVIGATION -->
-                <nav class="navbar">
-                    <ul class="nav-menu">
+            <a href="profile.html" class="avatar-edit">
+                <i data-lucide="camera"></i>
+            </a>
 
-                        <li>
-                            <a href="../../index.html">
-                                Home
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="../shop/index.html">
-                                Shop
-                            </a>
-                        </li>
-
-                        <li class="has-dropdown">
-                            <a href="#">
-                                Categories
-                            </a>
-
-                            <div class="mega-menu">
-
-                                <div class="mega-column">
-                                    <h4>
-                                        Men
-                                    </h4>
-
-                                    <a href="../shop/index.html?category=shirt">Shirt</a>
-                                    <a href="../shop/index.html?category=t-shirt">T-Shirt</a>
-                                    <a href="../shop/index.html?category=polo">Polo</a>
-                                    <a href="../shop/index.html?category=panjabi">Panjabi</a>
-                                </div>
-
-                                <div class="mega-column">
-                                    <h4>
-                                        Bottom Wear
-                                    </h4>
-
-                                    <a href="../shop/index.html?category=pant">Pant</a>
-                                    <a href="../shop/index.html?category=trouser">Trouser</a>
-                                    <a href="../shop/index.html?category=drop-shoulder">Drop Shoulder</a>
-                                </div>
-
-                                <div class="mega-column">
-                                    <h4>
-                                        Collection
-                                    </h4>
-
-                                    <a href="../shop/index.html">New Arrival</a>
-                                    <a href="../shop/index.html">Best Seller</a>
-                                    <a href="../shop/index.html">Premium</a>
-                                </div>
-
-                            </div>
-                        </li>
-
-                        <li>
-                            <a href="../orders/index.html">
-                                Orders
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="index.html" class="active">
-                                Account
-                            </a>
-                        </li>
-
-                    </ul>
-                </nav>
-
-                <!-- HEADER ACTIONS -->
-                <div class="header-right">
-
-                    <button class="nav-icon search-btn" type="button">
-                        <i data-lucide="search"></i>
-                    </button>
-
-                    <a href="../wishlist/index.html" class="nav-icon wishlist-header-btn">
-                        <i data-lucide="heart"></i>
-                        <span class="badge wishlist-count">0</span>
-                    </a>
-
-                    <button class="nav-icon cart-btn" type="button">
-                        <i data-lucide="shopping-cart"></i>
-                        <span class="badge cart-count">0</span>
-                    </button>
-
-                    <a href="../auth/login.html" class="login-btn account-btn">
-                        <i data-lucide="user"></i>
-                        <span>
-                            Sign In
-                        </span>
-                    </a>
-
-                    <button class="hamburger" type="button">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-
-                </div>
-
-            </div>
         </div>
-    </header>
 
-    <!-- MOBILE MENU -->
-    <div class="mobile-menu">
-        <ul>
-            <li>
-                <a href="../../index.html">Home</a>
-            </li>
+        <h3 id="user-name">Loading...</h3>
 
-            <li>
-                <a href="../shop/index.html">Shop</a>
-            </li>
+        <p id="user-email">Loading...</p>
 
-            <li>
-                <a href="../orders/index.html">Orders</a>
-            </li>
+        <div class="member-badge">
+            Gold Member
+        </div>
 
-            <li>
-                <a href="index.html">Account</a>
-            </li>
+        <small>Member Since 2026</small>
 
-            <li>
-                <a href="../wishlist/index.html">Wishlist</a>
-            </li>
-
-            <li>
-                <a href="../cart/index.html">Cart</a>
-            </li>
-        </ul>
     </div>
 
-    <!-- SEARCH MODAL -->
-    <div class="search-modal">
-        <button class="search-close" type="button">
-            ×
+
+    <nav class="account-sidebar-menu">
+
+        <a href="index.html" class="active">
+            <i data-lucide="layout-dashboard"></i>
+            Dashboard
+        </a>
+
+        <a href="../orders/index.html">
+            <i data-lucide="package"></i>
+            My Orders
+        </a>
+
+        <a href="../wishlist/index.html">
+            <i data-lucide="heart"></i>
+            Wishlist
+            <span id="sidebar-wishlist-count">0</span>
+        </a>
+
+        <a href="profile.html">
+            <i data-lucide="user"></i>
+            Profile
+        </a>
+
+        <a href="settings.html">
+            <i data-lucide="settings"></i>
+            Settings
+        </a>
+
+        <button type="button" id="logout-btn">
+            <i data-lucide="log-out"></i>
+            Logout
         </button>
 
-        <div class="search-box">
-            <input
-                type="text"
-                placeholder="Search products..."
-            >
-        </div>
+    </nav>
+
+</aside>
+
+
+
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="account-main">
+
+
+<!-- TOPBAR -->
+
+<header class="account-topbar">
+
+    <form class="account-search">
+
+        <input type="text" placeholder="Search for products...">
+
+        <i data-lucide="search"></i>
+
+    </form>
+
+
+    <div class="account-top-actions">
+
+        <a href="../wishlist/index.html" class="top-icon">
+            <i data-lucide="heart"></i>
+            <span id="top-wishlist-count">0</span>
+        </a>
+
+        <a href="../cart/index.html" class="top-icon">
+            <i data-lucide="shopping-cart"></i>
+            <span id="top-cart-count">0</span>
+        </a>
+
+        <a href="index.html" class="top-profile">
+
+            <img id="top-user-photo" src="../../assets/logos/logo-1.png" alt="User">
+
+            <span id="top-user-name">Account</span>
+
+            <i data-lucide="chevron-down"></i>
+
+        </a>
+
     </div>
 
-    <!-- MAIN -->
-    <main>
+</header>
 
-        <section class="account-page">
 
-            <div class="container">
 
-                <div class="account-header">
 
-                    <span>
-                        CUSTOMER ACCOUNT
-                    </span>
 
-                    <h1>
-                        My Account
-                    </h1>
+<section class="dashboard-content">
 
-                    <p>
-                        Manage your profile, wishlist and orders.
-                    </p>
 
-                </div>
+<!-- TOP GRID -->
 
-                <div class="account-layout">
+<div class="dashboard-top-grid">
 
-                    <!-- PROFILE CARD -->
-                    <div class="profile-card">
+    <div class="welcome-card">
 
-                        <div class="profile-image">
-                            <img
-                                id="user-photo"
-                                src="../../assets/logos/logo-1.png"
-                                alt="User"
-                            >
-                        </div>
+        <div>
 
-                        <h2 id="user-name">
-                            Loading...
-                        </h2>
+            <span>Welcome back,</span>
 
-                        <p id="user-email">
-                            Loading...
-                        </p>
+            <h1 id="welcome-name">Taqdeer User 👋</h1>
 
-                        <a href="profile.html" class="account-btn">
-                            Edit Profile
-                        </a>
+            <p>Here’s what’s happening with your account today.</p>
 
-                    </div>
+        </div>
 
-                    <!-- ACCOUNT MENU -->
-                    <div class="account-menu">
+        <div class="welcome-illustration logo-illustration">
+            <img src="../../assets/logos/logo.png" alt="Taqdeer">
+        </div>
 
-                        <a href="../orders/index.html">
-                            <i data-lucide="package"></i>
-                            <span>
-                                My Orders
-                            </span>
-                        </a>
+    </div>
 
-                        <a href="../wishlist/index.html">
-                            <i data-lucide="heart"></i>
-                            <span>
-                                Wishlist
-                            </span>
-                        </a>
 
-                        <a href="profile.html">
-                            <i data-lucide="user"></i>
-                            <span>
-                                Profile Settings
-                            </span>
-                        </a>
+    <div class="mini-stat-card">
 
-                        <a href="settings.html">
-                            <i data-lucide="settings"></i>
-                            <span>
-                                Settings
-                            </span>
-                        </a>
+        <div class="stat-icon gold">
+            <i data-lucide="package"></i>
+        </div>
 
-                        <button id="logout-btn" type="button">
-                            <i data-lucide="log-out"></i>
-                            <span>
-                                Logout
-                            </span>
-                        </button>
+        <p>Total Orders</p>
 
-                    </div>
+        <h2 id="total-orders">0</h2>
+
+        <a href="../orders/index.html">
+            View all orders
+            <i data-lucide="chevron-right"></i>
+        </a>
+
+    </div>
+
+
+    <div class="mini-stat-card">
+
+        <div class="stat-icon pink">
+            <i data-lucide="heart"></i>
+        </div>
+
+        <p>Wishlist Items</p>
+
+        <h2 id="wishlist-items">0</h2>
+
+        <a href="../wishlist/index.html">
+            View wishlist
+            <i data-lucide="chevron-right"></i>
+        </a>
+
+    </div>
+
+
+    <div class="mini-stat-card">
+
+        <div class="stat-icon green">
+            <i data-lucide="truck"></i>
+        </div>
+
+        <p>Orders Shipping</p>
+
+        <h2 id="shipping-orders">0</h2>
+
+        <a href="../orders/index.html">
+            Track orders
+            <i data-lucide="chevron-right"></i>
+        </a>
+
+    </div>
+
+</div>
+
+
+
+
+
+<!-- BODY GRID -->
+
+<div class="dashboard-body-grid">
+
+
+<!-- LEFT COLUMN -->
+
+<div class="dashboard-left">
+
+
+    <div class="dashboard-card recent-card">
+
+        <div class="card-head">
+
+            <h2>Recent Orders</h2>
+
+            <a href="../orders/index.html">View All Orders</a>
+
+        </div>
+
+        <div class="recent-orders-list" id="recent-orders-list">
+
+            <p class="loading-text">Loading orders...</p>
+
+        </div>
+
+    </div>
+
+
+    <div class="dashboard-bottom-grid">
+
+        <div class="dashboard-card">
+
+            <div class="card-head">
+
+                <h2>Wishlist Items</h2>
+
+                <a href="../wishlist/index.html">View All</a>
+
+            </div>
+
+            <div class="wishlist-preview" id="wishlist-preview">
+
+                <p class="loading-text">Loading wishlist...</p>
+
+            </div>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <div class="card-head">
+
+                <h2>Top Reviewed Product</h2>
+
+                <a href="../shop/index.html">View Product</a>
+
+            </div>
+
+            <div class="review-box" id="top-review-box">
+
+                <img id="review-product-image" src="../../assets/placeholders/product.jpg" alt="Review Product">
+
+                <div>
+
+                    <h3 id="review-product-name">Premium Product</h3>
+
+                    <div class="stars" id="review-stars">★★★★★</div>
+
+                    <p id="review-text">Best reviewed product will appear here.</p>
+
+                    <small id="review-date">Updated recently</small>
 
                 </div>
 
             </div>
 
-        </section>
+            <button class="review-btn" type="button">
+                Write Another Review
+            </button>
 
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container">
-            <p>
-                © 2026 Taqdeer Fashion. All Rights Reserved.
-            </p>
         </div>
-    </footer>
 
-    <!-- LUCIDE -->
-    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+    </div>
 
-    <!-- FIREBASE -->
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+</div>
 
-    <script src="../../firebase/firebase-config.js"></script>
 
-    <!-- SERVICES -->
-    <script src="../../js/services/cart-service.js"></script>
-    <script src="../../js/services/wishlist-service.js"></script>
 
-    <!-- COMPONENTS -->
-    <script src="../../js/components/header.js"></script>
 
-    <!-- PAGE -->
-    <script src="../../js/pages/account.js"></script>
 
-    <script>
-        document.addEventListener("DOMContentLoaded",()=>{
+<!-- RIGHT COLUMN -->
 
-            if(window.lucide){
-                lucide.createIcons();
-            }
+<div class="dashboard-right">
 
-        });
-    </script>
+
+    <div class="dashboard-card">
+
+        <div class="card-head">
+
+            <h2>Saved Address</h2>
+
+            <a href="profile.html">Edit</a>
+
+        </div>
+
+        <div class="address-box">
+
+            <div class="address-icon">
+                <i data-lucide="map-pin"></i>
+            </div>
+
+            <div>
+
+                <h3>Home</h3>
+
+                <p id="saved-address">No address added yet.</p>
+
+                <p id="saved-phone">—</p>
+
+            </div>
+
+        </div>
+
+        <a href="profile.html" class="add-address-btn">
+            + Add New Address
+        </a>
+
+    </div>
+
+
+    <div class="dashboard-card">
+
+        <div class="card-head">
+
+            <h2>Active Coupon</h2>
+
+            <a href="#">View All</a>
+
+        </div>
+
+        <div class="coupon-ticket" id="profile-coupon">
+
+            <div>
+
+                <h3 id="coupon-code">WELCOME10</h3>
+
+                <strong id="coupon-discount">10% OFF</strong>
+
+                <p id="coupon-min">Min. purchase ৳999</p>
+
+            </div>
+
+            <div>
+
+                <span>Expires on</span>
+
+                <strong id="coupon-expiry">31 Dec 2026</strong>
+
+            </div>
+
+        </div>
+
+        <button class="apply-coupon-btn" type="button">
+            Apply Coupon
+        </button>
+
+    </div>
+
+
+    <div class="dashboard-card settings-card">
+
+        <h2>Account Settings</h2>
+
+        <a href="profile.html">
+
+            <span>
+                <i data-lucide="user"></i>
+                Personal Information
+            </span>
+
+            <i data-lucide="chevron-right"></i>
+
+        </a>
+
+        <a href="settings.html">
+
+            <span>
+                <i data-lucide="lock"></i>
+                Change Password
+            </span>
+
+            <i data-lucide="chevron-right"></i>
+
+        </a>
+
+        <a href="settings.html">
+
+            <span>
+                <i data-lucide="bell"></i>
+                Notification Settings
+            </span>
+
+            <i data-lucide="chevron-right"></i>
+
+        </a>
+
+        <a href="settings.html">
+
+            <span>
+                <i data-lucide="shield"></i>
+                Privacy Settings
+            </span>
+
+            <i data-lucide="chevron-right"></i>
+
+        </a>
+
+    </div>
+
+</div>
+
+
+</div>
+
+</section>
+
+</main>
+
+</div>
+
+
+
+
+
+<!-- LUCIDE -->
+<script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+
+
+<!-- FIREBASE -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+<script src="../../firebase/firebase-config.js"></script>
+
+
+<!-- SERVICES -->
+<script src="../../js/services/cart-service.js"></script>
+<script src="../../js/services/wishlist-service.js"></script>
+
+
+<!-- PAGE -->
+<script src="../../js/pages/account.js"></script>
+
+
+<script>
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+    if(window.lucide){
+        lucide.createIcons();
+    }
+
+});
+
+</script>
+
 
 </body>
 

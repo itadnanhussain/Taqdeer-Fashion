@@ -1,6 +1,7 @@
 /*=========================================================
             TAQDEER FASHION
-            HEADER COMPONENT FINAL v5
+            HEADER COMPONENT FINAL v7
+            SEARCH + CART DRAWER + AUTH PROFILE
 =========================================================*/
 
 "use strict";
@@ -42,11 +43,17 @@ document.querySelector(".cart-btn");
 const cartDrawer =
 document.querySelector(".cart-drawer");
 
+const cartOverlay =
+document.querySelector(".cart-overlay");
+
 const cartClose =
 document.querySelector(".cart-close");
 
-const accountBtn =
-document.querySelector(".account-btn");
+const cartDrawerItems =
+document.querySelector("#cart-drawer-items");
+
+const cartDrawerTotal =
+document.querySelector("#cart-drawer-total");
 
 const cartCount =
 document.querySelector(".cart-count");
@@ -62,23 +69,12 @@ document.querySelector(".wishlist-header-btn");
 
 
 /*=========================================================
-        PATH HELPER
+        PATH HELPERS
 =========================================================*/
 
 function isInsidePages(){
 
     return window.location.pathname.includes("/pages/");
-
-}
-
-
-function pagePath(pathFromRoot){
-
-    return isInsidePages()
-    ?
-    `../../${pathFromRoot}`
-    :
-    pathFromRoot;
 
 }
 
@@ -116,6 +112,28 @@ function cartPath(){
 }
 
 
+function checkoutPath(){
+
+    return isInsidePages()
+    ?
+    "../checkout/index.html"
+    :
+    "pages/checkout/index.html";
+
+}
+
+
+function shopPath(){
+
+    return isInsidePages()
+    ?
+    "../shop/index.html"
+    :
+    "pages/shop/index.html";
+
+}
+
+
 function wishlistPath(){
 
     return isInsidePages()
@@ -123,6 +141,69 @@ function wishlistPath(){
     "../wishlist/index.html"
     :
     "pages/wishlist/index.html";
+
+}
+
+
+function productDetailsPath(id){
+
+    return isInsidePages()
+    ?
+    `../product-details/index.html?id=${id}`
+    :
+    `pages/product-details/index.html?id=${id}`;
+
+}
+
+
+function defaultProductImage(){
+
+    return isInsidePages()
+    ?
+    "../../assets/placeholders/product.jpg"
+    :
+    "assets/placeholders/product.jpg";
+
+}
+
+
+function defaultUserImage(){
+
+    return isInsidePages()
+    ?
+    "../../assets/logos/logo-1.png"
+    :
+    "assets/logos/logo-1.png";
+
+}
+
+
+function getSafeImage(path){
+
+    if(!path){
+        return defaultProductImage();
+    }
+
+    if(
+        path.startsWith("http") ||
+        path.startsWith("data:") ||
+        path.startsWith("../") ||
+        path.startsWith("../../")
+    ){
+        return path;
+    }
+
+    if(path.startsWith("assets/")){
+
+        return isInsidePages()
+        ?
+        `../../${path}`
+        :
+        path;
+
+    }
+
+    return path;
 
 }
 
@@ -157,14 +238,16 @@ if(header){
 
 function lockBody(){
 
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow =
+    "hidden";
 
 }
 
 
 function unlockBody(){
 
-    document.body.style.overflow = "";
+    document.body.style.overflow =
+    "";
 
 }
 
@@ -178,13 +261,13 @@ function unlockBody(){
 
 function closeMobile(){
 
-    if(mobileMenu){
-
-        mobileMenu.classList.remove("active");
-
-        unlockBody();
-
+    if(!mobileMenu){
+        return;
     }
+
+    mobileMenu.classList.remove("active");
+
+    unlockBody();
 
 }
 
@@ -218,7 +301,7 @@ mobileLinks.forEach(link=>{
 
 
 /*=========================================================
-        SEARCH
+        SEARCH MODAL
 =========================================================*/
 
 function openSearch(){
@@ -237,7 +320,7 @@ function openSearch(){
             searchInput.focus();
         }
 
-    },300);
+    },250);
 
 }
 
@@ -257,7 +340,13 @@ function closeSearch(){
 
 if(searchBtn){
 
-    searchBtn.addEventListener("click",openSearch);
+    searchBtn.addEventListener("click",(e)=>{
+
+        e.preventDefault();
+
+        openSearch();
+
+    });
 
 }
 
@@ -269,18 +358,255 @@ if(searchClose){
 }
 
 
+if(searchModal){
+
+    searchModal.addEventListener("click",(e)=>{
+
+        if(e.target === searchModal){
+            closeSearch();
+        }
+
+    });
+
+}
+
+
+if(searchInput){
+
+    searchInput.addEventListener("keydown",(e)=>{
+
+        if(e.key !== "Enter"){
+            return;
+        }
+
+        const query =
+        searchInput.value.trim();
+
+        if(!query){
+            return;
+        }
+
+        window.location.href =
+        `${shopPath()}?search=${encodeURIComponent(query)}`;
+
+    });
+
+}
+
+
 
 
 
 /*=========================================================
-        CART DRAWER / CART PAGE FALLBACK
+        CART STORAGE HELPERS
+=========================================================*/
+
+function getCart(){
+
+    const cartService =
+    window.CartService ||
+    window.cartService;
+
+    if(cartService && cartService.getCart){
+
+        return cartService.getCart() || [];
+
+    }
+
+    return JSON.parse(
+        localStorage.getItem("taqdeerCart")
+    ) || [];
+
+}
+
+
+function saveCart(cart){
+
+    const cartService =
+    window.CartService ||
+    window.cartService;
+
+    if(cartService && cartService.saveCart){
+
+        cartService.saveCart(cart);
+
+    }
+
+    else{
+
+        localStorage.setItem(
+            "taqdeerCart",
+            JSON.stringify(cart)
+        );
+
+    }
+
+    window.dispatchEvent(
+        new Event("cartUpdated")
+    );
+
+}
+
+
+function getCartSubtotal(cart){
+
+    return cart.reduce(
+        (total,item)=>
+        total +
+        Number(item.price || 0) *
+        Number(item.quantity || 1),
+        0
+    );
+
+}
+
+
+
+
+
+/*=========================================================
+        CART DRAWER RENDER
+=========================================================*/
+
+function renderCartDrawer(){
+
+    if(!cartDrawerItems || !cartDrawerTotal){
+        return;
+    }
+
+    const cart =
+    getCart();
+
+    cartDrawerItems.innerHTML = "";
+
+    if(!cart.length){
+
+        cartDrawerItems.innerHTML = `
+            <div class="drawer-empty">
+
+                <h3>
+                    Your cart is empty
+                </h3>
+
+                <p>
+                    Add some premium products first.
+                </p>
+
+                <a href="${shopPath()}">
+                    Shop Now
+                </a>
+
+            </div>
+        `;
+
+        cartDrawerTotal.innerText =
+        "৳0";
+
+        return;
+
+    }
+
+    cart.forEach(item=>{
+
+        const cartItem =
+        document.createElement("div");
+
+        cartItem.className =
+        "drawer-cart-item";
+
+        cartItem.innerHTML = `
+            <a href="${productDetailsPath(item.id)}">
+
+                <img
+                    src="${getSafeImage(item.image)}"
+                    alt="${item.name || "Product"}"
+                    onerror="this.src='${defaultProductImage()}'"
+                >
+
+            </a>
+
+            <div class="drawer-cart-info">
+
+                <h4>
+                    ${item.name || "Product Name"}
+                </h4>
+
+                <p>
+                    ${item.category || "Fashion"}
+                    ${item.size ? " • Size: " + item.size : ""}
+                </p>
+
+                <strong>
+                    ৳${Number(item.price || 0).toLocaleString()}
+                </strong>
+
+                <div class="drawer-cart-actions">
+
+                    <div class="drawer-qty">
+
+                        <button
+                            type="button"
+                            class="drawer-qty-minus"
+                            data-id="${item.id}"
+                        >
+                            -
+                        </button>
+
+                        <span>
+                            ${item.quantity || 1}
+                        </span>
+
+                        <button
+                            type="button"
+                            class="drawer-qty-plus"
+                            data-id="${item.id}"
+                        >
+                            +
+                        </button>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="drawer-remove"
+                        data-id="${item.id}"
+                    >
+                        Remove
+                    </button>
+
+                </div>
+
+            </div>
+        `;
+
+        cartDrawerItems.appendChild(cartItem);
+
+    });
+
+    cartDrawerTotal.innerText =
+    `৳${getCartSubtotal(cart).toLocaleString()}`;
+
+}
+
+
+
+
+
+/*=========================================================
+        CART DRAWER OPEN/CLOSE
 =========================================================*/
 
 function openCart(){
 
     if(cartDrawer){
 
+        renderCartDrawer();
+
         cartDrawer.classList.add("active");
+
+        if(cartOverlay){
+            cartOverlay.classList.add("active");
+        }
 
         lockBody();
 
@@ -288,7 +614,8 @@ function openCart(){
 
     }
 
-    window.location.href = cartPath();
+    window.location.href =
+    cartPath();
 
 }
 
@@ -300,6 +627,10 @@ function closeCart(){
     }
 
     cartDrawer.classList.remove("active");
+
+    if(cartOverlay){
+        cartOverlay.classList.remove("active");
+    }
 
     unlockBody();
 
@@ -326,11 +657,136 @@ if(cartClose){
 }
 
 
+if(cartOverlay){
+
+    cartOverlay.addEventListener("click",closeCart);
+
+}
+
+
 
 
 
 /*=========================================================
-        COUNT UPDATE
+        CART DRAWER ACTIONS
+=========================================================*/
+
+document.addEventListener("click",(e)=>{
+
+
+/* PLUS */
+
+    const plusBtn =
+    e.target.closest(".drawer-qty-plus");
+
+    if(plusBtn){
+
+        const id =
+        plusBtn.dataset.id;
+
+        const cart =
+        getCart();
+
+        const item =
+        cart.find(product=>product.id === id);
+
+        if(item){
+
+            item.quantity =
+            Number(item.quantity || 1) + 1;
+
+            saveCart(cart);
+
+            renderCartDrawer();
+
+            updateHeaderCounts();
+
+        }
+
+        return;
+
+    }
+
+
+
+
+
+/* MINUS */
+
+    const minusBtn =
+    e.target.closest(".drawer-qty-minus");
+
+    if(minusBtn){
+
+        const id =
+        minusBtn.dataset.id;
+
+        let cart =
+        getCart();
+
+        const item =
+        cart.find(product=>product.id === id);
+
+        if(item){
+
+            item.quantity =
+            Number(item.quantity || 1) - 1;
+
+            if(item.quantity <= 0){
+
+                cart =
+                cart.filter(product=>product.id !== id);
+
+            }
+
+            saveCart(cart);
+
+            renderCartDrawer();
+
+            updateHeaderCounts();
+
+        }
+
+        return;
+
+    }
+
+
+
+
+
+/* REMOVE */
+
+    const removeBtn =
+    e.target.closest(".drawer-remove");
+
+    if(removeBtn){
+
+        const id =
+        removeBtn.dataset.id;
+
+        const cart =
+        getCart().filter(
+            item=>item.id !== id
+        );
+
+        saveCart(cart);
+
+        renderCartDrawer();
+
+        updateHeaderCounts();
+
+    }
+
+
+});
+
+
+
+
+
+/*=========================================================
+        HEADER COUNTS
 =========================================================*/
 
 function updateCartCount(){
@@ -339,27 +795,18 @@ function updateCartCount(){
         return;
     }
 
-    const cartService =
-    window.CartService ||
-    window.cartService;
+    const cart =
+    getCart();
 
-    let count = 0;
+    const count =
+    cart.reduce(
+        (total,item)=>
+        total + Number(item.quantity || 1),
+        0
+    );
 
-    if(cartService && cartService.getCart){
-
-        const cart =
-        cartService.getCart();
-
-        count =
-        cart.reduce(
-            (total,item)=>
-            total + Number(item.quantity || 1),
-            0
-        );
-
-    }
-
-    cartCount.innerText = count;
+    cartCount.innerText =
+    count;
 
     cartCount.style.display =
     count > 0
@@ -390,7 +837,17 @@ function updateWishlistCount(){
 
     }
 
-    wishlistCount.innerText = count;
+    else{
+
+        count =
+        JSON.parse(
+            localStorage.getItem("taqdeerWishlist")
+        )?.length || 0;
+
+    }
+
+    wishlistCount.innerText =
+    count;
 
     wishlistCount.style.display =
     count > 0
@@ -408,6 +865,8 @@ function updateHeaderCounts(){
 
     updateWishlistCount();
 
+    renderCartDrawer();
+
 }
 
 
@@ -416,10 +875,12 @@ window.addEventListener(
     updateHeaderCounts
 );
 
+
 window.addEventListener(
     "wishlistUpdated",
     updateHeaderCounts
 );
+
 
 window.addEventListener(
     "storage",
@@ -431,25 +892,31 @@ window.addEventListener(
 
 
 /*=========================================================
-        ACCOUNT AUTH STATE
+        ACCOUNT BUTTON WITH PROFILE PHOTO
 =========================================================*/
 
-/*=========================================================
-        ACCOUNT BUTTON TEXT FIX
-=========================================================*/
-
-function updateAccountButtons(text,path){
+function setAccountButtonGuest(){
 
     const accountButtons =
     document.querySelectorAll(".account-btn");
 
     accountButtons.forEach(btn=>{
 
-        btn.href = path;
+        btn.href =
+        authPath();
+
+        btn.classList.remove(
+            "logged-in"
+        );
 
         btn.innerHTML = `
-            <i data-lucide="user"></i>
-            <span>${text}</span>
+            <span class="header-user-photo-wrap">
+                <i data-lucide="user" class="header-user-icon"></i>
+            </span>
+
+            <span class="account-text">
+                Sign In
+            </span>
         `;
 
     });
@@ -461,29 +928,39 @@ function updateAccountButtons(text,path){
 }
 
 
-function setGuestHeader(){
+function setAccountButtonUser(user){
 
-    updateAccountButtons(
-        "Sign In",
-        authPath()
-    );
+    const accountButtons =
+    document.querySelectorAll(".account-btn");
+
+    const photo =
+    user.photoURL ||
+    defaultUserImage();
+
+    accountButtons.forEach(btn=>{
+
+        btn.href =
+        accountPath();
+
+        btn.classList.add(
+            "logged-in"
+        );
+
+        btn.innerHTML = `
+            <span class="header-user-photo-wrap">
+                <img
+                    src="${photo}"
+                    alt="User"
+                    class="header-user-photo"
+                    onerror="this.src='${defaultUserImage()}'"
+                >
+            </span>
+        `;
+
+    });
 
 }
 
-
-function setUserHeader(){
-
-    updateAccountButtons(
-        "Account",
-        accountPath()
-    );
-
-}
-
-
-/*=========================================================
-        AUTH STATE FIX
-=========================================================*/
 
 function updateAuthHeader(){
 
@@ -498,14 +975,18 @@ function updateAuthHeader(){
 
                 if(user){
 
-                    setUserHeader();
+                    setAccountButtonUser(user);
 
                 }
 
                 else{
 
-                    setGuestHeader();
+                    setAccountButtonGuest();
 
+                }
+
+                if(window.lucide){
+                    lucide.createIcons();
                 }
 
             });
@@ -515,6 +996,7 @@ function updateAuthHeader(){
     },100);
 
 }
+
 
 
 
@@ -529,7 +1011,8 @@ if(wishlistBtn){
 
         e.preventDefault();
 
-        window.location.href = wishlistPath();
+        window.location.href =
+        wishlistPath();
 
     });
 
@@ -548,7 +1031,9 @@ document.addEventListener("keydown",(e)=>{
     if(e.key === "Escape"){
 
         closeMobile();
+
         closeSearch();
+
         closeCart();
 
     }

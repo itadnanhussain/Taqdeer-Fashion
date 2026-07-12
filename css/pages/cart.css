@@ -1,64 +1,27 @@
 /*=========================================================
                 TAQDEER FASHION
-                CART PAGE FINAL CSS
+                CART PAGE FINAL POLISH
 =========================================================*/
 
-
-
-
-
-/*=========================================================
-                    SIMPLE HEADER
-=========================================================*/
-
-.simple-header{
-    height:72px;
-    background:#fff;
-    border-bottom:1px solid #eeeeee;
+body{
+    background:#f8f5ef;
 }
-
-.simple-header .container{
-    height:100%;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-}
-
-.cart-logo{
-    font-size:26px;
-    font-weight:800;
-    letter-spacing:6px;
-    color:#111;
-}
-
-.simple-header a:last-child{
-    font-size:14px;
-    font-weight:600;
-    color:#111;
-}
-
-.simple-header a:last-child:hover{
-    color:#C8A96A;
-}
-
-
-
-
-
-/*=========================================================
-                    CART PAGE
-=========================================================*/
 
 .cart-page{
-    min-height:calc(100vh - 72px);
-    padding:70px 0 90px;
-    background:#faf8f3;
+    min-height:calc(100vh - 150px);
+    padding:78px 0 95px;
+    background:
+    linear-gradient(
+        180deg,
+        #fbfaf7 0%,
+        #f8f5ef 100%
+    );
 }
 
 .cart-layout{
     display:grid;
     grid-template-columns:1fr 360px;
-    gap:32px;
+    gap:34px;
     align-items:start;
 }
 
@@ -72,27 +35,29 @@
 
 .cart-items-box{
     background:#fff;
-    border-radius:24px;
-    padding:32px;
-    box-shadow:0 10px 30px rgba(0,0,0,.03);
+    border-radius:26px;
+    padding:34px;
+    box-shadow:0 22px 60px rgba(0,0,0,.06);
+    border:1px solid rgba(200,169,106,.10);
 }
 
 .cart-title{
     display:flex;
     align-items:center;
     justify-content:space-between;
-    margin-bottom:28px;
+    margin-bottom:30px;
 }
 
 .cart-title h1{
-    font-size:30px;
+    font-size:34px;
     font-weight:800;
     color:#111;
 }
 
 .cart-title p{
     font-size:14px;
-    color:#777;
+    color:#6b7280;
+    font-weight:500;
 }
 
 
@@ -105,20 +70,25 @@
 
 .cart-item{
     display:grid;
-    grid-template-columns:120px 1fr;
-    gap:24px;
+    grid-template-columns:110px 1fr;
+    gap:22px;
     align-items:center;
-    padding:22px 0;
-    border-bottom:1px solid #eee;
+    padding:24px 0;
+    border-bottom:1px solid #eeeeee;
 }
 
 .cart-item:last-child{
     border-bottom:none;
+    padding-bottom:0;
+}
+
+.cart-item:first-child{
+    padding-top:0;
 }
 
 .cart-item-image{
-    width:120px;
-    height:130px;
+    width:110px;
+    height:118px;
     border-radius:16px;
     background:#f3eee7;
     overflow:hidden;
@@ -128,27 +98,34 @@
     width:100%;
     height:100%;
     object-fit:cover;
+    display:block;
+}
+
+.cart-item-info{
+    min-width:0;
 }
 
 .cart-item-info h3{
-    font-size:17px;
+    max-width:560px;
+    font-size:18px;
+    line-height:1.35;
     font-weight:800;
     color:#111;
-    margin-bottom:8px;
+    margin-bottom:7px;
 }
 
 .cart-item-info p{
     font-size:13px;
-    color:#777;
-    margin-bottom:8px;
+    color:#6b7280;
+    margin-bottom:10px;
 }
 
 .cart-item-price{
     display:block;
-    font-size:18px;
+    font-size:19px;
     font-weight:800;
     color:#111;
-    margin-bottom:12px;
+    margin-bottom:13px;
 }
 
 
@@ -163,18 +140,20 @@
     display:flex;
     align-items:center;
     gap:12px;
-    margin-top:10px;
+    margin-top:8px;
 }
 
 .quantity-control button{
     width:34px;
     height:34px;
     border-radius:50%;
+    border:none;
     background:#f3eee7;
     color:#111;
     font-size:16px;
     font-weight:800;
-    transition:.3s ease;
+    cursor:pointer;
+    transition:.25s ease;
 }
 
 .quantity-control button:hover{
@@ -187,6 +166,7 @@
     text-align:center;
     font-size:15px;
     font-weight:800;
+    color:#111;
 }
 
 
@@ -199,9 +179,12 @@
 
 .remove-btn{
     margin-top:12px;
+    border:none;
+    background:transparent;
     font-size:13px;
-    color:#e23d3d;
+    color:#ef4444;
     font-weight:700;
+    cursor:pointer;
 }
 
 .remove-btn:hover{
@@ -218,30 +201,32 @@
 
 .cart-summary-box{
     background:#fff;
-    border-radius:24px;
+    border-radius:26px;
     padding:32px;
     position:sticky;
-    top:95px;
-    box-shadow:0 10px 30px rgba(0,0,0,.03);
+    top:105px;
+    box-shadow:0 22px 60px rgba(0,0,0,.06);
+    border:1px solid rgba(200,169,106,.10);
 }
 
 .cart-summary-box h2{
-    font-size:24px;
+    font-size:26px;
     font-weight:800;
     color:#111;
-    margin-bottom:28px;
+    margin-bottom:30px;
 }
 
 .summary-row{
     display:flex;
     align-items:center;
     justify-content:space-between;
-    margin-bottom:18px;
+    margin-bottom:19px;
 }
 
 .summary-row span{
     font-size:15px;
-    color:#666;
+    color:#6b7280;
+    font-weight:500;
 }
 
 .summary-row strong{
@@ -252,22 +237,22 @@
 
 .cart-summary-box hr{
     border:0;
-    border-top:1px solid #eee;
-    margin:24px 0;
+    border-top:1px solid #eeeeee;
+    margin:25px 0;
 }
 
 .summary-row.total{
-    margin-top:10px;
+    margin-top:8px;
 }
 
 .summary-row.total span{
-    font-size:20px;
+    font-size:21px;
     font-weight:800;
     color:#111;
 }
 
 .summary-row.total strong{
-    font-size:24px;
+    font-size:26px;
     font-weight:800;
     color:#111;
 }
@@ -282,18 +267,20 @@
 
 .checkout-btn{
     width:100%;
-    height:54px;
+    height:56px;
     border-radius:999px;
+    border:none;
     background:#111;
     color:white;
     font-size:15px;
     font-weight:800;
-    margin-top:26px;
+    margin-top:28px;
+    cursor:pointer;
     transition:.3s ease;
 }
 
 .checkout-btn:hover{
-    background:#C8A96A;
+    background:#c8a96a;
     transform:translateY(-3px);
 }
 
@@ -308,7 +295,7 @@
 .empty-cart{
     display:none;
     text-align:center;
-    padding:70px 20px;
+    padding:75px 20px;
 }
 
 .empty-cart.active{
@@ -316,30 +303,32 @@
 }
 
 .empty-cart h2{
-    font-size:26px;
+    font-size:28px;
     font-weight:800;
     color:#111;
 }
 
 .empty-cart p{
-    margin:12px 0 25px;
-    color:#777;
+    margin:12px 0 26px;
+    color:#6b7280;
 }
 
 .empty-cart a{
     display:inline-flex;
-    height:46px;
-    padding:0 30px;
+    height:48px;
+    padding:0 32px;
     border-radius:999px;
     background:#111;
     color:white;
     align-items:center;
     justify-content:center;
     font-weight:700;
+    text-decoration:none;
+    transition:.3s ease;
 }
 
 .empty-cart a:hover{
-    background:#C8A96A;
+    background:#c8a96a;
 }
 
 
@@ -366,13 +355,13 @@
 @media(max-width:600px){
 
     .cart-page{
-        padding:40px 0 60px;
+        padding:45px 0 65px;
     }
 
     .cart-items-box,
     .cart-summary-box{
         padding:22px;
-        border-radius:20px;
+        border-radius:22px;
     }
 
     .cart-title{
@@ -382,12 +371,13 @@
     }
 
     .cart-title h1{
-        font-size:26px;
+        font-size:28px;
     }
 
     .cart-item{
         grid-template-columns:90px 1fr;
         gap:16px;
+        align-items:flex-start;
     }
 
     .cart-item-image{
@@ -399,50 +389,13 @@
         font-size:15px;
     }
 
-    .summary-row.total span,
-    .summary-row.total strong{
-        font-size:20px;
+    .cart-item-price{
+        font-size:16px;
     }
 
-}
-/*=========================================================
-        CART PAGE SEARCH MODAL FIX
-=========================================================*/
+    .summary-row.total span,
+    .summary-row.total strong{
+        font-size:21px;
+    }
 
-.search-modal{
-    position:fixed;
-    inset:0;
-    z-index:9999;
-    background:rgba(255,255,255,.96);
-    display:none;
-    align-items:center;
-    justify-content:center;
-}
-
-.search-modal.active{
-    display:flex;
-}
-
-.search-close{
-    position:absolute;
-    top:30px;
-    right:40px;
-    font-size:34px;
-    background:transparent;
-    color:#111;
-    cursor:pointer;
-}
-
-.search-box{
-    width:min(600px,90%);
-}
-
-.search-box input{
-    width:100%;
-    height:58px;
-    border:1px solid #ddd;
-    border-radius:999px;
-    padding:0 25px;
-    font-size:18px;
-    outline:none;
 }

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Account Settings | Taqdeer Fashion</title>
+
+<link rel="icon" href="../../favicon.ico">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../../css/base/variables.css">
+<link rel="stylesheet" href="../../css/base/reset.css">
+<link rel="stylesheet" href="../../css/base/typography.css">
+<link rel="stylesheet" href="../../css/utilities/utilities.css">
+
+<link rel="stylesheet" href="../../css/pages/account.css">
+
+</head>
+
+<body>
+
+
+<div class="account-dashboard">
+
+
+<aside class="account-sidebar">
+
+    <div class="account-brand">
+
+        <img src="../../assets/logos/logo.png" alt="Taqdeer Fashion">
+
+        <h2>TAQDEER</h2>
+
+        <span>FASHION</span>
+
+    </div>
+
+
+    <div class="sidebar-user">
+
+        <div class="sidebar-avatar">
+
+            <img id="user-photo" src="../../assets/logos/logo-1.png" alt="User">
+
+            <a href="profile.html" class="avatar-edit">
+                <i data-lucide="camera"></i>
+            </a>
+
+        </div>
+
+        <h3 id="user-name">Loading...</h3>
+
+        <p id="user-email">Loading...</p>
+
+        <div class="member-badge">
+            Gold Member
+        </div>
+
+        <small>Member Since 2026</small>
+
+    </div>
+
+
+    <nav class="account-sidebar-menu">
+
+        <a href="index.html">
+            <i data-lucide="layout-dashboard"></i>
+            Dashboard
+        </a>
+
+        <a href="../orders/index.html">
+            <i data-lucide="package"></i>
+            My Orders
+        </a>
+
+        <a href="../wishlist/index.html">
+            <i data-lucide="heart"></i>
+            Wishlist
+            <span id="sidebar-wishlist-count">0</span>
+        </a>
+
+        <a href="profile.html">
+            <i data-lucide="user"></i>
+            Profile
+        </a>
+
+        <a href="settings.html" class="active">
+            <i data-lucide="settings"></i>
+            Settings
+        </a>
+
+        <button type="button" id="logout-btn">
+            <i data-lucide="log-out"></i>
+            Logout
+        </button>
+
+    </nav>
+
+</aside>
+
+
+
+
+
+<main class="account-main">
+
+
+<header class="account-topbar">
+
+    <form class="account-search">
+
+        <input type="text" placeholder="Search for products...">
+
+        <i data-lucide="search"></i>
+
+    </form>
+
+
+    <div class="account-top-actions">
+
+        <a href="../wishlist/index.html" class="top-icon">
+            <i data-lucide="heart"></i>
+            <span id="top-wishlist-count">0</span>
+        </a>
+
+        <a href="../cart/index.html" class="top-icon">
+            <i data-lucide="shopping-cart"></i>
+            <span id="top-cart-count">0</span>
+        </a>
+
+        <a href="index.html" class="top-profile">
+
+            <img id="top-user-photo" src="../../assets/logos/logo-1.png" alt="User">
+
+            <span id="top-user-name">Account</span>
+
+            <i data-lucide="chevron-down"></i>
+
+        </a>
+
+    </div>
+
+</header>
+
+
+
+
+
+<section class="settings-page">
+
+    <div class="settings-page-header">
+
+        <span>ACCOUNT CONTROL</span>
+
+        <h1>Account Settings</h1>
+
+        <p>Manage your security, notifications and privacy preferences.</p>
+
+    </div>
+
+
+    <div class="settings-layout">
+
+
+        <div class="settings-panel">
+
+            <h2>Security Settings</h2>
+
+
+            <div class="setting-row">
+
+                <div>
+                    <h3>Change Password</h3>
+                    <p>Update your account password regularly for better security.</p>
+                </div>
+
+                <button class="setting-btn" type="button">
+                    Change
+                </button>
+
+            </div>
+
+
+            <div class="setting-row">
+
+                <div>
+                    <h3>Two-step Verification</h3>
+                    <p>Add an extra layer of protection to your account.</p>
+                </div>
+
+                <button class="setting-btn" type="button">
+                    Enable
+                </button>
+
+            </div>
+
+
+            <div class="setting-row">
+
+                <div>
+                    <h3>Login Activity</h3>
+                    <p>Review recent sign-in activity for your profile.</p>
+                </div>
+
+                <button class="setting-btn" type="button">
+                    View
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+
+
+        <div class="settings-panel">
+
+            <h2>Notification Settings</h2>
+
+
+            <div class="setting-row">
+
+                <div>
+                    <h3>Order Updates</h3>
+                    <p>Receive updates when your order status changes.</p>
+                </div>
+
+                <button class="toggle-switch active" type="button" aria-label="Order updates"></button>
+
+            </div>
+
+
+            <div class="setting-row">
+
+                <div>
+                    <h3>Offer Alerts</h3>
+                    <p>Get notified about discounts, coupons and campaigns.</p>
+                </div>
+
+                <button class="toggle-switch active" type="button" aria-label="Offer alerts"></button>
+
+            </div>
+
+
+            <div class="setting-row">
+
+                <div>
+                    <h3>Wishlist Reminders</h3>
+                    <p>Receive reminders about saved wishlist products.</p>
+                </div>
+
+                <button class="toggle-switch" type="button" aria-label="Wishlist reminders"></button>
+
+            </div>
+
+        </div>
+
+
+
+
+
+        <div class="settings-panel">
+
+            <h2>Privacy Settings</h2>
+
+
+            <div class="setting-row">
+
+                <div>
+                    <h3>Profile Visibility</h3>
+                    <p>Control how your profile information appears.</p>
+                </div>
+
+                <button class="setting-btn" type="button">
+                    Manage
+                </button>
+
+            </div>
+
+
+            <div class="setting-row">
+
+                <div>
+                    <h3>Saved Data</h3>
+                    <p>View the account data saved for order and checkout.</p>
+                </div>
+
+                <button class="setting-btn" type="button">
+                    View Data
+                </button>
+
+            </div>
+
+
+            <div class="setting-row">
+
+                <div>
+                    <h3>Delete Account</h3>
+                    <p>Permanently remove your Taqdeer Fashion account.</p>
+                </div>
+
+                <button class="setting-btn danger" type="button">
+                    Delete
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+
+
+        <div class="settings-note">
+
+            <h3>Settings note</h3>
+
+            <p>
+                These options are ready for UI. Password change, notification saving and privacy controls can be connected to Firebase in the next development step.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+</main>
+
+</div>
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+<script src="../../firebase/firebase-config.js"></script>
+
+<script src="../../js/services/cart-service.js"></script>
+<script src="../../js/services/wishlist-service.js"></script>
+
+<script src="../../js/pages/account.js"></script>
+
+<script>
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+    if(window.lucide){
+        lucide.createIcons();
+    }
+
+    document.querySelectorAll(".toggle-switch").forEach(toggle=>{
+
+        toggle.addEventListener("click",()=>{
+
+            toggle.classList.toggle("active");
+
+        });
+
+    });
+
+});
+
+</script>
+
+
+</body>
+
+</html>
