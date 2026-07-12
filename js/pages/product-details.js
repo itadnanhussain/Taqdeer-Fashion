@@ -639,3 +639,355 @@ loadProduct();
 
 
 });
+/*=========================================================
+        PRODUCT COLOR VARIANT ACTIVE
+=========================================================*/
+
+document.addEventListener("click",(e)=>{
+
+    const variant =
+    e.target.closest(".color-variant");
+
+    if(!variant){
+        return;
+    }
+
+    document
+    .querySelectorAll(".color-variant")
+    .forEach(btn=>{
+
+        btn.classList.remove("active");
+
+    });
+
+    variant.classList.add("active");
+
+});
+/*=========================================================
+        PRODUCT DETAILS DYNAMIC EXTRA SECTIONS
+=========================================================*/
+
+function getProductImagePath(path){
+
+    const fallback =
+    "../../assets/placeholders/product.jpg";
+
+    if(!path){
+        return fallback;
+    }
+
+    if(
+        path.startsWith("http") ||
+        path.startsWith("data:") ||
+        path.startsWith("../../") ||
+        path.startsWith("../")
+    ){
+        return path;
+    }
+
+    if(path.startsWith("assets/")){
+        return "../../" + path;
+    }
+
+    return fallback;
+
+}
+
+
+
+
+
+function getColorDot(color){
+
+    const map = {
+        blue:"#88a9c9",
+        black:"#111111",
+        maroon:"#6f1d2d",
+        white:"#ffffff",
+        red:"#b91c1c",
+        green:"#3f6b46",
+        navy:"#172554",
+        grey:"#9ca3af",
+        gray:"#9ca3af",
+        cream:"#eadfc8",
+        brown:"#7c4a2d"
+    };
+
+    const key =
+    String(color || "")
+    .toLowerCase()
+    .trim();
+
+    return map[key] || "#2f3a45";
+
+}
+
+
+
+
+
+function renderProductColors(product){
+
+    const section =
+    document.getElementById("color-section");
+
+    const list =
+    document.getElementById("color-variant-list");
+
+    if(!section || !list){
+        return;
+    }
+
+
+    const colors =
+    product.colors ||
+    product.variants ||
+    product.colorVariants ||
+    [];
+
+
+    if(!Array.isArray(colors) || colors.length === 0){
+
+        section.style.display = "none";
+
+        return;
+
+    }
+
+
+    section.style.display = "block";
+
+    list.innerHTML = "";
+
+
+    colors.forEach((item,index)=>{
+
+        const colorName =
+        item.name ||
+        item.color ||
+        item.title ||
+        `Color ${index + 1}`;
+
+        const image =
+        getProductImagePath(
+            item.image ||
+            item.photo ||
+            item.imageUrl ||
+            product.image
+        );
+
+        const dot =
+        item.hex ||
+        item.colorCode ||
+        getColorDot(colorName);
+
+
+        const button =
+        document.createElement("button");
+
+        button.type =
+        "button";
+
+        button.className =
+        index === 0
+        ?
+        "color-variant active"
+        :
+        "color-variant";
+
+        button.dataset.image =
+        image;
+
+        button.dataset.color =
+        colorName;
+
+        button.innerHTML = `
+
+            <span class="variant-img">
+                <img src="${image}" alt="${colorName}">
+            </span>
+
+            <span class="variant-color-dot" style="background:${dot};"></span>
+
+            <strong>${colorName}</strong>
+
+        `;
+
+        list.appendChild(button);
+
+    });
+
+}
+
+
+
+
+
+function renderProductDescription(product){
+
+    const section =
+    document.getElementById("description-section");
+
+    const text =
+    document.getElementById("product-description-text");
+
+    if(!section || !text){
+        return;
+    }
+
+
+    const description =
+    product.description ||
+    product.details ||
+    product.longDescription ||
+    "";
+
+
+    if(!description.trim()){
+
+        section.style.display = "none";
+
+        return;
+
+    }
+
+
+    section.style.display = "block";
+
+    text.innerText =
+    description;
+
+}
+
+
+
+
+
+/*=========================================================
+        COLOR CLICK + MAIN IMAGE CHANGE
+=========================================================*/
+
+document.addEventListener("click",(e)=>{
+
+    const variant =
+    e.target.closest(".color-variant");
+
+    if(!variant){
+        return;
+    }
+
+
+    document
+    .querySelectorAll(".color-variant")
+    .forEach(btn=>{
+
+        btn.classList.remove("active");
+
+    });
+
+
+    variant.classList.add("active");
+
+
+    const image =
+    variant.dataset.image;
+
+    const mainImage =
+    document.getElementById("main-product-image");
+
+    if(image && mainImage){
+
+        mainImage.src =
+        image;
+
+    }
+
+});
+
+
+
+
+
+/*=========================================================
+        PRODUCT IMAGE FULLSCREEN
+=========================================================*/
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+    const mainImage =
+    document.getElementById("main-product-image");
+
+    const lightbox =
+    document.getElementById("product-lightbox");
+
+    const lightboxImage =
+    document.getElementById("lightbox-image");
+
+    const closeBtn =
+    document.getElementById("lightbox-close");
+
+
+    if(mainImage && lightbox && lightboxImage){
+
+        mainImage.addEventListener("click",()=>{
+
+            lightboxImage.src =
+            mainImage.src;
+
+            lightbox.classList.add("active");
+
+            document.body.style.overflow =
+            "hidden";
+
+        });
+
+    }
+
+
+    function closeLightbox(){
+
+        if(!lightbox){
+            return;
+        }
+
+        lightbox.classList.remove("active");
+
+        document.body.style.overflow =
+        "";
+
+    }
+
+
+    if(closeBtn){
+
+        closeBtn.addEventListener("click",closeLightbox);
+
+    }
+
+
+    if(lightbox){
+
+        lightbox.addEventListener("click",(e)=>{
+
+            if(e.target === lightbox){
+
+                closeLightbox();
+
+            }
+
+        });
+
+    }
+
+
+    document.addEventListener("keydown",(e)=>{
+
+        if(e.key === "Escape"){
+
+            closeLightbox();
+
+        }
+
+    });
+
+});
