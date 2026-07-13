@@ -3,184 +3,139 @@
 
 <head>
 
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
-<title>
-Product Details | Taqdeer Fashion
-</title>
-
-
+<title>Product Details | Taqdeer Fashion</title>
 
 <link rel="icon" href="../../favicon.ico">
 
-
-
-<!-- GOOGLE FONT -->
-
+<!-- FONT -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
-
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-rel="stylesheet">
-
-
-
-
-
-<!-- BASE -->
-
+<!-- BASE CSS -->
 <link rel="stylesheet" href="../../css/base/variables.css">
-
 <link rel="stylesheet" href="../../css/base/reset.css">
-
 <link rel="stylesheet" href="../../css/base/typography.css">
-
 <link rel="stylesheet" href="../../css/utilities/utilities.css">
 
-
-
-
-
-<!-- LAYOUT -->
-
-<link rel="stylesheet" href="../../css/layout/header.css">
-
-<link rel="stylesheet" href="../../css/layout/footer.css">
-
-
-
-
-
-<!-- COMPONENT -->
-
-<link rel="stylesheet" href="../../css/components/buttons.css">
-
-<link rel="stylesheet" href="../../css/components/cards.css">
-
-
-
-
-
-<!-- PAGE -->
-
+<!-- PAGE CSS -->
 <link rel="stylesheet" href="../../css/pages/product-details.css">
 
-
 </head>
-
-
-
 
 <body>
 
 
+<!-- ================= TOP STRIP ================= -->
 
+<div class="product-top-strip">
 
+    <div class="pd-container">
 
-<!-- HEADER -->
+        <span>
+            Welcome to <strong>Taqdeer Fashion</strong>
+        </span>
 
-<!-- HEADER -->
+        <span>
+            <i data-lucide="truck"></i>
+            Free Delivery on orders over ৳999
+        </span>
 
-<header class="header">
+        <span>
+            <i data-lucide="refresh-cw"></i>
+            Easy Returns & Exchanges
+        </span>
 
-<div class="container">
+        <span>
+            <i data-lucide="banknote"></i>
+            Cash on Delivery Available
+        </span>
 
-<div class="header-wrapper">
+        <span>
+            <i data-lucide="phone"></i>
+            +880 9613 111333
+        </span>
 
-
-<a href="../../index.html" class="logo">
-
-<img src="../../assets/logos/logo.png" alt="Taqdeer Fashion">
-
-<div class="logo-text">
-
-<h2 class="logo-title">
-TAQDEER
-</h2>
-
-<span class="logo-subtitle">
-FASHION
-</span>
-
-</div>
-
-</a>
-
-
-
-<nav class="navbar">
-
-<ul class="nav-menu">
-
-<li>
-<a href="../../index.html">
-Home
-</a>
-</li>
-
-<li>
-<a href="../shop/index.html">
-Shop
-</a>
-</li>
-
-<li>
-<a href="../shop/index.html?category=shirt">
-Shirt
-</a>
-</li>
-
-<li>
-<a href="../shop/index.html?category=tshirt">
-T-Shirt
-</a>
-</li>
-
-<li>
-<a href="../shop/index.html?category=panjabi">
-Panjabi
-</a>
-</li>
-
-</ul>
-
-</nav>
-
-
-
-<div class="header-right">
-
-<button class="nav-icon search-btn">
-<i data-lucide="search"></i>
-</button>
-
-<a href="../wishlist/index.html" class="nav-icon">
-<i data-lucide="heart"></i>
-<span class="badge">0</span>
-</a>
-
-<a href="../cart/index.html" class="nav-icon">
-<i data-lucide="shopping-cart"></i>
-<span class="badge">0</span>
-</a>
-
-<a href="../account/index.html" class="login-btn">
-<i data-lucide="user"></i>
-<span>Account</span>
-</a>
+    </div>
 
 </div>
 
 
-</div>
 
-</div>
+
+
+<!-- ================= HEADER ================= -->
+
+<header class="product-header">
+
+    <div class="pd-container">
+
+        <div class="product-header-inner">
+
+
+            <a href="../../index.html" class="taqdeer-text-logo" aria-label="Taqdeer Fashion">
+                <span class="logo-main">TAQDEER</span>
+                <span class="logo-sub">FASHION</span>
+            </a>
+
+
+            <nav class="product-nav">
+
+                <a href="../../index.html">Home</a>
+
+                <a href="../shop/index.html">Shop</a>
+
+                <a href="../shop/index.html?category=panjabi">Panjabi</a>
+
+                <a href="../shop/index.html?category=shirt">Shirts</a>
+
+                <a href="../shop/index.html?category=t-shirt">T-Shirts</a>
+
+                <a href="../shop/index.html?category=polo">Polo</a>
+
+                <a href="../shop/index.html?category=drop-shoulder">Drop Shoulder</a>
+
+                <a href="../orders/index.html">Track Order</a>
+
+            </nav>
+
+
+            <form class="product-search">
+
+                <input type="text" placeholder="Search products...">
+
+                <button type="button" aria-label="Search">
+                    <i data-lucide="search"></i>
+                </button>
+
+            </form>
+
+
+            <div class="product-header-actions">
+
+                <a href="../auth/login.html" class="header-icon account-btn" aria-label="Account">
+                    <i data-lucide="user"></i>
+                </a>
+
+                <a href="../wishlist/index.html" class="header-icon wishlist-header-btn" aria-label="Wishlist">
+                    <i data-lucide="heart"></i>
+                    <span class="wishlist-count badge">0</span>
+                </a>
+
+                <a href="../cart/index.html" class="header-icon cart-btn" aria-label="Cart">
+                    <i data-lucide="shopping-bag"></i>
+                    <span class="cart-count badge">0</span>
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </header>
 
@@ -188,574 +143,593 @@ Panjabi
 
 
 
+<!-- ================= SEARCH MODAL ================= -->
+
+<div class="search-modal">
+
+    <button type="button" class="search-close" aria-label="Close search">
+        ×
+    </button>
+
+    <div class="search-box">
+        <input type="text" placeholder="Search products...">
+    </div>
+
+</div>
 
 
 
+
+
+<!-- ================= CART DRAWER ================= -->
+
+<div class="cart-drawer">
+
+    <div class="cart-drawer-head">
+
+        <h3>Shopping Cart</h3>
+
+        <button type="button" class="cart-close" aria-label="Close cart">
+            ×
+        </button>
+
+    </div>
+
+    <div class="cart-drawer-items"></div>
+
+</div>
+
+
+
+
+
+<!-- ================= PRODUCT DETAILS ================= -->
 
 <main>
 
+<section class="product-details-page">
 
+    <div class="pd-container">
 
 
+        <div class="product-details-grid">
 
-<section class="product-details-section">
 
+            <!-- LEFT SIDE -->
 
-<div class="container">
+            <div class="product-left-side">
 
 
+                <div class="product-gallery-card">
 
+                    <span class="sale-badge" id="product-discount-badge">
+                        SALE
+                    </span>
 
 
-<div class="product-details-layout">
+                    <div class="gallery-actions">
 
+                        <button type="button" class="gallery-action-btn wishlist-product-btn" aria-label="Add to wishlist">
+                            <i data-lucide="heart"></i>
+                        </button>
 
+                        <button type="button" class="gallery-action-btn" aria-label="Share product">
+                            <i data-lucide="share-2"></i>
+                        </button>
 
+                    </div>
 
 
+                    <button type="button" class="gallery-arrow left" aria-label="Previous image">
+                        <i data-lucide="chevron-left"></i>
+                    </button>
 
 
+                    <div class="main-product-image-wrap">
 
-<!-- ==========================
-        PRODUCT GALLERY
-========================== -->
+                        <img
+                            id="main-product-image"
+                            src="../../assets/placeholders/product.jpg"
+                            alt="Product">
 
+                    </div>
 
-<div class="product-gallery">
 
+                    <button type="button" class="gallery-arrow right" aria-label="Next image">
+                        <i data-lucide="chevron-right"></i>
+                    </button>
 
 
+                    <div class="product-thumbnails" id="product-thumbnails">
 
+                        <button type="button" class="product-thumb active">
+                            <img src="../../assets/placeholders/product.jpg" alt="Product thumbnail">
+                        </button>
 
-<div class="main-product-image">
+                    </div>
 
-
-<img id="main-product-image" src="../../assets/placeholders/product.jpg" alt="Product">
-
-
-</div>
-
-
-
-
-
-
-
-<div class="product-thumbnails"
-id="productThumbnails">
-
-
-
-</div>
-
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<!-- ==========================
-        PRODUCT INFO
-========================== -->
-
-
-<div class="product-details-info">
-
-
-
-
-
-<span 
-class="product-category"
-id="productCategory">
-
-Category
-
-</span>
-
-
-
-
-
-
-
-<h1 id="productName">
-
-Product Name
-
-</h1>
-
-
-
-
-
-
-
-<div class="product-rating">
-
-
-<span>
-
-★ ★ ★ ★ ★
-
-</span>
-
-
-<span id="productRating">
-
-4.8
-
-</span>
-
-
-</div>
-
-
-
-
-
-
-
-
-<div class="product-price">
-
-
-
-<h2 id="productPrice">
-
-৳0
-
-</h2>
-
-
-
-<span id="productOldPrice">
-
-</span>
-
-
-
-</div>
-
-
-
-
-
-
-
-<p 
-class="product-description"
-id="productDescription">
-
-
-Product description
-
-
-</p>
-
-
-
-
-
-
-
-
-<!-- SIZE -->
-
-<div class="product-option">
-
-
-<h4>
-
-Select Size
-
-</h4>
-
-
-
-<div class="size-options">
-
-
-<button>
-
-S
-
-</button>
-
-
-<button>
-
-M
-
-</button>
-
-
-<button>
-
-L
-
-</button>
-
-
-<button>
-
-XL
-
-</button>
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<!-- QUANTITY -->
-
-<div class="quantity-box">
-
-
-<button id="qtyMinus">
-
--
-
-
-</button>
-
-
-
-<input 
-id="quantity"
-value="1"
-readonly>
-
-
-
-<button id="qtyPlus">
-
-+
-
-</button>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-<!-- ACTION -->
-
-<div class="product-actions">
-
-
-<button 
-class="add-cart-btn"
-id="addToCartBtn">
-
-
-Add To Cart
-
-
-</button>
-
-
-
-
-
-<button 
-class="buy-now-btn"
-id="buyNowBtn">
-
-
-Buy Now
-
-
-</button>
-
-
-
-</div>
-
-
-
-
-
-
-    <!-- DESCRIPTION BOX -->
-
-    <div class="product-info-box">
-
-        <div class="info-box-head">
-
-            <h3>Product Description</h3>
-
-            <span>Premium details</span>
-
-        </div>
-
-
-        <p class="product-description-text" id="product-description-text">
-            This premium casual shirt is designed for everyday comfort and modern styling.
-            Made with soft breathable fabric, it gives a clean structured look while keeping
-            you comfortable throughout the day. Perfect for casual wear, outings and smart
-            everyday fashion.
-        </p>
-
-
-        <ul class="description-points">
-
-            <li>Premium dobby textured fabric</li>
-
-            <li>Breathable cotton-blend comfort</li>
-
-            <li>Structured collar with clean finishing</li>
-
-            <li>Durable button fastening</li>
-
-            <li>Smart casual versatile design</li>
-
-        </ul>
-
-    </div>
-
-
-
-
-
-    <!-- SIZE CHART -->
-
-    <div class="product-info-box">
-
-        <div class="info-box-head">
-
-            <h3>Size Chart</h3>
-
-            <span>Measurements in inch</span>
-
-        </div>
-
-
-        <div class="size-chart-card">
-
-            <div class="size-chart-visual">
-
-                <div class="shirt-outline">
-                    <i data-lucide="shirt"></i>
                 </div>
 
-                <div class="measure-label chest">Chest</div>
-                <div class="measure-label sleeve">Sleeve</div>
-                <div class="measure-label length">Length</div>
+
+
+
+
+                <!-- DETAILS TAB -->
+
+                <div class="product-tabs-card">
+
+                    <div class="product-tabs">
+
+                        <button type="button" class="active" data-tab="details">
+                            Details
+                        </button>
+
+                        <button type="button" data-tab="fabric">
+                            Fabric & Care
+                        </button>
+
+                        <button type="button" data-tab="shipping">
+                            Shipping
+                        </button>
+
+                        <button type="button" data-tab="return">
+                            Return Policy
+                        </button>
+
+                    </div>
+
+
+                    <div class="tab-content active" id="tab-details">
+
+                        <p id="product-description-text">
+                            Product description will appear here.
+                        </p>
+
+                        <div class="tab-points">
+
+                            <div>
+                                <i data-lucide="check-circle"></i>
+                                Premium breathable fabric
+                            </div>
+
+                            <div>
+                                <i data-lucide="check-circle"></i>
+                                Regular fit for everyday comfort
+                            </div>
+
+                            <div>
+                                <i data-lucide="check-circle"></i>
+                                High quality stitching
+                            </div>
+
+                            <div>
+                                <i data-lucide="check-circle"></i>
+                                Smart casual styling
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="tab-content" id="tab-fabric">
+
+                        <p>
+                            Wash gently with mild detergent. Do not bleach. Dry in shade for long-lasting color and fabric quality.
+                        </p>
+
+                        <div class="tab-points">
+
+                            <div>
+                                <i data-lucide="check-circle"></i>
+                                Soft premium fabric
+                            </div>
+
+                            <div>
+                                <i data-lucide="check-circle"></i>
+                                Comfortable all-day wear
+                            </div>
+
+                            <div>
+                                <i data-lucide="check-circle"></i>
+                                Gentle machine wash
+                            </div>
+
+                            <div>
+                                <i data-lucide="check-circle"></i>
+                                Iron at low temperature
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="tab-content" id="tab-shipping">
+
+                        <p>
+                            Delivery usually takes 2-5 business days depending on your location.
+                        </p>
+
+                        <div class="tab-points">
+
+                            <div>
+                                <i data-lucide="check-circle"></i>
+                                Cash on Delivery available
+                            </div>
+
+                            <div>
+                                <i data-lucide="check-circle"></i>
+                                Fast delivery support
+                            </div>
+
+                            <div>
+                                <i data-lucide="check-circle"></i>
+                                Secure packaging
+                            </div>
+
+                            <div>
+                                <i data-lucide="check-circle"></i>
+                                Delivery tracking available
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="tab-content" id="tab-return">
+
+                        <p>
+                            Return or exchange is available within 7 days if the product is unused and in original condition.
+                        </p>
+
+                        <div class="tab-points">
+
+                            <div>
+                                <i data-lucide="check-circle"></i>
+                                7 days easy return
+                            </div>
+
+                            <div>
+                                <i data-lucide="check-circle"></i>
+                                Original packaging required
+                            </div>
+
+                            <div>
+                                <i data-lucide="check-circle"></i>
+                                Product must be unused
+                            </div>
+
+                            <div>
+                                <i data-lucide="check-circle"></i>
+                                Exchange support available
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
 
             </div>
 
 
-            <div class="size-table-wrap">
 
-                <table class="size-chart-table">
 
-                    <thead>
 
-                        <tr>
-                            <th>Size</th>
-                            <th>S</th>
-                            <th>M</th>
-                            <th>L</th>
-                            <th>XL</th>
-                            <th>XXL</th>
-                        </tr>
+            <!-- RIGHT SIDE -->
 
-                    </thead>
+            <div class="product-content-card">
 
-                    <tbody>
 
-                        <tr>
-                            <td>Chest</td>
-                            <td>38</td>
-                            <td>40</td>
-                            <td>42</td>
-                            <td>44</td>
-                            <td>46</td>
-                        </tr>
+                <div class="product-breadcrumb">
 
-                        <tr>
-                            <td>Sleeve</td>
-                            <td>23</td>
-                            <td>24</td>
-                            <td>24</td>
-                            <td>25</td>
-                            <td>26</td>
-                        </tr>
+                    <a href="../../index.html">Home</a>
 
-                        <tr>
-                            <td>Length</td>
-                            <td>27</td>
-                            <td>28</td>
-                            <td>29</td>
-                            <td>30</td>
-                            <td>31</td>
-                        </tr>
+                    <i data-lucide="chevron-right"></i>
 
-                    </tbody>
+                    <a href="../shop/index.html">Shop</a>
 
-                </table>
+                    <i data-lucide="chevron-right"></i>
+
+                    <span id="breadcrumb-category">Product</span>
+
+                </div>
+
+
+                <div class="product-title-row">
+
+                    <h1 id="product-title" class="product-name">
+                        Product Name
+                    </h1>
+
+                    <span class="verified-badge">
+                        <i data-lucide="check"></i>
+                        Verified
+                    </span>
+
+                </div>
+
+
+                <div class="product-rating-row">
+
+                    <div class="rating-stars">
+                        ★★★★★
+                    </div>
+
+                    <span id="product-rating">4.8</span>
+
+                    <span class="divider"></span>
+
+                    <span id="product-sold">Sold 256+</span>
+
+                </div>
+
+
+                <div class="product-price-row">
+
+                    <strong id="product-price">
+                        ৳0
+                    </strong>
+
+                    <del id="product-old-price">
+                        ৳0
+                    </del>
+
+                    <span id="product-offer-badge">
+                        25% OFF
+                    </span>
+
+                </div>
+
+
+                <p class="product-short-description" id="product-short-description">
+                    Premium quality fashion product for everyday comfort and style.
+                </p>
+
+
+                <div class="product-service-strip">
+
+                    <div>
+                        <i data-lucide="shield-check"></i>
+                        <span>100% Premium<br>Quality Fabric</span>
+                    </div>
+
+                    <div>
+                        <i data-lucide="refresh-cw"></i>
+                        <span>7 Days Easy<br>Return</span>
+                    </div>
+
+                    <div>
+                        <i data-lucide="banknote"></i>
+                        <span>Cash on<br>Delivery</span>
+                    </div>
+
+                    <div>
+                        <i data-lucide="truck"></i>
+                        <span>Free Delivery On<br>orders over ৳999</span>
+                    </div>
+
+                </div>
+
+
+                <div class="product-option-row" id="color-section">
+
+                    <label>Color:</label>
+
+                    <div class="color-pill-list" id="color-variant-list"></div>
+
+                </div>
+
+
+                <div class="product-option-row">
+
+                    <label>Size:</label>
+
+                    <button type="button" class="size-chart-open">
+                        <i data-lucide="ruler"></i>
+                        Size Chart
+                    </button>
+
+                </div>
+
+
+                <div class="size-options">
+
+                    <button type="button">S</button>
+
+                    <button type="button" class="active">M</button>
+
+                    <button type="button">L</button>
+
+                    <button type="button">XL</button>
+
+                    <button type="button">XXL</button>
+
+                </div>
+
+
+                <div class="quantity-row">
+
+                    <label>Quantity:</label>
+
+                    <div class="quantity-box">
+
+                        <button type="button" id="qty-minus">−</button>
+
+                        <span id="product-qty">1</span>
+
+                        <button type="button" id="qty-plus">+</button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="product-action-row">
+
+                    <button type="button" class="details-add-cart-btn" id="add-to-cart-btn">
+
+                        <i data-lucide="shopping-cart"></i>
+
+                        Add to Cart
+
+                    </button>
+
+                    <button type="button" class="details-buy-now-btn" id="buy-now-btn">
+                        Buy Now
+                    </button>
+
+                </div>
+
+
+                <div class="stock-alert-row">
+
+                    <span class="stock-dot"></span>
+
+                    <strong>In Stock</strong>
+
+                    <em></em>
+
+                    <p id="stock-warning">
+                        Only few items left!
+                    </p>
+
+                </div>
+
+
+                <div class="size-chart-panel" id="size-chart-panel">
+
+                    <div class="size-chart-header">
+
+                        <h3>
+                            <i data-lucide="clipboard-list"></i>
+                            Size Chart
+                        </h3>
+
+                    </div>
+
+
+                    <div class="size-chart-content">
+
+                        <div class="size-chart-visual">
+
+                            <div class="shirt-diagram">
+
+                                <i data-lucide="shirt"></i>
+
+                                <span class="line chest-line">Chest</span>
+
+                                <span class="line sleeve-line">Sleeve</span>
+
+                                <span class="line length-line">Length</span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="size-table-wrap">
+
+                            <h4 id="size-chart-title">Full Sleeve Shirt Size Chart (Inch)</h4>
+
+                            <table class="size-chart-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Size</th>
+                                        <th>Chest</th>
+                                        <th>Sleeve</th>
+                                        <th>Length</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="size-chart-body">
+
+                                    <tr>
+                                        <td>S</td>
+                                        <td>38</td>
+                                        <td>23</td>
+                                        <td>27</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>M</td>
+                                        <td>40</td>
+                                        <td>24</td>
+                                        <td>28</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>L</td>
+                                        <td>42</td>
+                                        <td>24</td>
+                                        <td>29</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>XL</td>
+                                        <td>44</td>
+                                        <td>25</td>
+                                        <td>30</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>XXL</td>
+                                        <td>46</td>
+                                        <td>26</td>
+                                        <td>31</td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                            <p>
+                                All measurements are in inches. Please allow 1-2 inch variation.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
 
             </div>
 
         </div>
 
+
+        <section class="related-products-section">
+
+            <span>You may also like</span>
+
+            <h2>Related Products</h2>
+
+            <div class="related-products-grid" id="related-products"></div>
+
+        </section>
+
     </div>
 
-
-</div>
-
-
-
-
-
-
-
-<div class="product-meta">
-
-
-<p>
-
-🚚 Fast Delivery Available
-
-</p>
-
-
-<p>
-
-🔒 Secure Payment
-
-</p>
-
-
-<p>
-
-↩ Easy Return Policy
-
-</p>
-
-
-
-</div>
-
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-</div>
-
-
-
-
-
-
-</div>
-
-
 </section>
 
 
 
 
 
+<!-- ================= LIGHTBOX ================= -->
 
+<div class="product-lightbox" id="product-lightbox">
 
+    <button type="button" class="lightbox-close" id="lightbox-close">
+        ×
+    </button>
 
-
-<!-- ==========================
-        RELATED PRODUCTS
-========================== -->
-
-
-<section class="related-products">
-
-
-<div class="container">
-
-
-
-<div class="section-title">
-
-
-<span>
-
-YOU MAY ALSO LIKE
-
-</span>
-
-
-
-<h2>
-
-Related Products
-
-</h2>
-
-
+    <img id="lightbox-image" src="" alt="Product Preview">
 
 </div>
-
-
-
-
-
-<div 
-class="product-grid"
-id="relatedProducts">
-
-
-</div>
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
 
 </main>
 
@@ -763,18 +737,13 @@ id="relatedProducts">
 
 
 
-
-
-
-
-
-<!-- FOOTER -->
-
+<!-- ================= FOOTER ================= -->
 
 <footer class="footer">
 
-
-<!-- footer component -->
+    <div class="pd-container">
+        <p>© 2026 Taqdeer Fashion. All Rights Reserved.</p>
+    </div>
 
 </footer>
 
@@ -782,19 +751,9 @@ id="relatedProducts">
 
 
 
-
+<!-- ================= SCRIPTS ================= -->
 
 <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
-
-<script>
-document.addEventListener("DOMContentLoaded",()=>{
-    if(window.lucide){
-        lucide.createIcons();
-    }
-});
-</script>
-<!-- FIREBASE -->
-
 
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
@@ -808,10 +767,17 @@ document.addEventListener("DOMContentLoaded",()=>{
 <script src="../../js/components/header.js"></script>
 <script src="../../js/pages/product-details.js"></script>
 
+<script>
 
+document.addEventListener("DOMContentLoaded",()=>{
 
+    if(window.lucide){
+        lucide.createIcons();
+    }
 
+});
+
+</script>
 
 </body>
-
 </html>

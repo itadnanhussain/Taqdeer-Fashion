@@ -1,679 +1,164 @@
 /*=========================================================
             TAQDEER FASHION
-            PRODUCT DETAILS SYSTEM
-            v2.0 FINAL
+            PRODUCT DETAILS PAGE FINAL JS
 =========================================================*/
-
 
 "use strict";
 
-
-
-document.addEventListener(
-"DOMContentLoaded",
-()=>{
+document.addEventListener("DOMContentLoaded",()=>{
 
 
 
 
 
-const params =
-new URLSearchParams(
-window.location.search
-);
+/*=========================================================
+        DOM
+=========================================================*/
+
+const mainImage =
+document.getElementById("main-product-image");
+
+const thumbnails =
+document.getElementById("product-thumbnails");
+
+const productTitle =
+document.getElementById("product-title");
+
+const productPrice =
+document.getElementById("product-price");
+
+const productOldPrice =
+document.getElementById("product-old-price");
+
+const productOfferBadge =
+document.getElementById("product-offer-badge");
+
+const productDiscountBadge =
+document.getElementById("product-discount-badge");
+
+const productRating =
+document.getElementById("product-rating");
+
+const productSold =
+document.getElementById("product-sold");
+
+const breadcrumbCategory =
+document.getElementById("breadcrumb-category");
+
+const shortDescription =
+document.getElementById("product-short-description");
+
+const descriptionText =
+document.getElementById("product-description-text");
+
+const colorSection =
+document.getElementById("color-section");
+
+const colorList =
+document.getElementById("color-variant-list");
+
+const qtyMinus =
+document.getElementById("qty-minus");
+
+const qtyPlus =
+document.getElementById("qty-plus");
+
+const qtyText =
+document.getElementById("product-qty");
+
+const addToCartBtn =
+document.getElementById("add-to-cart-btn");
+
+const buyNowBtn =
+document.getElementById("buy-now-btn");
+
+const stockWarning =
+document.getElementById("stock-warning");
+
+const relatedProducts =
+document.getElementById("related-products");
+
+const lightbox =
+document.getElementById("product-lightbox");
+
+const lightboxImage =
+document.getElementById("lightbox-image");
+
+const lightboxClose =
+document.getElementById("lightbox-close");
+
+const sizeChartOpen =
+document.querySelector(".size-chart-open");
+
+const sizeChartPanel =
+document.getElementById("size-chart-panel");
+
+const sizeChartClose =
+document.querySelector(".size-chart-close");
+
+const tabButtons =
+document.querySelectorAll(".product-tabs button");
+
+const tabContents =
+document.querySelectorAll(".tab-content");
 
 
 
-const productId =
-params.get("id");
 
 
+/*=========================================================
+        STATE
+=========================================================*/
 
+let currentProduct = null;
 
+let selectedSize = "M";
 
-let product = null;
+let selectedColor = "";
+
+let selectedImage = "";
 
 let quantity = 1;
 
-let selectedSize = "";
-
-
-
-
 
 
 
 
 /*=========================================================
-                LOAD PRODUCT
+        HELPERS
 =========================================================*/
 
+function getProductId(){
 
-async function loadProduct(){
+    const params =
+    new URLSearchParams(window.location.search);
 
-
-
-try{
-
-
-
-if(!productId)
-return;
-
-
-
-
-product =
-
-await window.productService
-.getProductById(productId);
-
-
-
-
-
-if(!product){
-
-console.log(
-"Product Not Found"
-);
-
-return;
+    return params.get("id");
 
 }
 
 
 
+function money(value){
 
-
-
-
-document.getElementById(
-"productName"
-).innerText =
-product.name;
-
-
-
-
-
-document.getElementById(
-"productCategory"
-).innerText =
-product.category;
-
-
-
-
-
-
-document.getElementById(
-"productPrice"
-).innerText =
-"৳" + product.price;
-
-
-
-
-
-document.getElementById(
-"productDescription"
-).innerText =
-product.description || "";
-
-
-
-
-
-
-
-
-const mainImage =
-
-document.getElementById(
-"mainProductImage"
-);
-
-
-
-
-
-mainImage.src =
-
-product.image;
-
-
-
-
-
-
-
-
-
-loadGallery();
-
-loadRelatedProducts();
-
-
-
+    return "৳" + Number(value || 0).toLocaleString();
 
 }
 
 
 
-catch(error){
+function fallbackImage(){
 
-
-console.error(
-"Product Details Error:",
-error
-);
-
-
+    return "../../assets/placeholders/product.jpg";
 
 }
 
 
 
-}
-
-
-
-
-
-
-
-
-
-/*=========================================================
-                IMAGE GALLERY
-=========================================================*/
-
-
-function loadGallery(){
-
-
-
-const container =
-
-document.getElementById(
-"productThumbnails"
-);
-
-
-
-
-if(!container)
-return;
-
-
-
-
-
-
-let images =
-
-product.images || [
-
-product.image
-
-];
-
-
-
-
-
-
-container.innerHTML="";
-
-
-
-
-
-
-images.forEach(
-(image,index)=>{
-
-
-
-const thumb =
-
-document.createElement(
-"div"
-);
-
-
-
-thumb.className =
-
-"product-thumbnail";
-
-
-
-if(index===0)
-
-thumb.classList.add(
-"active"
-);
-
-
-
-
-
-
-
-thumb.innerHTML=`
-
-<img src="${image}">
-
-`;
-
-
-
-
-
-
-
-thumb.onclick=()=>{
-
-
-
-document.getElementById(
-"mainProductImage"
-).src=image;
-
-
-
-
-
-document
-.querySelectorAll(
-".product-thumbnail"
-)
-.forEach(
-item=>
-
-item.classList.remove(
-"active"
-)
-
-);
-
-
-
-
-
-thumb.classList.add(
-"active"
-);
-
-
-
-};
-
-
-
-
-
-
-
-container.appendChild(
-thumb
-);
-
-
-
-});
-
-
-}
-
-
-
-
-
-
-
-
-
-/*=========================================================
-                SIZE SELECT
-=========================================================*/
-
-
-document
-.querySelectorAll(
-".size-options button"
-)
-.forEach(
-button=>{
-
-
-
-button.addEventListener(
-"click",
-()=>{
-
-
-document
-.querySelectorAll(
-".size-options button"
-)
-.forEach(
-btn=>
-
-btn.classList.remove(
-"active"
-)
-
-);
-
-
-
-
-
-button.classList.add(
-"active"
-);
-
-
-
-
-selectedSize =
-button.innerText;
-
-
-
-});
-
-
-});
-
-
-
-
-
-
-
-
-
-/*=========================================================
-                QUANTITY
-=========================================================*/
-
-
-const qtyInput =
-
-document.getElementById(
-"quantity"
-);
-
-
-
-
-document
-.getElementById(
-"qtyPlus"
-)
-?.addEventListener(
-"click",
-()=>{
-
-
-quantity++;
-
-
-qtyInput.value =
-quantity;
-
-
-});
-
-
-
-
-
-
-
-document
-.getElementById(
-"qtyMinus"
-)
-?.addEventListener(
-"click",
-()=>{
-
-
-if(quantity>1){
-
-
-quantity--;
-
-
-qtyInput.value =
-quantity;
-
-
-}
-
-
-});
-
-
-
-
-
-
-
-
-
-/*=========================================================
-                ADD CART
-=========================================================*/
-
-
-document
-.getElementById(
-"addToCartBtn"
-)
-?.addEventListener(
-"click",
-()=>{
-
-
-
-if(window.cartService){
-
-
-
-window.cartService.addToCart({
-
-...product,
-
-quantity,
-
-size:selectedSize
-
-
-});
-
-
-}
-
-
-
-});
-
-
-
-
-
-
-
-
-
-/*=========================================================
-                BUY NOW
-=========================================================*/
-
-
-document
-.getElementById(
-"buyNowBtn"
-)
-?.addEventListener(
-"click",
-()=>{
-
-
-if(window.cartService){
-
-
-window.cartService.addToCart({
-
-...product,
-
-quantity,
-
-size:selectedSize
-
-
-});
-
-
-}
-
-
-
-window.location.href =
-
-"../checkout/index.html";
-
-
-
-});
-
-
-
-
-
-
-
-
-
-/*=========================================================
-                RELATED PRODUCTS
-=========================================================*/
-
-
-async function loadRelatedProducts(){
-
-
-
-const container =
-
-document.getElementById(
-"relatedProducts"
-);
-
-
-
-if(!container)
-return;
-
-
-
-
-
-const products =
-
-await window.productService
-.getProductsByCategory(
-product.category
-);
-
-
-
-
-
-const related =
-
-products
-.filter(
-item=>
-
-item.id !== product.id
-
-)
-.slice(0,4);
-
-
-
-
-
-
-window.productCard.renderProducts(
-
-container,
-
-related
-
-);
-
-
-
-}
-
-
-
-
-
-
-
-
-
-loadProduct();
-
-
-
-
-
-});
-/*=========================================================
-        PRODUCT COLOR VARIANT ACTIVE
-=========================================================*/
-
-document.addEventListener("click",(e)=>{
-
-    const variant =
-    e.target.closest(".color-variant");
-
-    if(!variant){
-        return;
-    }
-
-    document
-    .querySelectorAll(".color-variant")
-    .forEach(btn=>{
-
-        btn.classList.remove("active");
-
-    });
-
-    variant.classList.add("active");
-
-});
-/*=========================================================
-        PRODUCT DETAILS DYNAMIC EXTRA SECTIONS
-=========================================================*/
-
-function getProductImagePath(path){
-
-    const fallback =
-    "../../assets/placeholders/product.jpg";
+function getImagePath(path){
 
     if(!path){
-        return fallback;
+        return fallbackImage();
     }
 
     if(
@@ -689,34 +174,58 @@ function getProductImagePath(path){
         return "../../" + path;
     }
 
-    return fallback;
+    return fallbackImage();
 
 }
 
 
 
+function setImage(element,path){
+
+    if(!element){
+        return;
+    }
+
+    element.src =
+    getImagePath(path);
+
+    element.onerror = function(){
+
+        this.onerror = null;
+
+        this.src =
+        fallbackImage();
+
+    };
+
+}
 
 
-function getColorDot(color){
+
+function getColorHex(color){
 
     const map = {
-        blue:"#88a9c9",
+        blue:"#8ab6d6",
         black:"#111111",
         maroon:"#6f1d2d",
+        red:"#dc2626",
         white:"#ffffff",
-        red:"#b91c1c",
+        cream:"#eadfc8",
+        brown:"#7c4a2d",
         green:"#3f6b46",
+        olive:"#6b705c",
         navy:"#172554",
         grey:"#9ca3af",
         gray:"#9ca3af",
-        cream:"#eadfc8",
-        brown:"#7c4a2d"
+        sky:"#93c5fd",
+        "sky blue":"#93c5fd",
+        "sky blue & white":"#93c5fd"
     };
 
     const key =
     String(color || "")
-    .toLowerCase()
-    .trim();
+    .trim()
+    .toLowerCase();
 
     return map[key] || "#2f3a45";
 
@@ -724,63 +233,394 @@ function getColorDot(color){
 
 
 
+function calculateOffer(price,oldPrice){
 
+    price =
+    Number(price || 0);
 
-function renderProductColors(product){
+    oldPrice =
+    Number(oldPrice || 0);
 
-    const section =
-    document.getElementById("color-section");
-
-    const list =
-    document.getElementById("color-variant-list");
-
-    if(!section || !list){
-        return;
+    if(!oldPrice || oldPrice <= price){
+        return 0;
     }
 
+    return Math.round(
+        ((oldPrice - price) / oldPrice) * 100
+    );
 
-    const colors =
-    product.colors ||
-    product.variants ||
-    product.colorVariants ||
-    [];
+}
 
 
-    if(!Array.isArray(colors) || colors.length === 0){
 
-        section.style.display = "none";
+function normalizeImages(product){
 
-        return;
+    const images = [];
+
+    if(product.image){
+        images.push(product.image);
+    }
+
+    if(Array.isArray(product.images)){
+
+        product.images.forEach(img=>{
+
+            if(img && !images.includes(img)){
+                images.push(img);
+            }
+
+        });
 
     }
 
+    if(Array.isArray(product.gallery)){
 
-    section.style.display = "block";
+        product.gallery.forEach(img=>{
 
-    list.innerHTML = "";
+            if(img && !images.includes(img)){
+                images.push(img);
+            }
+
+        });
+
+    }
+
+    if(Array.isArray(product.colors)){
+
+        product.colors.forEach(color=>{
+
+            const img =
+            color.image ||
+            color.photo ||
+            color.imageUrl;
+
+            if(img && !images.includes(img)){
+                images.push(img);
+            }
+
+        });
+
+    }
+
+    return images.length
+    ?
+    images
+    :
+    [fallbackImage()];
+
+}
 
 
-    colors.forEach((item,index)=>{
 
-        const colorName =
-        item.name ||
-        item.color ||
-        item.title ||
-        `Color ${index + 1}`;
 
-        const image =
-        getProductImagePath(
-            item.image ||
-            item.photo ||
-            item.imageUrl ||
-            product.image
+
+/*=========================================================
+        DEMO PRODUCT FALLBACK
+=========================================================*/
+
+function getDemoProducts(){
+
+    return [
+        {
+            id:"demo-shirt",
+            name:"Mens Premium Casual Shirt – Novellise",
+            category:"Shirt",
+            price:1090,
+            oldPrice:1390,
+            rating:4.8,
+            sold:256,
+            stock:8,
+            image:"assets/categories/shirt.jpeg",
+            images:[
+                "assets/categories/shirt.jpeg",
+                "assets/categories/polo.jpeg",
+                "assets/categories/panjabi.jpeg"
+            ],
+            description:"Premium dobby textured fabric with breathable cotton-blend comfort. Designed with structured collar, durable button fastening and smart casual versatile styling for everyday use.",
+            shortDescription:"Premium quality casual shirt for everyday comfort and smart modern style.",
+            colors:[
+                {
+                    name:"Blue",
+                    hex:"#8ab6d6",
+                    image:"assets/categories/shirt.jpeg"
+                },
+                {
+                    name:"Black",
+                    hex:"#111111",
+                    image:"assets/placeholders/product.jpg"
+                },
+                {
+                    name:"Maroon",
+                    hex:"#6f1d2d",
+                    image:"assets/categories/panjabi.jpeg"
+                }
+            ]
+        },
+        {
+            id:"demo-polo",
+            name:"Premium Designer Edition Double PK Cotton Polo – Marine",
+            category:"Polo",
+            price:1140,
+            oldPrice:1450,
+            rating:4.8,
+            sold:190,
+            stock:12,
+            image:"assets/categories/polo.jpeg",
+            description:"Premium polo shirt with soft cotton texture, clean collar finishing and comfortable fit.",
+            shortDescription:"Premium polo shirt for smart casual styling.",
+            colors:[]
+        }
+    ];
+
+}
+
+
+
+
+
+/*=========================================================
+        LOAD PRODUCT
+=========================================================*/
+
+async function loadProduct(){
+
+    const productId =
+    getProductId();
+
+    let product = null;
+
+
+    try{
+
+        if(window.db && productId){
+
+            const doc =
+            await window.db
+            .collection("products")
+            .doc(productId)
+            .get();
+
+            if(doc.exists){
+
+                product = {
+                    id:doc.id,
+                    ...doc.data()
+                };
+
+            }
+
+        }
+
+    }
+
+    catch(error){
+
+        console.error(
+            "Product Firestore Load Error:",
+            error
         );
 
-        const dot =
-        item.hex ||
-        item.colorCode ||
-        getColorDot(colorName);
+    }
 
+
+    if(!product){
+
+        const demos =
+        getDemoProducts();
+
+        product =
+        demos.find(item=>item.id === productId) ||
+        demos[0];
+
+    }
+
+
+    currentProduct =
+    product;
+
+    renderProduct(product);
+
+}
+
+
+
+
+
+/*=========================================================
+        RENDER PRODUCT
+=========================================================*/
+
+function renderProduct(product){
+
+    const title =
+    product.name ||
+    product.title ||
+    "Product Name";
+
+    const category =
+    product.category ||
+    "Product";
+
+    const price =
+    Number(product.price || 0);
+
+    const oldPrice =
+    Number(product.oldPrice || product.comparePrice || product.regularPrice || 0);
+
+    const offer =
+    product.discount ||
+    calculateOffer(price,oldPrice);
+
+    const rating =
+    product.rating || 4.8;
+
+    const sold =
+    product.sold || product.soldCount || 256;
+
+    const stock =
+    Number(product.stock || product.quantity || 0);
+
+    const images =
+    normalizeImages(product);
+
+
+    selectedImage =
+    images[0];
+
+
+    if(productTitle){
+        productTitle.innerText = title;
+    }
+
+    if(breadcrumbCategory){
+        breadcrumbCategory.innerText = category;
+    }
+
+    if(productPrice){
+        productPrice.innerText = money(price);
+    }
+
+    if(productOldPrice){
+
+        if(oldPrice && oldPrice > price){
+
+            productOldPrice.style.display = "inline";
+            productOldPrice.innerText = money(oldPrice);
+
+        }
+
+        else{
+
+            productOldPrice.style.display = "none";
+
+        }
+
+    }
+
+    if(productOfferBadge){
+
+        if(offer > 0){
+
+            productOfferBadge.style.display = "flex";
+            productOfferBadge.innerText = `${offer}% OFF`;
+
+        }
+
+        else{
+
+            productOfferBadge.style.display = "none";
+
+        }
+
+    }
+
+    if(productDiscountBadge){
+
+        if(offer > 0){
+
+            productDiscountBadge.style.display = "flex";
+            productDiscountBadge.innerHTML = `SALE<br>-${offer}%`;
+
+        }
+
+        else{
+
+            productDiscountBadge.style.display = "none";
+
+        }
+
+    }
+
+    if(productRating){
+        productRating.innerText = rating;
+    }
+
+    if(productSold){
+        productSold.innerText = `Sold ${sold}+`;
+    }
+
+    if(stockWarning){
+        stockWarning.innerText =
+        stock > 0
+        ?
+        `Only ${stock} items left!`
+        :
+        "Out of stock";
+    }
+
+
+    const short =
+    product.shortDescription ||
+    product.subtitle ||
+    product.description ||
+    "Premium quality fashion product for everyday comfort and style.";
+
+    if(shortDescription){
+        shortDescription.innerText = short;
+    }
+
+    if(descriptionText){
+
+        descriptionText.innerText =
+        product.description ||
+        product.details ||
+        product.longDescription ||
+        "No product description available.";
+
+    }
+
+
+    setImage(mainImage,images[0]);
+
+    renderThumbnails(images);
+
+    renderColors(product);
+
+    renderRelated(product);
+
+    if(window.lucide){
+        lucide.createIcons();
+    }
+
+}
+
+
+
+
+
+/*=========================================================
+        THUMBNAILS
+=========================================================*/
+
+function renderThumbnails(images){
+
+    if(!thumbnails){
+        return;
+    }
+
+    thumbnails.innerHTML = "";
+
+    images.slice(0,4).forEach((img,index)=>{
 
         const button =
         document.createElement("button");
@@ -791,71 +631,32 @@ function renderProductColors(product){
         button.className =
         index === 0
         ?
-        "color-variant active"
+        "product-thumb active"
         :
-        "color-variant";
-
-        button.dataset.image =
-        image;
-
-        button.dataset.color =
-        colorName;
+        "product-thumb";
 
         button.innerHTML = `
-
-            <span class="variant-img">
-                <img src="${image}" alt="${colorName}">
-            </span>
-
-            <span class="variant-color-dot" style="background:${dot};"></span>
-
-            <strong>${colorName}</strong>
-
+            <img src="${getImagePath(img)}" alt="Product">
         `;
 
-        list.appendChild(button);
+        button.addEventListener("click",()=>{
+
+            document
+            .querySelectorAll(".product-thumb")
+            .forEach(item=>item.classList.remove("active"));
+
+            button.classList.add("active");
+
+            selectedImage =
+            img;
+
+            setImage(mainImage,img);
+
+        });
+
+        thumbnails.appendChild(button);
 
     });
-
-}
-
-
-
-
-
-function renderProductDescription(product){
-
-    const section =
-    document.getElementById("description-section");
-
-    const text =
-    document.getElementById("product-description-text");
-
-    if(!section || !text){
-        return;
-    }
-
-
-    const description =
-    product.description ||
-    product.details ||
-    product.longDescription ||
-    "";
-
-
-    if(!description.trim()){
-
-        section.style.display = "none";
-
-        return;
-
-    }
-
-
-    section.style.display = "block";
-
-    text.innerText =
-    description;
 
 }
 
@@ -864,42 +665,417 @@ function renderProductDescription(product){
 
 
 /*=========================================================
-        COLOR CLICK + MAIN IMAGE CHANGE
+        COLOR VARIANTS
 =========================================================*/
 
-document.addEventListener("click",(e)=>{
+function renderColors(product){
 
-    const variant =
-    e.target.closest(".color-variant");
-
-    if(!variant){
+    if(!colorSection || !colorList){
         return;
     }
 
+    const colors =
+    product.colors ||
+    product.variants ||
+    product.colorVariants ||
+    [];
 
-    document
-    .querySelectorAll(".color-variant")
-    .forEach(btn=>{
+    if(!Array.isArray(colors) || colors.length === 0){
 
-        btn.classList.remove("active");
+        colorSection.style.display = "none";
+
+        return;
+
+    }
+
+    colorSection.style.display = "flex";
+
+    colorList.innerHTML = "";
+
+
+    colors.forEach((color,index)=>{
+
+        const colorName =
+        color.name ||
+        color.color ||
+        color.title ||
+        `Color ${index + 1}`;
+
+        const colorHex =
+        color.hex ||
+        color.colorCode ||
+        getColorHex(colorName);
+
+        const colorImage =
+        color.image ||
+        color.photo ||
+        color.imageUrl ||
+        product.image;
+
+        const button =
+        document.createElement("button");
+
+        button.type =
+        "button";
+
+        button.className =
+        index === 0
+        ?
+        "color-pill active"
+        :
+        "color-pill";
+
+        button.dataset.image =
+        colorImage || "";
+
+        button.dataset.color =
+        colorName;
+
+        button.innerHTML = `
+            <img src="${getImagePath(colorImage)}" alt="${colorName}">
+            <span class="color-dot" style="background:${colorHex};"></span>
+            ${colorName}
+        `;
+
+        button.addEventListener("click",()=>{
+
+            document
+            .querySelectorAll(".color-pill")
+            .forEach(item=>item.classList.remove("active"));
+
+            button.classList.add("active");
+
+            selectedColor =
+            colorName;
+
+            if(colorImage){
+
+                selectedImage =
+                colorImage;
+
+                setImage(mainImage,colorImage);
+
+            }
+
+        });
+
+        colorList.appendChild(button);
+
+
+        if(index === 0){
+
+            selectedColor =
+            colorName;
+
+        }
 
     });
 
+}
 
-    variant.classList.add("active");
 
 
-    const image =
-    variant.dataset.image;
 
-    const mainImage =
-    document.getElementById("main-product-image");
 
-    if(image && mainImage){
+/*=========================================================
+        SIZE SELECT
+=========================================================*/
 
-        mainImage.src =
-        image;
+document.querySelectorAll(".size-options button").forEach(button=>{
 
+    button.addEventListener("click",()=>{
+
+        document
+        .querySelectorAll(".size-options button")
+        .forEach(item=>item.classList.remove("active"));
+
+        button.classList.add("active");
+
+        selectedSize =
+        button.innerText.trim();
+
+    });
+
+});
+
+
+
+
+
+/*=========================================================
+        QUANTITY
+=========================================================*/
+
+function updateQuantity(){
+
+    if(qtyText){
+        qtyText.innerText = quantity;
+    }
+
+}
+
+
+if(qtyPlus){
+
+    qtyPlus.addEventListener("click",()=>{
+
+        quantity++;
+
+        updateQuantity();
+
+    });
+
+}
+
+
+if(qtyMinus){
+
+    qtyMinus.addEventListener("click",()=>{
+
+        if(quantity > 1){
+            quantity--;
+        }
+
+        updateQuantity();
+
+    });
+
+}
+
+
+
+
+
+/*=========================================================
+        ADD TO CART / BUY NOW
+=========================================================*/
+
+function buildCartProduct(){
+
+    if(!currentProduct){
+        return null;
+    }
+
+    return {
+        id:currentProduct.id,
+        name:currentProduct.name || currentProduct.title,
+        price:Number(currentProduct.price || 0),
+        image:selectedImage || currentProduct.image,
+        category:currentProduct.category || "Product",
+        size:selectedSize,
+        color:selectedColor,
+        quantity:quantity
+    };
+
+}
+
+
+
+function addProductToCart(){
+
+    const product =
+    buildCartProduct();
+
+    if(!product){
+        return;
+    }
+
+    if(window.CartService && window.CartService.addToCart){
+
+        window.CartService.addToCart(product);
+
+        window.dispatchEvent(
+            new Event("cartUpdated")
+        );
+
+        alert("Product added to cart.");
+
+    }
+
+    else{
+
+        const cart =
+        JSON.parse(
+            localStorage.getItem("taqdeerCart")
+        ) || [];
+
+        const existing =
+        cart.find(item=>
+            item.id === product.id &&
+            item.size === product.size &&
+            item.color === product.color
+        );
+
+        if(existing){
+            existing.quantity += quantity;
+        }
+        else{
+            cart.push(product);
+        }
+
+        localStorage.setItem(
+            "taqdeerCart",
+            JSON.stringify(cart)
+        );
+
+        window.dispatchEvent(
+            new Event("cartUpdated")
+        );
+
+        alert("Product added to cart.");
+
+    }
+
+}
+
+
+if(addToCartBtn){
+
+    addToCartBtn.addEventListener("click",()=>{
+
+        addProductToCart();
+
+    });
+
+}
+
+
+if(buyNowBtn){
+
+    buyNowBtn.addEventListener("click",()=>{
+
+        addProductToCart();
+
+        window.location.href =
+        "../cart/index.html";
+
+    });
+
+}
+
+
+
+
+
+/*=========================================================
+        SIZE CHART
+=========================================================*/
+
+if(sizeChartOpen && sizeChartPanel){
+
+    sizeChartOpen.addEventListener("click",()=>{
+
+        sizeChartPanel.scrollIntoView({
+            behavior:"smooth",
+            block:"center"
+        });
+
+    });
+
+}
+
+
+
+
+
+
+
+
+/*=========================================================
+        TABS
+=========================================================*/
+
+tabButtons.forEach(button=>{
+
+    button.addEventListener("click",()=>{
+
+        const target =
+        button.dataset.tab;
+
+        tabButtons.forEach(btn=>
+            btn.classList.remove("active")
+        );
+
+        tabContents.forEach(content=>
+            content.classList.remove("active")
+        );
+
+        button.classList.add("active");
+
+        const activeContent =
+        document.getElementById(`tab-${target}`);
+
+        if(activeContent){
+            activeContent.classList.add("active");
+        }
+
+    });
+
+});
+
+
+
+
+
+/*=========================================================
+        IMAGE LIGHTBOX
+=========================================================*/
+
+if(mainImage && lightbox && lightboxImage){
+
+    mainImage.addEventListener("click",()=>{
+
+        lightboxImage.src =
+        mainImage.src;
+
+        lightbox.classList.add("active");
+
+        document.body.style.overflow =
+        "hidden";
+
+    });
+
+}
+
+
+function closeLightbox(){
+
+    if(!lightbox){
+        return;
+    }
+
+    lightbox.classList.remove("active");
+
+    document.body.style.overflow =
+    "";
+
+}
+
+
+if(lightboxClose){
+
+    lightboxClose.addEventListener("click",closeLightbox);
+
+}
+
+
+if(lightbox){
+
+    lightbox.addEventListener("click",(e)=>{
+
+        if(e.target === lightbox){
+            closeLightbox();
+        }
+
+    });
+
+}
+
+
+document.addEventListener("keydown",(e)=>{
+
+    if(e.key === "Escape"){
+        closeLightbox();
     }
 
 });
@@ -909,85 +1085,127 @@ document.addEventListener("click",(e)=>{
 
 
 /*=========================================================
-        PRODUCT IMAGE FULLSCREEN
+        RELATED PRODUCTS DEMO
 =========================================================*/
 
-document.addEventListener("DOMContentLoaded",()=>{
+function renderRelated(product){
 
-    const mainImage =
-    document.getElementById("main-product-image");
-
-    const lightbox =
-    document.getElementById("product-lightbox");
-
-    const lightboxImage =
-    document.getElementById("lightbox-image");
-
-    const closeBtn =
-    document.getElementById("lightbox-close");
-
-
-    if(mainImage && lightbox && lightboxImage){
-
-        mainImage.addEventListener("click",()=>{
-
-            lightboxImage.src =
-            mainImage.src;
-
-            lightbox.classList.add("active");
-
-            document.body.style.overflow =
-            "hidden";
-
-        });
-
+    if(!relatedProducts){
+        return;
     }
 
+    relatedProducts.innerHTML = "";
 
-    function closeLightbox(){
+    const demos =
+    getDemoProducts()
+    .filter(item=>item.id !== product.id)
+    .slice(0,4);
 
-        if(!lightbox){
+    demos.forEach(item=>{
+
+        const card =
+        document.createElement("article");
+
+        card.className =
+        "related-card";
+
+        card.innerHTML = `
+            <a href="index.html?id=${item.id}" class="related-img">
+                <img src="${getImagePath(item.image)}" alt="${item.name}">
+            </a>
+
+            <div class="related-info">
+                <span>${item.category || "Product"}</span>
+                <h3>${item.name}</h3>
+                <strong>${money(item.price)}</strong>
+            </div>
+        `;
+
+        relatedProducts.appendChild(card);
+
+    });
+
+}
+
+
+
+
+
+/*=========================================================
+        WISHLIST BUTTON
+=========================================================*/
+
+const wishlistBtn =
+document.querySelector(".wishlist-product-btn");
+
+if(wishlistBtn){
+
+    wishlistBtn.addEventListener("click",()=>{
+
+        if(!currentProduct){
             return;
         }
 
-        lightbox.classList.remove("active");
+        const item = {
+            id:currentProduct.id,
+            name:currentProduct.name || currentProduct.title,
+            price:Number(currentProduct.price || 0),
+            image:selectedImage || currentProduct.image,
+            category:currentProduct.category || "Product"
+        };
 
-        document.body.style.overflow =
-        "";
+        if(window.WishlistService && window.WishlistService.addToWishlist){
 
-    }
-
-
-    if(closeBtn){
-
-        closeBtn.addEventListener("click",closeLightbox);
-
-    }
-
-
-    if(lightbox){
-
-        lightbox.addEventListener("click",(e)=>{
-
-            if(e.target === lightbox){
-
-                closeLightbox();
-
-            }
-
-        });
-
-    }
-
-
-    document.addEventListener("keydown",(e)=>{
-
-        if(e.key === "Escape"){
-
-            closeLightbox();
+            window.WishlistService.addToWishlist(item);
 
         }
 
+        else{
+
+            const wishlist =
+            JSON.parse(localStorage.getItem("taqdeerWishlist")) || [];
+
+            const exists =
+            wishlist.find(product=>product.id === item.id);
+
+            if(!exists){
+                wishlist.push(item);
+            }
+
+            localStorage.setItem(
+                "taqdeerWishlist",
+                JSON.stringify(wishlist)
+            );
+
+        }
+
+        window.dispatchEvent(
+            new Event("wishlistUpdated")
+        );
+
+        wishlistBtn.classList.add("active");
+
+        alert("Product added to wishlist.");
+
     });
+
+}
+
+
+
+
+
+/*=========================================================
+        INIT
+=========================================================*/
+
+loadProduct();
+
+updateQuantity();
+
+if(window.lucide){
+    lucide.createIcons();
+}
+
 
 });
