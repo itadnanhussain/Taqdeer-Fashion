@@ -2,661 +2,328 @@
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>
-Shop | Taqdeer Fashion
-</title>
+<title>Shop | Taqdeer Fashion</title>
 
 <link rel="icon" href="../../favicon.ico">
 
-
-<!-- ==========================
-        FONTS
-========================== -->
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
-
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-rel="stylesheet">
-
-
-<!-- ==========================
-        BASE CSS
-========================== -->
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="../../css/base/variables.css">
-
 <link rel="stylesheet" href="../../css/base/reset.css">
-
 <link rel="stylesheet" href="../../css/base/typography.css">
-
 <link rel="stylesheet" href="../../css/utilities/utilities.css">
 
-
-<!-- ==========================
-        LAYOUT CSS
-========================== -->
-
-<link rel="stylesheet" href="../../css/layout/grid.css">
-
-<link rel="stylesheet" href="../../css/layout/header.css">
-
-<link rel="stylesheet" href="../../css/layout/footer.css">
-
-
-<!-- ==========================
-        COMPONENT CSS
-========================== -->
-
-<link rel="stylesheet" href="../../css/components/buttons.css">
-
-<link rel="stylesheet" href="../../css/components/cards.css">
-
 <link rel="stylesheet" href="../../css/components/modal.css">
-
-
-<!-- ==========================
-        PAGE CSS
-========================== -->
-
 <link rel="stylesheet" href="../../css/pages/shop.css">
-
 </head>
-
 
 <body>
 
-
-<!-- ==========================
-        ANNOUNCEMENT BAR
-========================== -->
-
-<div class="announcement-bar">
-
-<div class="container">
-
-<div class="announcement-wrapper">
-
-<p>
-🚚 Free Delivery Above ৳2000
-</p>
-
-<p>
-💳 Cash On Delivery Available
-</p>
-
-<p>
-⭐ Premium Quality Guaranteed
-</p>
-
+<!-- TOP STRIP -->
+<div class="shop-top-strip">
+    <div class="shop-container">
+        <span>Welcome to <strong>Taqdeer Fashion</strong></span>
+        <span><i data-lucide="truck"></i> Free Delivery on orders over ৳999</span>
+        <span><i data-lucide="refresh-cw"></i> Easy Returns & Exchanges</span>
+        <span><i data-lucide="banknote"></i> Cash on Delivery Available</span>
+        <span><i data-lucide="phone"></i> +880 9613 111333</span>
+    </div>
 </div>
 
-</div>
+<!-- HEADER -->
+<header class="shop-header">
+    <div class="shop-container shop-header-wrap">
 
-</div>
+        <a href="../../index.html" class="shop-logo">
+            <span class="logo-title">TAQDEER</span>
+            <span class="logo-subtitle">FASHION</span>
+        </a>
 
-
-
-
-
-<!-- ==========================
-            HEADER
-========================== -->
-
-<header class="header">
-
-<div class="container">
-
-<div class="header-wrapper">
-
-
-<!-- LOGO -->
-
-<a href="../../index.html" class="logo">
-
-<img src="../../assets/logos/logo.png" alt="Taqdeer Fashion">
-
-<div class="logo-text">
-
-<h2 class="logo-title">
-TAQDEER
-</h2>
-
-<span class="logo-subtitle">
-FASHION
-</span>
-
-</div>
-
-</a>
-
-
-
-
-
-<!-- NAVBAR -->
-
-<nav class="navbar">
-
-<ul class="nav-menu">
-
-<li>
-<a href="../../index.html">
-Home
-</a>
-</li>
-
-<li>
-<a href="index.html" class="active">
-Shop
-</a>
-</li>
-
-<li>
-<a href="index.html">
-Products
-</a>
-</li>
-
-<li class="has-dropdown">
-
-<a href="#">
-Categories
-</a>
-
-
-<div class="mega-menu">
-
-<div class="mega-column">
-
-<h4>
-Men
-</h4>
-
-<a href="index.html?category=shirt">
-Shirt
-</a>
-
-<a href="index.html?category=tshirt">
-T-Shirt
-</a>
-
-<a href="index.html?category=polo">
-Polo
-</a>
-
-<a href="index.html?category=panjabi">
-Panjabi
-</a>
-
-</div>
-
-
-<div class="mega-column">
-
-<h4>
-Bottom Wear
-</h4>
-
-<a href="index.html?category=pant">
-Pant
-</a>
-
-<a href="index.html?category=trouser">
-Trouser
-</a>
-
-<a href="index.html?category=drop-shoulder">
-Drop Shoulder
-</a>
-
-</div>
-
-
-<div class="mega-column">
-
-<h4>
-Collection
-</h4>
-
-<a href="index.html?filter=new">
-New Arrival
-</a>
-
-<a href="index.html?filter=best">
-Best Seller
-</a>
-
-<a href="index.html?filter=premium">
-Premium
-</a>
-
-</div>
-
-</div>
-
-</li>
-
-<li>
-<a href="../account/index.html">
-Account
-</a>
-</li>
-
-</ul>
-
+        <nav class="shop-nav">
+    <a href="../../index.html">Home</a>
+    <a href="index.html" class="active">Shop</a>
+    <a href="index.html?category=panjabi">Panjabi</a>
+    <a href="index.html?category=shirt">Shirts</a>
+    <a href="index.html?category=t-shirt">T-Shirts</a>
+    <a href="index.html?category=trouser">Trousers</a>
+    <a href="index.html?category=drop-shoulder">Drop Shoulder</a>
+    <a href="../orders/index.html">Track Order</a>
 </nav>
 
+        <div class="shop-header-search">
+            <input type="text" id="shopSearchInput" placeholder="Search products...">
+            <button type="button" aria-label="Search">
+                <i data-lucide="search"></i>
+            </button>
+        </div>
 
+        <div class="shop-header-actions">
+            <a href="../auth/login.html" aria-label="Account">
+                <i data-lucide="user"></i>
+            </a>
 
+            <a href="../wishlist/index.html" class="icon-count wishlist-header-btn" aria-label="Wishlist">
+                <i data-lucide="heart"></i>
+                <span class="wishlist-count">0</span>
+            </a>
 
+            <a href="../cart/index.html" class="icon-count cart-btn" aria-label="Cart">
+                <i data-lucide="shopping-bag"></i>
+                <span class="cart-count">0</span>
+            </a>
 
-<!-- HEADER ACTIONS -->
+            <button class="shop-menu-btn" type="button" id="shopMenuBtn" aria-label="Menu">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
 
-<div class="header-right">
-
-<button class="nav-icon search-btn" type="button">
-<i data-lucide="search"></i>
-</button>
-
-
-<a href="../wishlist/index.html" class="nav-icon wishlist-link">
-<i data-lucide="heart"></i>
-<span class="badge">0</span>
-</a>
-
-
-<a href="../cart/index.html" class="nav-icon cart-link">
-<i data-lucide="shopping-cart"></i>
-<span class="badge">0</span>
-</a>
-
-
-<a href="../auth/login.html" class="account-btn">
-    <i data-lucide="user"></i>
-    <span>Sign In</span>
-</a>
-
-<button class="hamburger" type="button">
-<span></span>
-<span></span>
-<span></span>
-</button>
-
-</div>
-
-
-</div>
-
-</div>
-
+    </div>
 </header>
 
-
-
-
-
-<!-- ==========================
-        MOBILE MENU
-========================== -->
-
-<div class="mobile-menu">
-
-<ul>
-
-<li>
-<a href="../../index.html">Home</a>
-</li>
-
-<li>
-<a href="index.html">Shop</a>
-</li>
-
-<li>
-<a href="../account/index.html">Account</a>
-</li>
-
-<li>
-<a href="../wishlist/index.html">Wishlist</a>
-</li>
-
-<li>
-<a href="../cart/index.html">Cart</a>
-</li>
-
-</ul>
-
+<!-- MOBILE NAV -->
+<div class="shop-mobile-nav" id="shopMobileNav">
+    <a href="../../index.html">Home</a>
+    <a href="index.html">Shop</a>
+    <a href="index.html?category=panjabi">Panjabi</a>
+    <a href="index.html?category=shirt">Shirts</a>
+    <a href="index.html?category=t-shirt">T-Shirts</a>
+    <a href="index.html?category=trouser">Trousers</a>
+    <a href="../orders/index.html">Track Order</a>
 </div>
 
-
-
-
-
-<!-- ==========================
-        SEARCH MODAL
-========================== -->
-
-<div class="search-overlay"></div>
-
-<div class="search-modal">
-
-<button class="search-close" type="button">
-×
-</button>
-
-<div class="search-modal-content">
-
-<h2>
-Search Products
-</h2>
-
-<input
-type="text"
-id="globalSearchInput"
-placeholder="Search products...">
-
-</div>
-
-</div>
-
-
-
-
-
-<!-- ==========================
-            MAIN
-========================== -->
-
-<main>
-
-
-<!-- ==========================
-        SHOP HERO
-========================== -->
-
-<section class="shop-hero">
-
-<div class="container">
-
-<div class="shop-hero-content">
-
-<span>
-Premium Collection
-</span>
-
-<h1>
-Shop Taqdeer Fashion
-</h1>
-
-<p>
-Discover premium clothing designed for everyday comfort, timeless elegance and modern lifestyle.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-
-
-<!-- ==========================
-        SHOP PRODUCTS
-========================== -->
-
-<section class="shop-filter-section">
-
-<div class="container">
-
-
-<!-- TOP FILTER -->
-
-<div class="shop-filter-top">
-
-<div>
-
-<h2>
-All Products
-</h2>
-
-<p>
-Showing premium products for you
-</p>
-
-</div>
-
-
-<div class="shop-actions">
-
-<div class="shop-search">
-
-<i data-lucide="search"></i>
-
-<input
-type="text"
-id="shopSearchInput"
-placeholder="Search products...">
-
-</div>
-
-
-<select id="sortSelect">
-
-<option value="">
-Sort By
-</option>
-
-<option value="newest">
-Newest
-</option>
-
-<option value="low-high">
-Price: Low to High
-</option>
-
-<option value="high-low">
-Price: High to Low
-</option>
-
-<option value="rating">
-Top Rated
-</option>
-
-</select>
-
-</div>
-
-</div>
-
-
-
-
-
-<!-- CATEGORY TABS -->
-
-<div class="shop-category-tabs">
-
-<button class="shop-category-btn active" data-category="all">
-All
-</button>
-
-<button class="shop-category-btn" data-category="panjabi">
-Panjabi
-</button>
-
-<button class="shop-category-btn" data-category="shirt">
-Shirt
-</button>
-
-<button class="shop-category-btn" data-category="polo">
-Polo
-</button>
-
-<button class="shop-category-btn" data-category="pant">
-Pant
-</button>
-
-<button class="shop-category-btn" data-category="t-shirt">
-T-Shirt
-</button>
-
-</div>
-
-
-
-
-
-<!-- PRODUCT COUNT -->
-
-<p id="productCount">
-0 products found
-</p>
-
-
-
-
-
-<!-- PRODUCTS GRID -->
-
-<div class="shop-product-grid" id="shopProductsGrid">
-
-<!-- Products will load dynamically -->
-
-</div>
-
-
-
-
-
-<!-- EMPTY STATE -->
-
-<div class="shop-empty hidden" id="shopEmpty">
-
-<h3>
-No Product Found
-</h3>
-
-<p>
-Try another category
-</p>
-
-</div>
-
-
-</div>
-
-</section>
-
+<!-- MAIN -->
+<main class="shop-page">
+
+    <div class="shop-container">
+
+        <!-- PAGE HEAD -->
+        <section class="shop-page-head">
+            <div>
+                <h1>Shop</h1>
+                <p>Discover our premium collection of men's fashion.</p>
+            </div>
+        </section>
+
+        <!-- SHOP LAYOUT -->
+        <section class="shop-main-layout">
+
+            <!-- LEFT FILTER -->
+            <aside class="shop-sidebar">
+
+                <div class="filter-card">
+                    <div class="filter-card-head">
+                        <h3>Categories</h3>
+                        <i data-lucide="minus-square"></i>
+                    </div>
+
+                    <button class="shop-category-btn active" data-category="all">
+                        <span>All Products</span>
+                        <strong id="count-all">0</strong>
+                    </button>
+
+                    <button class="shop-category-btn" data-category="shirt">
+                        <span>Shirts</span>
+                        <strong id="count-shirt">0</strong>
+                    </button>
+
+                    <button class="shop-category-btn" data-category="t-shirt">
+                        <span>T-Shirts</span>
+                        <strong id="count-t-shirt">0</strong>
+                    </button>
+
+                    <button class="shop-category-btn" data-category="panjabi">
+                        <span>Panjabi</span>
+                        <strong id="count-panjabi">0</strong>
+                    </button>
+
+                    <button class="shop-category-btn" data-category="trouser">
+                        <span>Trousers</span>
+                        <strong id="count-trouser">0</strong>
+                    </button>
+
+                    <button class="shop-category-btn" data-category="drop-shoulder">
+                        <span>Drop Shoulder</span>
+                        <strong id="count-drop-shoulder">0</strong>
+                    </button>
+                </div>
+
+                <div class="filter-card">
+                    <div class="filter-card-head">
+                        <h3>Filter By</h3>
+                    </div>
+
+                    <div class="filter-group">
+                        <div class="filter-toggle">
+                            <span>Price Range</span>
+                            <i data-lucide="minus"></i>
+                        </div>
+
+                        <input type="range" id="priceRange" min="0" max="5000" value="5000">
+
+                        <div class="price-range-label">
+                            <span>৳0</span>
+                            <span id="priceRangeValue">৳5000+</span>
+                        </div>
+                    </div>
+
+                    <div class="filter-group collapsed">
+                        <button type="button" class="filter-accordion">
+                            <span>Size</span>
+                            <i data-lucide="plus"></i>
+                        </button>
+
+                        <div class="filter-options">
+                            <label><input type="checkbox" value="S" class="size-filter"> S</label>
+                            <label><input type="checkbox" value="M" class="size-filter"> M</label>
+                            <label><input type="checkbox" value="L" class="size-filter"> L</label>
+                            <label><input type="checkbox" value="XL" class="size-filter"> XL</label>
+                            <label><input type="checkbox" value="XXL" class="size-filter"> XXL</label>
+                        </div>
+                    </div>
+
+                    <div class="filter-group collapsed">
+                        <button type="button" class="filter-accordion">
+                            <span>Stock</span>
+                            <i data-lucide="plus"></i>
+                        </button>
+
+                        <div class="filter-options">
+                            <label><input type="checkbox" value="in" id="stockInFilter"> In Stock</label>
+                            <label><input type="checkbox" value="low" id="stockLowFilter"> Low Stock</label>
+                        </div>
+                    </div>
+
+                    <div class="filter-actions">
+                        <button type="button" id="resetFilterBtn" class="reset-filter-btn">
+                            <i data-lucide="rotate-ccw"></i>
+                            Reset
+                        </button>
+
+                        <button type="button" id="applyFilterBtn" class="apply-filter-btn">
+                            <i data-lucide="filter"></i>
+                            Apply Filter
+                        </button>
+                    </div>
+                </div>
+
+            </aside>
+
+            <!-- RIGHT CONTENT -->
+            <section class="shop-content">
+
+                <div class="shop-toolbar">
+                    <div class="view-buttons">
+                        <button type="button" class="active">
+                            <i data-lucide="grid-2x2"></i>
+                        </button>
+
+                        <button type="button">
+                            <i data-lucide="list"></i>
+                        </button>
+                    </div>
+
+                    <p id="productCount">Showing 0 products</p>
+
+                    <div class="sort-box">
+                        <span>Sort By:</span>
+
+                        <select id="sortSelect">
+                            <option value="newest">Newest First</option>
+                            <option value="low-high">Price: Low to High</option>
+                            <option value="high-low">Price: High to Low</option>
+                            <option value="rating">Top Rated</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="shop-product-grid" id="shopProductsGrid"></div>
+
+                <div class="shop-empty hidden" id="shopEmpty">
+                    <h3>No Product Found</h3>
+                    <p>Try another category or filter.</p>
+                </div>
+
+                <section class="shop-service-strip">
+                    <div>
+                        <i data-lucide="shield-check"></i>
+                        <span>
+                            <strong>100% Original</strong>
+                            Premium Quality
+                        </span>
+                    </div>
+
+                    <div>
+                        <i data-lucide="refresh-cw"></i>
+                        <span>
+                            <strong>Easy Returns</strong>
+                            7 Days Return Policy
+                        </span>
+                    </div>
+
+                    <div>
+                        <i data-lucide="truck"></i>
+                        <span>
+                            <strong>Cash on Delivery</strong>
+                            Pay when you receive
+                        </span>
+                    </div>
+
+                    <div>
+                        <i data-lucide="badge-check"></i>
+                        <span>
+                            <strong>Secure Payment</strong>
+                            100% Protected
+                        </span>
+                    </div>
+                </section>
+
+                <button type="button" class="load-more-btn" id="loadMoreBtn">
+                    Load More Products
+                    <i data-lucide="chevron-down"></i>
+                </button>
+
+            </section>
+
+        </section>
+
+    </div>
 
 </main>
 
-
-
-
-
-<!-- ==========================
-            FOOTER
-========================== -->
-
-<footer class="footer">
-
-<div class="container">
-
-<p>
-© 2026 Taqdeer Fashion. All Rights Reserved.
-</p>
-
-</div>
-
+<footer class="shop-footer">
+    <div class="shop-container">
+        <p>© 2026 Taqdeer Fashion. All Rights Reserved.</p>
+    </div>
 </footer>
-
-
-
-
-
-<!-- ==========================
-        LUCIDE ICONS
-========================== -->
 
 <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
 
-
-
-
-
-<!-- ==========================
-        FIREBASE
-========================== -->
-
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
 <script src="../../firebase/firebase-config.js"></script>
 
-
-
-
-
-<!-- ==========================
-        SERVICES
-========================== -->
-
 <script src="../../js/services/cart-service.js"></script>
-
 <script src="../../js/services/wishlist-service.js"></script>
-
 <script src="../../js/services/product-service.js"></script>
 
-
-
-
-
-<!-- ==========================
-        COMPONENTS
-========================== -->
-
 <script src="../../js/components/header.js"></script>
-
-<script src="../../js/components/product-card.js"></script>
-
-
-
-
-
-<!-- ==========================
-        PAGE JS
-========================== -->
-
 <script src="../../js/pages/shop.js"></script>
 
-
-
-
-
 <script>
-
-document.addEventListener("DOMContentLoaded",()=>{
-
-    if(window.lucide){
+document.addEventListener("DOMContentLoaded", () => {
+    if (window.lucide) {
         lucide.createIcons();
     }
-
 });
-
 </script>
 
-
 </body>
-
 </html>
