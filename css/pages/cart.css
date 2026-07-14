@@ -2149,3 +2149,166 @@ body.drawer-open{
         max-width:100%;
     }
 }
+/*=========================================================
+    CART PAGE GREEN SCROLLBAR
+=========================================================*/
+
+html{
+    scrollbar-color:#0b7a3b #f1f1f1;
+}
+
+body::-webkit-scrollbar{
+    width:10px;
+}
+
+body::-webkit-scrollbar-track{
+    background:#f1f1f1;
+}
+
+body::-webkit-scrollbar-thumb{
+    background:#0b7a3b;
+    border-radius:999px;
+}
+
+body::-webkit-scrollbar-thumb:hover{
+    background:#07592b;
+}
+
+.cart-summary-panel::-webkit-scrollbar,
+.cart-items-panel::-webkit-scrollbar,
+.cart-drawer-body::-webkit-scrollbar{
+    width:7px;
+}
+
+.cart-summary-panel::-webkit-scrollbar-track,
+.cart-items-panel::-webkit-scrollbar-track,
+.cart-drawer-body::-webkit-scrollbar-track{
+    background:#f1f1f1;
+}
+
+.cart-summary-panel::-webkit-scrollbar-thumb,
+.cart-items-panel::-webkit-scrollbar-thumb,
+.cart-drawer-body::-webkit-scrollbar-thumb{
+    background:#0b7a3b;
+    border-radius:999px;
+}
+
+.cart-summary-panel,
+.cart-items-panel,
+.cart-drawer-body{
+    scrollbar-color:#0b7a3b #f1f1f1;
+}
+/*=========================================================
+    CART RECOMMEND PRODUCT FINAL FIX
+=========================================================*/
+
+.recommend-mini-grid{
+    display:grid !important;
+    grid-template-columns:repeat(3,1fr) !important;
+    gap:10px !important;
+    align-items:stretch !important;
+}
+
+.recommend-card{
+    min-width:0 !important;
+    background:#fff !important;
+    border:1px solid #eeeeee !important;
+    border-radius:12px !important;
+    overflow:hidden !important;
+    display:flex !important;
+    flex-direction:column !important;
+}
+
+.recommend-img{
+    width:100% !important;
+    height:105px !important;
+    background:#f7f7f7 !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    padding:8px !important;
+}
+
+.recommend-img img{
+    width:100% !important;
+    height:100% !important;
+    object-fit:contain !important;
+}
+
+.recommend-info{
+    padding:9px !important;
+    display:flex !important;
+    flex-direction:column !important;
+    gap:6px !important;
+    flex:1 !important;
+}
+
+.recommend-info h4{
+    margin:0 !important;
+    min-height:38px !important;
+    color:#111 !important;
+    font-size:11px !important;
+    line-height:1.25 !important;
+    font-weight:900 !important;
+    word-break:break-word !important;
+}
+
+.recommend-info strong{
+    color:#e1121b !important;
+    font-size:13px !important;
+    font-weight:900 !important;
+}
+
+.recommend-add-cart{
+    width:100% !important;
+    min-height:32px !important;
+    border:1px solid #dddddd !important;
+    border-radius:7px !important;
+    background:#fff !important;
+    color:#111 !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:5px !important;
+    font-size:10px !important;
+    line-height:1.1 !important;
+    font-weight:900 !important;
+    margin-top:auto !important;
+}
+
+.recommend-add-cart:hover{
+    background:#e1121b !important;
+    border-color:#e1121b !important;
+    color:#fff !important;
+}
+
+.recommend-add-cart svg{
+    width:13px !important;
+    height:13px !important;
+}
+
+/* Mobile recommend cards */
+@media(max-width:768px){
+    .recommend-mini-grid{
+        grid-template-columns:1fr !important;
+    }
+
+    .recommend-card{
+        display:grid !important;
+        grid-template-columns:95px 1fr !important;
+    }
+
+    .recommend-img{
+        height:100% !important;
+        min-height:110px !important;
+    }
+
+    .recommend-info h4{
+        min-height:auto !important;
+        font-size:13px !important;
+    }
+
+    .recommend-info strong{
+        font-size:14px !important;
+    }
+}

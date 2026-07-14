@@ -878,3 +878,48 @@ transition-duration:.01ms !important;
         animation:none !important;
     }
 }
+/*=========================================================
+    LOGO ANIMATION POSITION FIX
+=========================================================*/
+
+.logo,
+.text-logo,
+.attention-logo{
+    overflow:visible !important;
+}
+
+.logo-attention-effect{
+    overflow:visible !important;
+}
+
+.logo-spark-1{
+    right:-10px !important;
+    top:4px !important;
+}
+
+.logo-spark-2{
+    right:14px !important;
+    bottom:2px !important;
+}
+
+.logo-spark-3{
+    left:-8px !important;
+    top:28px !important;
+}
+
+.logo-spark{
+    transform-origin:center !important;
+}
+
+/* keep sparkle inside header visual area */
+.header .logo{
+    z-index:5 !important;
+}
+
+.header-right{
+    gap:10px !important;
+}
+
+.nav-icon{
+    flex-shrink:0 !important;
+}

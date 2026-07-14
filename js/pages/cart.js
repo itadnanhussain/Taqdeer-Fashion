@@ -421,68 +421,154 @@ document.addEventListener("DOMContentLoaded", () => {
         RECOMMENDED PRODUCTS
     =====================================================*/
 
-    function renderRecommended() {
-        if (!recommendProducts) {
-            return;
+    /*=====================================================
+    RECOMMENDED PRODUCTS - REAL PRODUCTS FIX
+=====================================================*/
+
+async function renderRecommended() {
+    if (!recommendProducts) {
+        return;
+    }
+
+    recommendProducts.innerHTML = `
+        <div class="recommend-loading">
+            Loading products...
+        </div>
+    `;
+
+    let products = [];
+
+    try {
+        if (
+            window.productService &&
+            typeof window.productService.getProducts === "function"
+        ) {
+            products = await window.productService.getProducts();
         }
 
-        const products = [
+        else if (
+            window.ProductService &&
+            typeof window.ProductService.getProducts === "function"
+        ) {
+            products = await window.ProductService.getProducts();
+        }
+
+        else if (window.db) {
+            const snapshot = await window.db
+                .collection("products")
+                .limit(6)
+                .get();
+
+            snapshot.forEach(doc => {
+                products.push({
+                    id: doc.id,
+                    ...doc.data()
+                });
+            });
+        }
+    }
+
+    catch (error) {
+        console.error("Recommend products load failed:", error);
+    }
+
+    if (!Array.isArray(products) || !products.length) {
+        products = [
             {
-                id: "rec-tshirt",
-                name: "Premium T-Shirt",
-                price: 550,
-                image: "../../assets/placeholders/product.jpg",
-                link: "../shop/index.html?category=t-shirt"
+                id: "rec-panjabi",
+                name: "Regular Fit Semi-Formal Panjabi",
+                price: 1450,
+                image: "assets/categories/panjabi.jpeg",
+                category: "panjabi"
             },
             {
                 id: "rec-shirt",
-                name: "Casual Shirt",
-                price: 750,
-                image: "../../assets/placeholders/product.jpg",
-                link: "../shop/index.html?category=shirt"
+                name: "Mens Premium Casual Shirt",
+                price: 1090,
+                image: "assets/categories/shirt.jpeg",
+                category: "shirt"
             },
             {
-                id: "rec-panjabi",
-                name: "Classic Panjabi",
-                price: 1150,
-                image: "../../assets/placeholders/product.jpg",
-                link: "../shop/index.html?category=panjabi"
+                id: "rec-polo",
+                name: "Premium Designer Polo",
+                price: 1140,
+                image: "assets/categories/polo.jpeg",
+                category: "polo"
             }
         ];
-
-        recommendProducts.innerHTML = products.map(product => {
-            return `
-                <article class="recommend-card">
-                    <a href="${product.link}" class="recommend-img">
-                        <img
-                            src="${product.image}"
-                            alt="${product.name}"
-                            onerror="this.onerror=null;this.src='../../assets/placeholders/product.jpg';">
-                    </a>
-
-                    <div class="recommend-info">
-                        <h4>${product.name}</h4>
-
-                        <strong>${money(product.price)}</strong>
-
-                        <button
-                            type="button"
-                            class="recommend-add-cart add-to-cart-btn"
-                            data-id="${product.id}"
-                            data-name="${product.name}"
-                            data-price="${product.price}"
-                            data-image="${product.image}">
-                            <i data-lucide="shopping-cart"></i>
-                            Add to Cart
-                        </button>
-                    </div>
-                </article>
-            `;
-        }).join("");
-
-        updateIcons();
     }
 
+    products = products
+    .slice(0, 3);
+
+    recommendProducts.innerHTML = products.map(product => {
+        const id = product.id || product.docId || Date.now().toString();
+
+        const name =
+        product.name ||
+        product.title ||
+        "Product";
+
+        const price =
+        Number(
+            product.price ||
+            product.salePrice ||
+            product.finalPrice ||
+            0
+        );
+
+        const image =
+        product.image ||
+        product.imageUrl ||
+        product.thumbnail ||
+        product.mainImage ||
+        (
+            Array.isArray(product.images)
+            ?
+            product.images[0]
+            :
+            ""
+        );
+
+        const category =
+        product.category ||
+        "Product";
+
+        return `
+            <article class="recommend-card">
+
+                <a href="../product-details/index.html?id=${encodeURIComponent(id)}" class="recommend-img">
+                    <img
+                        src="${getImagePath(image)}"
+                        alt="${name}"
+                        onerror="this.onerror=null;this.src='../../assets/placeholders/product.jpg';">
+                </a>
+
+                <div class="recommend-info">
+                    <h4>${name}</h4>
+
+                    <strong>${money(price)}</strong>
+
+                    <button
+                        type="button"
+                        class="recommend-add-cart add-to-cart-btn"
+                        data-id="${id}"
+                        data-name="${name}"
+                        data-price="${price}"
+                        data-image="${getImagePath(image)}"
+                        data-size="M"
+                        data-color="">
+                        <i data-lucide="shopping-cart"></i>
+                        Add to Cart
+                    </button>
+                </div>
+
+            </article>
+        `;
+    }).join("");
+
+    updateIcons();
+}
 
     /*=====================================================
         ADD PRODUCT TO CART
