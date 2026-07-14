@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="css/base/reset.css">
     <link rel="stylesheet" href="css/base/typography.css">
     <link rel="stylesheet" href="css/utilities/utilities.css">
-
+<link rel="stylesheet" href="css/base/animations.css">
     <!-- LAYOUT CSS -->
     <link rel="stylesheet" href="css/layout/grid.css">
     <link rel="stylesheet" href="css/layout/header.css">
@@ -82,13 +82,16 @@
             <div class="header-wrapper">
 
                 <!-- LOGO -->
-                <a href="index.html" class="logo text-logo attention-logo" aria-label="Taqdeer Fashion Home">
-                    <div class="logo-text">
-                        <h2 class="logo-title">TAQDEER</h2>
-                        <span class="logo-subtitle">FASHION</span>
-                    </div>
-                </a>
+<a href="index.html" class="logo text-logo attention-logo" aria-label="Taqdeer Fashion Home">
+    <div class="logo-text logo-attention-effect">
+        <h2 class="logo-title">TAQDEER</h2>
+        <span class="logo-subtitle">FASHION</span>
 
+        <span class="logo-spark logo-spark-1"></span>
+        <span class="logo-spark logo-spark-2"></span>
+        <span class="logo-spark logo-spark-3"></span>
+    </div>
+</a>
                 <!-- NAVIGATION -->
                 <nav class="navbar">
                     <ul class="nav-menu">
@@ -199,7 +202,11 @@
 
     <!-- MOBILE MENU -->
     <div class="mobile-menu">
-        <ul>
+    <button type="button" class="mobile-menu-close" aria-label="Close menu">
+        ×
+    </button>
+
+    <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="pages/shop/index.html">Shop</a></li>
             <li><a href="pages/shop/index.html?category=shirt">Shirts</a></li>

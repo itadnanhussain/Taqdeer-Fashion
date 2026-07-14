@@ -1081,3 +1081,22 @@ if(window.lucide){
 
 
 });
+/*=========================================================
+    MOBILE MENU CLOSE BUTTON FIX
+=========================================================*/
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+    const mobileMenu = document.querySelector(".mobile-menu");
+    const closeBtn = document.querySelector(".mobile-menu-close");
+
+    if(!mobileMenu || !closeBtn){
+        return;
+    }
+
+    closeBtn.addEventListener("click",()=>{
+        mobileMenu.classList.remove("active");
+        document.body.style.overflow = "";
+    });
+
+});
