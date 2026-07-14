@@ -72,7 +72,70 @@ img{
     margin:0 auto;
 }
 
+/*=========================================================
+    HOME NAVBAR SIMPLE TEXT + GREEN HOVER
+=========================================================*/
 
+body.home-page .navbar .nav-menu > li > a,
+body.home-page .header .nav-menu > li > a,
+.home-header .nav-menu > li > a{
+    color:#222 !important;
+    font-family:"Inter","Poppins",sans-serif !important;
+    font-size:14px !important;
+    font-weight:500 !important;
+    line-height:1 !important;
+    letter-spacing:0 !important;
+    text-decoration:none !important;
+    position:relative !important;
+    padding:28px 0 !important;
+    transition:color .22s ease !important;
+}
+
+/* underline */
+body.home-page .navbar .nav-menu > li > a::after,
+body.home-page .header .nav-menu > li > a::after,
+.home-header .nav-menu > li > a::after{
+    content:"" !important;
+    position:absolute !important;
+    left:0 !important;
+    right:0 !important;
+    bottom:18px !important;
+    height:2px !important;
+    background:#0b7a3b !important;
+    border-radius:999px !important;
+    transform:scaleX(0) !important;
+    transform-origin:center !important;
+    transition:transform .22s ease !important;
+}
+
+/* hover + active green */
+body.home-page .navbar .nav-menu > li > a:hover,
+body.home-page .navbar .nav-menu > li > a.active,
+body.home-page .header .nav-menu > li > a:hover,
+body.home-page .header .nav-menu > li > a.active,
+.home-header .nav-menu > li > a:hover,
+.home-header .nav-menu > li > a.active{
+    color:#0b7a3b !important;
+    font-weight:500 !important;
+}
+
+body.home-page .navbar .nav-menu > li > a:hover::after,
+body.home-page .navbar .nav-menu > li > a.active::after,
+body.home-page .header .nav-menu > li > a:hover::after,
+body.home-page .header .nav-menu > li > a.active::after,
+.home-header .nav-menu > li > a:hover::after,
+.home-header .nav-menu > li > a.active::after{
+    transform:scaleX(1) !important;
+}
+
+/* dropdown icon green on hover */
+body.home-page .navbar .nav-menu > li > a:hover svg,
+body.home-page .navbar .nav-menu > li > a.active svg,
+.home-header .nav-menu > li > a:hover svg,
+.home-header .nav-menu > li > a.active svg{
+    color:#0b7a3b !important;
+    stroke:#0b7a3b !important;
+}
 /*=========================================================
     TOP STRIP
 =========================================================*/

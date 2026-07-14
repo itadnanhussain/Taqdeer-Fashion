@@ -48,7 +48,8 @@ const newsletterEmail = document.getElementById("shopNewsletterEmail");
 let allProducts = [];
 let currentCategory = "all";
 let currentView = "grid";
-let visibleLimit = 12;
+let currentPage = 1;
+const productsPerPage = 8;
 
 const CART_KEY = "taqdeerCart";
 const WISHLIST_KEY = "taqdeerWishlist";
@@ -120,23 +121,25 @@ function getStock(product){
 
 function getImagePath(path){
     if(!path){
-        return FALLBACK_IMAGE;
+        return "../../assets/placeholders/product.jpg";
     }
+
+    const imagePath = String(path).trim();
 
     if(
-        path.startsWith("http") ||
-        path.startsWith("data:") ||
-        path.startsWith("../") ||
-        path.startsWith("../../")
+        imagePath.startsWith("http") ||
+        imagePath.startsWith("data:") ||
+        imagePath.startsWith("../../") ||
+        imagePath.startsWith("../")
     ){
-        return path;
+        return imagePath;
     }
 
-    if(path.startsWith("assets/")){
-        return "../../" + path;
+    if(imagePath.startsWith("assets/")){
+        return "../../" + imagePath;
     }
 
-    return FALLBACK_IMAGE;
+    return imagePath;
 }
 
 function getProductImage(product){
@@ -663,7 +666,10 @@ function renderProducts(){
     let products = getFilteredProducts();
     products = sortProducts(products);
 
-    const visibleProducts = products.slice(0,visibleLimit);
+    const totalPages = Math.ceil(products.length / productsPerPage);
+    const startIndex = (currentPage - 1) * productsPerPage;
+    const endIndex = startIndex + productsPerPage;
+    const visibleProducts = products.slice(startIndex,endIndex);
 
     productGrid.innerHTML = "";
     productGrid.classList.toggle("list-view",currentView === "list");
@@ -671,7 +677,7 @@ function renderProducts(){
     if(productCount){
         if(products.length){
             productCount.textContent =
-            `Showing 1–${visibleProducts.length} of ${products.length} products`;
+            `Showing ${startIndex + 1}–${Math.min(endIndex,products.length)} of ${products.length} products`;
         }
         else{
             productCount.textContent = "0 products found";
@@ -683,9 +689,7 @@ function renderProducts(){
             emptyBox.classList.remove("hidden");
         }
 
-        if(loadMoreBtn){
-            loadMoreBtn.style.display = "none";
-        }
+        renderPagination(0);
 
         return;
     }
@@ -694,123 +698,100 @@ function renderProducts(){
         emptyBox.classList.add("hidden");
     }
 
-    visibleProducts.forEach(product=>{
-        productGrid.appendChild(
-            createProductCard(product)
-        );
-    });
+    productGrid.innerHTML = visibleProducts
+        .map(product=>createProductCard(product))
+        .join("");
+
+    renderPagination(totalPages);
 
     if(loadMoreBtn){
-        loadMoreBtn.style.display =
-        products.length > visibleLimit ? "flex" : "none";
+        loadMoreBtn.style.display = "none";
     }
 
     refreshLucide();
 }
-
 function createProductCard(product){
-    const id = getProductId(product);
-    const name = safeText(product.name,"Product");
-    const category = safeText(product.category,"Premium Cotton");
-    const price = getPrice(product);
-    const oldPrice = getOldPrice(product);
-    const rating = getRating(product);
-    const reviews = Number(product.reviews || product.reviewCount || 0);
-    const image = getProductImage(product);
-    const discount = getDiscountPercent(product);
-    const stock = getStock(product);
-    const sizes = getProductSizes(product).slice(0,5);
-    const wishlisted = isWishlisted(id);
+    const id = product.id || product.docId || "";
+    const name = product.name || product.title || "Product";
+    const category = product.category || "";
+    const price = Number(product.price || product.salePrice || product.finalPrice || 0);
+    const oldPrice = Number(product.oldPrice || product.regularPrice || product.mrp || 0);
 
-    const card = document.createElement("article");
-    card.className = "shop-product-card";
-    card.dataset.id = id;
+    const image =
+        product.image ||
+        product.imageUrl ||
+        product.thumbnail ||
+        product.mainImage ||
+        (Array.isArray(product.images) ? product.images[0] : "") ||
+        "../../assets/placeholders/product.jpg";
 
-    card.innerHTML = `
-        <div class="shop-product-image">
-            ${
-                discount
-                ?
-                `<span class="discount-badge">-${discount}%</span>`
-                :
-                (
-                    product.badge
-                    ?
-                    `<span class="shop-badge">${product.badge}</span>`
-                    :
-                    ""
-                )
-            }
+    const sizes = Array.isArray(product.sizes) && product.sizes.length
+        ? product.sizes
+        : ["S","M","L","XL"];
 
-            <button
-                type="button"
-                class="shop-wishlist-btn ${wishlisted ? "active" : ""}"
-                data-id="${id}"
-                aria-label="Add to wishlist"
-            >
-                <i data-lucide="heart"></i>
-            </button>
+    const safeImage = typeof getImagePath === "function"
+    ? getImagePath(image)
+    : image;
 
-            <a href="../product-details/index.html?id=${encodeURIComponent(id)}">
-                <img
-                    src="${image}"
-                    alt="${name}"
-                    loading="lazy"
-                    onerror="this.onerror=null;this.src='${FALLBACK_IMAGE}';"
-                >
-            </a>
-        </div>
+    return `
+        <article class="shop-product-card" data-id="${id}">
 
-        <div class="shop-product-info">
-            <p class="shop-product-category">${category}</p>
-
-            <h3>${name}</h3>
-
-            <div class="shop-rating">
-                <strong>★</strong>
-                <span>${rating.toFixed(1)} ${reviews ? `(${reviews})` : ""}</span>
-            </div>
-
-            <div class="shop-price-row">
-                <strong>${money(price)}</strong>
-                ${oldPrice && oldPrice > price ? `<del>${money(oldPrice)}</del>` : ""}
-            </div>
-
-            <div class="size-row">
-                ${
-                    sizes.map(size=>`<span>${size}</span>`).join("")
-                }
-            </div>
-
-            <div class="stock-row ${stock > 0 ? "" : "out"}">
-                ${stock > 0 ? "In Stock" : "Out of Stock"}
-            </div>
-
-            <div class="shop-action-row">
+            <div class="shop-product-image">
                 <button
                     type="button"
-                    class="shop-add-cart"
+                    class="shop-wishlist-btn ${isWishlisted && isWishlisted(id) ? "active" : ""}"
                     data-id="${id}"
-                    ${stock <= 0 ? "disabled" : ""}
+                    aria-label="Add to wishlist"
+                >
+                    <i data-lucide="heart"></i>
+                </button>
+
+                <a href="../product-details/index.html?id=${encodeURIComponent(id)}" class="product-link">
+                    <img
+                        src="${safeImage}"
+                        alt="${name}"
+                        loading="lazy"
+                        onerror="this.onerror=null;this.src='../../assets/placeholders/product.jpg';"
+                    >
+                </a>
+            </div>
+
+            <div class="shop-product-info">
+
+                <h3 class="shop-product-title">
+                    <a href="../product-details/index.html?id=${encodeURIComponent(id)}">
+                        ${name}
+                    </a>
+                </h3>
+
+                <div class="shop-card-sizes">
+                    ${sizes.slice(0,4).map(size=>`
+                        <span class="shop-size-chip">${String(size).toUpperCase()}</span>
+                    `).join("")}
+                </div>
+
+                <div class="shop-price-row">
+                    <strong class="shop-current-price">৳${price.toLocaleString()}</strong>
+                    ${
+                        oldPrice && oldPrice > price
+                        ? `<del class="shop-old-price">৳${oldPrice.toLocaleString()}</del>`
+                        : ""
+                    }
+                </div>
+
+                <button
+                    type="button"
+                    class="shop-add-cart-btn"
+                    data-id="${id}"
                 >
                     <i data-lucide="shopping-cart"></i>
-                    Add to Cart
+                    Add To Cart
                 </button>
 
-                <button
-                    type="button"
-                    class="shop-buy-now"
-                    data-id="${id}"
-                    ${stock <= 0 ? "disabled" : ""}
-                    aria-label="Buy now"
-                >
-                    <i data-lucide="shopping-bag"></i>
-                </button>
             </div>
-        </div>
-    `;
 
-    return card;
+        </article>
+    `;
 }
 
 
@@ -855,7 +836,7 @@ function openMobileFilter(){
 
 function resetFilters(){
     currentCategory = "all";
-    visibleLimit = 12;
+    currentPage = 1;
 
     if(searchInput){
         searchInput.value = "";
@@ -899,7 +880,7 @@ function resetFilters(){
 categoryButtons.forEach(button=>{
     button.addEventListener("click",()=>{
         currentCategory = normalizeCategory(button.dataset.category || "all");
-        visibleLimit = 12;
+        currentPage = 1;
 
         syncActiveCategory();
 
@@ -924,19 +905,19 @@ if(shopHeaderSearch && searchInput){
     shopHeaderSearch.addEventListener("submit",(event)=>{
         event.preventDefault();
 
-        visibleLimit = 12;
+        currentPage = 1;
         renderProducts();
     });
 
     searchInput.addEventListener("input",()=>{
-        visibleLimit = 12;
+        currentPage = 1;
         renderProducts();
     });
 }
 
 if(sortSelect){
     sortSelect.addEventListener("change",()=>{
-        visibleLimit = 12;
+        currentPage = 1;
         renderProducts();
     });
 }
@@ -948,28 +929,28 @@ if(priceRange){
             `৳${Number(priceRange.value).toLocaleString()}+`;
         }
 
-        visibleLimit = 12;
+        currentPage = 1;
         renderProducts();
     });
 }
 
 sizeFilters.forEach(input=>{
     input.addEventListener("change",()=>{
-        visibleLimit = 12;
+        currentPage = 1;
         renderProducts();
     });
 });
 
 if(stockInFilter){
     stockInFilter.addEventListener("change",()=>{
-        visibleLimit = 12;
+        currentPage = 1;
         renderProducts();
     });
 }
 
 if(stockOutFilter){
     stockOutFilter.addEventListener("change",()=>{
-        visibleLimit = 12;
+        currentPage = 1;
         renderProducts();
     });
 }
@@ -988,12 +969,7 @@ viewButtons.forEach(button=>{
     });
 });
 
-if(loadMoreBtn){
-    loadMoreBtn.addEventListener("click",()=>{
-        visibleLimit += 12;
-        renderProducts();
-    });
-}
+
 
 if(mobileFilterBtn){
     mobileFilterBtn.addEventListener("click",openMobileFilter);
@@ -1010,7 +986,28 @@ document.addEventListener("keydown",(event)=>{
 });
 
 document.addEventListener("click",(event)=>{
-    const addCartBtn = event.target.closest(".shop-add-cart");
+    const pageBtn = event.target.closest(".shop-page-btn");
+
+if(pageBtn){
+    const page = Number(pageBtn.dataset.page || 1);
+
+    if(page && page !== currentPage){
+        currentPage = page;
+        renderProducts();
+
+        const toolbar = document.querySelector(".shop-toolbar");
+
+        if(toolbar){
+            toolbar.scrollIntoView({
+                behavior:"smooth",
+                block:"start"
+            });
+        }
+    }
+
+    return;
+}
+    const addCartBtn = event.target.closest(".shop-add-cart-btn, .shop-add-cart");
     const buyNowBtn = event.target.closest(".shop-buy-now");
     const wishlistBtn = event.target.closest(".shop-wishlist-btn");
 
@@ -1100,3 +1097,63 @@ window.TaqdeerShop = {
 };
 
 });
+
+function cleanShopAccountIcon(){
+    const accountBtn =
+        document.querySelector(".shop-header .account-btn") ||
+        document.querySelector(".account-btn");
+
+    if(!accountBtn){
+        return;
+    }
+
+    [...accountBtn.childNodes].forEach(node=>{
+        if(node.nodeType === Node.TEXT_NODE){
+            node.remove();
+        }
+    });
+
+    accountBtn.querySelectorAll("small,p,strong,em,.signin-text,.sign-in-text").forEach(el=>{
+        el.remove();
+    });
+
+    let wrap = accountBtn.querySelector(".header-user-photo-wrap");
+
+    if(!wrap){
+        wrap = document.createElement("span");
+        wrap.className = "header-user-photo-wrap";
+        accountBtn.innerHTML = "";
+        accountBtn.appendChild(wrap);
+    }
+
+    if(!wrap.innerHTML.trim()){
+        wrap.innerHTML = `<i data-lucide="user" class="header-user-icon"></i>`;
+    }
+
+    if(window.firebase && firebase.auth){
+        firebase.auth().onAuthStateChanged(user=>{
+            if(user && user.photoURL){
+                wrap.innerHTML = `
+                    <img class="header-user-photo" src="${user.photoURL}" alt="Profile">
+                `;
+            }
+            else{
+                wrap.innerHTML = `
+                    <i data-lucide="user" class="header-user-icon"></i>
+                `;
+            }
+
+            if(window.lucide){
+                lucide.createIcons();
+            }
+        });
+    }
+
+    if(window.lucide){
+        lucide.createIcons();
+    }
+}
+
+document.addEventListener("DOMContentLoaded",cleanShopAccountIcon);
+setTimeout(cleanShopAccountIcon,300);
+setTimeout(cleanShopAccountIcon,900);

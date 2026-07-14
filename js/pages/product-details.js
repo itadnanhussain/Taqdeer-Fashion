@@ -216,34 +216,59 @@ function getColorHex(color){
 function normalizeImages(product){
     const images = [];
 
+    function pushImage(img){
+        if(!img){
+            return;
+        }
+
+        const clean = String(img).trim();
+
+        if(clean && !images.includes(clean)){
+            images.push(clean);
+        }
+    }
+
     [
         product.image,
         product.imageUrl,
         product.thumbnail,
-        product.mainImage
-    ].forEach(img=>{
-        if(img && !images.includes(img)){
-            images.push(img);
-        }
-    });
+        product.mainImage,
+        product.frontImage,
+        product.backImage,
+        product.sideImage,
+        product.detailImage,
+        product.image1,
+        product.image2,
+        product.image3,
+        product.image4,
+        product.photo1,
+        product.photo2,
+        product.photo3,
+        product.photo4
+    ].forEach(pushImage);
 
-    ["images","gallery"].forEach(key=>{
+    [
+        "images",
+        "gallery",
+        "photos",
+        "productImages",
+        "additionalImages",
+        "imageGallery"
+    ].forEach(key=>{
         if(Array.isArray(product[key])){
-            product[key].forEach(img=>{
-                if(img && !images.includes(img)){
-                    images.push(img);
-                }
-            });
+            product[key].forEach(pushImage);
         }
     });
 
     if(Array.isArray(product.colors)){
         product.colors.forEach(color=>{
-            const img = color.image || color.photo || color.imageUrl;
+            pushImage(color.image || color.photo || color.imageUrl);
+        });
+    }
 
-            if(img && !images.includes(img)){
-                images.push(img);
-            }
+    if(Array.isArray(product.variants)){
+        product.variants.forEach(variant=>{
+            pushImage(variant.image || variant.photo || variant.imageUrl);
         });
     }
 
@@ -400,7 +425,9 @@ function getDemoProducts(){
             sold:0,
             stock:10,
             image:"assets/categories/shirt.jpeg",
-            images:["assets/categories/shirt.jpeg"],
+            images:[
+                "assets/categories/shirt.jpeg"
+            ],
             description:"Premium dobby textured fabric with breathable cotton-blend comfort. Added spandex for stretch and mobility. Structured collar with collar stand. Durable button fastening. Smart casual versatile design. Lightweight yet structured feel.",
             shortDescription:"Premium dobby textured fabric with breathable cotton-blend comfort and a clean smart casual look.",
             sizes:["S","M","L","XL","XXL"],
@@ -420,7 +447,9 @@ function getDemoProducts(){
             sold:0,
             stock:11,
             image:"assets/categories/drop-shoulder.jpeg",
-            images:["assets/categories/drop-shoulder.jpeg"],
+            images:[
+                "assets/categories/drop-shoulder.jpeg"
+            ],
             description:"The RDSTR Drop Shoulder T-Shirt is crafted for bold, effortless street style. Built from premium lacoste fabric with a relaxed drop shoulder silhouette.",
             shortDescription:"Premium drop shoulder t-shirt with relaxed fit and confident streetwear styling.",
             sizes:["S","M","L","XL","XXL"]
@@ -640,7 +669,7 @@ function renderThumbnails(images){
 
     thumbnails.innerHTML = "";
 
-    images.slice(0,5).forEach((img,index)=>{
+    images.slice(0,4).forEach((img,index)=>{
         const button = document.createElement("button");
         button.type = "button";
         button.className = index === 0 ? "product-thumb active" : "product-thumb";
@@ -746,7 +775,6 @@ function renderColors(product){
         }
     });
 }
-
 function renderSizes(sizes){
     if(!sizeOptions){
         return;
@@ -777,8 +805,8 @@ function renderSizes(sizes){
 
 function renderSizeChart(product){
     /*
-        Static reference-style size chart.
-        Table is already written in HTML, so JS will not overwrite it.
+        Size chart image is static in HTML.
+        JS will not overwrite it.
     */
     return;
 }
@@ -897,16 +925,17 @@ if(addToCartBtn){
 
         addToCartBtn.innerHTML = `
             <i data-lucide="check"></i>
-            Added
+            <span>Added</span>
         `;
 
         refreshLucide();
 
         setTimeout(()=>{
             addToCartBtn.innerHTML = `
-    <i data-lucide="shopping-cart"></i>
-    <span>Add to Cart</span>
-`;
+                <i data-lucide="shopping-cart"></i>
+                <span>Add to Cart</span>
+            `;
+
             refreshLucide();
         },900);
     });
@@ -1085,14 +1114,14 @@ if(shareBtn){
             }
         }
         else if(navigator.clipboard){
-            navigator.clipboard.writeText(window.location.href);
+            await navigator.clipboard.writeText(window.location.href);
         }
     });
 }
 
 
 /*=========================================================
-    TABS + SIZE CHART
+    TABS + SIZE CHART SCROLL
 =========================================================*/
 
 tabButtons.forEach(button=>{
@@ -1236,6 +1265,7 @@ async function renderRelated(product){
         if(relatedSection){
             relatedSection.style.display = "none";
         }
+
         return;
     }
 
@@ -1250,6 +1280,8 @@ async function renderRelated(product){
             item.imageUrl ||
             item.thumbnail ||
             item.mainImage ||
+            item.frontImage ||
+            item.image1 ||
             (Array.isArray(item.images) ? item.images[0] : "");
 
         const image = getImagePath(imageRaw);
@@ -1285,9 +1317,10 @@ async function renderRelated(product){
             </a>
 
             <div class="related-info">
+                <p class="related-category">${category}</p>
                 <h3>${name}</h3>
 
-                <p>
+                <p class="related-price">
                     <strong>${money(price)}</strong>
                     ${oldPrice && oldPrice > price ? `<del>${money(oldPrice)}</del>` : ""}
                 </p>
@@ -1454,6 +1487,21 @@ if(window.firebase && firebase.auth){
 else{
     cleanAccountIcon();
 }
+
+
+/*=========================================================
+    BUY NOW ATTENTION HELPER
+=========================================================*/
+
+function startBuyNowAttention(){
+    if(!buyNowBtn){
+        return;
+    }
+
+    buyNowBtn.classList.add("buy-now-attention");
+}
+
+startBuyNowAttention();
 
 
 /*=========================================================
