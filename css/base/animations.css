@@ -923,3 +923,209 @@ transition-duration:.01ms !important;
 .nav-icon{
     flex-shrink:0 !important;
 }
+/*=========================================================
+    TAQDEER LOGO FINAL EFFECT
+    No underline. Only soft sparkle/glow.
+=========================================================*/
+
+/* remove old underline/shine line */
+.attention-logo .logo-title::after,
+.logo-title::after,
+.logo-main::after,
+.taqdeer-text-logo .logo-main::after{
+    content:none !important;
+    display:none !important;
+    animation:none !important;
+}
+
+/* remove old glow block if it creates underline feeling */
+.attention-logo .logo-title::before,
+.logo-title::before,
+.logo-main::before,
+.taqdeer-text-logo .logo-main::before{
+    content:none !important;
+    display:none !important;
+    animation:none !important;
+}
+
+/* actual logo effect container */
+.logo-attention-effect{
+    position:relative !important;
+    display:inline-flex !important;
+    flex-direction:column !important;
+    align-items:flex-start !important;
+    isolation:isolate !important;
+    overflow:visible !important;
+}
+
+/* very soft success-style glow */
+.logo-attention-effect::before{
+    content:"" !important;
+    position:absolute !important;
+    left:-12px !important;
+    right:-12px !important;
+    top:-8px !important;
+    bottom:-8px !important;
+    border-radius:18px !important;
+    background:
+        radial-gradient(circle at 15% 35%, rgba(255,216,77,.28), transparent 28%),
+        radial-gradient(circle at 80% 35%, rgba(255,216,77,.18), transparent 30%) !important;
+    filter:blur(8px) !important;
+    opacity:0 !important;
+    z-index:-1 !important;
+    animation:taqdeerOnlyGlow 3.8s ease-in-out infinite !important;
+}
+
+/* no moving underline/line */
+.logo-attention-effect::after{
+    content:none !important;
+    display:none !important;
+}
+
+/* text minimal pulse only */
+.logo-attention-effect .logo-title{
+    animation:taqdeerTextOnlyPulse 3.8s ease-in-out infinite !important;
+}
+
+.logo-attention-effect .logo-subtitle{
+    animation:none !important;
+}
+
+/* sparkle position */
+.logo-spark{
+    position:absolute !important;
+    width:6px !important;
+    height:6px !important;
+    border-radius:50% !important;
+    background:#ffd84d !important;
+    box-shadow:
+        0 0 0 3px rgba(255,216,77,.18),
+        0 0 14px rgba(255,216,77,.85) !important;
+    opacity:0;
+    pointer-events:none !important;
+    z-index:8 !important;
+}
+
+.logo-spark::before,
+.logo-spark::after{
+    content:"" !important;
+    position:absolute !important;
+    left:50% !important;
+    top:50% !important;
+    background:#ffd84d !important;
+    transform:translate(-50%,-50%) !important;
+    border-radius:999px !important;
+}
+
+.logo-spark::before{
+    width:16px !important;
+    height:2px !important;
+}
+
+.logo-spark::after{
+    width:2px !important;
+    height:16px !important;
+}
+
+.logo-spark-1{
+    right:-8px !important;
+    top:4px !important;
+    animation:taqdeerSparkClean1 3.8s ease-in-out infinite !important;
+}
+
+.logo-spark-2{
+    right:18px !important;
+    bottom:4px !important;
+    animation:taqdeerSparkClean2 3.8s ease-in-out infinite !important;
+}
+
+.logo-spark-3{
+    left:-8px !important;
+    top:28px !important;
+    animation:taqdeerSparkClean3 3.8s ease-in-out infinite !important;
+}
+
+@keyframes taqdeerOnlyGlow{
+    0%,100%{
+        opacity:0;
+        transform:scale(.96);
+    }
+
+    35%{
+        opacity:.85;
+        transform:scale(1.02);
+    }
+
+    62%{
+        opacity:0;
+        transform:scale(1);
+    }
+}
+
+@keyframes taqdeerTextOnlyPulse{
+    0%,100%{
+        transform:scale(1);
+        text-shadow:none;
+    }
+
+    38%{
+        transform:scale(1.012);
+        text-shadow:0 0 12px rgba(255,216,77,.35);
+    }
+
+    62%{
+        transform:scale(1);
+        text-shadow:none;
+    }
+}
+
+@keyframes taqdeerSparkClean1{
+    0%,22%,100%{
+        opacity:0;
+        transform:scale(.35) rotate(0deg);
+    }
+
+    34%{
+        opacity:1;
+        transform:scale(1) rotate(45deg);
+    }
+
+    48%{
+        opacity:0;
+        transform:scale(.45) rotate(90deg);
+    }
+}
+
+@keyframes taqdeerSparkClean2{
+    0%,40%,100%{
+        opacity:0;
+        transform:scale(.35) rotate(0deg);
+    }
+
+    52%{
+        opacity:.95;
+        transform:scale(.85) rotate(45deg);
+    }
+
+    65%{
+        opacity:0;
+        transform:scale(.45) rotate(90deg);
+    }
+}
+
+@keyframes taqdeerSparkClean3{
+    0%,52%,100%{
+        opacity:0;
+        transform:scale(.35) rotate(0deg);
+    }
+
+    64%{
+        opacity:.85;
+        transform:scale(.75) rotate(45deg);
+    }
+
+    76%{
+        opacity:0;
+        transform:scale(.4) rotate(90deg);
+    }
+}
