@@ -475,7 +475,13 @@ function renderProduct(product){
     product.rating || 4.8;
 
     const sold =
-    product.sold || product.soldCount || 256;
+Number(
+    product.sold ||
+    product.soldCount ||
+    product.salesCount ||
+    product.totalSold ||
+    0
+);
 
     const stock =
     Number(product.stock || product.quantity || 0);
@@ -556,8 +562,15 @@ function renderProduct(product){
     }
 
     if(productSold){
-        productSold.innerText = `Sold ${sold}+`;
-    }
+
+    productSold.innerText =
+    sold > 10
+    ?
+    `Sold ${sold}+`
+    :
+    "Sold 0";
+
+}
 
     if(stockWarning){
         stockWarning.innerText =
@@ -569,15 +582,9 @@ function renderProduct(product){
     }
 
 
-    const short =
-    product.shortDescription ||
-    product.subtitle ||
-    product.description ||
-    "Premium quality fashion product for everyday comfort and style.";
-
-    if(shortDescription){
-        shortDescription.innerText = short;
-    }
+   if(shortDescription){
+    shortDescription.style.display = "none";
+}
 
     if(descriptionText){
 
@@ -675,10 +682,11 @@ function renderColors(product){
     }
 
     const colors =
-    product.colors ||
-    product.variants ||
-    product.colorVariants ||
-    [];
+product.colors ||
+product.colorVariants ||
+product.variants ||
+product.variantColors ||
+[];
 
     if(!Array.isArray(colors) || colors.length === 0){
 
@@ -857,14 +865,16 @@ function buildCartProduct(){
     }
 
     return {
-        id:currentProduct.id,
-        name:currentProduct.name || currentProduct.title,
-        price:Number(currentProduct.price || 0),
-        image:selectedImage || currentProduct.image,
-        category:currentProduct.category || "Product",
-        size:selectedSize,
-        color:selectedColor,
-        quantity:quantity
+        id: currentProduct.id,
+        name: currentProduct.name || currentProduct.title || "Product",
+        price: Number(currentProduct.price || 0),
+        oldPrice: Number(currentProduct.oldPrice || currentProduct.comparePrice || currentProduct.regularPrice || 0),
+        image: selectedImage || currentProduct.image || "",
+        category: currentProduct.category || "Product",
+        size: selectedSize || "M",
+        color: selectedColor || "",
+        quantity: quantity,
+        stock: Number(currentProduct.stock || currentProduct.quantity || 0)
     };
 
 }
@@ -888,7 +898,7 @@ function addProductToCart(){
             new Event("cartUpdated")
         );
 
-        alert("Product added to cart.");
+        
 
     }
 
@@ -922,7 +932,7 @@ function addProductToCart(){
             new Event("cartUpdated")
         );
 
-        alert("Product added to cart.");
+        
 
     }
 
@@ -1088,20 +1098,101 @@ document.addEventListener("keydown",(e)=>{
         RELATED PRODUCTS DEMO
 =========================================================*/
 
-function renderRelated(product){
+async function renderRelated(product){
 
     if(!relatedProducts){
         return;
     }
 
-    relatedProducts.innerHTML = "";
+    relatedProducts.innerHTML = `
+        <div class="related-loading">
+            Loading related products...
+        </div>
+    `;
 
-    const demos =
-    getDemoProducts()
+    let items = [];
+
+    try{
+
+        if(window.db){
+
+            const snapshot =
+            await window.db
+            .collection("products")
+            .limit(8)
+            .get();
+
+            snapshot.forEach(doc=>{
+
+                const data = {
+                    id: doc.id,
+                    ...doc.data()
+                };
+
+                if(data.id !== product.id){
+                    items.push(data);
+                }
+
+            });
+
+        }
+
+    }
+
+    catch(error){
+
+        console.error("Related Products Load Error:",error);
+
+    }
+
+
+    if(!items.length){
+
+        items =
+        getDemoProducts()
+        .filter(item=>item.id !== product.id);
+
+    }
+
+
+    items =
+    items
     .filter(item=>item.id !== product.id)
     .slice(0,4);
 
-    demos.forEach(item=>{
+
+    relatedProducts.innerHTML = "";
+
+
+    if(!items.length){
+
+        relatedProducts.innerHTML = `
+            <div class="related-empty">
+                No related products found.
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    items.forEach(item=>{
+
+        const id =
+        item.id;
+
+        const image =
+        getImagePath(item.image || item.mainImage);
+
+        const price =
+        Number(item.price || 0);
+
+        const oldPrice =
+        Number(item.oldPrice || item.comparePrice || item.regularPrice || 0);
+
+        const category =
+        item.category || "Product";
 
         const card =
         document.createElement("article");
@@ -1110,20 +1201,65 @@ function renderRelated(product){
         "related-card";
 
         card.innerHTML = `
-            <a href="index.html?id=${item.id}" class="related-img">
-                <img src="${getImagePath(item.image)}" alt="${item.name}">
+            <button type="button" class="related-heart-btn" data-id="${id}">
+                <i data-lucide="heart"></i>
+            </button>
+
+            <a href="index.html?id=${id}" class="related-img">
+                <img
+                    src="${image}"
+                    alt="${item.name || "Product"}"
+                    onerror="this.onerror=null;this.src='../../assets/placeholders/product.jpg';">
             </a>
 
             <div class="related-info">
-                <span>${item.category || "Product"}</span>
-                <h3>${item.name}</h3>
-                <strong>${money(item.price)}</strong>
+                <span>${category}</span>
+
+                <h3>${item.name || item.title || "Product"}</h3>
+
+                <div class="related-price">
+                    <strong>${money(price)}</strong>
+                    ${
+                        oldPrice > price
+                        ?
+                        `<del>${money(oldPrice)}</del>`
+                        :
+                        ""
+                    }
+                </div>
+
+                <div class="related-actions">
+                    <button type="button" class="related-add-cart" data-id="${id}">
+                        <i data-lucide="shopping-cart"></i>
+                        Add to Cart
+                    </button>
+
+                    <a href="index.html?id=${id}">
+                        View
+                    </a>
+                </div>
             </div>
         `;
+
+        card.dataset.product =
+        JSON.stringify({
+            id,
+            name:item.name || item.title || "Product",
+            price,
+            oldPrice,
+            image:item.image || item.mainImage || "",
+            category,
+            quantity:1
+        });
 
         relatedProducts.appendChild(card);
 
     });
+
+
+    if(window.lucide){
+        lucide.createIcons();
+    }
 
 }
 
@@ -1191,7 +1327,99 @@ if(wishlistBtn){
 
 }
 
+document.addEventListener("click",(e)=>{
 
+    const relatedAddBtn =
+    e.target.closest(".related-add-cart");
+
+    if(relatedAddBtn){
+
+        const card =
+        relatedAddBtn.closest(".related-card");
+
+        if(!card || !card.dataset.product){
+            return;
+        }
+
+        const product =
+        JSON.parse(card.dataset.product);
+
+        const cartItem = {
+            ...product,
+            size:"M",
+            color:"",
+            quantity:1
+        };
+
+        if(window.CartService && window.CartService.addToCart){
+
+            window.CartService.addToCart(cartItem);
+
+        }
+
+        else{
+
+            const cart =
+            JSON.parse(localStorage.getItem("taqdeerCart")) || [];
+
+            const existing =
+            cart.find(item=>item.id === cartItem.id);
+
+            if(existing){
+                existing.quantity = Number(existing.quantity || 1) + 1;
+            }
+            else{
+                cart.push(cartItem);
+            }
+
+            localStorage.setItem("taqdeerCart",JSON.stringify(cart));
+
+        }
+
+        window.dispatchEvent(new Event("cartUpdated"));
+
+        
+
+        return;
+
+    }
+
+
+    const relatedHeartBtn =
+    e.target.closest(".related-heart-btn");
+
+    if(relatedHeartBtn){
+
+        relatedHeartBtn.classList.toggle("active");
+
+        const card =
+        relatedHeartBtn.closest(".related-card");
+
+        if(!card || !card.dataset.product){
+            return;
+        }
+
+        const product =
+        JSON.parse(card.dataset.product);
+
+        const wishlist =
+        JSON.parse(localStorage.getItem("taqdeerWishlist")) || [];
+
+        const exists =
+        wishlist.some(item=>item.id === product.id);
+
+        if(!exists){
+            wishlist.push(product);
+            localStorage.setItem("taqdeerWishlist",JSON.stringify(wishlist));
+        }
+
+        window.dispatchEvent(new Event("wishlistUpdated"));
+
+        return;
+
+    }
+
+});
 
 
 

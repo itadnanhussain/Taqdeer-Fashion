@@ -1,0 +1,226 @@
+/*=========================================================
+    TAQDEER FASHION - GLOBAL CART DRAWER
+=========================================================*/
+
+.tf-cart-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.46);
+    opacity:0;
+    visibility:hidden;
+    z-index:9998;
+    transition:.28s ease;
+}
+
+.tf-cart-overlay.active{
+    opacity:1;
+    visibility:visible;
+}
+
+.tf-cart-drawer{
+    position:fixed;
+    top:0;
+    right:-430px;
+    width:410px;
+    max-width:92vw;
+    height:100vh;
+    background:#fff;
+    z-index:9999;
+    display:flex;
+    flex-direction:column;
+    box-shadow:-18px 0 45px rgba(0,0,0,.18);
+    transition:right .34s cubic-bezier(.4,0,.2,1);
+}
+
+.tf-cart-drawer.active{
+    right:0;
+}
+
+.tf-cart-drawer-head{
+    height:74px;
+    padding:0 22px;
+    border-bottom:1px solid #eeeeee;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.tf-cart-drawer-head h3{
+    font-family:"Poppins",sans-serif;
+    font-size:22px;
+    font-weight:800;
+    color:#111;
+    margin:0;
+}
+
+#tf-cart-close{
+    width:38px;
+    height:38px;
+    border:none;
+    border-radius:50%;
+    background:#f5f5f5;
+    color:#111;
+    font-size:26px;
+    line-height:1;
+    cursor:pointer;
+    transition:.25s ease;
+}
+
+#tf-cart-close:hover{
+    background:#111;
+    color:#fff;
+}
+
+.tf-cart-drawer-body{
+    flex:1;
+    overflow-y:auto;
+    padding:18px 20px;
+}
+
+.tf-drawer-item{
+    display:grid;
+    grid-template-columns:76px 1fr;
+    gap:14px;
+    padding:14px 0;
+    border-bottom:1px solid #eeeeee;
+}
+
+.tf-drawer-item:last-child{
+    border-bottom:none;
+}
+
+.tf-drawer-item-img{
+    width:76px;
+    height:88px;
+    border-radius:10px;
+    overflow:hidden;
+    background:#f5f5f5;
+}
+
+.tf-drawer-item-img img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+.tf-drawer-item-info{
+    min-width:0;
+}
+
+.tf-drawer-item-info h4{
+    font-family:"Poppins",sans-serif;
+    font-size:14px;
+    font-weight:800;
+    color:#111;
+    line-height:1.35;
+    margin:0 0 6px;
+}
+
+.tf-drawer-item-info p{
+    font-family:"Inter",sans-serif;
+    font-size:12px;
+    color:#666;
+    margin:0 0 8px;
+}
+
+.tf-drawer-item-info strong{
+    font-family:"Poppins",sans-serif;
+    color:#e1121b;
+    font-size:16px;
+    font-weight:900;
+}
+
+.tf-drawer-empty{
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:40px 20px;
+}
+
+.tf-drawer-empty h4{
+    font-family:"Poppins",sans-serif;
+    font-size:20px;
+    font-weight:800;
+    color:#111;
+    margin-bottom:8px;
+}
+
+.tf-drawer-empty p{
+    font-family:"Inter",sans-serif;
+    color:#666;
+    font-size:14px;
+}
+
+.tf-cart-drawer-footer{
+    padding:18px 20px 22px;
+    border-top:1px solid #eeeeee;
+    background:#fff;
+}
+
+.tf-drawer-total-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:14px;
+}
+
+.tf-drawer-total-row span{
+    font-family:"Inter",sans-serif;
+    color:#555;
+    font-size:15px;
+    font-weight:700;
+}
+
+.tf-drawer-total-row strong{
+    font-family:"Poppins",sans-serif;
+    color:#e1121b;
+    font-size:24px;
+    font-weight:900;
+}
+
+.tf-drawer-checkout,
+.tf-drawer-view-cart{
+    width:100%;
+    height:48px;
+    border-radius:9px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    font-family:"Inter",sans-serif;
+    font-size:14px;
+    font-weight:800;
+    transition:.25s ease;
+}
+
+.tf-drawer-checkout{
+    background:#e1121b;
+    color:#fff;
+    margin-bottom:10px;
+}
+
+.tf-drawer-checkout:hover{
+    background:#111;
+}
+
+.tf-drawer-view-cart{
+    background:#fff;
+    color:#111;
+    border:1px solid #dddddd;
+}
+
+.tf-drawer-view-cart:hover{
+    border-color:#111;
+}
+
+@media(max-width:520px){
+    .tf-cart-drawer{
+        width:100%;
+        max-width:100%;
+        right:-100%;
+    }
+}

@@ -4,15 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taqdeer Fashion | Premium Fashion</title>
+
+    <title>Taqdeer Fashion | Premium Menswear in Bangladesh</title>
+
+    <meta name="description" content="Taqdeer Fashion offers premium menswear in Bangladesh including shirts, t-shirts, panjabi, trousers, jersey, polo and drop shoulder collections.">
+    <meta name="keywords" content="Taqdeer Fashion, premium fashion Bangladesh, menswear, panjabi, shirt, t-shirt, polo, trouser, jersey">
+    <meta name="author" content="Taqdeer Fashion">
 
     <link rel="icon" href="favicon.ico">
 
-    <!-- GOOGLE FONT -->
+    <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet"
     >
 
@@ -39,26 +44,45 @@
 
 <body>
 
-    <!-- ANNOUNCEMENT BAR -->
-    <div class="announcement-bar">
+    <!-- TOP STRIP -->
+    <div class="announcement-bar home-top-strip">
         <div class="container">
             <div class="announcement-wrapper">
-                <p>🚚 Free Delivery Above ৳2000</p>
-                <p>💳 Cash On Delivery Available</p>
-                <p>⭐ Premium Quality Guaranteed</p>
+                <p>
+                    Welcome to <strong>Taqdeer Fashion</strong>
+                </p>
+
+                <p>
+                    <i data-lucide="truck"></i>
+                    Free Delivery on orders over ৳999
+                </p>
+
+                <p>
+                    <i data-lucide="refresh-cw"></i>
+                    Easy Returns & Exchanges
+                </p>
+
+                <p>
+                    <i data-lucide="banknote"></i>
+                    Cash on Delivery Available
+                </p>
+
+                <p>
+                    <i data-lucide="phone"></i>
+                    +880 9613 111333
+                </p>
             </div>
         </div>
     </div>
 
+
     <!-- HEADER -->
-    <header class="header">
+    <header class="header home-header">
         <div class="container">
             <div class="header-wrapper">
 
                 <!-- LOGO -->
-                <a href="index.html" class="logo">
-                    <img src="assets/logos/logo.png" alt="Taqdeer Fashion">
-
+                <a href="index.html" class="logo text-logo attention-logo" aria-label="Taqdeer Fashion Home">
                     <div class="logo-text">
                         <h2 class="logo-title">TAQDEER</h2>
                         <span class="logo-subtitle">FASHION</span>
@@ -68,452 +92,816 @@
                 <!-- NAVIGATION -->
                 <nav class="navbar">
                     <ul class="nav-menu">
-
                         <li>
                             <a href="index.html" class="active">Home</a>
                         </li>
 
-                        <li>
-                            <a href="pages/shop/index.html">Shop</a>
-                        </li>
-
                         <li class="has-dropdown">
-                            <a href="#">Categories</a>
+                            <a href="pages/shop/index.html">
+                                Shop
+                                <i data-lucide="chevron-down"></i>
+                            </a>
 
                             <div class="mega-menu">
-
                                 <div class="mega-column">
-                                    <h4>Men</h4>
-
-                                    <a href="pages/shop/index.html?category=shirt">Shirt</a>
-                                    <a href="pages/shop/index.html?category=t-shirt">T-Shirt</a>
+                                    <h4>Top Categories</h4>
+                                    <a href="pages/shop/index.html?category=shirt">Shirts</a>
+                                    <a href="pages/shop/index.html?category=t-shirt">T-Shirts</a>
                                     <a href="pages/shop/index.html?category=polo">Polo</a>
                                     <a href="pages/shop/index.html?category=panjabi">Panjabi</a>
                                 </div>
 
                                 <div class="mega-column">
                                     <h4>Bottom Wear</h4>
-
+                                    <a href="pages/shop/index.html?category=trouser">Trousers</a>
                                     <a href="pages/shop/index.html?category=pant">Pant</a>
-                                    <a href="pages/shop/index.html?category=trouser">Trouser</a>
                                     <a href="pages/shop/index.html?category=drop-shoulder">Drop Shoulder</a>
                                 </div>
 
                                 <div class="mega-column">
                                     <h4>Collection</h4>
-
-                                    <a href="pages/shop/index.html">New Arrival</a>
-                                    <a href="pages/shop/index.html">Best Seller</a>
-                                    <a href="pages/shop/index.html">Premium</a>
+                                    <a href="pages/shop/index.html?filter=new">New Arrival</a>
+                                    <a href="pages/shop/index.html?filter=best">Best Seller</a>
+                                    <a href="pages/shop/index.html?filter=premium">Premium</a>
                                 </div>
-
                             </div>
                         </li>
 
                         <li>
-                            <a href="#featured">Featured</a>
+                            <a href="pages/shop/index.html?category=panjabi">Panjabi</a>
                         </li>
 
                         <li>
-                            <a href="#contact">Contact</a>
+                            <a href="pages/shop/index.html?category=shirt">Shirts</a>
                         </li>
 
+                        <li>
+                            <a href="pages/shop/index.html?category=t-shirt">T-Shirts</a>
+                        </li>
+
+                        <li>
+                            <a href="pages/shop/index.html?category=trouser">Trousers</a>
+                        </li>
+
+                        <li>
+                            <a href="pages/shop/index.html?category=jersey">Jersey</a>
+                        </li>
+
+                        <li>
+                            <a href="pages/orders/index.html">Track Order</a>
+                        </li>
                     </ul>
                 </nav>
 
-                <!-- HEADER ACTIONS -->
-                <div class="header-right">
+                <!-- SEARCH -->
+                <form class="home-header-search" role="search">
+                    <input
+                        type="search"
+                        id="home-header-search-input"
+                        placeholder="Search products..."
+                        aria-label="Search products"
+                    >
 
-                    <button class="nav-icon search-btn" type="button">
+                    <button type="submit" aria-label="Search">
                         <i data-lucide="search"></i>
                     </button>
+                </form>
 
-                    <a href="pages/wishlist/index.html" class="nav-icon wishlist-header-btn">
+                <!-- HEADER ACTIONS -->
+                <div class="header-right">
+                    <a href="pages/auth/login.html" class="nav-icon account-btn" aria-label="Account">
+                        <span class="header-user-photo-wrap">
+                            <i data-lucide="user" class="header-user-icon"></i>
+                        </span>
+                    </a>
+
+                    <a href="pages/wishlist/index.html" class="nav-icon wishlist-header-btn" aria-label="Wishlist">
                         <i data-lucide="heart"></i>
                         <span class="badge wishlist-count">0</span>
                     </a>
 
-                    <button class="nav-icon cart-btn" type="button">
-                        <i data-lucide="shopping-cart"></i>
+                    <button class="nav-icon cart-btn" type="button" aria-label="Open cart">
+                        <i data-lucide="shopping-bag"></i>
                         <span class="badge cart-count">0</span>
                     </button>
 
-                    <a href="pages/auth/login.html" class="login-btn account-btn">
-                        <i data-lucide="user"></i>
-                        <span>Sign In</span>
-                    </a>
-
-                    <button class="hamburger" type="button">
+                    <button class="hamburger" type="button" aria-label="Open menu">
                         <span></span>
                         <span></span>
                         <span></span>
                     </button>
-
                 </div>
 
             </div>
         </div>
     </header>
 
+
     <!-- MOBILE MENU -->
     <div class="mobile-menu">
         <ul>
-            <li>
-                <a href="index.html">Home</a>
-            </li>
-
-            <li>
-                <a href="pages/shop/index.html">Shop</a>
-            </li>
-
-            <li>
-                <a href="pages/account/index.html">Account</a>
-            </li>
-
-            <li>
-                <a href="pages/wishlist/index.html">Wishlist</a>
-            </li>
-
-            <li>
-                <a href="pages/cart/index.html">Cart</a>
-            </li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="pages/shop/index.html">Shop</a></li>
+            <li><a href="pages/shop/index.html?category=shirt">Shirts</a></li>
+            <li><a href="pages/shop/index.html?category=t-shirt">T-Shirts</a></li>
+            <li><a href="pages/shop/index.html?category=panjabi">Panjabi</a></li>
+            <li><a href="pages/shop/index.html?category=trouser">Trousers</a></li>
+            <li><a href="pages/shop/index.html?category=jersey">Jersey</a></li>
+            <li><a href="pages/orders/index.html">Track Order</a></li>
+            <li><a href="pages/wishlist/index.html">Wishlist</a></li>
+            <li><a href="pages/cart/index.html">Cart</a></li>
         </ul>
     </div>
 
-    <!-- HERO SECTION -->
-    <section class="hero">
 
-        <img
-            src="assets/banners/hero-1.png"
-            class="hero-bg"
-            alt="Taqdeer Fashion"
-        >
+    <!-- MAIN -->
+    <main>
 
-        <div class="hero-overlay"></div>
+        <!-- HERO -->
+        <section class="home-hero" aria-label="Taqdeer Fashion hero">
+            <div class="container">
 
-        <div class="container">
-            <div class="hero-container">
+                <div class="hero-slider" id="hero-slider">
 
-                <!-- HERO CONTENT -->
-                <div class="hero-content">
+                    <article class="hero-slide active" data-slide="0">
+                        <div class="hero-copy">
+                            <span>NEW COLLECTION</span>
 
-                    <span class="hero-label">NEW ARRIVAL 2026</span>
+                            <h1>
+                                Elevate Your<br>
+                                Everyday Style
+                            </h1>
 
-                    <h1 class="hero-title">
-                        Elevate Your Style
-                        <br>
-                        With <span>Taqdeer Fashion</span>
-                    </h1>
+                            <p>
+                                Premium fashion crafted for comfort, confidence and your everyday.
+                            </p>
 
-                    <p class="hero-description">
-                        Discover premium clothing designed for comfort,
-                        confidence and modern lifestyle.
-                    </p>
+                            <div class="hero-actions">
+                                <a href="pages/shop/index.html" class="hero-primary-btn">
+                                    Shop Now
+                                    <i data-lucide="arrow-right"></i>
+                                </a>
 
-                    <div class="hero-buttons">
-                        <a href="pages/shop/index.html" class="btn btn-primary">
-                            Shop Now
-                        </a>
+                                <a href="#collections" class="hero-secondary-btn">
+                                    Explore Collection
+                                    <i data-lucide="arrow-right"></i>
+                                </a>
+                            </div>
 
-                        <a href="#collection" class="btn btn-outline">
-                            Explore Collection
-                        </a>
-                    </div>
+                            <div class="hero-benefits">
+                                <div>
+                                    <i data-lucide="badge-check"></i>
+                                    <span>
+                                        <strong>Premium Quality</strong>
+                                        100% Original
+                                    </span>
+                                </div>
 
-                    <div class="hero-stats">
+                                <div>
+                                    <i data-lucide="refresh-cw"></i>
+                                    <span>
+                                        <strong>7 Days Return</strong>
+                                        No Questions Asked
+                                    </span>
+                                </div>
 
-                        <div class="hero-stat">
-                            <h3 class="stat-number">500+</h3>
-                            <p class="stat-text">Premium Products</p>
+                                <div>
+                                    <i data-lucide="truck"></i>
+                                    <span>
+                                        <strong>Fast Delivery</strong>
+                                        On orders over ৳999
+                                    </span>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="hero-stat">
-                            <h3 class="stat-number">10K+</h3>
-                            <p class="stat-text">Happy Customers</p>
+                        <div class="hero-media">
+                            <img src="assets/banners/hero-1.png" alt="Premium menswear collection">
+                        </div>
+                    </article>
+
+                    <article class="hero-slide" data-slide="1">
+                        <div class="hero-copy">
+                            <span>PREMIUM PANJABI</span>
+
+                            <h1>
+                                Refined Look<br>
+                                For Every Occasion
+                            </h1>
+
+                            <p>
+                                Discover elegant Panjabi pieces made for modern comfort and timeless style.
+                            </p>
+
+                            <div class="hero-actions">
+                                <a href="pages/shop/index.html?category=panjabi" class="hero-primary-btn">
+                                    Shop Panjabi
+                                    <i data-lucide="arrow-right"></i>
+                                </a>
+
+                                <a href="#featured" class="hero-secondary-btn">
+                                    Featured Products
+                                    <i data-lucide="arrow-right"></i>
+                                </a>
+                            </div>
+
+                            <div class="hero-benefits">
+                                <div>
+                                    <i data-lucide="badge-check"></i>
+                                    <span>
+                                        <strong>Premium Fabric</strong>
+                                        Comfortable Fit
+                                    </span>
+                                </div>
+
+                                <div>
+                                    <i data-lucide="package-check"></i>
+                                    <span>
+                                        <strong>Secure Packaging</strong>
+                                        Carefully Delivered
+                                    </span>
+                                </div>
+
+                                <div>
+                                    <i data-lucide="truck"></i>
+                                    <span>
+                                        <strong>Fast Delivery</strong>
+                                        Across Bangladesh
+                                    </span>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="hero-stat">
-                            <h3 class="stat-number">100%</h3>
-                            <p class="stat-text">Quality</p>
+                        <div class="hero-media">
+                            <img src="assets/banners/hero-2.png" alt="Premium Panjabi collection">
+                        </div>
+                    </article>
+
+                    <article class="hero-slide" data-slide="2">
+                        <div class="hero-copy">
+                            <span>SPORTS & CASUAL</span>
+
+                            <h1>
+                                Comfort Meets<br>
+                                Modern Fashion
+                            </h1>
+
+                            <p>
+                                Explore shirts, jerseys, trousers and casual pieces for your daily lifestyle.
+                            </p>
+
+                            <div class="hero-actions">
+                                <a href="pages/shop/index.html?category=jersey" class="hero-primary-btn">
+                                    Shop Jersey
+                                    <i data-lucide="arrow-right"></i>
+                                </a>
+
+                                <a href="pages/shop/index.html" class="hero-secondary-btn">
+                                    All Products
+                                    <i data-lucide="arrow-right"></i>
+                                </a>
+                            </div>
+
+                            <div class="hero-benefits">
+                                <div>
+                                    <i data-lucide="shield-check"></i>
+                                    <span>
+                                        <strong>Original Quality</strong>
+                                        Premium Materials
+                                    </span>
+                                </div>
+
+                                <div>
+                                    <i data-lucide="refresh-cw"></i>
+                                    <span>
+                                        <strong>Easy Returns</strong>
+                                        7 Days Policy
+                                    </span>
+                                </div>
+
+                                <div>
+                                    <i data-lucide="headphones"></i>
+                                    <span>
+                                        <strong>24/7 Support</strong>
+                                        We’re here to help
+                                    </span>
+                                </div>
+                            </div>
                         </div>
 
+                        <div class="hero-media">
+                            <img src="assets/banners/hero-3.png" alt="Premium casual collection">
+                        </div>
+                    </article>
+
+                    <button class="hero-arrow hero-arrow-left" type="button" aria-label="Previous slide">
+                        <i data-lucide="chevron-left"></i>
+                    </button>
+
+                    <button class="hero-arrow hero-arrow-right" type="button" aria-label="Next slide">
+                        <i data-lucide="chevron-right"></i>
+                    </button>
+
+                    <div class="hero-dots" aria-label="Hero slider controls">
+                        <button type="button" class="active" data-index="0" aria-label="Slide 1"></button>
+                        <button type="button" data-index="1" aria-label="Slide 2"></button>
+                        <button type="button" data-index="2" aria-label="Slide 3"></button>
                     </div>
 
                 </div>
 
-                <!-- SUMMER CARD -->
-                <div class="hero-collection-card">
+            </div>
+        </section>
 
-                    <span>SUMMER COLLECTION</span>
 
-                    <h3>Fresh Style</h3>
+        <!-- CATEGORY STRIP -->
+        <section class="home-category-strip" aria-label="Shop categories">
+            <div class="container">
+                <div class="category-strip-grid">
 
-                    <p>
-                        New trends for your everyday look.
-                    </p>
+                    <a href="pages/shop/index.html?category=shirt" class="home-category-card">
+                        <img src="assets/categories/shirt.jpeg" alt="Shirts">
+                        <h3>Shirts</h3>
+                        <p data-category-count="shirt">0 Items</p>
+                    </a>
 
-                    <div class="hero-mini-products">
+                    <a href="pages/shop/index.html?category=t-shirt" class="home-category-card">
+                        <img src="assets/placeholders/product.jpg" alt="T-Shirts">
+                        <h3>T-Shirts</h3>
+                        <p data-category-count="t-shirt">0 Items</p>
+                    </a>
+
+                    <a href="pages/shop/index.html?category=panjabi" class="home-category-card">
                         <img src="assets/categories/panjabi.jpeg" alt="Panjabi">
-                        <img src="assets/placeholders/product.jpg" alt="Product">
-                        <img src="assets/categories/polo.jpeg" alt="Polo">
-                    </div>
-
-                    <a href="pages/shop/index.html" class="collection-btn">
-                        Explore
-                    </a>
-
-                </div>
-
-                <!-- SLIDER DOT -->
-                <div class="hero-controls">
-                    <span class="active"></span>
-                    <span></span>
-                    <span></span>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- TRUST STRIP -->
-    <section class="trust-strip">
-        <div class="container">
-            <div class="trust-container">
-
-                <div class="trust-item">
-                    <div class="trust-icon">
-                        <i data-lucide="truck"></i>
-                    </div>
-
-                    <div>
-                        <h4>Free Delivery</h4>
-                        <p>On orders over ৳1999</p>
-                    </div>
-                </div>
-
-                <div class="trust-item">
-                    <div class="trust-icon">
-                        <i data-lucide="credit-card"></i>
-                    </div>
-
-                    <div>
-                        <h4>Secure Payment</h4>
-                        <p>100% secure payment</p>
-                    </div>
-                </div>
-
-                <div class="trust-item">
-                    <div class="trust-icon">
-                        <i data-lucide="rotate-ccw"></i>
-                    </div>
-
-                    <div>
-                        <h4>Easy Returns</h4>
-                        <p>Within 7 days</p>
-                    </div>
-                </div>
-
-                <div class="trust-item">
-                    <div class="trust-icon">
-                        <i data-lucide="shield-check"></i>
-                    </div>
-
-                    <div>
-                        <h4>Premium Quality</h4>
-                        <p>Finest materials</p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- SHOP BY CATEGORY -->
-    <section class="category-section" id="collection">
-        <div class="container">
-
-            <div class="section-title">
-                <span>CATEGORIES</span>
-                <h2>Shop By Category</h2>
-                <p>Explore our premium fashion collection</p>
-            </div>
-
-            <div class="category-grid">
-
-                <a href="pages/shop/index.html?category=shirt" class="category-card">
-                    <img src="assets/categories/shirt.jpeg" alt="Shirt">
-
-                    <div class="category-overlay">
-                        <h3>Shirt</h3>
-                    </div>
-                </a>
-
-                <a href="pages/shop/index.html?category=t-shirt" class="category-card">
-                    <img src="assets/placeholders/product.jpg" alt="T-Shirt">
-
-                    <div class="category-overlay">
-                        <h3>T-Shirt</h3>
-                    </div>
-                </a>
-
-                <a href="pages/shop/index.html?category=polo" class="category-card">
-                    <img src="assets/categories/polo.jpeg" alt="Polo">
-
-                    <div class="category-overlay">
-                        <h3>Polo</h3>
-                    </div>
-                </a>
-
-                <a href="pages/shop/index.html?category=panjabi" class="category-card">
-                    <img src="assets/categories/panjabi.jpeg" alt="Panjabi">
-
-                    <div class="category-overlay">
                         <h3>Panjabi</h3>
-                    </div>
-                </a>
+                        <p data-category-count="panjabi">0 Items</p>
+                    </a>
 
-                <a href="pages/shop/index.html?category=trouser" class="category-card">
-                    <img src="assets/placeholders/product.jpg" alt="Trouser">
+                    <a href="pages/shop/index.html?category=jersey" class="home-category-card">
+                        <img src="assets/placeholders/product.jpg" alt="Jersey">
+                        <h3>Jersey</h3>
+                        <p data-category-count="jersey">0 Items</p>
+                    </a>
 
-                    <div class="category-overlay">
-                        <h3>Trouser</h3>
-                    </div>
-                </a>
+                    <a href="pages/shop/index.html?category=trouser" class="home-category-card">
+                        <img src="assets/placeholders/product.jpg" alt="Trousers">
+                        <h3>Trousers</h3>
+                        <p data-category-count="trouser">0 Items</p>
+                    </a>
 
-                <a href="pages/shop/index.html?category=drop-shoulder" class="category-card">
-                    <img src="assets/placeholders/product.jpg" alt="Drop Shoulder">
-
-                    <div class="category-overlay">
+                    <a href="pages/shop/index.html?category=drop-shoulder" class="home-category-card">
+                        <img src="assets/placeholders/product.jpg" alt="Drop Shoulder">
                         <h3>Drop Shoulder</h3>
-                    </div>
-                </a>
+                        <p data-category-count="drop-shoulder">0 Items</p>
+                    </a>
 
+                </div>
             </div>
+        </section>
 
-        </div>
-    </section>
 
-    <!-- NEW ARRIVALS -->
-    <section class="new-arrival-section" id="featured">
-        <div class="container">
+        <!-- FEATURED PRODUCTS -->
+        <section class="home-products-section" id="featured">
+            <div class="container">
 
-            <div class="section-title">
-                <span>NEW ARRIVAL</span>
-                <h2>Latest Collection</h2>
-                <p>Discover our newest premium fashion pieces</p>
-            </div>
+                <div class="home-section-head">
+                    <h2>Featured Products</h2>
 
-            <div class="product-grid" id="home-new-products">
-                <!-- Dynamic / static product cards can load here -->
-            </div>
-
-            <a href="pages/shop/index.html" class="view-all-btn">
-                View All Products
-            </a>
-
-        </div>
-    </section>
-
-    <!-- COLLECTION BANNER -->
-    <section class="collection-banner-section">
-        <div class="container">
-
-            <div class="collection-banner">
-
-                <div class="collection-content">
-                    <span>PREMIUM COLLECTION</span>
-
-                    <h2>Upgrade Your Everyday Style</h2>
-
-                    <p>
-                        Premium fabrics crafted for modern fashion lovers.
-                    </p>
-
-                    <a href="pages/shop/index.html" class="btn btn-primary">
-                        Explore Collection
+                    <a href="pages/shop/index.html">
+                        View All Products
+                        <i data-lucide="chevron-right"></i>
                     </a>
                 </div>
 
-                <div class="collection-image">
-                    <img src="assets/banners/hero-2.png" alt="Premium Collection">
+                <div class="home-product-grid" id="home-featured-products">
+                    <!-- JS products -->
+                </div>
+
+                <div class="home-empty-state" id="home-featured-empty">
+                    <h3>No featured products found</h3>
+                    <p>Add products from admin panel to display them here.</p>
                 </div>
 
             </div>
+        </section>
 
-        </div>
-    </section>
 
-    <!-- BEST SELLER -->
-    <section class="best-seller-section">
-        <div class="container">
+        <!-- SPECIAL OFFER -->
+        <section class="home-offer-section">
+            <div class="container">
+                <div class="home-offer-card">
 
-            <div class="section-title">
-                <span>BEST SELLER</span>
-                <h2>Customer Favorites</h2>
-                <p>Our most loved fashion products</p>
-            </div>
-
-            <div class="product-grid" id="home-best-products">
-                <!-- Dynamic / static product cards can load here -->
-            </div>
-
-        </div>
-    </section>
-
-    <!-- FLASH SALE -->
-    <section class="flash-sale-section">
-        <div class="container">
-
-            <div class="flash-sale-box">
-
-                <div class="flash-content">
-                    <span>LIMITED OFFER</span>
-
-                    <h2>Flash Sale</h2>
-
-                    <p>
-                        Premium fashion at special prices.
-                    </p>
-
-                    <div class="countdown">
+                    <div class="offer-left">
+                        <div class="offer-icon">
+                            <i data-lucide="badge-percent"></i>
+                        </div>
 
                         <div>
-                            <h3>02</h3>
+                            <span>Special Offer</span>
+                            <h2>Flat 20% Off</h2>
+                            <p>On All Premium Collection</p>
+                        </div>
+                    </div>
+
+                    <div class="offer-countdown">
+                        <div>
+                            <strong id="offer-days">02</strong>
                             <span>Days</span>
                         </div>
 
                         <div>
-                            <h3>12</h3>
+                            <strong id="offer-hours">14</strong>
                             <span>Hours</span>
                         </div>
 
                         <div>
-                            <h3>45</h3>
-                            <span>Minutes</span>
+                            <strong id="offer-mins">36</strong>
+                            <span>Mins</span>
                         </div>
 
+                        <div>
+                            <strong id="offer-secs">48</strong>
+                            <span>Secs</span>
+                        </div>
                     </div>
 
-                    <a href="pages/shop/index.html" class="btn btn-primary">
-                        Shop Sale
+                    <div class="offer-image">
+                        <img src="assets/placeholders/product.jpg" alt="Special offer">
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- SHOP BY COLLECTION -->
+        <section class="home-collection-section" id="collections">
+            <div class="container">
+
+                <div class="home-section-head">
+                    <h2>Shop By Collection</h2>
+
+                    <a href="pages/shop/index.html">
+                        View All Collections
+                        <i data-lucide="chevron-right"></i>
                     </a>
                 </div>
 
-                <div class="flash-image">
-                    <img src="assets/banners/hero-3.png" alt="Flash Sale">
+                <div class="collection-grid">
+
+                    <a href="pages/shop/index.html?category=panjabi" class="collection-card">
+                        <img src="assets/placeholders/product.jpg" alt="Panjabi">
+                        <div>
+                            <h3>Panjabi</h3>
+                            <p>Explore Now</p>
+                        </div>
+                        <span><i data-lucide="arrow-right"></i></span>
+                    </a>
+
+                    <a href="pages/shop/index.html?category=shirt" class="collection-card">
+                        <img src="assets/placeholders/product.jpg" alt="Shirts">
+                        <div>
+                            <h3>Shirts</h3>
+                            <p>Explore Now</p>
+                        </div>
+                        <span><i data-lucide="arrow-right"></i></span>
+                    </a>
+
+                    <a href="pages/shop/index.html?category=t-shirt" class="collection-card">
+                        <img src="assets/banners/collection-tshirt.png" alt="T-Shirts">
+                        <div>
+                            <h3>T-Shirts</h3>
+                            <p>Explore Now</p>
+                        </div>
+                        <span><i data-lucide="arrow-right"></i></span>
+                    </a>
+
+                    <a href="pages/shop/index.html?category=trouser" class="collection-card">
+                        <img src="assets/placeholders/product.jpg" alt="Trousers">
+                        <div>
+                            <h3>Trousers</h3>
+                            <p>Explore Now</p>
+                        </div>
+                        <span><i data-lucide="arrow-right"></i></span>
+                    </a>
+
+                    <a href="pages/shop/index.html?category=drop-shoulder" class="collection-card">
+                        <img src="assets/placeholders/product.jpg" alt="Drop Shoulder">
+                        <div>
+                            <h3>Drop Shoulder</h3>
+                            <p>Explore Now</p>
+                        </div>
+                        <span><i data-lucide="arrow-right"></i></span>
+                    </a>
+
+                    <a href="pages/shop/index.html?category=jersey" class="collection-card">
+                        <img src="assets/placeholders/product.jpg" alt="Jersey">
+                        <div>
+                            <h3>Jersey</h3>
+                            <p>Explore Now</p>
+                        </div>
+                        <span><i data-lucide="arrow-right"></i></span>
+                    </a>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- SERVICE STRIP -->
+        <section class="home-service-section">
+            <div class="container">
+                <div class="home-service-grid">
+
+                    <div>
+                        <i data-lucide="truck"></i>
+                        <span>
+                            <strong>Free Delivery</strong>
+                            On orders over ৳999
+                        </span>
+                    </div>
+
+                    <div>
+                        <i data-lucide="refresh-cw"></i>
+                        <span>
+                            <strong>Easy Returns</strong>
+                            7 days return policy
+                        </span>
+                    </div>
+
+                    <div>
+                        <i data-lucide="credit-card"></i>
+                        <span>
+                            <strong>Secure Payment</strong>
+                            100% secure payment
+                        </span>
+                    </div>
+
+                    <div>
+                        <i data-lucide="headphones"></i>
+                        <span>
+                            <strong>24/7 Support</strong>
+                            We’re here to help
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- REVIEWS -->
+        <section class="home-review-section">
+            <div class="container">
+
+                <div class="home-section-head">
+                    <h2>What Our Customers Say</h2>
+
+                    <a href="pages/reviews/index.html">
+                        View All Reviews
+                    </a>
+                </div>
+
+                <div class="review-grid">
+
+                    <article class="review-card">
+                        <div class="quote-icon">“</div>
+                        <div class="review-stars">★★★★★</div>
+                        <p>
+                            Amazing quality and perfect fit. The fabric is really comfortable and premium.
+                        </p>
+
+                        <div class="review-author">
+                            <img src="assets/placeholders/product.jpg" alt="Rafiq Hasan">
+                            <div>
+                                <h4>Rafiq Hasan</h4>
+                                <span>Verified Buyer</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="review-card">
+                        <div class="quote-icon">“</div>
+                        <div class="review-stars">★★★★★</div>
+                        <p>
+                            Taqdeer Fashion is my go-to shop now. Their Panjabi collection is just awesome.
+                        </p>
+
+                        <div class="review-author">
+                            <img src="assets/placeholders/product.jpg" alt="Mahmudul Hasan">
+                            <div>
+                                <h4>Mahmudul Hasan</h4>
+                                <span>Verified Buyer</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="review-card">
+                        <div class="quote-icon">“</div>
+                        <div class="review-stars">★★★★★</div>
+                        <p>
+                            Best shopping experience. Product quality, packaging, everything was perfect.
+                        </p>
+
+                        <div class="review-author">
+                            <img src="assets/placeholders/product.jpg" alt="Imran Khan">">
+                            <div>
+                                <h4>Imran Khan</h4>
+                                <span>Verified Buyer</span>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- NEWSLETTER -->
+        <section class="home-newsletter-section">
+            <div class="container">
+                <div class="newsletter-card">
+
+                    <div class="newsletter-left">
+                        <div>
+                            <i data-lucide="mail"></i>
+                        </div>
+
+                        <span>
+                            <h2>Subscribe to Our Newsletter</h2>
+                            <p>Get updates on new collections and exclusive offers.</p>
+                        </span>
+                    </div>
+
+                    <form class="newsletter-form" id="newsletter-form">
+                        <input
+                            type="email"
+                            id="newsletter-email"
+                            placeholder="Enter your email address"
+                            required
+                        >
+
+                        <button type="submit">
+                            Subscribe
+                        </button>
+                    </form>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="home-footer" id="contact">
+        <div class="container">
+
+            <div class="footer-grid">
+
+                <div>
+                    <a href="index.html" class="footer-logo">
+                        <span class="logo-title">TAQDEER</span>
+                        <span class="logo-subtitle">FASHION</span>
+                    </a>
+
+                    <p>
+                        Premium menswear brand in Bangladesh. Quality, style and comfort — our promise to you.
+                    </p>
+
+                    <div class="footer-social">
+    <a href="#" aria-label="Facebook">
+        <span>f</span>
+    </a>
+
+    <a href="#" aria-label="Instagram">
+        <span>ig</span>
+    </a>
+
+    <a href="#" aria-label="Youtube">
+        <span>yt</span>
+    </a>
+</div>
+                </div>
+
+                <div>
+                    <h3>Shop</h3>
+                    <a href="pages/shop/index.html">All Products</a>
+                    <a href="pages/shop/index.html?category=shirt">Shirts</a>
+                    <a href="pages/shop/index.html?category=t-shirt">T-Shirts</a>
+                    <a href="pages/shop/index.html?category=panjabi">Panjabi</a>
+                    <a href="pages/shop/index.html?category=trouser">Trousers</a>
+                    <a href="pages/shop/index.html?category=jersey">Jersey</a>
+                </div>
+
+                <div>
+                    <h3>Customer Care</h3>
+                    <a href="pages/orders/index.html">Track Order</a>
+                    <a href="pages/contact/index.html">Contact Support</a>
+                    <a href="pages/returns/index.html">Returns & Refunds</a>
+                    <a href="pages/shipping/index.html">Shipping Policy</a>
+                    <a href="pages/size-guide/index.html">Size Guide</a>
+                    <a href="pages/faq/index.html">FAQs</a>
+                </div>
+
+                <div>
+                    <h3>About Us</h3>
+                    <a href="pages/about/index.html">Our Story</a>
+                    <a href="pages/terms/index.html">Terms & Conditions</a>
+                    <a href="pages/privacy/index.html">Privacy Policy</a>
+                    <a href="pages/careers/index.html">Careers</a>
+                </div>
+
+                <div>
+                    <h3>Contact Us</h3>
+                    <p>
+                        <i data-lucide="phone"></i>
+                        +880 9613 111333
+                    </p>
+
+                    <p>
+                        <i data-lucide="mail"></i>
+                        support@taqdeerfashion.com
+                    </p>
+
+                    <p>
+                        <i data-lucide="map-pin"></i>
+                        Dhaka, Bangladesh
+                    </p>
+
+                    <div class="payment-icons">
+                        <span>We accept</span>
+                        <strong>VISA</strong>
+                        <strong>MC</strong>
+                        <strong>bKash</strong>
+                        <strong>Nagad</strong>
+                    </div>
                 </div>
 
             </div>
 
-        </div>
-    </section>
+            <div class="footer-bottom">
+                <p>© 2026 Taqdeer Fashion. All Rights Reserved.</p>
+            </div>
 
-    <!-- FOOTER -->
-    <footer class="footer" id="contact">
-        <div class="container">
-            <p>© 2026 Taqdeer Fashion. All Rights Reserved.</p>
         </div>
     </footer>
+
+
+    <!-- BACK TO TOP -->
+    <button type="button" class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <i data-lucide="chevron-up"></i>
+    </button>
+
+
+    <!-- SEARCH MODAL -->
+    <div class="search-modal">
+        <button class="search-close" type="button" aria-label="Close search">×</button>
+
+        <div class="search-box">
+            <input type="text" placeholder="Search products...">
+        </div>
+    </div>
+
+
+    <!-- CART DRAWER - MUST MATCH header.js -->
+    <div class="cart-overlay"></div>
+
+    <aside class="cart-drawer" aria-label="Shopping cart drawer">
+
+        <div class="cart-drawer-header">
+            <h3>Shopping Cart</h3>
+
+            <button class="cart-close" type="button" aria-label="Close cart">
+                ×
+            </button>
+        </div>
+
+        <div class="cart-drawer-body" id="cart-drawer-items">
+            <!-- JS cart items -->
+        </div>
+
+        <div class="cart-drawer-footer">
+
+            <div class="drawer-total-row">
+                <span>Subtotal</span>
+                <strong id="cart-drawer-total">৳0</strong>
+            </div>
+
+            <a href="pages/checkout/index.html" class="drawer-checkout-btn">
+                Checkout
+            </a>
+
+            <a href="pages/cart/index.html" class="drawer-view-cart">
+                View Cart
+            </a>
+
+        </div>
+
+    </aside>
+
 
     <!-- LUCIDE -->
     <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
@@ -524,17 +912,17 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
     <script src="firebase/firebase-config.js"></script>
- <script src="js/components/header.js"></script>
-    <!-- SERVICES -->
+
+    <!-- SERVICES FIRST -->
     <script src="js/services/cart-service.js"></script>
     <script src="js/services/wishlist-service.js"></script>
     <script src="js/services/product-service.js"></script>
 
     <!-- COMPONENTS -->
+    <script src="js/components/header.js"></script>
     <script src="js/components/product-card.js"></script>
-   
 
-    <!-- PAGE -->
+    <!-- PAGE JS -->
     <script src="js/pages/home.js"></script>
 
     <script>

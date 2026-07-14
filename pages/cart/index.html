@@ -256,7 +256,45 @@
         <input type="text" placeholder="Search products...">
     </div>
 </div>
+<!-- CART DRAWER OVERLAY -->
+<div class="cart-overlay"></div>
 
+<!-- CART DRAWER -->
+<aside class="cart-drawer" id="cart-drawer">
+
+    <div class="cart-drawer-header">
+        <div>
+            <h3>Shopping Cart</h3>
+            <p id="cart-drawer-count">0 items</p>
+        </div>
+
+        <button type="button" class="cart-close" aria-label="Close cart">
+            ×
+        </button>
+    </div>
+
+    <div class="cart-drawer-body" id="cart-drawer-items">
+        <!-- JS cart items -->
+    </div>
+
+    <div class="cart-drawer-footer">
+
+        <div class="drawer-total-row">
+            <span>Total</span>
+            <strong id="cart-drawer-total">৳0</strong>
+        </div>
+
+        <a href="../checkout/index.html" class="drawer-checkout-btn">
+            Checkout
+        </a>
+
+        <a href="../cart/index.html" class="drawer-view-cart">
+            View Cart
+        </a>
+
+    </div>
+
+</aside>
 
 <!-- LUCIDE -->
 <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
@@ -270,6 +308,7 @@
 
 <!-- SERVICES -->
 <script src="../../js/services/cart-service.js"></script>
+<script src="../../js/components/cart-drawer.js"></script>
 <script src="../../js/services/wishlist-service.js"></script>
 
 <!-- PAGE JS -->

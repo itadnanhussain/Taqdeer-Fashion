@@ -163,21 +163,7 @@
 
 <!-- ================= CART DRAWER ================= -->
 
-<div class="cart-drawer">
 
-    <div class="cart-drawer-head">
-
-        <h3>Shopping Cart</h3>
-
-        <button type="button" class="cart-close" aria-label="Close cart">
-            ×
-        </button>
-
-    </div>
-
-    <div class="cart-drawer-items"></div>
-
-</div>
 
 
 
@@ -484,9 +470,33 @@
                 </div>
 
 
-                <p class="product-short-description" id="product-short-description">
-                    Premium quality fashion product for everyday comfort and style.
-                </p>
+                <div class="product-highlight-panel" id="product-highlight-panel">
+
+    <div class="highlight-item">
+        <i data-lucide="badge-check"></i>
+        <div>
+            <strong>Premium Quality</strong>
+            <span>Carefully selected fabric and finishing.</span>
+        </div>
+    </div>
+
+    <div class="highlight-item">
+        <i data-lucide="truck"></i>
+        <div>
+            <strong>Fast Delivery</strong>
+            <span>Nationwide delivery with order tracking.</span>
+        </div>
+    </div>
+
+    <div class="highlight-item">
+        <i data-lucide="refresh-cw"></i>
+        <div>
+            <strong>Easy Exchange</strong>
+            <span>Exchange support within policy period.</span>
+        </div>
+    </div>
+
+</div>
 
 
                 <div class="product-service-strip">
@@ -569,13 +579,15 @@
 
                 <div class="product-action-row">
 
-                    <button type="button" class="details-add-cart-btn" id="add-to-cart-btn">
-
-                        <i data-lucide="shopping-cart"></i>
-
-                        Add to Cart
-
-                    </button>
+                    <button
+    type="button"
+    class="add-to-cart-btn"
+    data-id="product-id"
+    data-name="Product Name"
+    data-price="550"
+    data-image="../../assets/placeholders/product.jpg">
+    Add to Cart
+</button>
 
                     <button type="button" class="details-buy-now-btn" id="buy-now-btn">
                         Buy Now
@@ -739,18 +751,82 @@
 
 <!-- ================= FOOTER ================= -->
 
-<footer class="footer">
+<footer class="footer product-footer">
 
     <div class="pd-container">
-        <p>© 2026 Taqdeer Fashion. All Rights Reserved.</p>
+
+        <div class="product-footer-grid">
+
+            <div>
+                <h3>Taqdeer Fashion</h3>
+                <p>Premium fashion designed for comfort, quality and modern lifestyle.</p>
+            </div>
+
+            <div>
+                <h4>Customer Care</h4>
+                <a href="../orders/index.html">Track Order</a>
+                <a href="../contact/index.html">Contact Support</a>
+                <a href="../account/returns.html">Returns & Exchanges</a>
+            </div>
+
+            <div>
+                <h4>Shopping</h4>
+                <a href="../shop/index.html">Shop</a>
+                <a href="../cart/index.html">Cart</a>
+                <a href="../wishlist/index.html">Wishlist</a>
+            </div>
+
+            <div>
+                <h4>Contact</h4>
+                <span>+880 9613 111333</span>
+                <span>Cash on Delivery Available</span>
+                <span>Delivery across Bangladesh</span>
+            </div>
+
+        </div>
+
+        <div class="product-footer-bottom">
+            © 2026 Taqdeer Fashion. All Rights Reserved.
+        </div>
+
     </div>
 
 </footer>
 
 
 
+<div class="tf-cart-overlay" id="tf-cart-overlay"></div>
 
+<!-- GLOBAL CART DRAWER -->
+<div class="tf-cart-overlay" id="tf-cart-overlay"></div>
 
+<aside class="tf-cart-drawer" id="tf-cart-drawer">
+    <div class="tf-cart-drawer-head">
+        <h3>Shopping Cart</h3>
+        <button type="button" id="tf-cart-close" aria-label="Close cart drawer">
+            ×
+        </button>
+    </div>
+
+    <div class="tf-cart-drawer-body" id="tf-cart-drawer-items">
+        <!-- JS cart items -->
+    </div>
+
+    <div class="tf-cart-drawer-footer">
+        <div class="tf-drawer-total-row">
+            <span>Subtotal</span>
+            <strong id="tf-cart-drawer-total">৳0</strong>
+        </div>
+
+        <a href="#" class="tf-drawer-checkout" id="tf-drawer-checkout">
+            Checkout
+        </a>
+
+        <a href="#" class="tf-drawer-view-cart" id="tf-drawer-view-cart">
+            View Cart
+        </a>
+    </div>
+</aside>
 <!-- ================= SCRIPTS ================= -->
 
 <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
@@ -762,6 +838,7 @@
 <script src="../../firebase/firebase-config.js"></script>
 
 <script src="../../js/services/cart-service.js"></script>
+<script src="../../js/components/cart-drawer.js"></script>
 <script src="../../js/services/wishlist-service.js"></script>
 
 <script src="../../js/components/header.js"></script>
