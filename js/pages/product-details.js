@@ -1,6 +1,7 @@
 /*=========================================================
     TAQDEER FASHION
-    PRODUCT DETAILS PAGE FINAL JS
+    PRODUCT DETAILS CLEAN FINAL JS
+    Replace: js/pages/product-details.js
 =========================================================*/
 
 "use strict";
@@ -42,6 +43,7 @@ const stockStatusText = document.getElementById("stock-status-text");
 const stockWarning = document.getElementById("stock-warning");
 
 const relatedProducts = document.getElementById("related-products");
+const relatedSection = document.querySelector(".related-products-section");
 
 const lightbox = document.getElementById("product-lightbox");
 const lightboxImage = document.getElementById("lightbox-image");
@@ -49,6 +51,7 @@ const lightboxClose = document.getElementById("lightbox-close");
 
 const sizeChartOpen = document.querySelector(".size-chart-open");
 const sizeChartPanel = document.getElementById("size-chart-panel");
+const sizeChartBody = document.getElementById("size-chart-body");
 
 const tabButtons = document.querySelectorAll(".product-tabs button");
 const tabContents = document.querySelectorAll(".tab-content");
@@ -71,7 +74,7 @@ let currentProduct = null;
 let currentImages = [];
 let currentImageIndex = 0;
 
-let selectedSize = "M";
+let selectedSize = "";
 let selectedColor = "";
 let selectedImage = "";
 let quantity = 1;
@@ -79,6 +82,7 @@ let quantity = 1;
 const CART_KEY = "taqdeerCart";
 const WISHLIST_KEY = "taqdeerWishlist";
 const FALLBACK_IMAGE = "../../assets/placeholders/product.jpg";
+const DEFAULT_SIZES = ["S","M","L","XL","XXL"];
 
 
 /*=========================================================
@@ -86,8 +90,7 @@ const FALLBACK_IMAGE = "../../assets/placeholders/product.jpg";
 =========================================================*/
 
 function getProductIdFromUrl(){
-    const params = new URLSearchParams(window.location.search);
-    return params.get("id");
+    return new URLSearchParams(window.location.search).get("id");
 }
 
 function money(value){
@@ -98,22 +101,30 @@ function safeText(value, fallback = ""){
     return value ? String(value) : fallback;
 }
 
+function refreshLucide(){
+    if(window.lucide){
+        window.lucide.createIcons();
+    }
+}
+
 function getImagePath(path){
     if(!path){
         return FALLBACK_IMAGE;
     }
 
+    const imagePath = String(path).trim();
+
     if(
-        path.startsWith("http") ||
-        path.startsWith("data:") ||
-        path.startsWith("../../") ||
-        path.startsWith("../")
+        imagePath.startsWith("http") ||
+        imagePath.startsWith("data:") ||
+        imagePath.startsWith("../../") ||
+        imagePath.startsWith("../")
     ){
-        return path;
+        return imagePath;
     }
 
-    if(path.startsWith("assets/")){
-        return "../../" + path;
+    if(imagePath.startsWith("assets/")){
+        return "../../" + imagePath;
     }
 
     return FALLBACK_IMAGE;
@@ -130,12 +141,6 @@ function setImage(element,path){
         this.onerror = null;
         this.src = FALLBACK_IMAGE;
     };
-}
-
-function refreshLucide(){
-    if(window.lucide){
-        window.lucide.createIcons();
-    }
 }
 
 function getPrice(product){
@@ -161,10 +166,10 @@ function getOldPrice(product){
 
 function getStock(product){
     return Number(
-        product.stock ||
-        product.quantity ||
-        product.availableStock ||
-        product.pcs ||
+        product.stock ??
+        product.quantity ??
+        product.availableStock ??
+        product.pcs ??
         0
     );
 }
@@ -211,34 +216,26 @@ function getColorHex(color){
 function normalizeImages(product){
     const images = [];
 
-    const singleImages = [
+    [
         product.image,
         product.imageUrl,
         product.thumbnail,
         product.mainImage
-    ];
-
-    singleImages.forEach(img=>{
+    ].forEach(img=>{
         if(img && !images.includes(img)){
             images.push(img);
         }
     });
 
-    if(Array.isArray(product.images)){
-        product.images.forEach(img=>{
-            if(img && !images.includes(img)){
-                images.push(img);
-            }
-        });
-    }
-
-    if(Array.isArray(product.gallery)){
-        product.gallery.forEach(img=>{
-            if(img && !images.includes(img)){
-                images.push(img);
-            }
-        });
-    }
+    ["images","gallery"].forEach(key=>{
+        if(Array.isArray(product[key])){
+            product[key].forEach(img=>{
+                if(img && !images.includes(img)){
+                    images.push(img);
+                }
+            });
+        }
+    });
 
     if(Array.isArray(product.colors)){
         product.colors.forEach(color=>{
@@ -254,18 +251,44 @@ function normalizeImages(product){
 }
 
 function getProductSizes(product){
-    if(Array.isArray(product.sizes) && product.sizes.length){
-        return product.sizes.map(size=>String(size).toUpperCase());
-    }
+    let sizes = [];
 
-    if(product.size){
-        return String(product.size)
+    if(Array.isArray(product.sizes) && product.sizes.length){
+        sizes = product.sizes
+            .map(size=>String(size).trim().toUpperCase())
+            .filter(Boolean);
+    }
+    else if(product.size){
+        sizes = String(product.size)
             .split(",")
             .map(size=>size.trim().toUpperCase())
             .filter(Boolean);
     }
 
-    return ["S","M","L","XL","XXL"];
+    if(!sizes.length || sizes.length < DEFAULT_SIZES.length){
+        return [...DEFAULT_SIZES];
+    }
+
+    return DEFAULT_SIZES.filter(size=>sizes.includes(size));
+}
+
+function getSizeChartRows(product){
+    const fromProduct =
+        product.sizeChart ||
+        product.size_chart ||
+        product.measurements;
+
+    if(Array.isArray(fromProduct) && fromProduct.length){
+        return fromProduct;
+    }
+
+    return [
+        { size:"S", chest:"38", shoulder:"16.5", sleeve:"8.5", length:"27" },
+        { size:"M", chest:"40", shoulder:"17.5", sleeve:"9", length:"28" },
+        { size:"L", chest:"42", shoulder:"18.5", sleeve:"9.5", length:"29" },
+        { size:"XL", chest:"44", shoulder:"19.5", sleeve:"10", length:"30" },
+        { size:"XXL", chest:"46", shoulder:"20.5", sleeve:"10.5", length:"31" }
+    ];
 }
 
 function getCart(){
@@ -283,6 +306,11 @@ function getCart(){
     }
 }
 
+function saveCart(cart){
+    localStorage.setItem(CART_KEY,JSON.stringify(cart));
+    window.dispatchEvent(new CustomEvent("cartUpdated"));
+}
+
 function getWishlist(){
     const service = window.WishlistService || window.wishlistService;
 
@@ -298,9 +326,14 @@ function getWishlist(){
     }
 }
 
+function saveWishlist(wishlist){
+    localStorage.setItem(WISHLIST_KEY,JSON.stringify(wishlist));
+    window.dispatchEvent(new CustomEvent("wishlistUpdated"));
+}
+
 function updateHeaderCounts(){
     const cartCount = getCart().reduce(
-        (total,item)=> total + Number(item.quantity || 1),
+        (total,item)=>total + Number(item.quantity || 1),
         0
     );
 
@@ -321,6 +354,10 @@ function isWishlisted(productId){
     return getWishlist().some(
         item=>String(item.id) === String(productId)
     );
+}
+
+function getProductLink(id){
+    return `index.html?id=${encodeURIComponent(id)}`;
 }
 
 function openCartDrawer(){
@@ -355,47 +392,38 @@ function getDemoProducts(){
         {
             id:"demo-shirt",
             name:"Mens Premium Casual Shirt – Novellise",
-            category:"Shirt",
+            category:"shirt",
             price:1090,
             oldPrice:1390,
             rating:4.8,
-            sold:256,
-            stock:8,
+            reviews:0,
+            sold:0,
+            stock:10,
             image:"assets/categories/shirt.jpeg",
-            images:[
-                "assets/categories/shirt.jpeg",
-                "assets/placeholders/product.jpg"
-            ],
-            description:"Premium dobby textured fabric with breathable cotton-blend comfort. Designed with structured collar, durable button fastening and smart casual versatile styling for everyday use.",
-            shortDescription:"Premium quality casual shirt for everyday comfort and smart modern style.",
+            images:["assets/categories/shirt.jpeg"],
+            description:"Premium dobby textured fabric with breathable cotton-blend comfort. Added spandex for stretch and mobility. Structured collar with collar stand. Durable button fastening. Smart casual versatile design. Lightweight yet structured feel.",
+            shortDescription:"Premium dobby textured fabric with breathable cotton-blend comfort and a clean smart casual look.",
             sizes:["S","M","L","XL","XXL"],
             colors:[
-                {
-                    name:"Blue",
-                    hex:"#8ab6d6",
-                    image:"assets/categories/shirt.jpeg"
-                },
-                {
-                    name:"Black",
-                    hex:"#111111",
-                    image:"assets/placeholders/product.jpg"
-                }
+                {name:"Blue",hex:"#8ab6d6",image:"assets/categories/shirt.jpeg"},
+                {name:"Black",hex:"#111111"}
             ]
         },
         {
-            id:"demo-polo",
-            name:"Premium Designer Edition Double PK Cotton Polo – Marine",
-            category:"Polo",
-            price:1140,
-            oldPrice:1450,
-            rating:4.8,
-            sold:190,
-            stock:12,
-            image:"assets/placeholders/product.jpg",
-            description:"Premium polo shirt with soft cotton texture, clean collar finishing and comfortable fit.",
-            shortDescription:"Premium polo shirt for smart casual styling.",
-            sizes:["M","L","XL"],
-            colors:[]
+            id:"demo-drop-shoulder",
+            name:"Mens Premium Drop Shoulder T-Shirt – RDSTR",
+            category:"drop shoulder",
+            price:690,
+            oldPrice:990,
+            rating:4.7,
+            reviews:0,
+            sold:0,
+            stock:11,
+            image:"assets/categories/drop-shoulder.jpeg",
+            images:["assets/categories/drop-shoulder.jpeg"],
+            description:"The RDSTR Drop Shoulder T-Shirt is crafted for bold, effortless street style. Built from premium lacoste fabric with a relaxed drop shoulder silhouette.",
+            shortDescription:"Premium drop shoulder t-shirt with relaxed fit and confident streetwear styling.",
+            sizes:["S","M","L","XL","XXL"]
         }
     ];
 }
@@ -438,12 +466,11 @@ async function loadProduct(){
         const demos = getDemoProducts();
 
         product =
-        demos.find(item=>String(item.id) === String(productId)) ||
-        demos[0];
+            demos.find(item=>String(item.id) === String(productId)) ||
+            demos[0];
     }
 
     currentProduct = product;
-
     renderProduct(product);
 }
 
@@ -475,9 +502,11 @@ function renderProduct(product){
     currentImages = normalizeImages(product);
     currentImageIndex = 0;
     selectedImage = currentImages[0];
+    selectedSize = "";
+    selectedColor = "";
+    quantity = 1;
 
     const sizes = getProductSizes(product);
-    selectedSize = sizes[0] || "M";
 
     if(productTitle){
         productTitle.textContent = title;
@@ -524,8 +553,7 @@ function renderProduct(product){
     }
 
     if(productRating){
-        productRating.textContent =
-        `${rating.toFixed(1)} ${reviews ? `(${reviews} Reviews)` : "(0 Reviews)"}`;
+        productRating.textContent = `${rating.toFixed(1)} (${reviews} Reviews)`;
     }
 
     if(productSold){
@@ -534,17 +562,17 @@ function renderProduct(product){
 
     if(shortDescription){
         shortDescription.textContent =
-        product.shortDescription ||
-        product.summary ||
-        "Premium fashion crafted for comfort, confidence and everyday style.";
+            product.shortDescription ||
+            product.summary ||
+            "Premium fashion crafted for comfort, confidence and everyday style.";
     }
 
     if(descriptionText){
         descriptionText.textContent =
-        product.description ||
-        product.details ||
-        product.longDescription ||
-        "No product description available.";
+            product.description ||
+            product.details ||
+            product.longDescription ||
+            "No product description available.";
     }
 
     if(stockStatusText){
@@ -553,11 +581,9 @@ function renderProduct(product){
 
     if(stockWarning){
         stockWarning.textContent =
-        stock > 0
-        ?
-        `Only ${stock} items left!`
-        :
-        "This product is currently out of stock.";
+            stock > 0
+            ? `Only ${stock} items left!`
+            : "This product is currently out of stock.";
     }
 
     if(addToCartBtn){
@@ -572,9 +598,10 @@ function renderProduct(product){
     renderThumbnails(currentImages);
     renderColors(product);
     renderSizes(sizes);
+    renderSizeChart(product);
     renderRelated(product);
     syncWishlistButton();
-
+    updateQuantity();
     refreshLucide();
 }
 
@@ -657,11 +684,11 @@ function renderColors(product){
     }
 
     const colors =
-    product.colors ||
-    product.colorVariants ||
-    product.variants ||
-    product.variantColors ||
-    [];
+        product.colors ||
+        product.colorVariants ||
+        product.variants ||
+        product.variantColors ||
+        [];
 
     if(!Array.isArray(colors) || !colors.length){
         colorSection.style.display = "none";
@@ -673,22 +700,21 @@ function renderColors(product){
 
     colors.forEach((color,index)=>{
         const colorName =
-        color.name ||
-        color.color ||
-        color.title ||
-        `Color ${index + 1}`;
+            color.name ||
+            color.color ||
+            color.title ||
+            `Color ${index + 1}`;
 
         const colorHex =
-        color.hex ||
-        color.colorCode ||
-        getColorHex(colorName);
+            color.hex ||
+            color.colorCode ||
+            getColorHex(colorName);
 
         const colorImage =
-        color.image ||
-        color.photo ||
-        color.imageUrl ||
-        product.image ||
-        "";
+            color.image ||
+            color.photo ||
+            color.imageUrl ||
+            "";
 
         const button = document.createElement("button");
         button.type = "button";
@@ -700,7 +726,7 @@ function renderColors(product){
         `;
 
         button.addEventListener("click",()=>{
-            document.querySelectorAll(".color-pill").forEach(item=>{
+            colorList.querySelectorAll(".color-pill").forEach(item=>{
                 item.classList.remove("active");
             });
 
@@ -727,13 +753,14 @@ function renderSizes(sizes){
     }
 
     sizeOptions.innerHTML = "";
+    selectedSize = "";
 
-    sizes.forEach((size,index)=>{
+    sizes.forEach(size=>{
         const button = document.createElement("button");
         button.type = "button";
         button.dataset.size = size;
         button.textContent = size;
-        button.className = index === 0 ? "active" : "";
+        button.className = "";
 
         button.addEventListener("click",()=>{
             sizeOptions.querySelectorAll("button").forEach(item=>{
@@ -746,6 +773,14 @@ function renderSizes(sizes){
 
         sizeOptions.appendChild(button);
     });
+}
+
+function renderSizeChart(product){
+    /*
+        Static reference-style size chart.
+        Table is already written in HTML, so JS will not overwrite it.
+    */
+    return;
 }
 
 
@@ -761,7 +796,12 @@ function updateQuantity(){
 
 if(qtyPlus){
     qtyPlus.addEventListener("click",()=>{
-        quantity++;
+        const stock = currentProduct ? getStock(currentProduct) : 99;
+
+        if(quantity < Math.max(stock,1)){
+            quantity++;
+        }
+
         updateQuantity();
     });
 }
@@ -793,7 +833,7 @@ function buildCartProduct(){
         oldPrice:getOldPrice(currentProduct),
         image:selectedImage || currentProduct.image || "",
         category:safeText(currentProduct.category,"Product"),
-        size:selectedSize || "M",
+        size:selectedSize,
         color:selectedColor || "",
         quantity:quantity,
         stock:getStock(currentProduct)
@@ -817,22 +857,20 @@ function addProductToCart(openDrawer = true){
 
         const existing = cart.find(item=>
             String(item.id) === String(product.id) &&
-            String(item.size || "M") === String(product.size || "M") &&
+            String(item.size || "") === String(product.size || "") &&
             String(item.color || "") === String(product.color || "")
         );
 
         if(existing){
-            existing.quantity = Number(existing.quantity || 1) + Number(product.quantity || 1);
+            existing.quantity =
+                Number(existing.quantity || 1) +
+                Number(product.quantity || 1);
         }
         else{
             cart.push(product);
         }
 
-        localStorage.setItem(CART_KEY,JSON.stringify(cart));
-
-        window.dispatchEvent(
-            new CustomEvent("cartUpdated")
-        );
+        saveCart(cart);
     }
 
     updateHeaderCounts();
@@ -850,6 +888,11 @@ function addProductToCart(openDrawer = true){
 
 if(addToCartBtn){
     addToCartBtn.addEventListener("click",()=>{
+        if(!selectedSize){
+            showSizeRequiredPopup();
+            return;
+        }
+
         addProductToCart(true);
 
         addToCartBtn.innerHTML = `
@@ -861,9 +904,9 @@ if(addToCartBtn){
 
         setTimeout(()=>{
             addToCartBtn.innerHTML = `
-                <i data-lucide="shopping-cart"></i>
-                Add to Cart
-            `;
+    <i data-lucide="shopping-cart"></i>
+    <span>Add to Cart</span>
+`;
             refreshLucide();
         },900);
     });
@@ -871,9 +914,87 @@ if(addToCartBtn){
 
 if(buyNowBtn){
     buyNowBtn.addEventListener("click",()=>{
+        if(!selectedSize){
+            showSizeRequiredPopup();
+            return;
+        }
+
         addProductToCart(false);
         window.location.href = "../checkout/index.html";
     });
+}
+
+
+/*=========================================================
+    SIZE REQUIRED POPUP
+=========================================================*/
+
+function showSizeRequiredPopup(){
+    let popup = document.querySelector(".size-required-popup");
+
+    if(!popup){
+        popup = document.createElement("div");
+        popup.className = "size-required-popup";
+
+        popup.innerHTML = `
+            <div class="size-required-box">
+                <button type="button" class="size-required-close" aria-label="Close">×</button>
+
+                <div class="size-required-icon">
+                    <i data-lucide="ruler"></i>
+                </div>
+
+                <h3>Select Your Size</h3>
+                <p>Please choose a size before adding this product to cart.</p>
+
+                <button type="button" class="size-required-ok">
+                    Choose Size
+                </button>
+            </div>
+        `;
+
+        document.body.appendChild(popup);
+    }
+
+    popup.classList.add("active");
+
+    if(window.lucide){
+        lucide.createIcons();
+    }
+
+    const closeBtn = popup.querySelector(".size-required-close");
+    const okBtn = popup.querySelector(".size-required-ok");
+
+    if(closeBtn){
+        closeBtn.onclick = closeSizeRequiredPopup;
+    }
+
+    if(okBtn){
+        okBtn.onclick = ()=>{
+            closeSizeRequiredPopup();
+
+            if(sizeOptions){
+                sizeOptions.scrollIntoView({
+                    behavior:"smooth",
+                    block:"center"
+                });
+            }
+        };
+    }
+
+    popup.onclick = event=>{
+        if(event.target === popup){
+            closeSizeRequiredPopup();
+        }
+    };
+}
+
+function closeSizeRequiredPopup(){
+    const popup = document.querySelector(".size-required-popup");
+
+    if(popup){
+        popup.classList.remove("active");
+    }
 }
 
 
@@ -930,11 +1051,7 @@ function toggleCurrentWishlist(){
             wishlist.push(item);
         }
 
-        localStorage.setItem(WISHLIST_KEY,JSON.stringify(wishlist));
-
-        window.dispatchEvent(
-            new CustomEvent("wishlistUpdated")
-        );
+        saveWishlist(wishlist);
     }
 
     syncWishlistButton();
@@ -967,7 +1084,7 @@ if(shareBtn){
                 console.info("Share cancelled");
             }
         }
-        else{
+        else if(navigator.clipboard){
             navigator.clipboard.writeText(window.location.href);
         }
     });
@@ -1041,6 +1158,7 @@ if(lightbox){
 document.addEventListener("keydown",(event)=>{
     if(event.key === "Escape"){
         closeLightbox();
+        closeSizeRequiredPopup();
     }
 });
 
@@ -1086,8 +1204,15 @@ async function getRelatedProducts(product){
     return items
         .filter(item=>String(item.id) !== String(currentId))
         .sort((a,b)=>{
-            const aSame = String(a.category || "").toLowerCase() === currentCategory ? 1 : 0;
-            const bSame = String(b.category || "").toLowerCase() === currentCategory ? 1 : 0;
+            const aSame =
+                String(a.category || "").toLowerCase() === currentCategory
+                ? 1
+                : 0;
+
+            const bSame =
+                String(b.category || "").toLowerCase() === currentCategory
+                ? 1
+                : 0;
 
             return bSame - aSame;
         })
@@ -1108,15 +1233,26 @@ async function renderRelated(product){
     relatedProducts.innerHTML = "";
 
     if(!items.length){
-        relatedProducts.innerHTML = `
-            <div class="related-empty">No related products found.</div>
-        `;
+        if(relatedSection){
+            relatedSection.style.display = "none";
+        }
         return;
+    }
+
+    if(relatedSection){
+        relatedSection.style.display = "block";
     }
 
     items.forEach(item=>{
         const id = item.id || item.docId || "";
-        const image = getImagePath(item.image || item.imageUrl || item.thumbnail || item.mainImage);
+        const imageRaw =
+            item.image ||
+            item.imageUrl ||
+            item.thumbnail ||
+            item.mainImage ||
+            (Array.isArray(item.images) ? item.images[0] : "");
+
+        const image = getImagePath(imageRaw);
         const price = getPrice(item);
         const oldPrice = getOldPrice(item);
         const category = safeText(item.category,"Product");
@@ -1130,17 +1266,17 @@ async function renderRelated(product){
             name,
             price,
             oldPrice,
-            image:item.image || item.imageUrl || item.thumbnail || item.mainImage || "",
+            image:imageRaw,
             category,
             quantity:1
         });
 
         card.innerHTML = `
-            <button type="button" class="related-heart-btn ${isWishlisted(id) ? "active" : ""}" data-id="${id}">
+            <button type="button" class="related-heart-btn ${isWishlisted(id) ? "active" : ""}" data-id="${id}" aria-label="Wishlist">
                 <i data-lucide="heart"></i>
             </button>
 
-            <a href="index.html?id=${encodeURIComponent(id)}" class="related-img">
+            <a href="${getProductLink(id)}" class="related-img">
                 <img
                     src="${image}"
                     alt="${name}"
@@ -1152,7 +1288,7 @@ async function renderRelated(product){
                 <h3>${name}</h3>
 
                 <p>
-                    ${money(price)}
+                    <strong>${money(price)}</strong>
                     ${oldPrice && oldPrice > price ? `<del>${money(oldPrice)}</del>` : ""}
                 </p>
             </div>
@@ -1167,41 +1303,36 @@ async function renderRelated(product){
 document.addEventListener("click",(event)=>{
     const relatedHeartBtn = event.target.closest(".related-heart-btn");
 
-    if(relatedHeartBtn){
-        const card = relatedHeartBtn.closest(".related-card");
-
-        if(!card || !card.dataset.product){
-            return;
-        }
-
-        const product = JSON.parse(card.dataset.product);
-
-        let wishlist = getWishlist();
-
-        const exists = wishlist.some(
-            item=>String(item.id) === String(product.id)
-        );
-
-        if(exists){
-            wishlist = wishlist.filter(
-                item=>String(item.id) !== String(product.id)
-            );
-        }
-        else{
-            wishlist.push(product);
-        }
-
-        localStorage.setItem(WISHLIST_KEY,JSON.stringify(wishlist));
-
-        relatedHeartBtn.classList.toggle("active");
-
-        window.dispatchEvent(
-            new CustomEvent("wishlistUpdated")
-        );
-
-        updateHeaderCounts();
-        refreshLucide();
+    if(!relatedHeartBtn){
+        return;
     }
+
+    const card = relatedHeartBtn.closest(".related-card");
+
+    if(!card || !card.dataset.product){
+        return;
+    }
+
+    const product = JSON.parse(card.dataset.product);
+    let wishlist = getWishlist();
+
+    const exists = wishlist.some(
+        item=>String(item.id) === String(product.id)
+    );
+
+    if(exists){
+        wishlist = wishlist.filter(
+            item=>String(item.id) !== String(product.id)
+        );
+    }
+    else{
+        wishlist.push(product);
+    }
+
+    saveWishlist(wishlist);
+    relatedHeartBtn.classList.toggle("active");
+    updateHeaderCounts();
+    refreshLucide();
 });
 
 
@@ -1219,7 +1350,8 @@ if(productHeaderSearch && productSearchInput){
             return;
         }
 
-        window.location.href = `../shop/index.html?search=${encodeURIComponent(query)}`;
+        window.location.href =
+            `../shop/index.html?search=${encodeURIComponent(query)}`;
     });
 }
 
@@ -1237,8 +1369,90 @@ if(modalSearchInput){
             return;
         }
 
-        window.location.href = `../shop/index.html?search=${encodeURIComponent(query)}`;
+        window.location.href =
+            `../shop/index.html?search=${encodeURIComponent(query)}`;
     });
+}
+
+
+/*=========================================================
+    ACCOUNT ICON CLEANER
+=========================================================*/
+
+function cleanAccountIcon(){
+    const accountBtn = document.querySelector(".account-btn");
+
+    if(!accountBtn){
+        return;
+    }
+
+    [...accountBtn.childNodes].forEach(node=>{
+        if(node.nodeType === Node.TEXT_NODE){
+            node.remove();
+        }
+    });
+
+    accountBtn.querySelectorAll("small,p,strong,em").forEach(el=>{
+        el.remove();
+    });
+
+    let wrap = accountBtn.querySelector(".header-user-photo-wrap");
+
+    if(!wrap){
+        wrap = document.createElement("span");
+        wrap.className = "header-user-photo-wrap";
+        accountBtn.prepend(wrap);
+    }
+
+    const userPhoto =
+        localStorage.getItem("taqdeerUserPhoto") ||
+        localStorage.getItem("userPhoto") ||
+        "";
+
+    if(userPhoto && !wrap.querySelector("img")){
+        wrap.innerHTML = `<img class="header-user-photo" src="${userPhoto}" alt="Profile">`;
+    }
+    else if(!wrap.innerHTML.trim()){
+        wrap.innerHTML = `<i data-lucide="user" class="header-user-icon"></i>`;
+    }
+
+    refreshLucide();
+}
+
+if(window.firebase && firebase.auth){
+    firebase.auth().onAuthStateChanged(user=>{
+        const accountBtn = document.querySelector(".account-btn");
+
+        if(!accountBtn){
+            return;
+        }
+
+        const wrap =
+            accountBtn.querySelector(".header-user-photo-wrap") ||
+            document.createElement("span");
+
+        wrap.className = "header-user-photo-wrap";
+
+        if(!accountBtn.contains(wrap)){
+            accountBtn.prepend(wrap);
+        }
+
+        if(user && user.photoURL){
+            wrap.innerHTML = `
+                <img class="header-user-photo" src="${user.photoURL}" alt="Profile">
+            `;
+        }
+        else{
+            wrap.innerHTML = `
+                <i data-lucide="user" class="header-user-icon"></i>
+            `;
+        }
+
+        cleanAccountIcon();
+    });
+}
+else{
+    cleanAccountIcon();
 }
 
 
@@ -1252,6 +1466,7 @@ window.addEventListener("storage",updateHeaderCounts);
 
 updateHeaderCounts();
 updateQuantity();
+cleanAccountIcon();
 loadProduct();
 refreshLucide();
 

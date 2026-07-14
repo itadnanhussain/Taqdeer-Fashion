@@ -65,12 +65,15 @@
         <div class="pd-container">
             <div class="header-wrapper product-header-wrapper">
 
-                <a href="../../index.html" class="logo text-logo attention-logo">
-    <div class="logo-text">
-        <h2 class="logo-title">TAQDEER</h2>
-        <span class="logo-subtitle">FASHION</span>
-    </div>
-</a>
+                <a href="../../index.html" class="logo text-logo attention-logo" aria-label="Taqdeer Fashion Home">
+                    <div class="logo-text logo-attention-effect">
+                        <h2 class="logo-title">TAQDEER</h2>
+                        <span class="logo-subtitle">FASHION</span>
+                        <span class="logo-spark logo-spark-1"></span>
+                        <span class="logo-spark logo-spark-2"></span>
+                        <span class="logo-spark logo-spark-3"></span>
+                    </div>
+                </a>
 
                 <nav class="navbar">
                     <ul class="nav-menu">
@@ -192,7 +195,7 @@
                     <!-- LEFT -->
                     <div class="product-left-side">
 
-                        <div class="product-gallery-card">
+                        <div class="product-gallery-card gallery-with-side-thumbs">
 
                             <span class="sale-badge" id="product-discount-badge">
                                 SALE
@@ -392,7 +395,7 @@
                         </div>
 
                         <div class="size-options" id="size-options">
-                            <button type="button" class="active" data-size="M">M</button>
+                            
                         </div>
 
                         <div class="quantity-row">
@@ -406,13 +409,14 @@
                         </div>
 
                         <div class="product-action-row">
-                            <button type="button" class="add-to-cart-btn" id="detailsAddToCartBtn">
-                                <i data-lucide="shopping-cart"></i>
-                                Add to Cart
-                            </button>
+                            <button type="button" class="details-add-cart-btn" id="detailsAddToCartBtn">
+    <i data-lucide="shopping-cart"></i>
+    <span>Add to Cart</span>
+</button>
 
-                            <button type="button" class="details-buy-now-btn" id="buy-now-btn">
-                                Buy Now
+                            <button type="button" class="details-buy-now-btn buy-now-attention" id="buy-now-btn">
+                                <span>Buy Now</span>
+                                <i data-lucide="zap"></i>
                             </button>
                         </div>
 
@@ -423,62 +427,31 @@
                             <p id="stock-warning">Only few items left!</p>
                         </div>
 
-                        <!-- SIZE CHART ALWAYS VISIBLE -->
-                        <div class="size-chart-panel" id="size-chart-panel">
+                       <!-- SIZE CHART ALWAYS VISIBLE -->
+<div class="size-chart-panel" id="size-chart-panel">
 
-                            <div class="size-chart-header">
-                                <h3>
-                                    <i data-lucide="clipboard-list"></i>
-                                    Size Chart
-                                </h3>
-                            </div>
+    <div class="size-chart-header">
+        <h3>
+            <i data-lucide="clipboard-list"></i>
+            Size Chart
+        </h3>
+    </div>
 
-                            <div class="size-chart-content">
+    <div class="size-chart-content size-chart-image-content">
 
-                                <div class="size-chart-visual">
-                                    <div class="shirt-diagram">
-                                        <i data-lucide="shirt"></i>
-                                        <span class="line chest-line">Chest</span>
-                                        <span class="line sleeve-line">Sleeve</span>
-                                        <span class="line length-line">Length</span>
-                                    </div>
-                                </div>
+        <img
+            src="../../assets/size-chart/product-size-chart.jpeg"
+            alt="Taqdeer Fashion Product Size Chart"
+            class="product-size-chart-image"
+            loading="lazy"
+        >
 
-                                <div class="size-table-wrap">
-                                    <h4 id="size-chart-title">Product Size Chart (Inch)</h4>
+    </div>
 
-                                    <table class="size-chart-table">
-                                        <thead>
-                                            <tr>
-                                                <th>Size</th>
-                                                <th>Chest</th>
-                                                <th>Sleeve</th>
-                                                <th>Length</th>
-                                            </tr>
-                                        </thead>
-
-                                        <tbody id="size-chart-body">
-                                            <tr><td>S</td><td>38</td><td>23</td><td>27</td></tr>
-                                            <tr><td>M</td><td>40</td><td>24</td><td>28</td></tr>
-                                            <tr><td>L</td><td>42</td><td>24</td><td>29</td></tr>
-                                            <tr><td>XL</td><td>44</td><td>25</td><td>30</td></tr>
-                                            <tr><td>XXL</td><td>46</td><td>26</td><td>31</td></tr>
-                                        </tbody>
-                                    </table>
-
-                                    <p>
-                                        All measurements are in inches. Please allow 1-2 inch variation.
-                                    </p>
-                                </div>
-
-                            </div>
-
-                        </div>
+</div>
 
                     </div>
-
                 </div>
-
 
                 <!-- RELATED PRODUCTS -->
                 <section class="related-products-section">

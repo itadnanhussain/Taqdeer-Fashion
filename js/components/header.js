@@ -1100,3 +1100,94 @@ document.addEventListener("DOMContentLoaded",()=>{
     });
 
 });
+/*=========================================================
+    ACCOUNT ICON PROFILE PHOTO FIX
+    Removes Google G text/icon and shows user photo or user icon
+=========================================================*/
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+    const accountBtn = document.querySelector(".account-btn");
+
+    if(!accountBtn){
+        return;
+    }
+
+    function getAssetPrefix(){
+        return window.location.pathname.includes("/pages/")
+        ?
+        "../../"
+        :
+        "";
+    }
+
+    function cleanAccountButton(){
+        [...accountBtn.childNodes].forEach(node=>{
+            if(node.nodeType === Node.TEXT_NODE){
+                node.remove();
+            }
+        });
+
+        accountBtn.querySelectorAll("small,p,strong,em").forEach(el=>{
+            el.remove();
+        });
+    }
+
+    function renderAccountIcon(user){
+        cleanAccountButton();
+
+        let wrap = accountBtn.querySelector(".header-user-photo-wrap");
+
+        if(!wrap){
+            wrap = document.createElement("span");
+            wrap.className = "header-user-photo-wrap";
+            accountBtn.prepend(wrap);
+        }
+
+        wrap.innerHTML = "";
+
+        const photo =
+        user?.photoURL ||
+        localStorage.getItem("taqdeerUserPhoto") ||
+        localStorage.getItem("userPhoto") ||
+        "";
+
+        if(photo){
+            const img = document.createElement("img");
+            img.className = "header-user-photo";
+            img.alt = "Profile";
+            img.src = photo;
+
+            img.onerror = function(){
+                this.onerror = null;
+                wrap.innerHTML = `<i data-lucide="user" class="header-user-icon"></i>`;
+
+                if(window.lucide){
+                    lucide.createIcons();
+                }
+            };
+
+            wrap.appendChild(img);
+        }
+        else{
+            wrap.innerHTML = `<i data-lucide="user" class="header-user-icon"></i>`;
+        }
+
+        if(window.lucide){
+            lucide.createIcons();
+        }
+    }
+
+    if(window.firebase && firebase.auth){
+        firebase.auth().onAuthStateChanged(user=>{
+            renderAccountIcon(user);
+        });
+    }
+    else{
+        renderAccountIcon(null);
+    }
+
+    setTimeout(cleanAccountButton,300);
+    setTimeout(cleanAccountButton,900);
+
+});

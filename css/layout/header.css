@@ -1904,3 +1904,263 @@ height:36px;
     border-color:#e1121b !important;
     color:#fff !important;
 }
+
+/*=========================================================
+    GLOBAL HEADER + TOP STRIP FINAL FIX
+=========================================================*/
+
+/* Top strip clean alignment */
+.announcement-bar,
+.home-top-strip,
+.shop-top-strip,
+.product-top-strip,
+.cart-top-strip{
+    height:34px !important;
+    min-height:34px !important;
+    max-height:34px !important;
+    background:#050505 !important;
+    color:#fff !important;
+    overflow:hidden !important;
+    display:flex !important;
+    align-items:center !important;
+}
+
+.announcement-wrapper,
+.home-top-strip .announcement-wrapper,
+.shop-top-strip .announcement-wrapper,
+.product-top-strip .announcement-wrapper,
+.cart-top-strip .cart-container{
+    height:34px !important;
+    min-height:34px !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:space-between !important;
+    gap:24px !important;
+    overflow:hidden !important;
+}
+
+.announcement-bar p,
+.home-top-strip p,
+.shop-top-strip p,
+.product-top-strip p,
+.cart-top-strip span{
+    margin:0 !important;
+    padding:0 !important;
+    height:34px !important;
+    display:flex !important;
+    align-items:center !important;
+    gap:7px !important;
+    color:#fff !important;
+    font-size:12px !important;
+    line-height:1 !important;
+    font-weight:800 !important;
+    white-space:nowrap !important;
+}
+
+.announcement-bar strong,
+.home-top-strip strong,
+.shop-top-strip strong,
+.product-top-strip strong{
+    color:#e1121b !important;
+}
+
+.announcement-bar svg,
+.home-top-strip svg,
+.shop-top-strip svg,
+.product-top-strip svg,
+.cart-top-strip svg{
+    width:13px !important;
+    height:13px !important;
+    flex-shrink:0 !important;
+}
+
+/* Main header clean height */
+.header,
+.home-header,
+.shop-header,
+.product-header,
+.cart-header{
+    min-height:78px !important;
+    background:#fff !important;
+    border-bottom:1px solid #eeeeee !important;
+    z-index:1000 !important;
+}
+
+.header-wrapper,
+.home-header-wrapper,
+.shop-header-wrapper,
+.product-header-wrapper,
+.cart-header-wrap{
+    min-height:78px !important;
+    align-items:center !important;
+}
+
+/* Desktop nav spacing */
+@media(min-width:981px){
+
+    .header-wrapper,
+    .home-header-wrapper,
+    .shop-header-wrapper,
+    .product-header-wrapper{
+        display:grid !important;
+        grid-template-columns:165px minmax(520px,1fr) 330px auto !important;
+        gap:18px !important;
+    }
+
+    .nav-menu{
+        gap:18px !important;
+    }
+
+    .nav-menu a{
+        font-size:13px !important;
+        line-height:1 !important;
+    }
+}
+
+/* Mobile: hide top strip to avoid compression */
+@media(max-width:768px){
+
+    .announcement-bar,
+    .home-top-strip,
+    .shop-top-strip,
+    .product-top-strip,
+    .cart-top-strip{
+        display:none !important;
+    }
+
+    .header,
+    .home-header,
+    .shop-header,
+    .product-header,
+    .cart-header{
+        min-height:70px !important;
+    }
+
+    .header-wrapper,
+    .home-header-wrapper,
+    .shop-header-wrapper,
+    .product-header-wrapper,
+    .cart-header-wrap{
+        min-height:70px !important;
+    }
+}
+/*=========================================================
+    ACCOUNT PROFILE IMAGE CLEAN FIX
+=========================================================*/
+
+.account-btn{
+    width:40px !important;
+    height:40px !important;
+    min-width:40px !important;
+    max-width:40px !important;
+    border-radius:50% !important;
+    padding:0 !important;
+    overflow:hidden !important;
+    font-size:0 !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+}
+
+.account-btn .header-user-photo-wrap{
+    width:100% !important;
+    height:100% !important;
+    border-radius:50% !important;
+    overflow:hidden !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    background:#f3f3f3 !important;
+}
+
+.account-btn .header-user-photo{
+    width:100% !important;
+    height:100% !important;
+    object-fit:cover !important;
+    border-radius:50% !important;
+    display:block !important;
+}
+
+.account-btn .header-user-icon{
+    width:20px !important;
+    height:20px !important;
+    color:#111 !important;
+}
+
+/* no Sign In text */
+.account-btn,
+.account-btn *{
+    text-decoration:none !important;
+}
+
+.account-btn > text,
+.account-btn small,
+.account-btn p,
+.account-btn strong,
+.account-btn em{
+    display:none !important;
+}
+/*=========================================================
+    ACCOUNT ICON ONLY - GLOBAL FIX
+=========================================================*/
+
+.account-btn,
+.product-header .account-btn,
+.header-right .account-btn{
+    width:40px !important;
+    height:40px !important;
+    min-width:40px !important;
+    max-width:40px !important;
+    padding:0 !important;
+    border-radius:50% !important;
+    overflow:hidden !important;
+    font-size:0 !important;
+    line-height:0 !important;
+    color:#111 !important;
+    background:#fff !important;
+    border:1px solid #e5e5e5 !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+}
+
+.account-btn *,
+.product-header .account-btn *,
+.header-right .account-btn *{
+    font-size:0 !important;
+    line-height:0 !important;
+}
+
+.account-btn svg,
+.account-btn i,
+.account-btn img,
+.account-btn .header-user-icon,
+.account-btn .header-user-photo{
+    font-size:20px !important;
+    line-height:1 !important;
+}
+
+.account-btn .header-user-photo-wrap{
+    width:100% !important;
+    height:100% !important;
+    border-radius:50% !important;
+    overflow:hidden !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    background:#f3f3f3 !important;
+}
+
+.account-btn .header-user-photo{
+    width:100% !important;
+    height:100% !important;
+    object-fit:cover !important;
+    display:block !important;
+}
+
+.account-btn .header-user-icon{
+    width:20px !important;
+    height:20px !important;
+    color:#111 !important;
+    display:block !important;
+}
