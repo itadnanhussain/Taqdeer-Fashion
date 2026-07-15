@@ -181,7 +181,7 @@ img{
 
 .shop-top-strip strong{
     color:#fff;
-    font-weight:900;
+    font-weight:600;
 }
 
 .shop-top-strip svg{
@@ -243,7 +243,7 @@ img{
 .logo-subtitle{
     font-family:"Montserrat",sans-serif;
     font-size:16px;
-    font-weight:700;
+    font-weight:500;
     color:#E53935;
     letter-spacing:2px;
     text-transform:uppercase;
@@ -317,7 +317,7 @@ img{
     align-items:center;
     gap:4px;
     font-size:13px;
-    font-weight:900;
+    font-weight:600;
     color:#111;
     white-space:nowrap;
     transition:.22s ease;
@@ -380,7 +380,7 @@ img{
 
 .mega-column h4{
     font-size:15px;
-    font-weight:900;
+    font-weight:600;
     color:#111;
     margin:0 0 12px;
 }
@@ -494,7 +494,7 @@ img{
     background:var(--shop-red);
     color:#fff;
     font-size:10px;
-    font-weight:900;
+    font-weight:600;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -561,7 +561,7 @@ img{
     padding:15px 0;
     border-bottom:1px solid #eeeeee;
     font-size:14px;
-    font-weight:900;
+    font-weight:600;
     color:#111;
 }
 
@@ -605,7 +605,7 @@ img{
     background:#f2f8f3;
     color:var(--shop-green);
     font-size:12px;
-    font-weight:900;
+    font-weight:600;
     letter-spacing:1.5px;
     text-transform:uppercase;
     margin-bottom:12px;
@@ -614,7 +614,7 @@ img{
 .shop-hero h1{
     font-family:"Poppins",sans-serif;
     font-size:46px;
-    font-weight:900;
+    font-weight:600;
     line-height:1.1;
     color:#111;
     margin:0 0 10px;
@@ -678,7 +678,7 @@ img{
 
 .shop-filter-head h3{
     font-size:17px;
-    font-weight:900;
+    font-weight:600;
     color:#111;
     margin:0;
 }
@@ -714,7 +714,7 @@ img{
     justify-content:space-between;
     color:#111;
     font-size:14px;
-    font-weight:900;
+    font-weight:600;
 }
 
 .filter-block-title svg{
@@ -758,7 +758,7 @@ img{
 .shop-category-btn strong{
     color:inherit;
     font-size:12px;
-    font-weight:900;
+    font-weight:600;
 }
 
 #priceRange{
@@ -802,7 +802,7 @@ img{
     align-items:center;
     justify-content:center;
     font-size:13px;
-    font-weight:900;
+    font-weight:600;
     transition:.22s ease;
 }
 
@@ -860,7 +860,7 @@ img{
     text-align:left;
     font-size:14px;
     letter-spacing:2px;
-    font-weight:900;
+    font-weight:600;
 }
 
 .filter-offer-card{
@@ -876,13 +876,13 @@ img{
     display:block;
     color:#777;
     font-size:12px;
-    font-weight:900;
+    font-weight:600;
     margin-bottom:7px;
 }
 
 .filter-offer-card h3{
     font-size:22px;
-    font-weight:900;
+    font-weight:600;
     color:#111;
     margin:0 0 5px;
 }
@@ -902,7 +902,7 @@ img{
     background:#111;
     color:#fff;
     font-size:12px;
-    font-weight:900;
+    font-weight:600;
 }
 
 .filter-offer-card button:hover{
@@ -953,7 +953,7 @@ img{
     justify-content:center;
     gap:7px;
     font-size:13px;
-    font-weight:900;
+    font-weight:600;
     transition:.22s ease;
 }
 
@@ -1022,7 +1022,7 @@ img{
     justify-content:center;
     gap:7px;
     font-size:13px;
-    font-weight:900;
+    font-weight:600;
 }
 
 .mobile-filter-btn svg{
@@ -1077,7 +1077,7 @@ img{
 .shop-service-strip strong{
     color:#111;
     font-size:12px;
-    font-weight:900;
+    font-weight:600;
 }
 
 /*=========================================================
@@ -1158,7 +1158,7 @@ img{
     align-items:center;
     justify-content:center;
     font-size:11px;
-    font-weight:900;
+    font-weight:600;
     z-index:4;
 }
 
@@ -1215,7 +1215,7 @@ img{
     color:#111;
     font-size:15px;
     line-height:1.38;
-    font-weight:900;
+    font-weight:600;
     margin:0 0 8px;
     display:-webkit-box;
     -webkit-line-clamp:2;
@@ -1248,7 +1248,7 @@ img{
 .shop-price-row strong{
     color:var(--shop-red);
     font-size:18px;
-    font-weight:900;
+    font-weight:600;
 }
 
 .shop-price-row del{
@@ -1273,7 +1273,7 @@ img{
     border-radius:5px;
     color:#333;
     font-size:10px;
-    font-weight:900;
+    font-weight:600;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -1316,7 +1316,7 @@ img{
     height:40px;
     border-radius:8px;
     font-size:13px;
-    font-weight:900;
+    font-weight:600;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -1398,7 +1398,7 @@ img{
 .shop-empty h3{
     color:#111;
     font-size:28px;
-    font-weight:900;
+    font-weight:600;
     margin:0 0 8px;
 }
 
@@ -1420,7 +1420,7 @@ img{
     justify-content:center;
     gap:8px;
     font-size:14px;
-    font-weight:900;
+    font-weight:600;
     transition:.22s ease;
 }
 
@@ -1457,7 +1457,7 @@ img{
     display:block;
     color:#777;
     font-size:13px;
-    font-weight:900;
+    font-weight:600;
     margin-bottom:8px;
 }
 
@@ -1466,7 +1466,7 @@ img{
     font-family:"Poppins",sans-serif;
     font-size:34px;
     line-height:1.15;
-    font-weight:900;
+    font-weight:600;
     margin:0 0 8px;
 }
 
@@ -1487,7 +1487,7 @@ img{
     align-items:center;
     gap:8px;
     font-size:13px;
-    font-weight:900;
+    font-weight:600;
     transition:.22s ease;
 }
 
@@ -1547,7 +1547,7 @@ img{
 .shop-bottom-service strong{
     color:#111;
     font-size:13px;
-    font-weight:900;
+    font-weight:600;
 }
 /*=========================================================
     PART 3/3
@@ -1611,7 +1611,7 @@ img{
     font-family:"Poppins",sans-serif;
     font-size:25px;
     line-height:1.2;
-    font-weight:900;
+    font-weight:600;
     color:#111;
     margin:0 0 5px;
 }
@@ -1652,7 +1652,7 @@ img{
     color:#fff;
     padding:0 22px;
     font-size:13px;
-    font-weight:900;
+    font-weight:600;
     transition:.22s ease;
 }
 
@@ -1702,7 +1702,7 @@ img{
     font-family:"Poppins",sans-serif;
     color:#fff;
     font-size:17px;
-    font-weight:900;
+    font-weight:600;
     margin:0 0 16px;
 }
 
@@ -1745,7 +1745,7 @@ img{
 
 .footer-social span{
     font-size:12px;
-    font-weight:900;
+    font-weight:600;
     text-transform:uppercase;
 }
 
@@ -1782,7 +1782,7 @@ img{
     align-items:center;
     justify-content:center;
     font-size:11px;
-    font-weight:900;
+    font-weight:600;
 }
 
 .footer-bottom{
@@ -1908,7 +1908,7 @@ img{
 .cart-drawer-header h3{
     font-family:"Poppins",sans-serif;
     font-size:22px;
-    font-weight:900;
+    font-weight:600;
     color:#111;
     margin:0;
 }
@@ -1951,7 +1951,7 @@ img{
 
 .drawer-empty h3{
     font-size:22px;
-    font-weight:900;
+    font-weight:600;
     color:#111;
     margin-bottom:8px;
 }
@@ -1971,7 +1971,7 @@ img{
     display:inline-flex;
     align-items:center;
     justify-content:center;
-    font-weight:900;
+    font-weight:600;
 }
 
 .drawer-cart-item{
@@ -1997,7 +1997,7 @@ img{
 .drawer-cart-info h4{
     font-family:"Poppins",sans-serif;
     font-size:14px;
-    font-weight:900;
+    font-weight:600;
     color:#111;
     line-height:1.35;
     margin:0 0 6px;
@@ -2011,7 +2011,7 @@ img{
 
 .drawer-cart-info strong{
     font-size:16px;
-    font-weight:900;
+    font-weight:600;
     color:var(--shop-red);
 }
 
@@ -2039,7 +2039,7 @@ img{
     background:#fff;
     color:#111;
     font-size:17px;
-    font-weight:900;
+    font-weight:600;
 }
 
 .drawer-qty button:hover{
@@ -2050,7 +2050,7 @@ img{
     min-width:28px;
     text-align:center;
     font-size:13px;
-    font-weight:900;
+    font-weight:600;
 }
 
 .drawer-remove{
@@ -2084,7 +2084,7 @@ img{
     color:var(--shop-red);
     font-family:"Poppins",sans-serif;
     font-size:24px;
-    font-weight:900;
+    font-weight:600;
 }
 
 .drawer-checkout-btn,
@@ -2096,7 +2096,7 @@ img{
     align-items:center;
     justify-content:center;
     font-size:14px;
-    font-weight:900;
+    font-weight:600;
     transition:.22s ease;
 }
 
@@ -2983,7 +2983,7 @@ body > .sparkles{
 }
 
 /* tablet */
-@media(max-width:900px){
+@media(max-width:600px){
     .shop-product-grid,
     #shopProductsGrid{
         grid-template-columns:repeat(2,minmax(0,1fr)) !important;

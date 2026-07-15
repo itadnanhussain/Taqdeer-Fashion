@@ -386,15 +386,27 @@ function getProductLink(id){
 }
 
 function openCartDrawer(){
-    const cartBtn = document.querySelector(".cart-btn");
 
-    if(cartBtn){
-        cartBtn.click();
+    /*
+     * Clean global cart drawer API ব্যবহার করবে।
+     * Navbar cart button-এ fake click করবে না।
+     */
+    if(
+        window.TaqdeerCartDrawer &&
+        typeof window.TaqdeerCartDrawer.open === "function"
+    ){
+        window.TaqdeerCartDrawer.open();
         return;
     }
 
-    const drawer = document.querySelector(".cart-drawer");
-    const overlay = document.querySelector(".cart-overlay");
+    /*
+     * API unavailable হলে TF drawer direct fallback।
+     */
+    const drawer =
+        document.getElementById("tf-cart-drawer");
+
+    const overlay =
+        document.getElementById("tf-cart-overlay");
 
     if(drawer){
         drawer.classList.add("active");

@@ -1140,3 +1140,14 @@ transition-duration:.01ms !important;
         0 0 0 3px rgba(255,122,0,.18),
         0 0 14px rgba(255,122,0,.75) !important;
 }
+body > .logo-spark,
+body > .add-cart-float-popup,
+body > .add-cart-popup-icon,
+body > .add-cart-popup-check,
+body > .add-cart-popup-spark,
+body > [class*="spark"]{
+    display:none !important;
+    visibility:hidden !important;
+    opacity:0 !important;
+    animation:none !important;
+}

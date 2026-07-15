@@ -31,6 +31,7 @@
 
     <!-- PAGE CSS -->
     <link rel="stylesheet" href="../../css/pages/shop.css">
+    <link rel="stylesheet" href="../../css/components/cart-drawer.css">
 </head>
 
 <body>
@@ -698,40 +699,84 @@
 
 
     <!-- CART DRAWER - SAME AS HOME / header.js -->
-    <div class="cart-overlay"></div>
+    
 
-    <aside class="cart-drawer" aria-label="Shopping cart drawer">
+   <div class="tf-cart-overlay" id="tf-cart-overlay"></div>
 
-        <div class="cart-drawer-header">
-            <h3>Shopping Cart</h3>
+<aside
+    class="tf-cart-drawer"
+    id="tf-cart-drawer"
+    aria-label="Shopping cart drawer"
+>
+    <div class="tf-cart-drawer-head">
+        <h3>Shopping Cart</h3>
 
-            <button class="cart-close" type="button" aria-label="Close cart">
-                ×
-            </button>
-        </div>
+        <button
+            type="button"
+            id="tf-cart-close"
+            aria-label="Close shopping cart"
+        >
+            <i data-lucide="x"></i>
+        </button>
+    </div>
 
-        <div class="cart-drawer-body" id="cart-drawer-items">
-            <!-- JS cart items -->
-        </div>
+    <div
+        class="tf-cart-drawer-body"
+        id="tf-cart-drawer-items"
+    ></div>
 
-        <div class="cart-drawer-footer">
+    <section class="tf-drawer-recommendations">
+        <div class="tf-drawer-recommend-head">
+            <h4>You May Also Like</h4>
 
-            <div class="drawer-total-row">
-                <span>Subtotal</span>
-                <strong id="cart-drawer-total">৳0</strong>
+            <div class="tf-drawer-slider-actions">
+                <button
+                    type="button"
+                    id="tfDrawerRecommendPrev"
+                    aria-label="Previous product"
+                >
+                    <i data-lucide="chevron-left"></i>
+                </button>
+
+                <button
+                    type="button"
+                    id="tfDrawerRecommendNext"
+                    aria-label="Next product"
+                >
+                    <i data-lucide="chevron-right"></i>
+                </button>
             </div>
-
-            <a href="../checkout/index.html" class="drawer-checkout-btn">
-                Checkout
-            </a>
-
-            <a href="../cart/index.html" class="drawer-view-cart">
-                View Cart
-            </a>
-
         </div>
 
-    </aside>
+        <div
+            class="tf-drawer-recommend-track"
+            id="tfDrawerRecommendationTrack"
+        ></div>
+    </section>
+
+    <div class="tf-cart-drawer-footer">
+        <div class="tf-drawer-total-row">
+            <span>Subtotal</span>
+            <strong id="tf-cart-drawer-total">৳0</strong>
+        </div>
+
+        <a
+            href="#"
+            class="tf-drawer-checkout"
+            id="tf-drawer-checkout"
+        >
+            Checkout
+        </a>
+
+        <a
+            href="#"
+            class="tf-drawer-view-cart"
+            id="tf-drawer-view-cart"
+        >
+            View Cart
+        </a>
+    </div>
+</aside>
 
 
     <!-- LUCIDE -->
@@ -745,15 +790,14 @@
     <script src="../../firebase/firebase-config.js"></script>
 
     <!-- SERVICES -->
-    <script src="../../js/services/cart-service.js"></script>
-    <script src="../../js/services/wishlist-service.js"></script>
-    <script src="../../js/services/product-service.js"></script>
+  <script src="../../js/services/cart-service.js"></script>
+<script src="../../js/services/wishlist-service.js"></script>
+<script src="../../js/services/product-service.js"></script>
 
-    <!-- COMPONENTS -->
-    <script src="../../js/components/header.js"></script>
+<script src="../../js/components/header.js"></script>
+<script src="../../js/components/cart-drawer.js"></script>
 
-    <!-- PAGE -->
-    <script src="../../js/pages/shop.js"></script>
+<script src="../../js/pages/shop.js"></script>
 
     <script>
         document.addEventListener("DOMContentLoaded",()=>{

@@ -21,6 +21,7 @@
 
 <!-- PAGE CSS -->
 <link rel="stylesheet" href="../../css/pages/cart.css">
+<link rel="stylesheet" href="../../css/components/cart-drawer.css">
 
 </head>
 
@@ -262,19 +263,19 @@
 <!-- GLOBAL CART DRAWER -->
 <aside class="tf-cart-drawer" id="tf-cart-drawer">
 
-    <div class="tf-cart-drawer-head">
+   <div class="tf-cart-drawer-head">
 
-        <h3>Shopping Cart</h3>
+    <h3>Shopping Cart</h3>
 
-        <button
-            type="button"
-            id="tf-cart-close"
-            aria-label="Close cart"
-        >
-            ×
-        </button>
+    <button
+        type="button"
+        id="tf-cart-close"
+        aria-label="Close shopping cart"
+    >
+        <i data-lucide="x"></i>
+    </button>
 
-    </div>
+</div>
 
     <div
         class="tf-cart-drawer-body"
@@ -285,31 +286,31 @@
 
     <div class="tf-drawer-recommendations">
 
-        <div class="tf-drawer-recommend-head">
+       <div class="tf-drawer-recommend-head">
 
-            <h4>You May Also Like</h4>
+    <h4>You May Also Like</h4>
 
-            <div class="tf-drawer-slider-actions">
+    <div class="tf-drawer-slider-actions">
 
-                <button
-                    type="button"
-                    id="tfDrawerRecommendPrev"
-                    aria-label="Previous product"
-                >
-                    <i data-lucide="chevron-left"></i>
-                </button>
+        <button
+            type="button"
+            id="tfDrawerRecommendPrev"
+            aria-label="Previous recommendation"
+        >
+            <i data-lucide="chevron-left"></i>
+        </button>
 
-                <button
-                    type="button"
-                    id="tfDrawerRecommendNext"
-                    aria-label="Next product"
-                >
-                    <i data-lucide="chevron-right"></i>
-                </button>
+        <button
+            type="button"
+            id="tfDrawerRecommendNext"
+            aria-label="Next recommendation"
+        >
+            <i data-lucide="chevron-right"></i>
+        </button>
 
-            </div>
+    </div>
 
-        </div>
+</div>
 
         <div
             class="tf-drawer-recommend-track"

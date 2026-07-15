@@ -1,5 +1,6 @@
 /*=========================================================
-    TAQDEER FASHION - GLOBAL CART DRAWER
+    TAQDEER FASHION
+    CLEAN GLOBAL CART DRAWER
 =========================================================*/
 
 "use strict";
@@ -8,647 +9,1130 @@
 
     const CART_KEY = "taqdeerCart";
 
-    function money(value){
-        return "৳" + Number(value || 0).toLocaleString();
-    }
+    let recommendedProducts = [];
+    let autoSlideTimer = null;
+
+    const byId = id =>
+        document.getElementById(id);
+
+    const query = selector =>
+        document.querySelector(selector);
+
+
+    /*=====================================================
+        PATH HELPERS
+    =====================================================*/
 
     function isInsidePagesFolder(){
+
         return window.location.pathname.includes("/pages/");
+
     }
 
-    function pagePath(pathFromPages){
+
+    function resolvePagePath(pathFromPages){
+
         return isInsidePagesFolder()
             ? pathFromPages
             : "pages/" + pathFromPages.replace("../", "");
+
     }
 
-    function getCart(){
-        const cartService = window.CartService || window.cartService;
 
-        if(cartService && typeof cartService.getCart === "function"){
-            return cartService.getCart() || [];
-        }
+    function fallbackImage(){
 
-        try{
-            return JSON.parse(localStorage.getItem(CART_KEY)) || [];
-        }
-        catch(error){
-            return [];
-        }
-    }
-
-    function getImage(path){
-        const fallback = isInsidePagesFolder()
+        return isInsidePagesFolder()
             ? "../../assets/placeholders/product.jpg"
             : "assets/placeholders/product.jpg";
 
-        if(!path){
-            return fallback;
-        }
-
-        if(path.startsWith("http") || path.startsWith("data:")){
-            return path;
-        }
-
-        if(path.startsWith("../../") || path.startsWith("../")){
-            return path;
-        }
-
-        if(path.startsWith("assets/")){
-            return isInsidePagesFolder() ? "../../" + path : path;
-        }
-
-        return fallback;
     }
 
-    function renderDrawer(){
-        const body = document.getElementById("tf-cart-drawer-items");
-        const totalEl = document.getElementById("tf-cart-drawer-total");
-        const checkoutLink = document.getElementById("tf-drawer-checkout");
-        const viewCartLink = document.getElementById("tf-drawer-view-cart");
 
-        if(!body){
-            return;
-        }
+    function money(value){
 
-        if(checkoutLink){
-            checkoutLink.href = pagePath("../checkout/index.html");
-        }
+        return "৳" + Number(value || 0).toLocaleString();
 
-        if(viewCartLink){
-            viewCartLink.href = pagePath("../cart/index.html");
-        }
-
-        const cart = getCart();
-
-        body.innerHTML = "";
-
-        if(!cart.length){
-            body.innerHTML = `
-                <div class="tf-drawer-empty">
-                    <h4>Your cart is empty</h4>
-                    <p>Add some products first.</p>
-                </div>
-            `;
-
-            if(totalEl){
-                totalEl.textContent = money(0);
-            }
-
-            return;
-        }
-
-        let subtotal = 0;
-
-        cart.forEach(item=>{
-            const qty = Number(item.quantity || 1);
-            const price = Number(item.price || 0);
-            const lineTotal = price * qty;
-
-            subtotal += lineTotal;
-
-            const card = document.createElement("div");
-            card.className = "tf-drawer-item";
-
-            card.innerHTML = `
-                <div class="tf-drawer-item-img">
-                    <img
-                        src="${getImage(item.image)}"
-                        alt="${item.name || "Product"}"
-                        onerror="this.onerror=null;this.src='${getImage("")}';"
-                    >
-                </div>
-
-                <div class="tf-drawer-item-info">
-
-    <h4>${item.name || "Product"}</h4>
-
-    <p>
-        ${item.category || "Fashion"}
-        ${item.size ? " • Size: " + item.size : ""}
-    </p>
-
-    <strong>${money(lineTotal)}</strong>
-
-    <div class="tf-drawer-item-actions">
-
-        <div class="tf-drawer-qty">
-
-            <button
-                type="button"
-                class="tf-drawer-minus"
-                data-id="${item.id}"
-                data-size="${item.size || "M"}"
-            >
-                −
-            </button>
-
-            <span>${qty}</span>
-
-            <button
-                type="button"
-                class="tf-drawer-plus"
-                data-id="${item.id}"
-                data-size="${item.size || "M"}"
-            >
-                +
-            </button>
-
-        </div>
-
-        <button
-            type="button"
-            class="tf-drawer-remove"
-            data-id="${item.id}"
-            data-size="${item.size || "M"}"
-        >
-            Remove
-        </button>
-
-    </div>
-
-</div>
-            `;
-
-            body.appendChild(card);
-        });
-
-        if(totalEl){
-            totalEl.textContent = money(subtotal);
-        }
     }
 
-    function openDrawer(){
-        renderDrawer();
 
-        const drawer = document.getElementById("tf-cart-drawer");
-        const overlay = document.getElementById("tf-cart-overlay");
+    /*=====================================================
+        CART STORAGE
+    =====================================================*/
 
-        if(drawer){
-            drawer.classList.add("active");
+    function getCart(){
+
+        const service =
+            window.CartService ||
+            window.cartService;
+
+
+        if(
+            service &&
+            typeof service.getCart === "function"
+        ){
+
+            const cart = service.getCart();
+
+            return Array.isArray(cart)
+                ? cart
+                : [];
+
         }
 
-        if(overlay){
-            overlay.classList.add("active");
+
+        try{
+
+            const savedCart = JSON.parse(
+                localStorage.getItem(CART_KEY) || "[]"
+            );
+
+            return Array.isArray(savedCart)
+                ? savedCart
+                : [];
+
+        }catch(error){
+
+            console.error("Cart read error:", error);
+
+            return [];
+
         }
 
-        document.body.style.overflow = "hidden";
     }
 
-    function closeDrawer(){
-        const drawer = document.getElementById("tf-cart-drawer");
-        const overlay = document.getElementById("tf-cart-overlay");
 
-        if(drawer){
-            drawer.classList.remove("active");
-        }
-
-        if(overlay){
-            overlay.classList.remove("active");
-        }
-
-        document.body.style.overflow = "";
-    }
-
-    document.addEventListener("DOMContentLoaded",()=>{
-        const closeBtn = document.getElementById("tf-cart-close");
-        const overlay = document.getElementById("tf-cart-overlay");
-
-        if(closeBtn){
-            closeBtn.addEventListener("click", closeDrawer);
-        }
-
-        if(overlay){
-            overlay.addEventListener("click", closeDrawer);
-        }
-
-        renderDrawer();
-    });
-
-    window.addEventListener("cartUpdated", renderDrawer);
-document.addEventListener("click", event => {
-
-    const plusBtn = event.target.closest(".tf-drawer-plus");
-    const minusBtn = event.target.closest(".tf-drawer-minus");
-    const removeBtn = event.target.closest(".tf-drawer-remove");
-
-    if(!plusBtn && !minusBtn && !removeBtn){
-        return;
-    }
-
-    const button = plusBtn || minusBtn || removeBtn;
-
-    const productId = String(button.dataset.id || "");
-    const productSize = String(button.dataset.size || "M");
-
-    const cartService =
-        window.CartService ||
-        window.cartService;
-
-    if(!cartService){
-        return;
-    }
-
-    const cart = getCart();
-
-    const item = cart.find(cartItem =>
-        String(cartItem.id) === productId &&
-        String(cartItem.size || "M") === productSize
-    );
-
-    if(!item){
-        return;
-    }
-
-    if(plusBtn){
-        item.quantity = Number(item.quantity || 1) + 1;
-    }
-
-    if(minusBtn){
-        item.quantity = Math.max(
-            1,
-            Number(item.quantity || 1) - 1
-        );
-    }
-
-    if(removeBtn){
-
-        const updatedCart = cart.filter(cartItem =>
-            !(
-                String(cartItem.id) === productId &&
-                String(cartItem.size || "M") === productSize
-            )
-        );
+    function saveCart(cart){
 
         localStorage.setItem(
             CART_KEY,
-            JSON.stringify(updatedCart)
+            JSON.stringify(cart)
         );
 
         window.dispatchEvent(
             new CustomEvent("cartUpdated")
         );
 
-        return;
     }
 
-    localStorage.setItem(
-        CART_KEY,
-        JSON.stringify(cart)
-    );
 
-    window.dispatchEvent(
-        new CustomEvent("cartUpdated")
-    );
-});
-    window.TaqdeerCartDrawer = {
-        open: openDrawer,
-        close: closeDrawer,
-        render: renderDrawer
-    };
+    /*=====================================================
+        PRODUCT HELPERS
+    =====================================================*/
 
-})();
-/*=========================================================
-    TF CART DRAWER RECOMMENDATIONS
-=========================================================*/
+    function getProductId(product){
 
-let tfDrawerRecommendedProducts = [];
-let tfDrawerAutoSlideTimer = null;
-
-function tfDrawerInsidePagesFolder(){
-    return window.location.pathname.includes("/pages/");
-}
-
-function tfDrawerFallbackImage(){
-    return tfDrawerInsidePagesFolder()
-        ? "../../assets/placeholders/product.jpg"
-        : "assets/placeholders/product.jpg";
-}
-
-function getTfProductId(product){
-    return product.id || product.docId || product.productId || "";
-}
-
-function getTfProductPrice(product){
-    return Number(
-        product.price ||
-        product.salePrice ||
-        product.finalPrice ||
-        product.discountPrice ||
-        0
-    );
-}
-
-function getTfProductImage(product){
-
-    const image =
-        product.image ||
-        product.imageUrl ||
-        product.thumbnail ||
-        product.mainImage ||
-        (
-            Array.isArray(product.images)
-                ? product.images[0]
-                : ""
+        return String(
+            product?.id ||
+            product?.docId ||
+            product?.productId ||
+            ""
         );
 
-    if(!image){
-        return tfDrawerFallbackImage();
     }
 
-    if(
-        image.startsWith("http") ||
-        image.startsWith("data:") ||
-        image.startsWith("../../") ||
-        image.startsWith("../")
-    ){
+
+    function getProductPrice(product){
+
+        return Number(
+            product?.price ??
+            product?.salePrice ??
+            product?.finalPrice ??
+            product?.discountPrice ??
+            0
+        );
+
+    }
+
+
+    function getProductImage(product){
+
+        const image =
+            product?.image ||
+            product?.imageUrl ||
+            product?.thumbnail ||
+            product?.mainImage ||
+            (
+                Array.isArray(product?.images)
+                    ? product.images[0]
+                    : ""
+            );
+
+
+        if(!image){
+
+            return fallbackImage();
+
+        }
+
+
+        if(
+            image.startsWith("http") ||
+            image.startsWith("data:") ||
+            image.startsWith("../")
+        ){
+
+            return image;
+
+        }
+
+
+        if(image.startsWith("assets/")){
+
+            return isInsidePagesFolder()
+                ? "../../" + image
+                : image;
+
+        }
+
+
         return image;
+
     }
 
-    if(image.startsWith("assets/")){
-        return tfDrawerInsidePagesFolder()
-            ? "../../" + image
-            : image;
+
+    function removeStraySparkles(){
+
+        document
+            .querySelectorAll(
+                `
+                .add-cart-float-popup,
+                .add-cart-popup-icon,
+                .add-cart-popup-check,
+                .add-cart-popup-spark,
+                [class*="add-cart"][class*="spark"]
+                `
+            )
+            .forEach(element => {
+
+                element.remove();
+
+            });
+
+    }
+        /*=====================================================
+        CART DRAWER RENDER
+    =====================================================*/
+
+    function renderDrawer(){
+
+        const body =
+            byId("tf-cart-drawer-items");
+
+        const totalElement =
+            byId("tf-cart-drawer-total");
+
+        const checkoutLink =
+            byId("tf-drawer-checkout");
+
+        const viewCartLink =
+            byId("tf-drawer-view-cart");
+
+
+        if(!body){
+
+            return;
+
+        }
+
+
+        if(checkoutLink){
+
+            checkoutLink.href =
+                resolvePagePath("../checkout/index.html");
+
+        }
+
+
+        if(viewCartLink){
+
+            viewCartLink.href =
+                resolvePagePath("../cart/index.html");
+
+        }
+
+
+        const cart = getCart();
+
+
+        const subtotal = cart.reduce(
+            (sum, item) => {
+
+                const price =
+                    Number(item.price || 0);
+
+                const quantity =
+                    Number(item.quantity || 1);
+
+                return sum + price * quantity;
+
+            },
+            0
+        );
+
+
+        if(totalElement){
+
+            totalElement.textContent =
+                money(subtotal);
+
+        }
+
+
+        if(!cart.length){
+
+            body.innerHTML = `
+                <div class="tf-drawer-empty">
+
+                    <h4>Your cart is empty</h4>
+
+                    <p>
+                        Add some products first.
+                    </p>
+
+                </div>
+            `;
+
+            return;
+
+        }
+
+
+        body.innerHTML = cart
+            .map((item, index) => {
+
+                const quantity =
+                    Number(item.quantity || 1);
+
+                const lineTotal =
+                    Number(item.price || 0) *
+                    quantity;
+
+
+                const itemKey =
+                    encodeURIComponent(
+                        [
+                            item.id || "",
+                            item.size || "",
+                            item.color || "",
+                            index
+                        ].join("__")
+                    );
+
+
+                return `
+                    <article class="tf-drawer-item">
+
+                        <div class="tf-drawer-item-img">
+
+                            <img
+                                src="${getProductImage(item)}"
+                                alt="${item.name || "Product"}"
+                                onerror="
+                                    this.onerror=null;
+                                    this.src='${fallbackImage()}';
+                                "
+                            >
+
+                        </div>
+
+
+                        <div class="tf-drawer-item-info">
+
+                            <h4>
+                                ${item.name || "Product"}
+                            </h4>
+
+
+                            <p>
+                                ${item.category || "Fashion"}
+
+                                ${
+                                    item.size
+                                        ? " • Size: " + item.size
+                                        : ""
+                                }
+
+                                ${
+                                    item.color
+                                        ? " • Color: " + item.color
+                                        : ""
+                                }
+                            </p>
+
+
+                            <strong>
+                                ${money(lineTotal)}
+                            </strong>
+
+
+                            <div class="tf-drawer-item-actions">
+
+                                <div class="tf-drawer-qty">
+
+                                    <button
+                                        type="button"
+                                        data-action="minus"
+                                        data-key="${itemKey}"
+                                        aria-label="Decrease quantity"
+                                    >
+                                        −
+                                    </button>
+
+
+                                    <span>
+                                        ${quantity}
+                                    </span>
+
+
+                                    <button
+                                        type="button"
+                                        data-action="plus"
+                                        data-key="${itemKey}"
+                                        aria-label="Increase quantity"
+                                    >
+                                        +
+                                    </button>
+
+                                </div>
+
+
+                                <button
+    type="button"
+    class="tf-drawer-remove"
+    data-action="remove"
+    data-key="${itemKey}"
+    aria-label="Remove product"
+>
+    <i data-lucide="trash-2"></i>
+</button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+                `;
+
+            })
+            .join("");
+
     }
 
-    return image;
-}
 
-function tfDrawerMoney(value){
-    return "৳" + Number(value || 0).toLocaleString();
-}
+    function getCartIndexFromKey(key){
 
-async function loadTfDrawerRecommendations(){
+        const decodedKey =
+            decodeURIComponent(key || "");
 
-    const track = document.getElementById(
-        "tfDrawerRecommendationTrack"
-    );
+        const keyParts =
+            decodedKey.split("__");
 
-    const section = document.querySelector(
-        ".tf-drawer-recommendations"
-    );
+        const index =
+            Number(keyParts[3]);
 
-    if(!track || !section){
-        return;
+
+        return Number.isInteger(index)
+            ? index
+            : -1;
+
     }
 
-    try{
+
+    /*=====================================================
+        LOAD PRODUCTS
+    =====================================================*/
+
+    async function fetchProducts(){
 
         const service =
             window.productService ||
             window.ProductService;
 
+
         if(
-            !service ||
-            typeof service.getProducts !== "function"
+            service &&
+            typeof service.getProducts === "function"
         ){
-            section.style.display = "none";
-            return;
+
+            const products =
+                await service.getProducts();
+
+            return Array.isArray(products)
+                ? products
+                : [];
+
         }
 
-        const products = await service.getProducts();
 
-        const cart = JSON.parse(
-            localStorage.getItem("taqdeerCart") || "[]"
-        );
+        if(
+            window.db &&
+            typeof window.db.collection === "function"
+        ){
 
-        const cartIds = new Set(
-            cart.map(item => String(item.id))
-        );
+            const snapshot =
+                await window.db
+                    .collection("products")
+                    .get();
 
-        tfDrawerRecommendedProducts = (
-            Array.isArray(products) ? products : []
-        )
-            .filter(product => {
 
-                const id = getTfProductId(product);
+            return snapshot.docs.map(doc => ({
 
-                return (
-                    id &&
-                    !cartIds.has(String(id))
-                );
+                id:doc.id,
 
-            })
-            .slice(0, 8);
+                ...doc.data()
 
-        if(!tfDrawerRecommendedProducts.length){
+            }));
 
-            section.style.display = "none";
-            return;
         }
 
-        section.style.display = "block";
 
-        renderTfDrawerRecommendations();
-        startTfDrawerAutoSlide();
+        return [];
 
-    }catch(error){
-
-        console.error(
-            "TF drawer recommendation error:",
-            error
-        );
-
-        section.style.display = "none";
-    }
-}
-
-function renderTfDrawerRecommendations(){
-
-    const track = document.getElementById(
-        "tfDrawerRecommendationTrack"
-    );
-
-    if(!track){
-        return;
     }
 
-    track.innerHTML = tfDrawerRecommendedProducts
-        .map(product => {
 
-            const id = getTfProductId(product);
+    /*=====================================================
+        RECOMMENDATION PRODUCTS
+    =====================================================*/
 
-            const name =
-                product.name ||
-                product.title ||
-                "Product";
+    async function loadRecommendations(){
 
-            const price = getTfProductPrice(product);
-            const image = getTfProductImage(product);
+        const section =
+            query(".tf-drawer-recommendations");
 
-            return `
-                <article class="tf-drawer-recommend-card">
+        const track =
+            byId("tfDrawerRecommendationTrack");
 
-                    <img
-                        src="${image}"
-                        alt="${name}"
-                        onerror="
-                            this.onerror=null;
-                            this.src='${tfDrawerFallbackImage()}';
-                        "
-                    >
 
-                    <div class="tf-drawer-recommend-info">
+        if(!section || !track){
 
-                        <h5>${name}</h5>
+            return;
 
-                        <strong>
-                            ${tfDrawerMoney(price)}
-                        </strong>
+        }
 
-                        <button
-                            type="button"
-                            class="tf-drawer-recommend-add"
-                            data-id="${id}"
+
+        try{
+
+            const products =
+                await fetchProducts();
+
+
+            const cartIds = new Set(
+
+                getCart().map(item =>
+                    String(item.id)
+                )
+
+            );
+
+
+            recommendedProducts = products
+                .filter(product => {
+
+                    const id =
+                        getProductId(product);
+
+                    return (
+                        id &&
+                        !cartIds.has(id)
+                    );
+
+                })
+                .slice(0, 8);
+
+
+            if(!recommendedProducts.length){
+
+                section.classList.remove("visible");
+
+                track.innerHTML = "";
+
+                return;
+
+            }
+
+
+            track.innerHTML = recommendedProducts
+                .map(product => {
+
+                    const id =
+                        getProductId(product);
+
+                    const name =
+                        product.name ||
+                        product.title ||
+                        "Product";
+
+                    const price =
+                        getProductPrice(product);
+
+                    const image =
+                        getProductImage(product);
+
+
+                    return `
+                        <article
+                            class="tf-drawer-recommend-card"
                         >
-                            Add
-                        </button>
 
-                    </div>
+                            <img
+                                src="${image}"
+                                alt="${name}"
+                                onerror="
+                                    this.onerror=null;
+                                    this.src='${fallbackImage()}';
+                                "
+                            >
 
-                </article>
-            `;
 
-        })
-        .join("");
+                            <div
+                                class="tf-drawer-recommend-info"
+                            >
 
-    if(window.lucide){
-        window.lucide.createIcons();
+                                <h5>
+                                    ${name}
+                                </h5>
+
+
+                                <strong>
+                                    ${money(price)}
+                                </strong>
+
+
+                                <button
+                                    type="button"
+                                    class="tf-drawer-recommend-add"
+                                    data-product-id="${id}"
+                                >
+                                    Add
+                                </button>
+
+                            </div>
+
+                        </article>
+                    `;
+
+                })
+                .join("");
+
+
+            section.classList.add("visible");
+
+
+            if(window.lucide){
+
+                window.lucide.createIcons();
+
+            }
+
+
+            startAutoSlide();
+
+        }catch(error){
+
+            console.error(
+                "Drawer recommendations error:",
+                error
+            );
+
+            section.classList.remove("visible");
+
+            track.innerHTML = "";
+
+        }
+
     }
-}
+        /*=====================================================
+        RECOMMENDATION SLIDER
+    =====================================================*/
 
-function slideTfDrawerRecommendations(direction = 1){
+    function slideRecommendations(direction = 1){
 
-    const track = document.getElementById(
-        "tfDrawerRecommendationTrack"
-    );
+        const track =
+            byId("tfDrawerRecommendationTrack");
 
-    if(!track){
-        return;
-    }
+        const card = track?.querySelector(
+            ".tf-drawer-recommend-card"
+        );
 
-    const card = track.querySelector(
-        ".tf-drawer-recommend-card"
-    );
 
-    if(!card){
-        return;
-    }
+        if(!track || !card){
 
-    const distance = card.offsetWidth + 12;
+            return;
 
-    const reachedEnd =
-        track.scrollLeft + track.clientWidth >=
-        track.scrollWidth - 10;
+        }
 
-    if(direction > 0 && reachedEnd){
 
-        track.scrollTo({
-            left:0,
+        const distance =
+            card.offsetWidth + 10;
+
+
+        const reachedEnd =
+
+            track.scrollLeft +
+            track.clientWidth >=
+
+            track.scrollWidth - 8;
+
+
+        if(direction > 0 && reachedEnd){
+
+            track.scrollTo({
+
+                left:0,
+
+                behavior:"smooth"
+
+            });
+
+            return;
+
+        }
+
+
+        track.scrollBy({
+
+            left:distance * direction,
+
             behavior:"smooth"
+
         });
 
-        return;
     }
 
-    track.scrollBy({
-        left:distance * direction,
-        behavior:"smooth"
-    });
+
+    function startAutoSlide(){
+
+    clearInterval(autoSlideTimer);
+
+    autoSlideTimer = setInterval(() => {
+
+        const track =
+            byId("tfDrawerRecommendationTrack");
+
+        const card = track?.querySelector(
+            ".tf-drawer-recommend-card"
+        );
+
+        if(!track || !card){
+            return;
+        }
+
+        const distance =
+            card.offsetWidth + 10;
+
+        const reachedEnd =
+            track.scrollLeft +
+            track.clientWidth >=
+            track.scrollWidth - 8;
+
+        if(reachedEnd){
+
+            track.scrollTo({
+                left:0,
+                behavior:"smooth"
+            });
+
+        }else{
+
+            track.scrollBy({
+                left:distance,
+                behavior:"smooth"
+            });
+
+        }
+
+    }, 3000);
+
 }
 
-function startTfDrawerAutoSlide(){
 
-    clearInterval(tfDrawerAutoSlideTimer);
+    /*=====================================================
+        OPEN AND CLOSE DRAWER
+    =====================================================*/
 
-    tfDrawerAutoSlideTimer = setInterval(() => {
+    function openDrawer(){
 
-        slideTfDrawerRecommendations(1);
+        renderDrawer();
 
-    }, 3200);
+        removeStraySparkles();
+
+
+        const drawer =
+            byId("tf-cart-drawer");
+
+        const overlay =
+            byId("tf-cart-overlay");
+
+
+        drawer?.classList.add("active");
+
+        overlay?.classList.add("active");
+
+
+        document.body.style.overflow =
+            "hidden";
+
+
+        loadRecommendations();
+        if(window.lucide){
+    window.lucide.createIcons();
 }
 
-document.addEventListener("click", event => {
+    }
 
-    const nextButton = event.target.closest(
-        "#tfDrawerRecommendNext"
+
+function closeDrawer(){
+
+    clearInterval(autoSlideTimer);
+
+    byId("tf-cart-drawer")
+        ?.classList.remove("active");
+
+    byId("tf-cart-overlay")
+        ?.classList.remove("active");
+
+    document.body.style.overflow = "";
+
+}
+
+
+    /*=====================================================
+        PLUS, MINUS, REMOVE
+    =====================================================*/
+
+    document.addEventListener(
+        "click",
+        event => {
+
+            const actionButton =
+                event.target.closest(
+                    "[data-action][data-key]"
+                );
+
+
+            if(!actionButton){
+
+                return;
+
+            }
+
+
+            const cart =
+                getCart();
+
+
+            const index =
+                getCartIndexFromKey(
+                    actionButton.dataset.key
+                );
+
+
+            if(index < 0 || !cart[index]){
+
+                return;
+
+            }
+
+
+            const action =
+                actionButton.dataset.action;
+
+
+            if(action === "plus"){
+
+                cart[index].quantity =
+                    Number(
+                        cart[index].quantity || 1
+                    ) + 1;
+
+            }
+
+
+            if(action === "minus"){
+
+                cart[index].quantity =
+                    Math.max(
+                        1,
+                        Number(
+                            cart[index].quantity || 1
+                        ) - 1
+                    );
+
+            }
+
+
+            if(action === "remove"){
+
+                cart.splice(index, 1);
+
+            }
+
+
+            saveCart(cart);
+
+        }
     );
 
-    const prevButton = event.target.closest(
-        "#tfDrawerRecommendPrev"
+
+    /*=====================================================
+        ADD RECOMMENDED PRODUCT
+    =====================================================*/
+
+    document.addEventListener(
+        "click",
+        event => {
+
+            const addButton =
+                event.target.closest(
+                    ".tf-drawer-recommend-add"
+                );
+
+
+            if(!addButton){
+
+                return;
+
+            }
+
+
+            const product =
+                recommendedProducts.find(item =>
+
+                    getProductId(item) ===
+                    String(
+                        addButton.dataset.productId
+                    )
+
+                );
+
+
+            if(!product){
+
+                return;
+
+            }
+
+
+            const cart =
+                getCart();
+
+            const productId =
+                getProductId(product);
+
+
+            const existingItem =
+                cart.find(item =>
+
+                    String(item.id) ===
+                    productId
+
+                );
+
+
+            if(existingItem){
+
+                existingItem.quantity =
+                    Number(
+                        existingItem.quantity || 1
+                    ) + 1;
+
+            }else{
+
+                cart.push({
+
+                    id:productId,
+
+                    name:
+                        product.name ||
+                        product.title ||
+                        "Product",
+
+                    category:
+                        product.category || "",
+
+                    price:
+                        getProductPrice(product),
+
+                    image:
+                        getProductImage(product),
+
+                    quantity:1,
+
+                    size:
+                        Array.isArray(product.sizes) &&
+                        product.sizes.length
+                            ? product.sizes[0]
+                            : "M"
+
+                });
+
+            }
+
+
+            saveCart(cart);
+
+
+            addButton.textContent =
+                "Added";
+
+            addButton.disabled =
+                true;
+
+        }
+    );
+        /*=====================================================
+        SLIDER ARROWS
+    =====================================================*/
+
+    document.addEventListener(
+        "click",
+        event => {
+
+            if(
+                event.target.closest(
+                    "#tfDrawerRecommendNext"
+                )
+            ){
+
+                slideRecommendations(1);
+
+                startAutoSlide();
+
+                return;
+
+            }
+
+
+            if(
+                event.target.closest(
+                    "#tfDrawerRecommendPrev"
+                )
+            ){
+
+                slideRecommendations(-1);
+
+                startAutoSlide();
+
+            }
+
+        }
     );
 
-    const addButton = event.target.closest(
-        ".tf-drawer-recommend-add"
+
+    /*=====================================================
+        ESCAPE KEY
+    =====================================================*/
+
+    document.addEventListener(
+        "keydown",
+        event => {
+
+            if(event.key === "Escape"){
+
+                closeDrawer();
+
+            }
+
+        }
     );
 
-    if(nextButton){
 
-        slideTfDrawerRecommendations(1);
-        startTfDrawerAutoSlide();
-        return;
-    }
+    /*=====================================================
+        PAGE INITIALIZATION
+    =====================================================*/
 
-    if(prevButton){
+    document.addEventListener(
+        "DOMContentLoaded",
+        () => {
+            const recommendationTrack =
+    byId("tfDrawerRecommendationTrack");
 
-        slideTfDrawerRecommendations(-1);
-        startTfDrawerAutoSlide();
-        return;
-    }
+recommendationTrack?.addEventListener(
+    "mouseenter",
+    () => clearInterval(autoSlideTimer)
+);
 
-    if(!addButton){
-        return;
-    }
+recommendationTrack?.addEventListener(
+    "mouseleave",
+    startAutoSlide
+);
+            closeDrawer();
+            const closeButton =
+                byId("tf-cart-close");
 
-    const product = tfDrawerRecommendedProducts.find(
-        item =>
-            String(getTfProductId(item)) ===
-            String(addButton.dataset.id)
+            const overlay =
+                byId("tf-cart-overlay");
+
+
+            closeButton?.addEventListener(
+                "click",
+                closeDrawer
+            );
+
+
+            overlay?.addEventListener(
+                "click",
+                closeDrawer
+            );
+
+
+            renderDrawer();
+
+            removeStraySparkles();
+
+        }
     );
 
-    if(!product){
-        return;
-    }
 
-    const cartService =
-        window.CartService ||
-        window.cartService;
+    /*=====================================================
+        CART UPDATE
+    =====================================================*/
 
-    if(
-        !cartService ||
-        typeof cartService.addToCart !== "function"
-    ){
-        return;
-    }
+    window.addEventListener(
+        "cartUpdated",
+        () => {
 
-    cartService.addToCart({
-        id:getTfProductId(product),
-        name:product.name || product.title || "Product",
-        category:product.category || "",
-        price:getTfProductPrice(product),
-        image:getTfProductImage(product),
-        quantity:1,
-        size:
-            Array.isArray(product.sizes) &&
-            product.sizes.length
-                ? product.sizes[0]
-                : "M"
-    });
+            renderDrawer();
 
-    addButton.textContent = "Added";
-    addButton.disabled = true;
+            loadRecommendations();
 
-    setTimeout(() => {
-        loadTfDrawerRecommendations();
-    }, 400);
+        }
+    );
+
+/*=====================================================
+    CLOSE DRAWER AFTER BROWSER BACK
+=====================================================*/
+
+window.addEventListener("pageshow", event => {
+
+    const drawer =
+        document.getElementById("tf-cart-drawer");
+
+    const overlay =
+        document.getElementById("tf-cart-overlay");
+
+    drawer?.classList.remove("active");
+    overlay?.classList.remove("active");
+
+    document.body.style.overflow = "";
+
 });
+    /*=====================================================
+        GLOBAL API
+    =====================================================*/
 
-document.addEventListener(
-    "DOMContentLoaded",
-    loadTfDrawerRecommendations
-);
+    window.TaqdeerCartDrawer = {
 
-window.addEventListener(
-    "cartUpdated",
-    loadTfDrawerRecommendations
-);
+        open:openDrawer,
+
+        close:closeDrawer,
+
+        render:renderDrawer,
+
+        loadRecommendations:
+            loadRecommendations
+
+    };
+
+})();

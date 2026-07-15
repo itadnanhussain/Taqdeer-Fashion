@@ -260,53 +260,6 @@ if(backTop){
 
 
 /*=========================================================
-    COUNTDOWN
-=========================================================*/
-
-const offerDays = document.querySelector("#offer-days");
-const offerHours = document.querySelector("#offer-hours");
-const offerMins = document.querySelector("#offer-mins");
-const offerSecs = document.querySelector("#offer-secs");
-
-const offerEndTime =
-Date.now() + (2 * 24 * 60 * 60 * 1000) + (14 * 60 * 60 * 1000);
-
-function twoDigit(value){
-    return String(value).padStart(2,"0");
-}
-
-function updateCountdown(){
-    if(!offerDays || !offerHours || !offerMins || !offerSecs){
-        return;
-    }
-
-    const distance = Math.max(0, offerEndTime - Date.now());
-
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24)) /
-        (1000 * 60 * 60)
-    );
-    const mins = Math.floor(
-        (distance % (1000 * 60 * 60)) /
-        (1000 * 60)
-    );
-    const secs = Math.floor(
-        (distance % (1000 * 60)) /
-        1000
-    );
-
-    offerDays.textContent = twoDigit(days);
-    offerHours.textContent = twoDigit(hours);
-    offerMins.textContent = twoDigit(mins);
-    offerSecs.textContent = twoDigit(secs);
-}
-
-updateCountdown();
-setInterval(updateCountdown,1000);
-
-
-/*=========================================================
     PRODUCT DATA
 =========================================================*/
 

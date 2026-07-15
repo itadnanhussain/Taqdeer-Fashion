@@ -28,6 +28,7 @@
 
     <!-- PAGE CSS -->
     <link rel="stylesheet" href="../../css/pages/product-details.css">
+    <link rel="stylesheet" href="../../css/components/cart-drawer.css">
 </head>
 
 <body>
@@ -558,41 +559,105 @@
     </div>
 
 
-    <!-- CART DRAWER - SAME AS HOME/SHOP -->
-    <div class="cart-overlay"></div>
+   <!-- CLEAN GLOBAL CART DRAWER -->
+<div
+    class="tf-cart-overlay"
+    id="tf-cart-overlay"
+></div>
 
-    <aside class="cart-drawer" aria-label="Shopping cart drawer">
+<aside
+    class="tf-cart-drawer"
+    id="tf-cart-drawer"
+    aria-label="Shopping cart drawer"
+>
 
-        <div class="cart-drawer-header">
-            <h3>Shopping Cart</h3>
+    <div class="tf-cart-drawer-head">
 
-            <button class="cart-close" type="button" aria-label="Close cart">
-                ×
-            </button>
-        </div>
+        <h3>Shopping Cart</h3>
 
-        <div class="cart-drawer-body" id="cart-drawer-items">
-            <!-- JS cart items -->
-        </div>
+        <button
+            type="button"
+            id="tf-cart-close"
+            aria-label="Close cart"
+        >
+            ×
+        </button>
 
-        <div class="cart-drawer-footer">
+    </div>
 
-            <div class="drawer-total-row">
-                <span>Subtotal</span>
-                <strong id="cart-drawer-total">৳0</strong>
+    <div
+        class="tf-cart-drawer-body"
+        id="tf-cart-drawer-items"
+    >
+        <!-- JS cart items -->
+    </div>
+
+    <section class="tf-drawer-recommendations">
+
+        <div class="tf-drawer-recommend-head">
+
+            <h4>You May Also Like</h4>
+
+            <div class="tf-drawer-slider-actions">
+
+                <button
+                    type="button"
+                    id="tfDrawerRecommendPrev"
+                    aria-label="Previous product"
+                >
+                    <i data-lucide="chevron-left"></i>
+                </button>
+
+                <button
+                    type="button"
+                    id="tfDrawerRecommendNext"
+                    aria-label="Next product"
+                >
+                    <i data-lucide="chevron-right"></i>
+                </button>
+
             </div>
 
-            <a href="../checkout/index.html" class="drawer-checkout-btn">
-                Checkout
-            </a>
+        </div>
 
-            <a href="../cart/index.html" class="drawer-view-cart">
-                View Cart
-            </a>
+        <div
+            class="tf-drawer-recommend-track"
+            id="tfDrawerRecommendationTrack"
+        ></div>
+
+    </section>
+
+    <div class="tf-cart-drawer-footer">
+
+        <div class="tf-drawer-total-row">
+
+            <span>Subtotal</span>
+
+            <strong id="tf-cart-drawer-total">
+                ৳0
+            </strong>
 
         </div>
 
-    </aside>
+        <a
+            href="#"
+            class="tf-drawer-checkout"
+            id="tf-drawer-checkout"
+        >
+            Checkout
+        </a>
+
+        <a
+            href="#"
+            class="tf-drawer-view-cart"
+            id="tf-drawer-view-cart"
+        >
+            View Cart
+        </a>
+
+    </div>
+
+</aside>
 
 
     <!-- LUCIDE -->
@@ -607,14 +672,13 @@
 
     <!-- SERVICES -->
     <script src="../../js/services/cart-service.js"></script>
-    <script src="../../js/services/wishlist-service.js"></script>
-    <script src="../../js/services/product-service.js"></script>
+<script src="../../js/services/wishlist-service.js"></script>
+<script src="../../js/services/product-service.js"></script>
 
-    <!-- COMPONENTS -->
-    <script src="../../js/components/header.js"></script>
+<script src="../../js/components/header.js"></script>
+<script src="../../js/components/cart-drawer.js"></script>
 
-    <!-- PAGE -->
-    <script src="../../js/pages/product-details.js"></script>
+<script src="../../js/pages/product-details.js"></script>
 
     <script>
         document.addEventListener("DOMContentLoaded",()=>{
@@ -623,6 +687,24 @@
             }
         });
     </script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
 
+    const cartButton =
+        document.querySelector(".cart-btn");
+
+    cartButton?.addEventListener("click", () => {
+
+        if(
+            window.TaqdeerCartDrawer &&
+            typeof window.TaqdeerCartDrawer.open === "function"
+        ){
+            window.TaqdeerCartDrawer.open();
+        }
+
+    });
+
+});
+</script>
 </body>
 </html>

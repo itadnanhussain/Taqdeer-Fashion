@@ -318,27 +318,26 @@ if (searchInput && urlSearch) {
     saveWishlist(wishlist);
   }
 
-  function openCartDrawer() {
-    const cartBtn = document.querySelector(".cart-btn");
+function openCartDrawer(){
 
-    if (cartBtn) {
-      cartBtn.click();
-      return;
+    if(
+        window.TaqdeerCartDrawer &&
+        typeof window.TaqdeerCartDrawer.open === "function"
+    ){
+        window.TaqdeerCartDrawer.open();
+        return;
     }
 
-    const drawer = document.querySelector(".cart-drawer");
-    const overlay = document.querySelector(".cart-overlay");
+    document
+        .getElementById("tf-cart-drawer")
+        ?.classList.add("active");
 
-    if (drawer) {
-      drawer.classList.add("active");
-    }
-
-    if (overlay) {
-      overlay.classList.add("active");
-    }
+    document
+        .getElementById("tf-cart-overlay")
+        ?.classList.add("active");
 
     document.body.style.overflow = "hidden";
-  }
+}
 
   function addToCart(product, openDrawer = true) {
     const productId = getProductId(product);
@@ -1039,9 +1038,9 @@ loadProducts();
       );
 
       if (product) {
-  addToCart(product, false);
+  addToCart(product, true);
 
-  showAddToCartAnimation(addCartBtn);
+  //showAddToCartAnimation(addCartBtn);
 
   addCartBtn.innerHTML = `
     <i data-lucide="check"></i>
@@ -1113,7 +1112,7 @@ popup.style.setProperty(
       );
 
       if (product) {
-        addToCart(product, false);
+        addToCart(product, true);
         window.location.href = "../checkout/index.html";
       }
 
