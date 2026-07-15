@@ -601,6 +601,7 @@ async function renderRecommended() {
 
         saveCart(cart);
         renderCart();
+        renderCartDrawer();
         openCartDrawer();
     }
 

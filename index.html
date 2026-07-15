@@ -40,9 +40,10 @@
 
     <!-- PAGE CSS -->
     <link rel="stylesheet" href="css/pages/home.css">
+    <link rel="stylesheet" href="css/components/cart-drawer.css">
 </head>
 
-<body>
+<body class="home-page">
 
     <!-- TOP STRIP -->
     <div class="announcement-bar home-top-strip">
@@ -282,9 +283,13 @@
                             </div>
                         </div>
 
-                        <div class="hero-media">
-                            <img src="assets/banners/hero-1.png" alt="Premium menswear collection">
-                        </div>
+                        <div class="hero-media hero-logo-media">
+    <img
+        src="assets/banners/taqdeer-hero-logo.png"
+        alt="Taqdeer Fashion"
+        class="hero-brand-logo"
+    >
+</div>
                     </article>
 
                     <article class="hero-slide" data-slide="1">
@@ -339,9 +344,13 @@
                             </div>
                         </div>
 
-                        <div class="hero-media">
-                            <img src="assets/banners/hero-2.png" alt="Premium Panjabi collection">
-                        </div>
+                       <div class="hero-media hero-logo-media">
+    <img
+        src="assets/banners/taqdeer-hero-logo.png"
+        alt="Taqdeer Fashion"
+        class="hero-brand-logo"
+    >
+</div>
                     </article>
 
                     <article class="hero-slide" data-slide="2">
@@ -396,9 +405,13 @@
                             </div>
                         </div>
 
-                        <div class="hero-media">
-                            <img src="assets/banners/hero-3.png" alt="Premium casual collection">
-                        </div>
+                        <div class="hero-media hero-logo-media">
+    <img
+        src="assets/banners/taqdeer-hero-logo.png"
+        alt="Taqdeer Fashion"
+        class="hero-brand-logo"
+    >
+</div>
                     </article>
 
                     <button class="hero-arrow hero-arrow-left" type="button" aria-label="Previous slide">
@@ -421,53 +434,7 @@
         </section>
 
 
-        <!-- CATEGORY STRIP -->
-        <section class="home-category-strip" aria-label="Shop categories">
-            <div class="container">
-                <div class="category-strip-grid">
-
-                    <a href="pages/shop/index.html?category=shirt" class="home-category-card">
-                        <img src="assets/categories/shirt.jpeg" alt="Shirts">
-                        <h3>Shirts</h3>
-                        <p data-category-count="shirt">0 Items</p>
-                    </a>
-
-                    <a href="pages/shop/index.html?category=t-shirt" class="home-category-card">
-                        <img src="assets/placeholders/product.jpg" alt="T-Shirts">
-                        <h3>T-Shirts</h3>
-                        <p data-category-count="t-shirt">0 Items</p>
-                    </a>
-
-                    <a href="pages/shop/index.html?category=panjabi" class="home-category-card">
-                        <img src="assets/categories/panjabi.jpeg" alt="Panjabi">
-                        <h3>Panjabi</h3>
-                        <p data-category-count="panjabi">0 Items</p>
-                    </a>
-
-                    <a href="pages/shop/index.html?category=jersey" class="home-category-card">
-                        <img src="assets/placeholders/product.jpg" alt="Jersey">
-                        <h3>Jersey</h3>
-                        <p data-category-count="jersey">0 Items</p>
-                    </a>
-
-                    <a href="pages/shop/index.html?category=trouser" class="home-category-card">
-                        <img src="assets/placeholders/product.jpg" alt="Trousers">
-                        <h3>Trousers</h3>
-                        <p data-category-count="trouser">0 Items</p>
-                    </a>
-
-                    <a href="pages/shop/index.html?category=drop-shoulder" class="home-category-card">
-    <img 
-        src="assets/categories/drop-shoulder.jpeg" 
-        alt="Drop Shoulder"
-        onerror="this.onerror=null;this.src='assets/categories/shirt.jpeg';"
-    >
-    <h3>Drop Shoulder</h3>
-    <p data-category-count="drop-shoulder">0 Items</p>
-</a>
-                </div>
-            </div>
-        </section>
+        
 
 
         <!-- FEATURED PRODUCTS -->
@@ -670,7 +637,7 @@
                         </p>
 
                         <div class="review-author">
-                            <img src="assets/placeholders/product.jpg" alt="Imran Khan">">
+                            <img src="assets/placeholders/product.jpg" alt="Imran Khan">
                             <div>
                                 <h4>Imran Khan</h4>
                                 <span>Verified Buyer</span>
@@ -831,41 +798,104 @@
     </div>
 
 
-    <!-- CART DRAWER - MUST MATCH header.js -->
-    <div class="cart-overlay"></div>
+<!-- CLEAN GLOBAL CART DRAWER -->
 
-    <aside class="cart-drawer" aria-label="Shopping cart drawer">
+<div
+    class="tf-cart-overlay"
+    id="tf-cart-overlay"
+></div>
 
-        <div class="cart-drawer-header">
-            <h3>Shopping Cart</h3>
+<aside
+    class="tf-cart-drawer"
+    id="tf-cart-drawer"
+    aria-label="Shopping cart drawer"
+>
 
-            <button class="cart-close" type="button" aria-label="Close cart">
-                ×
-            </button>
-        </div>
+    <div class="tf-cart-drawer-head">
 
-        <div class="cart-drawer-body" id="cart-drawer-items">
-            <!-- JS cart items -->
-        </div>
+        <h3>Shopping Cart</h3>
 
-        <div class="cart-drawer-footer">
+        <button
+            type="button"
+            id="tf-cart-close"
+            aria-label="Close shopping cart"
+        >
+            <i data-lucide="x"></i>
+        </button>
 
-            <div class="drawer-total-row">
-                <span>Subtotal</span>
-                <strong id="cart-drawer-total">৳0</strong>
+    </div>
+
+    <div
+        class="tf-cart-drawer-body"
+        id="tf-cart-drawer-items"
+    ></div>
+
+    <section class="tf-drawer-recommendations">
+
+        <div class="tf-drawer-recommend-head">
+
+            <h4>You May Also Like</h4>
+
+            <div class="tf-drawer-slider-actions">
+
+                <button
+                    type="button"
+                    id="tfDrawerRecommendPrev"
+                    aria-label="Previous product"
+                >
+                    <i data-lucide="chevron-left"></i>
+                </button>
+
+                <button
+                    type="button"
+                    id="tfDrawerRecommendNext"
+                    aria-label="Next product"
+                >
+                    <i data-lucide="chevron-right"></i>
+                </button>
+
             </div>
 
-            <a href="pages/checkout/index.html" class="drawer-checkout-btn">
-                Checkout
-            </a>
+        </div>
 
-            <a href="pages/cart/index.html" class="drawer-view-cart">
-                View Cart
-            </a>
+        <div
+            class="tf-drawer-recommend-track"
+            id="tfDrawerRecommendationTrack"
+        ></div>
+
+    </section>
+
+    <div class="tf-cart-drawer-footer">
+
+        <div class="tf-drawer-total-row">
+
+            <span>Subtotal</span>
+
+            <strong id="tf-cart-drawer-total">
+                ৳0
+            </strong>
 
         </div>
 
-    </aside>
+        <a
+            href="#"
+            class="tf-drawer-checkout"
+            id="tf-drawer-checkout"
+        >
+            Checkout
+        </a>
+
+        <a
+            href="#"
+            class="tf-drawer-view-cart"
+            id="tf-drawer-view-cart"
+        >
+            View Cart
+        </a>
+
+    </div>
+
+</aside>
 
 
     <!-- LUCIDE -->
@@ -879,16 +909,14 @@
     <script src="firebase/firebase-config.js"></script>
 
     <!-- SERVICES FIRST -->
-    <script src="js/services/cart-service.js"></script>
-    <script src="js/services/wishlist-service.js"></script>
-    <script src="js/services/product-service.js"></script>
+   <script src="js/services/cart-service.js"></script>
+<script src="js/services/wishlist-service.js"></script>
+<script src="js/services/product-service.js"></script>
 
-    <!-- COMPONENTS -->
-    <script src="js/components/header.js"></script>
-    <script src="js/components/product-card.js"></script>
+<script src="js/components/header.js"></script>
+<script src="js/components/cart-drawer.js"></script>
 
-    <!-- PAGE JS -->
-    <script src="js/pages/home.js"></script>
+<script src="js/pages/home.js"></script>
 
     <script>
         document.addEventListener("DOMContentLoaded",()=>{

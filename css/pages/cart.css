@@ -29,16 +29,20 @@ body{
 }
 
 body::-webkit-scrollbar{
-    width:9px;
+    width:10px;
 }
 
 body::-webkit-scrollbar-track{
-    background:#f1f1f1;
+    background:#f3f3f3;
 }
 
 body::-webkit-scrollbar-thumb{
-    background:var(--cart-red);
+    background:#ff7a00;
     border-radius:999px;
+}
+
+body::-webkit-scrollbar-thumb:hover{
+    background:#e66b00;
 }
 
 .cart-container{
@@ -75,7 +79,7 @@ body::-webkit-scrollbar-thumb{
     gap:8px;
     color:#fff;
     font-size:13px;
-    font-weight:700;
+    font-weight:600;
     white-space:nowrap;
 }
 
@@ -142,7 +146,7 @@ body::-webkit-scrollbar-thumb{
 .cart-logo .logo-subtitle{
     font-family:'Montserrat', sans-serif;
     font-size:15px;
-    font-weight:800;
+    font-weight:600;
     color:#E53935;
     letter-spacing:2px;
     text-transform:uppercase;
@@ -168,7 +172,7 @@ body::-webkit-scrollbar-thumb{
     position:relative;
     color:#111;
     font-size:14px;
-    font-weight:800;
+    font-weight:600;
     text-decoration:none;
     padding:34px 0;
 }
@@ -282,7 +286,7 @@ body::-webkit-scrollbar-thumb{
     background:var(--cart-red);
     color:#fff;
     font-size:10px;
-    font-weight:900;
+    font-weight:600;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -318,7 +322,7 @@ body::-webkit-scrollbar-thumb{
 
 .cart-breadcrumb span{
     color:#111;
-    font-weight:700;
+    font-weight:600;
 }
 
 .cart-breadcrumb svg{
@@ -352,7 +356,7 @@ body::-webkit-scrollbar-thumb{
 .cart-page-title h1{
     font-family:'Poppins', sans-serif !important;
     font-size:48px !important;
-    font-weight:700 !important;
+    font-weight:600 !important;
     line-height:56px !important;
     letter-spacing:-0.5px !important;
     color:#111111 !important;
@@ -399,7 +403,7 @@ body::-webkit-scrollbar-thumb{
     border-bottom:1px solid var(--cart-border);
     color:#111;
     font-size:14px;
-    font-weight:800;
+    font-weight:600;
 }
 
 .cart-item{
@@ -446,7 +450,7 @@ body::-webkit-scrollbar-thumb{
     margin:0 0 8px;
     font-size:15px;
     line-height:1.35;
-    font-weight:800;
+    font-weight:600;
     color:#111;
 }
 
@@ -466,13 +470,13 @@ body::-webkit-scrollbar-thumb{
     background:#eaf9ef;
     color:var(--cart-green);
     font-size:12px;
-    font-weight:800;
+    font-weight:600;
 }
 
 .cart-price,
 .cart-line-total{
     font-size:16px;
-    font-weight:800;
+    font-weight:600;
     color:#111;
 }
 
@@ -494,14 +498,15 @@ body::-webkit-scrollbar-thumb{
     background:#fff;
     color:#111;
     font-size:18px;
-    font-weight:700;
+    font-weight:600;
     cursor:pointer;
     transition:.2s ease;
 }
 
-.quantity-control button:hover{
-    background:#111;
+.quantity-control button:active{
+    background:#ff7a00;
     color:#fff;
+    transform:scale(.96);
 }
 
 .quantity-control span{
@@ -513,7 +518,7 @@ body::-webkit-scrollbar-thumb{
     align-items:center;
     justify-content:center;
     font-size:14px;
-    font-weight:800;
+    font-weight:600;
 }
 
 .cart-actions{
@@ -584,7 +589,7 @@ body::-webkit-scrollbar-thumb{
 
 .empty-cart h2{
     font-size:26px;
-    font-weight:800;
+    font-weight:600;
     margin-bottom:10px;
 }
 
@@ -603,7 +608,7 @@ body::-webkit-scrollbar-thumb{
     background:var(--cart-red);
     color:#fff;
     text-decoration:none;
-    font-weight:800;
+    font-weight:600;
 }
 
 
@@ -632,7 +637,7 @@ body::-webkit-scrollbar-thumb{
     justify-content:center;
     gap:8px;
     text-decoration:none;
-    font-weight:800;
+    font-weight:600;
     font-size:14px;
     cursor:pointer;
     transition:.25s ease;
@@ -712,7 +717,7 @@ body::-webkit-scrollbar-thumb{
     display:block;
     color:#111;
     font-size:14px;
-    font-weight:800;
+    font-weight:600;
 }
 
 
@@ -736,7 +741,7 @@ body::-webkit-scrollbar-thumb{
 .cart-summary-panel h2{
     font-family:"Poppins", sans-serif;
     font-size:24px;
-    font-weight:800;
+    font-weight:600;
     margin:0 0 26px;
 }
 
@@ -756,7 +761,7 @@ body::-webkit-scrollbar-thumb{
 .summary-row strong{
     color:#111;
     font-size:16px;
-    font-weight:800;
+    font-weight:600;
 }
 
 .summary-row .discount,
@@ -780,14 +785,14 @@ body::-webkit-scrollbar-thumb{
 .summary-total span{
     color:#111;
     font-size:17px;
-    font-weight:800;
+    font-weight:600;
 }
 
 .summary-total strong{
     color:var(--cart-red);
     font-family:"Poppins", sans-serif;
     font-size:32px;
-    font-weight:800;
+    font-weight:600;
 }
 
 .checkout-btn{
@@ -802,7 +807,7 @@ body::-webkit-scrollbar-thumb{
     justify-content:center;
     gap:10px;
     font-size:15px;
-    font-weight:800;
+    font-weight:600;
     cursor:pointer;
     transition:.25s ease;
 }
@@ -859,14 +864,14 @@ body::-webkit-scrollbar-thumb{
 .recommend-head h3{
     margin:0;
     font-size:16px;
-    font-weight:800;
+    font-weight:600;
 }
 
 .recommend-head a{
     color:var(--cart-red);
     text-decoration:none;
     font-size:13px;
-    font-weight:800;
+    font-weight:600;
 }
 
 .recommend-mini-grid{
@@ -898,7 +903,7 @@ body::-webkit-scrollbar-thumb{
     margin:0 0 6px;
     font-size:12px;
     line-height:1.35;
-    font-weight:800;
+    font-weight:600;
     color:#111;
 }
 
@@ -989,7 +994,7 @@ body::-webkit-scrollbar-thumb{
     }
 }
 
-@media(max-width:900px){
+@media(max-width:600px){
 
     .cart-top-strip{
         display:none;
@@ -1209,7 +1214,7 @@ body::-webkit-scrollbar-thumb{
     margin:0 0 7px;
     font-size:12px;
     line-height:1.35;
-    font-weight:800;
+    font-weight:600;
     color:#111;
 }
 
@@ -1217,7 +1222,7 @@ body::-webkit-scrollbar-thumb{
     display:block;
     color:var(--cart-red);
     font-size:14px;
-    font-weight:900;
+    font-weight:600;
     margin-bottom:8px;
 }
 
@@ -1233,7 +1238,7 @@ body::-webkit-scrollbar-thumb{
     justify-content:center;
     gap:6px;
     font-size:12px;
-    font-weight:800;
+    font-weight:600;
     cursor:pointer;
 }
 
@@ -1257,7 +1262,7 @@ body::-webkit-scrollbar-thumb{
     }
 }
 
-@media(max-width:900px){
+@media(max-width:600px){
 
     .cart-header-wrap{
         grid-template-columns:1fr auto;
@@ -1312,13 +1317,13 @@ body::-webkit-scrollbar-thumb{
 
     .cart-price::before{
         content:"Price";
-        font-weight:700;
+        font-weight:600;
         color:#666;
     }
 
     .cart-line-total::before{
         content:"Total";
-        font-weight:700;
+        font-weight:600;
         color:#666;
     }
 
@@ -1414,7 +1419,7 @@ body::-webkit-scrollbar-thumb{
 .cart-page-title h1{
     font-family:'Poppins', sans-serif !important;
     font-size:48px !important;
-    font-weight:700 !important;
+    font-weight:600 !important;
     line-height:56px !important;
     letter-spacing:-0.5px !important;
     color:#111111 !important;
@@ -1437,7 +1442,7 @@ body::-webkit-scrollbar-thumb{
     font-family:'Poppins', sans-serif !important;
     margin:0 !important;
     font-size:17px !important;
-    font-weight:800 !important;
+    font-weight:600 !important;
     color:#111 !important;
 }
 
@@ -1445,7 +1450,7 @@ body::-webkit-scrollbar-thumb{
     color:var(--cart-red) !important;
     text-decoration:none !important;
     font-size:13px !important;
-    font-weight:800 !important;
+    font-weight:600 !important;
 }
 
 .recommend-mini-grid{
@@ -1494,7 +1499,7 @@ body::-webkit-scrollbar-thumb{
     margin:0 0 7px !important;
     font-size:12px !important;
     line-height:1.35 !important;
-    font-weight:800 !important;
+    font-weight:600 !important;
     color:#111 !important;
 }
 
@@ -1502,7 +1507,7 @@ body::-webkit-scrollbar-thumb{
     display:block !important;
     color:var(--cart-red) !important;
     font-size:14px !important;
-    font-weight:900 !important;
+    font-weight:600 !important;
     margin-bottom:8px !important;
 }
 
@@ -1518,7 +1523,7 @@ body::-webkit-scrollbar-thumb{
     justify-content:center !important;
     gap:6px !important;
     font-size:12px !important;
-    font-weight:800 !important;
+    font-weight:600 !important;
     cursor:pointer !important;
     line-height:1.2 !important;
 }
@@ -1650,7 +1655,7 @@ body::-webkit-scrollbar-thumb{
 .cart-drawer-header h3{
     font-family:"Poppins",sans-serif;
     font-size:22px;
-    font-weight:800;
+    font-weight:600;
     color:#111;
     margin:0;
 }
@@ -1735,7 +1740,7 @@ body::-webkit-scrollbar-thumb{
     font-family:"Poppins",sans-serif;
     font-size:14px;
     line-height:1.35;
-    font-weight:800;
+    font-weight:600;
     color:#111;
     margin:0 0 6px;
 }
@@ -1749,7 +1754,7 @@ body::-webkit-scrollbar-thumb{
 .drawer-cart-price{
     display:block;
     font-size:15px;
-    font-weight:900;
+    font-weight:600;
     color:#e1121b;
     margin-bottom:10px;
 }
@@ -1789,7 +1794,7 @@ body::-webkit-scrollbar-thumb{
     min-width:32px;
     text-align:center;
     font-size:13px;
-    font-weight:800;
+    font-weight:600;
     border-left:1px solid #e5e5e5;
     border-right:1px solid #e5e5e5;
 }
@@ -1845,7 +1850,7 @@ body::-webkit-scrollbar-thumb{
 .drawer-empty h4{
     font-family:"Poppins",sans-serif;
     font-size:22px;
-    font-weight:800;
+    font-weight:600;
     color:#111;
     margin:0 0 8px;
 }
@@ -1867,7 +1872,7 @@ body::-webkit-scrollbar-thumb{
     justify-content:center;
     text-decoration:none;
     font-size:14px;
-    font-weight:800;
+    font-weight:600;
     transition:.25s ease;
 }
 
@@ -1891,14 +1896,14 @@ body::-webkit-scrollbar-thumb{
 
 .drawer-total-row span{
     font-size:15px;
-    font-weight:700;
+    font-weight:600;
     color:#555;
 }
 
 .drawer-total-row strong{
     font-family:"Poppins",sans-serif;
     font-size:24px;
-    font-weight:900;
+    font-weight:600;
     color:#e1121b;
 }
 
@@ -1913,7 +1918,7 @@ body::-webkit-scrollbar-thumb{
     justify-content:center;
     text-decoration:none;
     font-size:15px;
-    font-weight:900;
+    font-weight:600;
     margin-bottom:10px;
     transition:.25s ease;
 }
@@ -1935,7 +1940,7 @@ body::-webkit-scrollbar-thumb{
     justify-content:center;
     text-decoration:none;
     font-size:14px;
-    font-weight:900;
+    font-weight:600;
     transition:.25s ease;
 }
 
@@ -2034,7 +2039,7 @@ body.drawer-open{
 .tf-cart-drawer-head h3{
     font-family:"Poppins",sans-serif;
     font-size:22px;
-    font-weight:800;
+    font-weight:600;
     color:#111;
 }
 
@@ -2072,7 +2077,7 @@ body.drawer-open{
 
 .tf-drawer-item h4{
     font-size:14px;
-    font-weight:800;
+    font-weight:600;
     color:#111;
     margin-bottom:5px;
 }
@@ -2086,7 +2091,7 @@ body.drawer-open{
 .tf-drawer-item strong{
     color:#e1121b;
     font-size:15px;
-    font-weight:900;
+    font-weight:600;
 }
 
 .tf-drawer-empty{
@@ -2116,7 +2121,7 @@ body.drawer-open{
 .tf-drawer-total strong{
     font-size:22px;
     color:#e1121b;
-    font-weight:900;
+    font-weight:600;
 }
 
 .tf-drawer-checkout,
@@ -2128,7 +2133,7 @@ body.drawer-open{
     align-items:center;
     justify-content:center;
     text-decoration:none;
-    font-weight:800;
+    font-weight:600;
     margin-top:10px;
 }
 
@@ -2154,7 +2159,8 @@ body.drawer-open{
 =========================================================*/
 
 html{
-    scrollbar-color:#0b7a3b #f1f1f1;
+    scrollbar-width:thin;
+    scrollbar-color:#ff7a00 #f3f3f3;
 }
 
 body::-webkit-scrollbar{
@@ -2249,14 +2255,14 @@ body::-webkit-scrollbar-thumb:hover{
     color:#111 !important;
     font-size:11px !important;
     line-height:1.25 !important;
-    font-weight:900 !important;
+    font-weight:600 !important;
     word-break:break-word !important;
 }
 
 .recommend-info strong{
     color:#e1121b !important;
     font-size:13px !important;
-    font-weight:900 !important;
+    font-weight:600 !important;
 }
 
 .recommend-add-cart{
@@ -2272,7 +2278,7 @@ body::-webkit-scrollbar-thumb:hover{
     gap:5px !important;
     font-size:10px !important;
     line-height:1.1 !important;
-    font-weight:900 !important;
+    font-weight:600 !important;
     margin-top:auto !important;
 }
 

@@ -210,6 +210,91 @@ if (searchInput && urlSearch) {
     }
   }
 
+
+  /*=========================================================
+    SHOP ADD TO CART ANIMATION
+  =========================================================*/
+
+  function showShopCartPop(button) {
+    if (!button) {
+      return;
+    }
+
+    document
+      .querySelectorAll(".shop-cart-pop")
+      .forEach((item) => item.remove());
+
+    const rect = button.getBoundingClientRect();
+    const popup = document.createElement("div");
+
+    popup.className = "shop-cart-pop";
+    popup.innerHTML = `
+      <div class="shop-cart-pop-inner">
+        <i data-lucide="shopping-cart"></i>
+      </div>
+    `;
+
+    popup.style.left = `${rect.left + rect.width / 2}px`;
+    popup.style.top = `${rect.top + rect.height / 2}px`;
+
+    document.body.appendChild(popup);
+    refreshLucide();
+
+    requestAnimationFrame(() => {
+      popup.classList.add("active");
+    });
+
+    setTimeout(() => {
+      popup.classList.add("hide");
+    }, 650);
+
+    setTimeout(() => {
+      popup.remove();
+    }, 1050);
+  }
+
+  function getShopCartItem(productId) {
+    return getCart().find(
+      (item) => String(item.id) === String(productId),
+    );
+  }
+
+  function renderShopCartQuantity(button, quantity) {
+    if (!button) {
+      return;
+    }
+
+    button.classList.add("shop-cart-quantity-active");
+
+    button.innerHTML = `
+      <span
+        class="shop-cart-qty-action"
+        data-shop-cart-action="minus"
+        aria-label="Decrease quantity"
+      >
+        −
+      </span>
+
+      <span class="shop-cart-qty-value">
+        ${quantity}
+      </span>
+
+      <span
+        class="shop-cart-qty-action"
+        data-shop-cart-action="plus"
+        aria-label="Increase quantity"
+      >
+        +
+      </span>
+    `;
+  }
+
+  function saveCart(cart) {
+    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+    window.dispatchEvent(new CustomEvent("cartUpdated"));
+    updateHeaderCounts();
+  }
+
   /*=========================================================
     CART / WISHLIST HELPERS
 =========================================================*/
@@ -722,95 +807,110 @@ async function loadProducts() {
     refreshLucide();
   }
   function createProductCard(product) {
-    const id = product.id || product.docId || "";
-    const name = product.name || product.title || "Product";
-    const category = product.category || "";
-    const price = Number(
-      product.price || product.salePrice || product.finalPrice || 0,
-    );
-    const oldPrice = Number(
-      product.oldPrice || product.regularPrice || product.mrp || 0,
-    );
-
-    const image =
-      product.image ||
-      product.imageUrl ||
-      product.thumbnail ||
-      product.mainImage ||
-      (Array.isArray(product.images) ? product.images[0] : "") ||
-      "../../assets/placeholders/product.jpg";
-
-    const sizes =
-      Array.isArray(product.sizes) && product.sizes.length
-        ? product.sizes
-        : ["S", "M", "L", "XL"];
-
-    const safeImage =
-      typeof getImagePath === "function" ? getImagePath(image) : image;
+    const id = getProductId(product);
+    const name = safeText(product.name || product.title, "Product");
+    const price = getPrice(product);
+    const oldPrice = getOldPrice(product);
+    const image = getProductImage(product);
+    const sizes = getProductSizes(product);
+    const existingCartItem = getShopCartItem(id);
+    const cartQuantity = Number(existingCartItem?.quantity || 0);
 
     return `
-        <article class="shop-product-card" data-id="${id}">
+      <article class="shop-product-card" data-id="${id}">
+        <div class="shop-product-image">
+          <button
+            type="button"
+            class="shop-wishlist-btn ${isWishlisted(id) ? "active" : ""}"
+            data-id="${id}"
+            aria-label="Add to wishlist"
+          >
+            <i data-lucide="heart"></i>
+          </button>
 
-            <div class="shop-product-image">
-                <button
-                    type="button"
-                    class="shop-wishlist-btn ${isWishlisted && isWishlisted(id) ? "active" : ""}"
-                    data-id="${id}"
-                    aria-label="Add to wishlist"
-                >
-                    <i data-lucide="heart"></i>
-                </button>
+          <a
+            href="../product-details/index.html?id=${encodeURIComponent(id)}"
+            class="product-link"
+          >
+            <img
+              src="${image}"
+              alt="${name}"
+              loading="lazy"
+              onerror="this.onerror=null;this.src='${FALLBACK_IMAGE}';"
+            >
+          </a>
+        </div>
 
-                <a href="../product-details/index.html?id=${encodeURIComponent(id)}" class="product-link">
-                    <img
-                        src="${safeImage}"
-                        alt="${name}"
-                        loading="lazy"
-                        onerror="this.onerror=null;this.src='../../assets/placeholders/product.jpg';"
-                    >
-                </a>
-            </div>
+        <div class="shop-product-info">
+          <h3 class="shop-product-title">
+            <a href="../product-details/index.html?id=${encodeURIComponent(id)}">
+              ${name}
+            </a>
+          </h3>
 
-            <div class="shop-product-info">
+          <div class="shop-card-sizes">
+            ${sizes
+              .slice(0, 4)
+              .map(
+                (size) => `
+                  <span class="shop-size-chip">
+                    ${String(size).toUpperCase()}
+                  </span>
+                `,
+              )
+              .join("")}
+          </div>
 
-                <h3 class="shop-product-title">
-                    <a href="../product-details/index.html?id=${encodeURIComponent(id)}">
-                        ${name}
-                    </a>
-                </h3>
+          <div class="shop-price-row">
+            <strong class="shop-current-price">
+              ${money(price)}
+            </strong>
 
-                <div class="shop-card-sizes">
-                    ${sizes
-                      .slice(0, 4)
-                      .map(
-                        (size) => `
-                        <span class="shop-size-chip">${String(size).toUpperCase()}</span>
-                    `,
-                      )
-                      .join("")}
-                </div>
+            ${
+              oldPrice && oldPrice > price
+                ? `<del class="shop-old-price">${money(oldPrice)}</del>`
+                : ""
+            }
+          </div>
 
-                <div class="shop-price-row">
-                    <strong class="shop-current-price">৳${price.toLocaleString()}</strong>
-                    ${
-                      oldPrice && oldPrice > price
-                        ? `<del class="shop-old-price">৳${oldPrice.toLocaleString()}</del>`
-                        : ""
-                    }
-                </div>
+          <button
+            type="button"
+            class="shop-add-cart-btn ${
+              cartQuantity > 0 ? "shop-cart-quantity-active" : ""
+            }"
+            data-id="${id}"
+          >
+            ${
+              cartQuantity > 0
+                ? `
+                  <span
+                    class="shop-cart-qty-action"
+                    data-shop-cart-action="minus"
+                    aria-label="Decrease quantity"
+                  >
+                    −
+                  </span>
 
-                <button
-                    type="button"
-                    class="shop-add-cart-btn"
-                    data-id="${id}"
-                >
-                    <i data-lucide="shopping-cart"></i>
-                    Add To Cart
-                </button>
+                  <span class="shop-cart-qty-value">
+                    ${cartQuantity}
+                  </span>
 
-            </div>
-
-        </article>
+                  <span
+                    class="shop-cart-qty-action"
+                    data-shop-cart-action="plus"
+                    aria-label="Increase quantity"
+                  >
+                    +
+                  </span>
+                `
+                : `
+                  <i data-lucide="shopping-cart"></i>
+                  Add To Cart
+                `
+            }
+          </button>
+        </div>
+      </article>
     `;
   }
 
@@ -1033,75 +1133,100 @@ loadProducts();
     const wishlistBtn = event.target.closest(".shop-wishlist-btn");
 
     if (addCartBtn) {
+      event.preventDefault();
+      event.stopPropagation();
+
       const product = allProducts.find(
-        (item) => String(getProductId(item)) === String(addCartBtn.dataset.id),
+        (item) =>
+          String(getProductId(item)) === String(addCartBtn.dataset.id),
       );
 
-      if (product) {
-  addToCart(product, true);
-
-  //showAddToCartAnimation(addCartBtn);
-
-  addCartBtn.innerHTML = `
-    <i data-lucide="check"></i>
-    Added
-  `;
-
-        refreshLucide();
-        function showAddToCartAnimation(button) {
-  if (!button) return;
-
-  const oldPopup = document.querySelector(".add-cart-float-popup");
-
-  if (oldPopup) {
-    oldPopup.remove();
-  }
-
-  const buttonRect = button.getBoundingClientRect();
-
-  const popup = document.createElement("div");
-  popup.className = "add-cart-float-popup";
-
-  popup.innerHTML = `
-    <div class="add-cart-popup-icon">
-      <i data-lucide="shopping-cart"></i>
-      <span class="add-cart-popup-check">
-        <i data-lucide="check"></i>
-      </span>
-    </div>
-  `;
-
-  popup.style.left = `${buttonRect.left + buttonRect.width / 2}px`;
-  popup.style.top = `${buttonRect.top + buttonRect.height / 2}px`;
-popup.style.setProperty(
-  "--popup-top",
-  `${buttonRect.top + buttonRect.height / 2}px`
-);
-  document.body.appendChild(popup);
-
-  refreshLucide();
-
-  requestAnimationFrame(() => {
-    popup.classList.add("show");
-  });
-
-  setTimeout(() => {
-    popup.classList.add("hide");
-  }, 900);
-
-  setTimeout(() => {
-    popup.remove();
-  }, 1400);
-}
-
-        setTimeout(() => {
-          addCartBtn.innerHTML = `
-                    <i data-lucide="shopping-cart"></i>
-                    Add to Cart
-                `;
-          refreshLucide();
-        }, 900);
+      if (!product) {
+        return;
       }
+
+      const productId = getProductId(product);
+      const clickedAction = event.target.closest(
+        "[data-shop-cart-action]",
+      );
+
+      if (
+        clickedAction &&
+        clickedAction.dataset.shopCartAction === "plus"
+      ) {
+        addToCart(product, false);
+
+        const updatedItem = getShopCartItem(productId);
+
+        renderShopCartQuantity(
+          addCartBtn,
+          Number(updatedItem?.quantity || 1),
+        );
+
+        showShopCartPop(addCartBtn);
+        updateHeaderCounts();
+        openCartDrawer();
+
+        return;
+      }
+
+      if (
+        clickedAction &&
+        clickedAction.dataset.shopCartAction === "minus"
+      ) {
+        const cart = getCart();
+        const itemIndex = cart.findIndex(
+          (item) => String(item.id) === String(productId),
+        );
+
+        if (itemIndex < 0) {
+          return;
+        }
+
+        const currentQuantity = Number(
+          cart[itemIndex].quantity || 1,
+        );
+
+        if (currentQuantity <= 1) {
+          cart.splice(itemIndex, 1);
+          saveCart(cart);
+
+          addCartBtn.classList.remove(
+            "shop-cart-quantity-active",
+          );
+
+          addCartBtn.innerHTML = `
+            <i data-lucide="shopping-cart"></i>
+            Add To Cart
+          `;
+
+          refreshLucide();
+          return;
+        }
+
+        cart[itemIndex].quantity = currentQuantity - 1;
+        saveCart(cart);
+
+        renderShopCartQuantity(
+          addCartBtn,
+          currentQuantity - 1,
+        );
+
+        return;
+      }
+
+      addToCart(product, false);
+
+      const addedItem = getShopCartItem(productId);
+
+      renderShopCartQuantity(
+        addCartBtn,
+        Number(addedItem?.quantity || 1),
+      );
+
+      showShopCartPop(addCartBtn);
+      updateHeaderCounts();
+      openCartDrawer();
 
       return;
     }
