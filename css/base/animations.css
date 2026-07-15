@@ -1129,3 +1129,14 @@ transition-duration:.01ms !important;
         transform:scale(.4) rotate(90deg);
     }
 }
+.logo-spark,
+.logo-spark::before,
+.logo-spark::after{
+    background:#ff7a00 !important;
+}
+
+.logo-spark{
+    box-shadow:
+        0 0 0 3px rgba(255,122,0,.18),
+        0 0 14px rgba(255,122,0,.75) !important;
+}

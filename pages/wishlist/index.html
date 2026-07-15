@@ -246,12 +246,13 @@
 <div class="wishlist-toast" id="wishlist-toast">Done</div>
 <div class="tf-cart-overlay" id="tf-cart-overlay"></div>
 
-<aside class="tf-cart-drawer" id="tf-cart-drawer">
-    <div class="tf-cart-drawer-head">
+ <div class="tf-cart-drawer-head">
         <h3>Shopping Cart</h3>
         <button type="button" id="tf-cart-close">×</button>
     </div>
 
+    
+    <div class="tf-cart-drawer-body" id="tf-cart-drawer-items">
     <div class="tf-cart-drawer-body" id="tf-cart-drawer-items">
         <!-- JS items -->
     </div>
@@ -270,7 +271,41 @@
             View Cart
         </a>
     </div>
-</aside>
+</div>
+<div class="tf-drawer-recommendations">
+
+    <div class="tf-drawer-recommend-head">
+
+        <h4>You May Also Like</h4>
+
+        <div class="tf-drawer-slider-actions">
+
+            <button
+                type="button"
+                id="tfDrawerRecommendPrev"
+                aria-label="Previous product"
+            >
+                <i data-lucide="chevron-left"></i>
+            </button>
+
+            <button
+                type="button"
+                id="tfDrawerRecommendNext"
+                aria-label="Next product"
+            >
+                <i data-lucide="chevron-right"></i>
+            </button>
+
+        </div>
+
+    </div>
+
+    <div
+        class="tf-drawer-recommend-track"
+        id="tfDrawerRecommendationTrack"
+    ></div>
+
+</div>
 
 <!-- LUCIDE -->
 <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
@@ -284,6 +319,7 @@
 
 <!-- SERVICES -->
 <script src="../../js/services/cart-service.js"></script>
+<script src="../../js/services/product-service.js"></script>
 <script src="../../js/components/cart-drawer.js"></script>
 <script src="../../js/services/wishlist-service.js"></script>
 

@@ -224,3 +224,340 @@
         right:-100%;
     }
 }
+/*=========================================================
+    TF CART DRAWER FINAL TYPOGRAPHY
+=========================================================*/
+
+:root{
+    --tf-orange:#ff7a00;
+}
+
+/* CART TITLE */
+.tf-cart-drawer-head h3{
+    font-size:22px !important;
+    font-weight:500 !important;
+}
+
+/* PRODUCT NAME */
+.tf-drawer-item-info h4{
+    font-size:14px !important;
+    font-weight:500 !important;
+    line-height:1.4 !important;
+}
+
+/* CATEGORY + SIZE */
+.tf-drawer-item-info p{
+    font-size:12px !important;
+    font-weight:400 !important;
+}
+
+/* PRODUCT PRICE */
+.tf-drawer-item-info strong{
+    font-size:17px !important;
+    font-weight:500 !important;
+}
+
+/* EMPTY CART TITLE */
+.tf-drawer-empty h4{
+    font-weight:500 !important;
+}
+
+/* EMPTY CART TEXT */
+.tf-drawer-empty p{
+    font-weight:400 !important;
+}
+
+/* SUBTOTAL TEXT */
+.tf-drawer-total-row span{
+    font-size:15px !important;
+    font-weight:500 !important;
+}
+
+/* SUBTOTAL PRICE */
+.tf-drawer-total-row strong{
+    font-size:25px !important;
+    font-weight:500 !important;
+}
+
+/* CHECKOUT + VIEW CART TEXT */
+.tf-drawer-checkout,
+.tf-drawer-view-cart{
+    font-weight:600 !important;
+}
+
+
+/*=========================================================
+    CHECKOUT SHAKE ANIMATION
+=========================================================*/
+
+.tf-drawer-checkout{
+    position:relative;
+    overflow:hidden;
+    animation:tfCheckoutShake 3.5s ease-in-out infinite;
+}
+
+@keyframes tfCheckoutShake{
+
+    0%,
+    70%,
+    100%{
+        transform:translateX(0);
+    }
+
+    74%{
+        transform:translateX(-4px);
+    }
+
+    77%{
+        transform:translateX(4px);
+    }
+
+    80%{
+        transform:translateX(-3px);
+    }
+
+    83%{
+        transform:translateX(3px);
+    }
+
+    86%{
+        transform:translateX(-1px);
+    }
+
+    89%{
+        transform:translateX(0);
+    }
+}
+
+.tf-drawer-checkout:hover{
+    animation:none;
+    transform:translateY(-2px);
+}
+
+
+/*=========================================================
+    CART RECOMMENDATION SECTION
+=========================================================*/
+
+.tf-drawer-recommendations{
+    flex-shrink:0;
+    padding:15px 20px;
+    background:#fafafa;
+    border-top:1px solid #eeeeee;
+    border-bottom:1px solid #eeeeee;
+}
+
+.tf-drawer-recommend-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    margin-bottom:12px;
+}
+
+.tf-drawer-recommend-head h4{
+    position:relative;
+    margin:0;
+    padding-bottom:8px;
+    color:#111;
+    font-size:16px;
+    font-weight:500;
+}
+
+.tf-drawer-recommend-head h4::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:42px;
+    height:2px;
+    background:var(--tf-orange);
+}
+
+.tf-drawer-slider-actions{
+    display:flex;
+    gap:7px;
+}
+
+.tf-drawer-slider-actions button{
+    width:30px;
+    height:30px;
+    border:none;
+    border-radius:50%;
+    background:var(--tf-orange);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.tf-drawer-slider-actions button:hover{
+    background:#111;
+}
+
+.tf-drawer-slider-actions svg{
+    width:16px;
+    height:16px;
+}
+
+.tf-drawer-recommend-track{
+    display:flex;
+    gap:12px;
+    overflow-x:auto;
+    scroll-behavior:smooth;
+    scrollbar-width:none;
+}
+
+.tf-drawer-recommend-track::-webkit-scrollbar{
+    display:none;
+}
+
+.tf-drawer-recommend-card{
+    flex:0 0 255px;
+    min-height:96px;
+    padding:9px;
+    border:1px solid #e5e5e5;
+    border-radius:11px;
+    background:#fff;
+    display:grid;
+    grid-template-columns:67px 1fr;
+    gap:11px;
+    align-items:center;
+}
+
+.tf-drawer-recommend-card img{
+    width:67px;
+    height:76px;
+    object-fit:contain;
+    border-radius:8px;
+    background:#f7f7f7;
+}
+
+.tf-drawer-recommend-info h5{
+    margin:0 0 5px;
+    color:#111;
+    font-size:12px;
+    line-height:1.35;
+    font-weight:500;
+}
+
+.tf-drawer-recommend-info strong{
+    display:block;
+    margin-bottom:7px;
+    color:#e1121b;
+    font-size:14px;
+    font-weight:500;
+}
+
+.tf-drawer-recommend-add{
+    min-height:27px;
+    padding:0 13px;
+    border:none;
+    border-radius:999px;
+    background:var(--tf-orange);
+    color:#fff;
+    font-size:11px;
+    font-weight:500;
+}
+
+.tf-drawer-recommend-add:hover{
+    background:#111;
+}
+
+
+/*=========================================================
+    REMOVE GOLDEN SPARKLES FROM CART
+=========================================================*/
+
+.tf-cart-drawer .logo-spark,
+.tf-cart-drawer .add-cart-float-popup,
+.tf-cart-drawer .add-cart-popup-spark,
+.tf-cart-drawer [class*="spark"]{
+    display:none !important;
+    animation:none !important;
+}
+
+
+/*=========================================================
+    ORANGE SELECTION
+=========================================================*/
+
+::selection{
+    background:#ff7a00;
+    color:#fff;
+}
+
+::-moz-selection{
+    background:#ff7a00;
+    color:#fff;
+}
+
+input,
+button,
+select{
+    accent-color:#ff7a00;
+}
+/*=========================================================
+    TF DRAWER ITEM ACTIONS
+=========================================================*/
+
+.tf-drawer-item-actions{
+    margin-top:10px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+}
+
+.tf-drawer-qty{
+    height:34px;
+    border:1px solid #dddddd;
+    border-radius:999px;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+    background:#fff;
+}
+
+.tf-drawer-qty button{
+    width:32px;
+    height:32px;
+    border:0;
+    background:#fff;
+    color:#111;
+    font-size:17px;
+    font-weight:500;
+}
+
+.tf-drawer-qty button:hover{
+    background:#fff3e8;
+    color:#ff7a00;
+}
+
+.tf-drawer-qty span{
+    min-width:30px;
+    text-align:center;
+    font-size:13px;
+    font-weight:500;
+}
+
+.tf-drawer-remove{
+    padding:0;
+    border:0;
+    background:transparent;
+    color:#b31b1b;
+    font-size:12px;
+    font-weight:500;
+}
+
+.tf-drawer-remove:hover{
+    color:#ff7a00;
+}
+.add-cart-float-popup,
+.add-cart-popup-icon,
+.add-cart-popup-check,
+.add-cart-popup-spark,
+[class*="add-cart"][class*="spark"]{
+    display:none !important;
+    animation:none !important;
+}

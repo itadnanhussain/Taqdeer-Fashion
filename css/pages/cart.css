@@ -2312,3 +2312,37 @@ body::-webkit-scrollbar-thumb:hover{
         font-size:14px !important;
     }
 }
+/*=========================================================
+    GOLD TO ORANGE OVERRIDE
+=========================================================*/
+
+::selection{
+    background:#ff7a00;
+    color:#fff;
+}
+
+::-moz-selection{
+    background:#ff7a00;
+    color:#fff;
+}
+
+input[type="range"]{
+    accent-color:#ff7a00 !important;
+}
+
+input[type="checkbox"],
+input[type="radio"]{
+    accent-color:#ff7a00 !important;
+}
+
+.size-options button.active,
+.color-pill.active,
+.drawer-qty button:active,
+.drawer-slider-actions button,
+.drawer-recommendation-add{
+    border-color:#ff7a00 !important;
+}
+
+.rating-stars{
+    color:#ff7a00 !important;
+}
